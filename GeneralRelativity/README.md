@@ -34,5 +34,5 @@ The notes are self-contained and written from scratch in LaTeX.
 The `exercises/` folder contains solved problems using both analytic 
 derivations and symbolic computation tools.
 
-Each exercise is placed into its own subfolder:
+Each exercise is placed into its own subfolder
 
