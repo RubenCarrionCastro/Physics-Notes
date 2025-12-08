@@ -1,0 +1,43 @@
+# LaTeX intermediate files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+# Build files
+*.dvi
+*.pdf
+*.xdv
+*.synctex.gz
+
+# Bibliography
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Latexmk
+*.fdb_latexmk
+*.fls
+
+# User-specific files
+*.out
+*.nav
+*.snm
+*.vrb
+
+# Editor backup files
+*~
+*.swp
+*.bak
+
+# Overleaf
+*.synctex*
+*.spl
