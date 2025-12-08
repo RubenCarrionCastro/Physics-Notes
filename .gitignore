@@ -13,9 +13,7 @@
 
 # Build files
 *.dvi
-*.pdf
 *.xdv
-*.synctex.gz
 
 # Bibliography
 *.bbl
