@@ -1,0 +1,380 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación II. Física Estadística}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Marzo 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{\textit{Paradoja de Gibbs}. Si al calcular mediante la colectividad microcanónica la entropía de un gas ideal clásico monoatómico contenido en un recipiente aislado }$\mathbf{E,V,N}$\textbf{ no se introduce el factor }$\mathbf{\frac{1}{N!}}$\textbf{, tras tomar el límite termodinámico se obtendría el siguiente resultado:}
+\begin{equation}
+    \mathbf{S_{paradoja}=Nk\ln\brackets{V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+\frac{3}{2}Nk}
+\end{equation}
+\textbf{Si a partir de esta expresión calculamos la presión y la temperatura del gas, se obtienen los resultados correctos conocidos en la Termodinámica:}
+\begin{equation}
+    \mathbf{\frac{1}{T}=\left(\frac{\partial S}{\partial E}\right)_{N,V}=\frac{3}{2}\frac{Nk}{E}\Rightarrow E=\frac{3}{2}NkT;}\hspace{7mm}\mathbf{\frac{p}{T}=\left(\frac{\partial S}{\partial V}\right)_{N,E}=\frac{Nk}{V}\Rightarrow pV=NkT}
+\end{equation}
+\textbf{Sin embargo, a pesar de que aparentemente todo encaja, esta expresión para la entropía presenta un problema. Para poner evidencia que esta entropía es defectuosa, consideremos el siguiente proceso:}
+\begin{enumerate}[label=\roman*)]
+    \item \textbf{Se parte de una configuración inicial en la que tenemos dos recipientes aislados y en equilibrio que contienen gases separados entre sí por un tabique impermeable. Los dos recipientes poseen el mismo volumen $V$ y el mismo número de partículas $N$, y poseen la misma temperatura $T$, por lo que su presión también será la misma.}
+    \item \textbf{Tras practicar un pequeño orificio en la pared tiene lugar un proceso de difusión de ambos gases, que transcurre a temperatura y presión constante hasta que se alcance el nuevo equilibrio. En este nuevo estado los dos gases ocupan un volumen $2V$.}
+\end{enumerate}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.3\textwidth]{Gibbs.png}
+    \label{Gibbs}
+\end{Figura}
+\begin{enumerate}
+    \item \textbf{Si los gases contenidos en cada uno de los recipientes son distintos, y teniendo en cuenta que la entropía es aditiva ¿cuál es el cambio de entropía del proceso de mezcla, }$\mathbf{\Delta S=S_{mezclados}-S_{separados}}$\textbf{, expresada en función de la temperatura? ¿El resultado es consistente con lo esperado de acuerdo con la Termodinámica, es decir, se produce un aumento de la entropía en el proceso de mezcla?}\\ \\
+    Consideramos dos sistemas con mismo $V$, $T$ y $N$, pero al ser gases distintos tendrán $E_1\neq E_2$. Luego,
+    \begin{equation}
+    \begin{array}{rl}
+         
+        S_{separados}&=S_1+S_2=Nk\ln\brackets{V\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\frac{3}{2}Nk+Nk\ln\brackets{V\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}+\frac{3}{2}Nk  \\ \\
+         & =Nk\curlybraces{\ln\brackets{V\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\ln\brackets{V\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}}+3Nk
+    \end{array}
+    \end{equation}
+    Para el sistema mezclado, tendremos $S=(2V,2N,E=E_1+E_2)$, luego
+    \begin{equation}
+        \begin{array}{rl}
+            S_{mezclado} & = 2Nk\ln\brackets{2V\left(\frac{4\pi m(E_1+E_2)}{3\cdot 2Nh^2}\right)^{3/2}}+\frac{3}{2}2Nk 
+        \end{array}
+    \end{equation}
+    Luego, la diferencia de entropía queda,
+    \begin{equation}\small
+        \begin{array}{rl}
+            \Delta S & =S_{mezclado}-S_{separados}=\\ \\
+             & =2Nk\ln\brackets{2V\left(\frac{2\pi m(E_1+E_2)}{3Nh^2}\right)^{3/2}}+\cancel{3Nk}-Nk\curlybraces{\ln\brackets{V\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\ln\brackets{V\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}}-\cancel{3Nk}= \\ \\
+             &= 2Nk\curlybraces{\ln{2V}+\ln\brackets{\left(\frac{4\pi m(E_1+E_2)}{3\cdot2Nh^2}\right)^{3/2}}}-Nk\curlybraces{\ln\brackets{\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\ln\brackets{\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}+2\ln V}\\ \\
+             &=2Nk\ln(2V)+3Nk\ln\left(\frac{4\pi m(E_1+E_2)}{6Nh^2}\right)-\frac{3}{2}Nk\ln\left(\frac{4\pi mE_1}{3Nh^2}\right)-\frac{3}{2}Nk\ln\left(\frac{4\pi mE_2}{3Nh^2}\right)-2Nk\ln(V)=\\ \\
+             &=2Nk\ln(2)+3Nk\ln\left(\frac{4\pi m(E_1+E_2)}{6Nh^2}\right)-3Nk\ln\left(\frac{4\pi mE_1}{3Nh^2}\right)^{1/2}-3Nk\ln\left(\frac{4\pi mE_2}{3Nh^2}\right)^{1/2}=\\ \\
+             &=2Nk\ln(2)+\cancel{3Nk\ln\left(\frac{4\pi m}{3Nh^2}\right)}-3Nk\ln(2)+3Nk\ln(E_1+E_2)-\cancel{3Nk\ln\left(\frac{4\pi m}{3Nh^2}\right)}-3Nk\ln(E_1E_2)^{1/2}=\\ \\
+             &=2Nk\ln(2)+3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)
+        \end{array}
+    \end{equation}
+    que será positivo, pues $2Nk\ln(2)>0$ siempre, y $3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)\geq0$ siempre, pues si $E_1\neq E_2$ es estrictamente positivo, y si $E_1=E_2$ es igual a cero. Este resultado es el esperado en Termodinámica.
+    \item \textbf{Si los dos recipientes contienen \textit{el mismo gas} a igual condiciones de presión y temperatura, el cambio de entropía de mezcla debería ser cero, ya que al eliminar el tabique separador no tiene lugar ningún proceso y el sistema no cambia realmente nada ¿cuál es ahora el cambio de entropía al permitir la mezcla? ¿Es este cambio de entropía nulo? (Paradoja de Gibbs)}\\ \\
+    Tenemos dos sistemas aislados con $V_1=V_2=V$, $N_1=N_2=N$, $T_1=T_2=T$ y $p_1=p_2=p$, y al tener gases iguales, tendremos que $E=E_1= E_2$. Por tanto, la entropía de los sistemas separados será,
+    \begin{equation}
+    \begin{array}{rl}
+        S_{separados}&=S_1+S_2=Nk\ln\brackets{V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+\frac{3}{2}Nk+Nk\ln\brackets{V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+\frac{3}{2}Nk\\ \\
+        &=2Nk\ln\brackets{V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+3Nk
+        \end{array}
+    \end{equation}
+    Mientras que la del sistema mezclado será,
+    \begin{equation}
+        S_{mezclados}=2Nk\ln\brackets{2V\left(\frac{4\pi m2E}{3\cdot2Nh^2}\right)^{3/2}}+\frac{3}{2}2Nk=2Nk\ln\brackets{2V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+3Nk
+    \end{equation}
+    Luego, la variación de entropía queda,
+    \begin{equation}
+        \begin{array}{rl}
+            \Delta S & = 2Nk\ln\brackets{2V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+\cancel{3Nk}-2Nk\ln\brackets{V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}-\cancel{3Nk}=\\ \\
+            &=2Nk\curlybraces{\ln\brackets{2V\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}-\ln\brackets{V\left(\frac{4\pi m E}{3Nh^2}\right)^{3/2}}}=\\ \\
+            &=2Nk\curlybraces{\ln(2)+\cancel{\ln(V)}+\cancel{\frac{3}{2}\ln\left(\frac{4\pi E}{3Nh^2}\right)}-\cancel{\ln(V)}-\cancel{\frac{3}{2}\ln\left(\frac{4\pi mE}{3Nh^2}\right)}}=\\ \\
+            &=2Nk\ln(2)>0
+        \end{array}
+    \end{equation}
+    donde $\Delta S>0$. Pero este resultado es incoherente con la Termodinámica, pues si tenemos dos gases ideales idénticos con misma energía, temperatura, $N$, volumen, etc. Al quitar las paredes, desde un punto de vista macroscópico, nada cambia, por lo que deberíamos obtener una $\Delta S=0$. Además, concluimos que tanto este resultado como el del apartado anterior, matemáticamente, son correctos, pues ambos coinciden para $E_1=E_2$, pero son físicamente incoherentes, llegando a lo que se conoce como Paradoja de Gibbs.\\ \\
+    \textbf{Ahora considere la expresión correcta para la entropía deducida en clase:
+}
+\begin{equation}
+    \mathbf{S_{correcta}=S_{paradoja}-k\ln N!=Nk\ln\brackets{\frac{V}{N}\left(\frac{4\pi mE}{3Nh^2}\right)^{3/2}}+\frac{5}{2}Nk}
+\end{equation}
+\item \textbf{Recalcule }$\mathbf{\Delta S}$\textbf{ para los apartados (a) y (b) usando la entropía correcta. ¿Son los resultados consistentes con la Termodinámica?}\\ \\
+Empleando la entropía correcta para el apartado $(a)$ tenemos que,
+\begin{equation}
+    \begin{array}{rl}
+        S^{(a)}_{separados} &=S_{1,paradoja}-k\ln N!+S_{2,paradoja}-k\ln N!= \\ \\
+         & =Nk\curlybraces{\ln\brackets{V\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\ln\brackets{V\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}}+3Nk-2k\ln N!
+    \end{array}
+\end{equation}
+Además,
+\begin{equation}
+    \begin{array}{rl}
+        S^{(a)}_{mezclados} &= 2Nk\ln\brackets{2V\left(\frac{4\pi m(E_1+E_2)}{3\cdot 2Nh^2}\right)^{3/2}}+3Nk -k\ln(2N)!
+    \end{array}
+\end{equation}
+Luego,
+\begin{equation}\small
+    \begin{array}{rl}
+        \Delta S^{(a)} & =S^{(a)}_{mezclados}-S^{(a)}_{separados}= \\ \\
+         & =2Nk\ln\brackets{2V\left(\frac{4\pi m(E_1+E_2)}{3\cdot 2Nh^2}\right)^{3/2}}+\cancel{3Nk} -k\ln(2N)!-Nk\curlybraces{\ln\brackets{V\left(\frac{4\pi mE_1}{3Nh^2}\right)^{3/2}}+\ln\brackets{V\left(\frac{4\pi mE_2}{3Nh^2}\right)^{3/2}}}-\\ \\
+         &-\cancel{3Nk}+2k\ln N!=\textcolor{blue}{2Nk\ln(2)+3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)}+2k\ln N!-k\ln(2N)!
+    \end{array}
+\end{equation}
+donde hemos usado el resultado anterior (azul) y hemos restado los logaritmos con factoriales. Ahora hacemos la aproximación de Stirling, $\ln N!\approx N\ln N-N$, luego,
+\begin{equation}
+\begin{array}{rl}
+     
+    \Delta S^{(a)}&=2Nk\ln(2)+3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)+2Nk\ln N-\cancel{2Nk}-2kN\ln(2N)+\cancel{2Nk}=  \\
+     & =\cancel{2Nk\ln(2N)}-\cancel{2Nk\ln(2N)}+3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)=3Nk\ln\left(\frac{E_1+E_2}{2\sqrt{E_1E_2}}\right)
+\end{array}
+\end{equation}
+Luego, queda la entropía positiva como cabría esperar, siendo un resultado consistente con la Termodinámica. Para el apartado $(b)$ usamos el mismo resultado anterior, pero con $E_1=E_2=E$, luego,
+\begin{equation}
+    \Delta S^{(b)}=\ln\left(\frac{E+E}{2\sqrt{E\cdot E}}\right)=\ln\left(\frac{2E}{2E}\right)=\ln(1)=0
+\end{equation}
+Ahora sí tenemos que la variación de la entropía del sistema es nula, como cabría esperar, siendo el resultado consistente con la Termodinámica.
+
+
+\end{enumerate}
+\item \textbf{Resuelva el problema número 2 de la relación de problemas 2 empleando para ello la \textit{colectividad microcanónica en el formalismo clásico}. Además, determine la energía interna del sistema, $E$, en función de las variables $N$ y $T$. Compruebe que la expresión obtenida coincide con el resultado cuántico obtenido en el problema 3 de esta mismo relación tomando el límite }$\mathbf{T\to\infty.}$\\
+\textbf{\textit{Nota:} en este problema los átomos se encuentran localizados y por tanto son distinguibles: NO hay que dividir por $N!$ en el formalismo clásico.}\\ \\
+Tenemos que el Hamiltoniano del sistema es,
+\begin{equation}
+    H=\sum_{i=1}^{3N}H_i=\sum_{i=1}^{3N}\brackets{\frac{p_i^2}{2m}+\frac{1}{2}m\omega^2q_i^2}
+\end{equation}
+teniendo un sistema de $N$ osciladores armónicos tridimensionales clásicos, localizados con igual frecuencia $\omega$ e igual masa $m$ y una energía total igual a $E$. Hacemos el cambio de variable sugerido,
+\begin{equation}
+    x_i=\left(\frac{1}{2m}\right)^{1/2}p_i;\hspace{5mm}x_{3N+i}=\left(\frac{m}{2}\right)^{1/2}\omega q_i;\hspace{4mm}i=1,2,\dots,3N
+\end{equation}
+Luego el Hamiltoniano queda,
+\begin{equation}
+    H=\sum_{i=1}^{3N}\brackets{x_i^2+x_{3N+i}^2}=\sum_{i=1}^{6N}x_i^2
+\end{equation}
+Al ser un sistema clásico, $H=E$. Ahora vamos a calcular $\Phi(E)$, tal que
+\begin{equation}
+    \begin{array}{rl}
+        \Phi(E) &=\frac{1}{h^{3N}}\int\Theta(E-H(q,p))dqdp=\frac{1}{h^{3N}}\int\Theta(E-H(x_i))\left(\sqrt{2m}\right)^{3N}\left(\sqrt{\frac{m}{2}}\frac{1}{\omega}\right)^{3N}dx_1\dots dx_{6N}=\\ \\
+        &=\frac{1}{h^{3N}}\int\Theta(E-H(x_i))\left(\frac{2}{\omega}\right)^{3N}dx_1\dots dx_{6N}=\\ \\
+        &=\frac{1}{h^{3N}}\left(\frac{2}{\omega}\right)^{3N}\int \Theta\left(E-\sum\limits_{i=1}^{6N}x_i^2\right)dx_1\dots dx_{6N}=\frac{1}{h^{3N}}\left(\frac{2}{\omega}\right)^{3N}\int\limits_{\sum\limits_{i}x_i^2\leq E}dx_1 \dots dx_{6N}
+    \end{array}
+\end{equation}
+donde no dividimos por $N!$ porque tenemos los osciladores localizados. Vemos que la integral que queda es una hiperesfera de dimensión $6N$ y radio $\sqrt{E}$.  Sabemos que la fórmula de una hiperesfera de dimensión $d$ y radio $R$ viene dada por,
+\begin{equation}
+    \mathscr{V}_d(R)=R^d\frac{\pi^{d/2}}{\Gamma\left(\frac{d}{2}+1\right)}
+\end{equation}
+Luego, tendremos que,
+\begin{equation}
+    \mathscr{V}_{6N}\left(\sqrt{E}\right)=E^{3N}\frac{\pi^{3N}}{\Gamma\left(3N+1\right)}
+\end{equation}
+Luego queda,
+\begin{equation}
+    \Phi(E)=\left(\frac{2}{\omega}\right)^{3N}\frac{E^{3N}\pi^{3N}}{h^{3N}\Gamma(3N+1)}
+\end{equation}
+Derivamos $\Phi(E)$ para obtener la función de partición microcanónica $\Omega(E)$, tal que
+\begin{equation}
+    \begin{array}{rl}
+        \Omega(E) & =\frac{\partial\Phi(E)}{\partial E}\Delta E=\\ \\
+         & =\left(\frac{2}{\omega}\right)^{3N}3N\frac{E^{3N-1}\pi^{3N}}{h^{3N}\Gamma(3N+1)}\Delta E=\\ \\
+         & =\left(\frac{2}{\omega}\right)^{3N}\cancel{3N}\frac{E^{3N-1}\pi^{3N}}{h^{3N}\cancel{3N}\Gamma(3N)}\Delta E=\\ \\
+         & =\left(\frac{2}{\omega}\right)^{3N}\frac{E^{3N-1}\pi^{3N}}{h^{3N}\Gamma(3N)}\Delta E=\\ \\
+         & =\left(\frac{2}{\omega}\right)^{3N}\frac{E^{3N}\pi^{3N}}{h^{3N}\Gamma(3N)}\frac{\Delta E}{E}=\left(\frac{2\pi}{h\omega}\right)^{3N}\frac{E^{3N}}{\Gamma(3N)}\frac{\Delta E}{E}
+    \end{array}
+\end{equation}
+donde hemos usado que $\Gamma(x+1)=x\Gamma(x)$. Calculamos la entropía sabiendo que $S=k\ln\Omega$, pero haciendo la aproximación termodinámica, es decir, 
+\begin{equation}
+    N\to\infty;\hspace{4mm}V\to\infty;\hspace{4mm}E\to\infty;\hspace{4mm}\frac{N}{V}=cte;\hspace{4mm}\frac{E}{N}=cte
+\end{equation}
+Luego,
+\begin{equation}
+    \begin{array}{rl}
+        \lim\limits_{\begin{matrix}
+            N\to\infty\\
+            V\to\infty\\
+            E\to\infty\\
+            E/N=cte\\
+            N/V=cte
+        \end{matrix}}S &\approx k\ln\brackets{\left(\frac{2\pi}{h\omega}\right)^{3N}\frac{E^{3N}}{\Gamma(3N)}\frac{\Delta E}{E}} =k\curlybraces{3N\ln\left(\frac{2\pi}{h\omega}\right)+3N\ln(E)-\ln\Gamma(3N)+\cancelto{0(E\to \infty)}{\ln\left(\frac{\Delta E}{E}\right)}}
+    \end{array}
+\end{equation}
+Hacemos la aproximación de Stirling para la Gamma de Euler, $\ln\Gamma(x)=x\ln(x)-x$, luego,
+\begin{equation}
+    \begin{array}{rl}
+        S &\approx k\curlybraces{3N\ln\left(\frac{2\pi}{h\omega}\right)+3N\ln(E)-3N\ln(3N)+3N}=\\  \\
+         & =3Nk\brackets{\ln\left(\frac{2\pi E}{3h\omega N}\right)+1}
+    \end{array}
+\end{equation}
+que es el resultado que nos dicen que obtengamos. Ahora calculamos la temperatura usando que la inversa de la temperatura es la derivada de la entropía respecto la energía, luego,
+\begin{equation}
+    \frac{1}{T}=\left(\frac{\partial S}{\partial E}\right)_{N,V}=3Nk\frac{1}{E}\Rightarrow T=\frac{E}{3Nk}
+\end{equation}
+Luego, la energía es,
+\begin{equation}
+    E=3NkT
+\end{equation}
+siendo el resultado esperado. El resultado obtenido en el problema 3 de la relación 2 es,
+\begin{equation}
+    E_{cuantico}=\frac{3}{2}N\hbar\omega\coth\left(\frac{\hbar\omega}{2kT}\right)\xrightarrow{T\to\infty}\frac{3}{2}N\hbar\omega\coth(0)\to\infty
+\end{equation}
+pero haciendo $\coth(x)\sim\frac{1}{x}$, cuando $x\to0$, tenemos que
+\begin{equation}
+    \lim_{T\to\infty}E=\frac{3}{\cancel{2}}N\cancel{\hbar\omega}\frac{\cancel{2}kT}{\cancel{\hbar\omega}}=3NkT
+\end{equation}
+obteniendo el resultado clásico.
+\item \textbf{\textit{Gas ideal clásico ultra-relativista en 1 dimensión}. Considere un gas ideal clásico formado por $N$ átomos idénticos atrapado en una dimensión de longitud $L$. Cada átomo posee una posición }$\mathbf{x_i(0\leq x_i\leq L)}$\textbf{, el módulo de su momento }$\mathbf{p_i(0\leq p_i\leq\infty)}$\textbf{, y el signo del momento }$\mathbf{s_i(+1/-1)}$\textbf{. La energía de cada átomo es }$\mathbf{\mathscr{E}=pc}$\textbf{, donde $c$ es la velocidad de la luz. La energía total del sistema es:}
+\begin{equation}
+    \mathbf{E=\sum_{i=1}^N\mathscr{E}_i=c\sum_{i=1}^Np_i}
+\end{equation}
+\textbf{Usando la colectividad microcanónica, determine el número de estados con energía entre $\mathbf{E}$ y }$\mathbf{E+\Delta E,\Omega(E;\Delta E)}$\textbf{, calcule la entropía del sistema y compruebe que es extensiva.}\\ \\
+Nos piden calcular $\Omega(E;\Delta E)$. Podemos seguir el mismo planteamiento del problema anterior, pues seguimos con gases clásicos, pero esta vez sí dividimos entre $N!$, pues no tenemos las partículas localizadas. Como estamos en clásica, tenemos que $H=E$, luego el Hamiltoniano del sistema es
+\begin{equation}
+    H=c\sum_{i=1}^Np_i
+\end{equation}
+Calculamos $\Phi(E)$ tal que
+\begin{equation}
+    \begin{array}{rl}
+        \Phi(E) &=\frac{1}{h^sN!}\int dqdp\Theta(E-H(q,p))=\frac{1}{h^{N}N!}\int\Theta\left(E-c\sum\limits_{i=1}^Np_i\right)dqdp=\\ \\
+         & =\frac{1}{h^NN!}\int\limits_0^L dx_1\dots dx_N\int\limits_{c\sum\limits_{i=1}^Np_i\leq E}dp_1\dots dp_N=\\ \\
+        &=\frac{1}{h^NN!}L^N \int\limits_{\sum\limits_{i=1}^Np_i\leq E/c}dp_1\dots dp_N
+    \end{array}
+\end{equation}
+Esta integral ya no puede interpretarse como una hiperesfera, pero corresponde al volumen de un simplex $\curlybraces{\vec{p}\in[0,\infty)^N:\sum_ip_i\leq E/c}$, una región finita delimitada por el hiperplano $\sum_ip_i=E/c$ y el ortante positivo. La integral representa un hiper-tetraedro N-dimensional, con volumen conocido. Tal que
+\begin{equation}
+    \int_{\sum_ix_i\leq a}dx_1\dots dx_N=\frac{a^N}{N!}
+\end{equation}
+Pero en nuestro caso, al tener momentos con signo $\pm1$, debemos añadir un factor $2^N$ adicional, para contemplar todas las posibilidades del momento, luego
+\begin{equation}
+    \Phi(E)=\frac{1}{h^NN!}L^N2^N\left(\frac{E}{c}\right)^N\frac{1}{N!}
+\end{equation}
+Ahora calculamos su derivada, para obtener la $\Omega(E)$, luego,
+\begin{equation}
+    \begin{array}{rl}
+        \Omega(E) &=\frac{\partial\Phi(E)}{\partial E}\Delta E= \\  \\
+         & =\frac{\partial}{\partial E}\brackets{\frac{1}{h^NN!}L^N2^N\left(\frac{E}{c}\right)^N\frac{1}{N!}}\Delta E=\frac{1}{h^NN!^2}L^N2^N\frac{\partial}{\partial E}\left(\frac{E}{c}\right)^N\Delta E\\ \\
+         &=\frac{1}{h^NN!^2}L^N2^N\frac{N}{c}\left(\frac{E}{c}\right)^{N-1}\Delta E=\frac{1}{h^NN!^2}L^NN2^N\left(\frac{E}{c}\right)^N\frac{\Delta E}{E}
+    \end{array}
+\end{equation}
+Ahora calculamos la entropía del sistema, sabiendo que $S=k\ln\Omega$, y usando el límite termodinámico, tal que
+\begin{equation}\small
+    \begin{array}{rl}
+        \lim\limits_{\begin{matrix}
+            N\to\infty\\
+            V\to\infty\\
+            E\to\infty\\
+            E/N=cte\\
+            N/V=cte
+        \end{matrix}}S&\approx k\ln\brackets{\frac{1}{h^NN!^2}L^NN2^N\left(\frac{E}{c}\right)^N\frac{\Delta E}{E}}=\\ \\
+        &=k\brackets{N\ln(L)+N\ln(2)+\ln(N)-N\ln(h)-N\ln(N!)+N\ln(E)-N\ln(c)+\cancelto{0(E\to \infty)}{\ln\left(\frac{\Delta E}{E}\right)}}=\\ \\
+        &\approx k\brackets{N\ln(L)+N\ln(2)+\ln(N)-N\ln(h)-2N\ln(N)+2N+N\ln(E)-N\ln(c)}=\\ \\
+        &=Nk\brackets{\ln(L)+\ln(2)+\cancelto{0\text{ (L'Hopital)}}{\frac{1}{N}\ln(N)}-\ln(h)-2\ln(N)+2+\ln(E)-\ln(c)}=\\ \\
+        &=Nk\brackets{\ln\left(\frac{2LE}{hcN^2}\right)+2}        
+        \end{array}
+\end{equation}  
+donde $\lim\limits_{N\to\infty}\frac{\ln(N)}{N}\overset{L-H}{\to}\lim\limits_{N\to\infty}\frac{1/N}{1}=0$ y hemos usado la aproximación de Stirling, $\ln(N!^2)=2\ln(N!)\approx2N\ln(N)-2N$.\\ \\
+Para verificar que una función es extensiva, debe variar linealmente con las variables extensivas del sistema, es decir, si tenemos una función del tipo $A(N,V,...;T,P,...)$ donde las primeras variables son extensivas y las últimas intensivas, al hacer $A(\lambda N,\lambda V,...;T,P,...)$, multiplicando por $\lambda\in\mathbb{R}$ las variables extensivas, deberemos obtener que 
+\begin{equation}
+    A(\lambda N,\lambda V,...;T,P,...)=\lambda A(N,V,...;T,P,...)
+\end{equation}
+Luego comprobamos en nuestra expresión de la entropía $S(N,L,E)$, que depende solo de variables extensivas,
+\begin{equation}
+    S(\lambda N,\lambda L,\lambda E)=\lambda Nk\brackets{\ln\left(\frac{2\cancel{\lambda}L\cancel{\lambda}E}{hc\cancel{\lambda^2}N^2}\right)+2}=\lambda Nk\brackets{\ln\left(\frac{2LE}{hcN^2}\right)+2}=\lambda S(N,L,E)
+\end{equation}
+Luego, la entropía es extensiva.
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,608 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación III. Física Estadística}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Abril 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Considere un sistema formado por }$\mathbf{N}$\textbf{ partículas \textit{idénticas} y \textit{distinguibles} que no interactúan entre sí. Cada una de estas partículas puede situarse en dos niveles de energía }$\mathbf{\curlybraces{0,\epsilon}}$\textbf{ con degeneración 2 y 4 respectivamente. Obtenga la expresión de la energía interna de este sistema en función de la temperatura y del número de partículas, }$\mathbf{U(T,N)}$\textbf{ y compruebe que coincide en el límite termodinámico, empleando:}
+\begin{enumerate}
+    \item \textbf{la colectividad canónica. Use esta colectividad también para calcular la fracción de partículas en el nivel fundamental y en el nivel de energía }$\mathbf{+\epsilon}$\textbf{, estudiando los límites de baja y alta temperatura.}\\ \\
+Tenemos $N$ partículas distinguibles e independientes, es decir, no interactúan, con dos niveles de energía, $\curlybraces{0,\epsilon}$. Sabemos que al ser independientes, la función de partición total $Z$ del sistema puede dividirse en función de la función de partición $Z_1$ de una partícula elevada al número de partículas, tal que
+\begin{equation}
+    Z=(Z_1)^N;\hspace{4mm}Z_1=\sum_{\curlybraces{E}}e^{-\beta E}g_E
+\end{equation}
+donde $g_E$ es la degeneración de cada nivel. Luego, al tener dos niveles con degeneración, tenemos
+\begin{equation}
+    Z_1=1\cdot2+e^{-\beta\epsilon}\cdot4=2+4e^{-\beta\epsilon}
+\end{equation}
+Luego,
+\begin{equation}
+    Z=\left(2+4e^{-\beta\epsilon}\right)^N
+\end{equation}
+Sabemos que la energía interna viene dada por menos la parcial del logaritmo de $Z$ respecto $\beta$, luego,
+\begin{equation}
+    U=-\left(\frac{\partial\ln Z}{\partial\beta}\right)_{E,V}=4N\epsilon\frac{e^{-\beta\epsilon}}{2\left(1+2e^{-\beta\epsilon}\right)}=2N\epsilon\frac{e^{-\beta\epsilon}}{1+2e^{-\beta\epsilon}}
+\end{equation}
+Luego, la energía interna $U(T,N)$ viene dada por,
+\begin{equation}
+    U(T,N)=2N\epsilon\frac{e^{-\epsilon/kT}}{1+2e^{-\epsilon/kT}}
+\end{equation}
+Observamos que la energía interna es proporcional a $N$, es decir, $U(T,N)/N$ es finita y constante para cada temperatura fija. Esto confirma que el resultado obtenido es consistente en el límite termodinámico.
+\\ \\
+Calculamos ahora la fracción de partículas en el nivel fundamental, $n_0$, y en el nivel de energía $\epsilon$, $n_{\epsilon}$. Para ello, usamos la probabilidad de que una partícula esté en el nivel que queremos estudiar, pues al ser independientes, podemos usar esto. Luego,
+\begin{equation}
+    \mathscr{P}_1(E=0)=\frac{g_0}{Z_1}e^0=\frac{2}{2+4e^{-\beta\epsilon}}=\frac{n_0}{N}
+\end{equation}
+\begin{equation}
+    \mathscr{P}_1(E=\epsilon)=\frac{g_{\epsilon}}{Z_1}e^{-\beta\epsilon}=\frac{4e^{-\beta\epsilon}}{2+4e^{-\beta\epsilon}}=\frac{n_{\epsilon}}{N}
+\end{equation}
+Luego,
+\begin{equation}
+    n_0=\frac{2N}{2+4e^{-\beta\epsilon}}
+\end{equation}
+\begin{equation}
+    n_{\epsilon}=\frac{4Ne^{-\beta\epsilon}}{2+4e^{-\beta\epsilon}}
+\end{equation}
+Estudiamos ahora los límites de alta y baja temperaturas, tal que
+\begin{equation}
+    \lim_{T\to\infty}n_0=\lim_{\beta\to0}n_0=\lim_{\beta\to0}\frac{2N}{2+4e^{-\beta\epsilon}}=\frac{2N}{2+4}=\frac{N}{3}
+\end{equation}
+\begin{equation}
+    \lim_{T\to\infty}n_{\epsilon}=\lim_{\beta\to0}n_{\epsilon}=\lim_{\beta\to0}\frac{4Ne^{-\beta\epsilon}}{2+4e^{-\beta\epsilon}}=\frac{4N}{2+4}=\frac{2N}{3}
+\end{equation}
+A altas temperaturas, la ocupación tiende a distribuirse según la degeneración: $1/3$ en el fundamental ($g_0=2$) y $2/3$ en el excitado ($g_{\epsilon}=4$), debido al principio de equiprobabilidad canónica.
+\begin{equation}
+    \lim_{T\to-\infty}n_0=\lim_{\beta\to\infty}n_0=\lim_{\beta\to\infty}\frac{2N}{2+4e^{-\beta\epsilon}}=\frac{2N}{2+4e^{-\infty}}=\frac{2N}{2}=N
+\end{equation}
+\begin{equation}
+    \lim_{T\to-\infty}n_{\epsilon}=\lim_{\beta\to\infty}n_{\epsilon}=\lim_{\beta\to\infty}\frac{4Ne^{-\beta\epsilon}}{2+4e^{-\beta\epsilon}}=\frac{4Ne^{-\infty}}{2+4e^{-\infty}}=0
+\end{equation}
+Vemos que a temperaturas bajas, todas las partículas se encuentran en el nivel fundamental.
+\item \textbf{La colectividad microcanónica.} \\ \\
+En el conjunto microcanónico, el sistema tiene energía total fija $E$ y número de partículas $N$. Cada partícula puede ocupar uno de dos niveles de energía, $\{0, \epsilon\}$, con degeneraciones $g_0 = 2$ y $g_\epsilon = 4$, respectivamente. Denotamos por $n_\epsilon$ el número de partículas situadas en el nivel de energía $\epsilon$, y por $n_0 = N - n_\epsilon$ las que están en el nivel fundamental.
+
+Entonces, la energía total del sistema es:
+
+\begin{equation}
+    E = n_0\cdot0+n_\epsilon \cdot \epsilon=n_{\epsilon}\cdot\epsilon
+\end{equation}
+
+y el número de microestados compatibles con esa energía es:
+
+\begin{equation}
+    \Omega(N,E) = \binom{N}{n_\epsilon} \cdot g_0^{n_0} \cdot g_\epsilon^{n_\epsilon} = \binom{N}{n_\epsilon} \cdot 2^{N - n_\epsilon} \cdot 4^{n_\epsilon}
+\end{equation}
+
+La entropía microcanónica se define como:
+
+\begin{equation}
+    S(E,N) = k \ln \Omega(N,E)
+\end{equation}
+Vemos el $ln\Omega$,
+\begin{equation}
+    \ln\Omega=\ln\binom{N}{n_{\epsilon}}+(N-n_{\epsilon})\ln2+n_{\epsilon}\ln4
+\end{equation}
+
+Para grandes $N$, usamos la aproximación de Stirling,
+\begin{equation}
+    \ln\binom{N}{n_{\epsilon}}\approx N\ln N-n_{\epsilon}\ln n_{\epsilon}-(N-n_{\epsilon})\ln(N-n_{\epsilon})
+\end{equation}
+Así,
+\begin{equation}
+    \ln\Omega(E,N)\approx N\ln N-n_{\epsilon}\ln n_{\epsilon}-(N-n_{\epsilon})\ln(N-n_{\epsilon})+(N-n_{\epsilon})\ln2+n_{\epsilon}\ln4
+\end{equation}
+
+y definimos,
+
+\begin{equation}
+    x = \frac{n_\epsilon}{N} = \frac{E}{N\epsilon}
+\end{equation}
+Luego,
+\begin{equation}
+\begin{array}{rl}
+     
+    \ln\Omega(N,x)&=N\ln N-Nx\ln(Nx)-(N-Nx)\ln(N-Nx)+(N-Nx)\ln2+Nx\ln4 \\ \\
+     & =N\brackets{\ln N-x\ln[(N)(x)]-(1-x)\ln[N(1-x)]+(1-x)\ln2+x\ln4}=\\ \\
+     &=N\brackets{\ln N-x(\ln N+\ln x)-(1-x)(\ln N+\ln(1-x))+(1-x)\ln2+x\ln4}=\\ \\
+     &=N\brackets{\cancel{\ln N}-\cancel{x\ln N}-x\ln x-\cancel{(1-x)\ln N}-(1-x)\ln(1-x)}+N(1-x)\ln2+xN\ln4=\\ \\
+     &=-N\brackets{x\ln x+(1-x)\ln(1-x)}+N(1-x)\ln2+xN\ln4
+\end{array}
+\end{equation}
+
+Entonces, la entropía puede escribirse como:
+
+\begin{equation}
+    S = k\ln\Omega=-Nk \left[ x \ln x + (1 - x) \ln (1 - x) \right] + kN(1 - x) \ln 2 + kNx \ln 4
+\end{equation}
+
+La temperatura se define como:
+
+\begin{equation}
+    \frac{1}{T} = \left( \frac{\partial S}{\partial E} \right)_N = \left( \frac{\partial S}{\partial x} \cdot \frac{\partial x}{\partial E} \right)_N=\frac{1}{N\epsilon}\left(\frac{\partial S}{\partial x}\right)_N
+\end{equation}
+
+Calculando, obtenemos:
+
+\begin{equation}
+    \frac{1}{T} = \frac{\cancel{N}k}{\cancel{N}\epsilon}\brackets{-\ln x-1+\ln(1-x)+1-\ln2+\ln4}=\frac{k}{\epsilon}\ln\left(\frac{4(1-x)}{2x}\right)=\frac{k}{\epsilon}\ln\left(\frac{2(1-x)}{x}\right)
+\end{equation}
+
+Despejando $x$ en función de $T$, llegamos a:
+
+\begin{equation}
+    \frac{\epsilon}{kT}=\ln\left(\frac{2-2x}{x}\right)\Rightarrow e^{1/kT}=\frac{2-2x}{x}\Rightarrow xe^{1/kT}+2x=2\Rightarrow  x = \frac{2}{2 + e^{\epsilon/kT}}
+\end{equation}
+
+Finalmente, la energía interna es:
+
+\begin{equation}
+    U(T,N) = E = n_\epsilon \cdot \epsilon = N\epsilon \cdot x = N\epsilon \cdot \frac{2}{2 + e^{\epsilon/kT}} = N\epsilon \cdot \frac{2}{2 + e^{\epsilon/kT}}
+\end{equation}
+
+Esta expresión es equivalente a la obtenida en la colectividad canónica, pues
+
+\begin{equation}
+    \frac{2}{2 + e^{\beta\epsilon}}\frac{2e^{-\beta\epsilon}}{2e^{-\beta\epsilon}} =\frac{4e^{-\beta\epsilon}}{4e^{-\beta\epsilon}+2}= \frac{4e^{-\epsilon/kT}}{2 + 4e^{-\epsilon/kT}}
+\end{equation}
+
+lo que demuestra la equivalencia de resultados en el límite termodinámico.
+
+\item \textbf{La colectividad macrocanónica. También determine la probabilidad de encontrar }$\mathbf{N}$\textbf{ partículas en el sistema }$\mathbf{P(N)}$\textbf{.} \\ \\
+
+En el conjunto macrocanónico (o gran canónico), el sistema puede intercambiar energía y partículas con un reservorio. Las variables naturales son: temperatura $T$, volumen $V$ (no relevante aquí) y potencial químico $\mu$. El número de partículas puede variar, y el sistema se describe mediante la función de partición macrocanónica:
+
+\begin{equation}
+    \mathcal{Z} = \sum_{N=0}^{\infty} z^N Z_N(T)
+\end{equation}
+
+donde $z = e^{\beta\mu}$ es la fugacidad, $\beta = 1/kT$ y $Z_N$ es la función de partición canónica con $N$ partículas. Como ya vimos anteriormente:
+
+\begin{equation}
+    Z_N = \left( 2 + 4e^{-\beta\epsilon} \right)^N
+\end{equation}
+
+Luego:
+
+\begin{equation}
+    \mathcal{Z} = \sum_{N=0}^{\infty} \left[z \cdot (2 + 4e^{-\beta\epsilon})\right]^N = \sum_{N=0}^{\infty} (zZ_1)^N
+\end{equation}
+
+Esta es una serie geométrica de razón $zZ_1$, que converge si $zZ_1 < 1$. Entonces:
+
+\begin{equation}
+    \mathcal{Z} = \frac{1}{1 - zZ_1} = \frac{1}{1 - z(2 + 4e^{-\beta\epsilon})}
+\end{equation}
+
+A partir de aquí, podemos obtener el número medio de partículas:
+
+\begin{equation}
+    \langle N \rangle = \frac{1}{\beta} \frac{\partial \ln \mathcal{Z}}{\partial \mu} = zZ_1 \cdot \frac{1}{1 - zZ_1}
+\end{equation}
+
+De donde despejamos la fugacidad:
+
+\begin{equation}
+    \langle N \rangle = \frac{zZ_1}{1 - zZ_1} \Rightarrow zZ_1 = \frac{\langle N \rangle}{\langle N \rangle + 1}
+\end{equation}
+
+La energía media en el conjunto macrocanónico se obtiene como:
+
+\begin{equation}
+    \langle E \rangle = -\frac{\partial \ln \mathcal{Z}}{\partial \beta}
+\end{equation}
+
+Sabemos que:
+
+\begin{equation}
+    \ln \mathcal{Z} = -\ln(1 - zZ_1) \Rightarrow \frac{\partial \ln \mathcal{Z}}{\partial \beta} = \frac{z}{1 - zZ_1} \cdot \frac{\partial Z_1}{\partial \beta}
+\end{equation}
+
+Recordando que:
+
+\begin{equation}
+    Z_1 = 2 + 4e^{-\beta\epsilon} \Rightarrow \frac{\partial Z_1}{\partial \beta} = -4\epsilon e^{-\beta\epsilon}
+\end{equation}
+
+Entonces:
+
+\begin{equation}
+    \langle E \rangle = 4\epsilon \cdot \frac{z e^{-\beta\epsilon}}{1 - zZ_1} = \epsilon \cdot \frac{4z e^{-\beta\epsilon}}{1 - z(2 + 4e^{-\beta\epsilon})}
+\end{equation}
+
+Sustituyendo el valor de $zZ_1 = \langle N \rangle / (\langle N \rangle + 1)$ y reorganizando, se recupera:
+
+\begin{equation}
+    \langle E \rangle = \langle N \rangle \cdot \epsilon \cdot \frac{4e^{-\beta\epsilon}}{2 + 4e^{-\beta\epsilon}}
+\end{equation}
+
+que coincide con el resultado obtenido en los conjuntos canónico y microcanónico.
+
+Finalmente, la probabilidad de que el sistema tenga exactamente $N$ partículas está dada por:
+
+\begin{equation}
+    P(N) = \frac{z^N Z_N}{\mathcal{Z}} = (1 - zZ_1) \cdot (zZ_1)^N
+\end{equation}
+
+Esta es una distribución geométrica, como se espera en el conjunto macrocanónico para partículas distinguibles.
+    
+\end{enumerate}
+
+
+
+
+
+
+\item \textbf{\textit{GAS IDEAL ULTRA-RELATIVISTA EN 1 DIMENSIÓN}. Considere un \textit{gas ideal clásico} formado por }$\mathbf{N}$\textbf{ átomos idénticos atrapado en una dimensión de longitud }$\mathbf{L}$\textbf{. Cada átomo posee una posición }$\mathbf{x_i(0\leq x_i\leq L)}$\textbf{, el \textit{módulo} de su momento }$\mathbf{|p_i|(-\infty<p_i<\infty)}$\textbf{. La energía de cada átomo es }$\mathbf{\epsilon=|p|c}$\textbf{, donde }$\mathbf{c}$\textbf{ es la velocidad de la luz. La energía total del sistema es:}
+\[\mathbf{E=\sum_{i=1}^N\epsilon_i=c\sum_{i=1}^N|p_i|}\]
+\begin{enumerate}
+    \item \textbf{Usando la \textit{colectividad canónica} calcule la entropía del sistema }$\mathbf{S(T,L,N)}$\textbf{ y compruebe que es extensiva.}\\ \\
+    Debemos calcular primero la función de partición canónica, que vendrá dada por,
+    \begin{equation}
+        Z=\frac{1}{h^NN!}Z_1^N
+    \end{equation}
+    donde $Z_1$ es la función de partición de una partícula, que calculamos como,
+    \begin{equation}
+        Z_1=\int_0^Ldx\int_{-\infty}^{+\infty}dpe^{-\beta c|p|}=L\left(\int_0^{\infty}dpe^{-\beta cp}+\int_{-\infty}^{0}dpe^{\beta cp}\right)=L\left(\frac{1}{\beta c}+\frac{1}{\beta c}\right)=\frac{2L}{\beta c}
+    \end{equation}
+    Luego, la función de partición canónica queda,
+    \begin{equation}
+        Z=\frac{1}{h^NN!}\left(\frac{2L}{\beta c}\right)^N
+    \end{equation}
+    La entropía viene dada por,
+    \begin{equation}
+        S=-\left(\frac{\partial A}{\partial T}\right)_{V,N}=kT\left(\frac{\partial \ln Z}{\partial T}\right)_{V,N}+k\ln Z
+    \end{equation}
+    donde
+    \begin{equation}
+        \ln Z=N\brackets{\ln(2L/c)+\ln(kT)-\ln(h)}-\ln(N!)
+    \end{equation}
+    Luego,
+    \begin{equation}
+        \frac{\partial\ln Z}{\partial T}=\frac{N}{T}
+    \end{equation}
+    Por tanto,
+    \begin{equation}
+        S=kT\frac{N}{T}+k\curlybraces{N\brackets{\ln(2L/c)+\ln(kT)-\ln(h)}-\ln(N!)}
+    \end{equation}
+    Usamos la aproximación de Stirling,
+    \begin{equation}
+        S\approx kN+kN\curlybraces{\ln(2L/c)+\ln(kT)-\ln(h)}-kN\ln(N)+kN
+    \end{equation}
+    Reordenando,
+    \begin{equation}
+        S=kN\brackets{\ln\left(\frac{2LkT}{Nhc}\right)+2}
+    \end{equation}
+    Comprobamos que es extensiva la entropía, es decir, que depende linealmente de las variables extensivas, o en otras palabras,
+    \begin{equation}
+        S(T,\lambda N,\lambda L)=\lambda S(T,N,L)
+    \end{equation}
+    con $\lambda\in\mathbb{R}$. Veamos,
+    \begin{equation}
+        S(T,\lambda N,\lambda L)=k\lambda N\brackets{\ln\left(\frac{2\cancel{\lambda} LkT}{\cancel{\lambda} Nhc}\right)+2}=\lambda\curlybraces{kN\brackets{\ln\left(\frac{2LkT}{Nhc}\right)+2}}=\lambda S(T,N,L)
+    \end{equation}
+    Luego, la entropía es extensiva.
+    \item \textbf{Determine la probabilidad de que, si el sistema se encuentra a temperatura }$\mathbf{T}$\textbf{, una partícula tenga un momento }$\mathbf{p}$\textbf{ mayor que }$\mathbf{kT/c}$\textbf{ y de que vaya dirigida en el sentido positivo del eje X.}\\ \\
+    La energía de cada partícula es $\epsilon = c|p|$, por lo que la distribución de momento para una partícula en el conjunto canónico es proporcional a:
+
+\begin{equation}
+    f(p) \propto e^{-\beta \epsilon} = e^{-\beta c |p|}
+\end{equation}
+
+Normalizando esta distribución sobre todo el eje real $p \in (-\infty, \infty)$:
+
+\begin{equation}
+    Z_p = \int_{-\infty}^{\infty} e^{-\beta c |p|} dp = \int_{-\infty}^{0} e^{\beta c p} dp + \int_{0}^{\infty} e^{-\beta c p} dp = \frac{1}{\beta c} + \frac{1}{\beta c} = \frac{2}{\beta c}
+\end{equation}
+
+Así, la función de densidad de probabilidad del momento es:
+
+\begin{equation}
+    f(p) = \frac{\beta c}{2} e^{-\beta c |p|}
+\end{equation}
+
+Queremos calcular la probabilidad de que una partícula tenga momento mayor que $kT/c$ y se mueva en el sentido positivo del eje $X$, es decir, que su momento sea positivo y supere dicho umbral:
+
+\begin{equation}
+    P\left(p > \frac{kT}{c},p>0\right) = \int_{kT/c}^{\infty} f(p)\,dp = \int_{kT/c}^{\infty} \frac{\beta c}{2} e^{-\beta c p}\,dp
+\end{equation}
+
+Realizando la integral:
+
+\begin{equation}
+    P = \left. -\frac{1}{2} e^{-\beta c p} \right|_{kT/c}^{\infty} = \frac{1}{2} e^{-\beta c \cdot \frac{kT}{c}} = \frac{1}{2} e^{-1}
+\end{equation}
+
+\begin{equation}
+    \boxed{P = \frac{1}{2e} \approx 0.184}
+\end{equation}
+
+Este resultado representa la probabilidad de que una partícula del gas tenga un momento superior a $kT/c$ y se desplace hacia el sentido positivo del eje $X$, siendo el $18,4\%$ de las partículas.
+\end{enumerate}
+\item \textbf{\textit{GAS IDEAL CLÁSICO ATRAPADO EN UNA CORTEZA TOROIDAL}. Considere un \textit{gas ideal clásico} en equilibrio formado por }$\mathbf{N}$\textbf{ partículas \textit{idénticas} de masa }$\mathbf{m}$\textbf{ que se encuentra a temperatura }$\mathbf{T}$\textbf{. El gas está confinado en una corteza bidimensional con forma de toroide, de radio menor }$\mathbf{a}$\textbf{ y radio mayor }$\mathbf{b}$\textbf{. La función Hamiltoniana de una partícula atrapada en un toroide viene dada por (véase abajo la definición de las coordenadas generalizadas)}
+\[\mathbf{H_1(\alpha,\beta,p_{\alpha},p_{\beta})=\frac{1}{2ma^2}p_{\alpha}^2+\frac{1}{2m(b+a\cos\alpha)^2}p_{\beta}^2\hspace{6mm}\alpha,\beta\in[0,2\pi)}\]
+\textbf{Además, cada partícula posee \textit{grados internos de libertad}, de modo que puede estar en dos niveles cuánticos de energía }$\curlybraces{0,\epsilon}$\textbf{ con degeneración 1 y 2 respectivamente.}
+\begin{enumerate}
+    \item \textbf{Obtenga la energía libre de Helmholtz. Compruebe que es extensiva y que no depende de la forma de la corteza, sólo de su superficie (el área de un toroide es }$\mathbf{S=4\pi^2ab}$\textbf{).}\\ \\
+Al tratarse de un gas ideal clásico, la función de partición viene dada por,
+\begin{equation}
+    Z=\frac{1}{N!}Z_1^N
+\end{equation}
+donde $Z_1$ es la función de partición de una partícula y viene dada por,
+\begin{equation}
+    Z_1=\frac{1}{h^2}\int_0^{2\pi}\int_0^{2\pi}d\alpha d\beta\int_{-\infty}^{\infty}dp_{\alpha}\int_{-\infty}^{\infty}dp_{\beta}e^{-\beta H_1}
+\end{equation}
+Separando las integrales,
+\begin{equation}
+    Z_1=\frac{1}{h^2}\int_0^{2\pi}d\alpha\int_0^{2\pi}d\beta\left(\int_{-\infty}^{\infty}dp_{\alpha}e^{-\beta\frac{p_{\alpha}^2}{2ma^2}}\right)\left(\int_{-\infty}^{\infty}dp_{\beta}e^{-\beta\frac{p_{\beta}^2}{2m(b+a\cos{\alpha})^2}}\right)
+\end{equation}
+Las integrales sobre momentos son gaussianas del tipo,
+\begin{equation}
+    \int_{-\infty}^{\infty}e^{-Ap^2}dp=\sqrt{\frac{\pi}{A}}
+\end{equation}
+    Luego,
+\begin{equation}
+    Z_1=\frac{1}{h^2}\int_0^{2\pi}d\beta\int_0^{2\pi}d\alpha\sqrt{\frac{2\pi ma^2}{\beta}}\sqrt{\frac{2\pi m(b+a\cos\alpha)^2}{\beta}}
+\end{equation}
+Calculamos la integral en beta (que no es la beta de 1/kT!!) y tenemos,
+\begin{equation}
+    Z_1=\frac{1}{h^2}2\pi\sqrt{\frac{(2\pi m)^2a^2}{\beta^2}}\int_0^{2\pi}d\alpha(b+a\cos\alpha)=\frac{1}{h^2}\frac{(2\pi)^2ma}{\beta}2\pi b=\frac{8\pi^3mabkT}{h^2}=\frac{2\pi SkT}{h^2}
+\end{equation}
+donde hemos usado que el área del toro es $S=4\pi^2 ab$. Así, la función de partición total es
+\begin{equation}
+    Z=\frac{1}{N!}\left(\frac{2\pi SkT}{h^2}\right)^N
+\end{equation}
+La energía libre de Helmholtz viene dada por $A=-kT\ln Z$, luego
+\begin{equation}
+\begin{array}{rl}
+    A&=-kT\brackets{N\ln\left(\frac{2\pi SkT}{h^2}\right)-\ln(N!)}\approx kT\brackets{N\ln\left(\frac{2\pi SkT}{h^2}\right)-N\ln N+N}=\\ \\
+    &=NkT\brackets{\ln\left(\frac{2\pi SkT}{Nh^2}\right)+1}
+    \end{array}
+\end{equation}
+Comprobamos que sea extensiva, es decir, $A(T,\lambda S,\lambda N)=\lambda A(T,S,N)$ con $\lambda\in\mathbb{R}$,
+\begin{equation}
+    A(T,\lambda S,\lambda N)=\lambda N kT\brackets{\ln\left(\frac{2\pi \cancel{\lambda} SkT}{\cancel{\lambda}Nh^2}\right)+1}=\lambda\curlybraces{NkT\brackets{\ln\left(\frac{2\pi SkT}{Nh^2}\right)+1}}=\lambda A(T,S,N)
+\end{equation}
+    Luego es extensiva. Además, como la energía libre de Helmholtz solo depende de la superficie del toro, es decir, no depende de $a$ ni de $b$ explícitamente, vemos que no depende de la forma de la corteza.
+    \item \textbf{Calcule la probabilidad de encontrar una partícula que posea un ángulo }$\mathbf{\alpha}$\textbf{ comprendido en el intervalo }$\mathbf{[0,\pi/2]}$\textbf{ y que, a la vez, esté en el nivel cuántico de energía }$\mathbf{\epsilon.}$\\ \\
+    Esta probabilidad vendrá dada por
+    \begin{equation}
+    \begin{array}{rl}
+        P\left(\alpha\in\brackets{0,\pi/2};\epsilon\right)&=\frac{1}{Z}g_{\epsilon}e^{-\beta\epsilon}\int_0^{\pi/2}\int_0^{2\pi} d\alpha d\beta (b+a\cos\alpha)=\\ \\
+        &=\frac{2e^{-\beta\epsilon}}{Z}2\pi\int_0^{\pi/2}(b+a\cos\alpha)d\alpha=\frac{4\pi e^{-\beta\epsilon}}{Z}\brackets{b\frac{\pi}{2}+a}
+        \end{array}
+    \end{equation}
+    donde $Z=Z_{esp}Z_{int}$, con
+    \begin{equation}
+        Z_{esp}=\int_0^{2\pi}d\beta\int_0^{2\pi}d\alpha(b+a\cos\alpha)=4\pi^2b;\hspace{6mm}Z_{int}=1+2e^{-\beta\epsilon}
+    \end{equation}
+    Luego, la probabilidad queda,
+    \begin{equation}
+        P\left(\alpha\in\brackets{0,\pi/2};\epsilon\right)=\frac{4\pi e^{-\beta\epsilon}}{4\pi^2b\left(1+2e^{-\beta\epsilon}\right)}\brackets{b\frac{\pi}{2}+a}=\frac{e^{-\beta\epsilon}}{1+2e^{-\beta\epsilon}}\brackets{\frac{1}{2}+\frac{a}{\pi b}}
+    \end{equation}
+    \item \textbf{Calcule el valor medio }$\mathbf{<\cos^2\alpha>.}$\\ \\
+    Aplicando la definición de valor medio, tenemos que
+    \begin{equation}
+        <\cos^2\alpha>=\frac{\int_0^{2\pi}\cos^2\alpha(b+a\cos\alpha)d\alpha}{\int_0^{2\pi}(b+a\cos\alpha)d\alpha}
+    \end{equation}
+    El denominador queda,
+    \begin{equation}
+        \int_0^{2\pi}(b+a\cos\alpha)d\alpha=2\pi b+\cancelto{0}{a\int_0^{2\pi}\cos\alpha d\alpha}=2\pi b
+    \end{equation}
+    El numerador queda,
+    \begin{equation}
+        \int_0^{2\pi}\cos^2\alpha(b+a\cos\alpha)d\alpha=b\cancelto{\pi}{\int_0^{2\pi}\cos^2\alpha d\alpha}+a\cancelto{0}{\int_0^{2\pi}\cos^3\alpha d\alpha}=b\pi
+    \end{equation}
+    Luego tenemos,
+    \begin{equation}
+        <\cos^2\alpha>=\frac{b\pi}{2\pi b}=\frac{1}{2}
+    \end{equation}
+\end{enumerate}
+\item \textbf{\textit{HUECOS DE ABSORCIÓN}. Un sistema está formado por una superficie con un total de }$\mathbf{N_0}$\textbf{ huecos de absorción, de manera que dentro de cada uno de estos huecos pueden entrar a lo sumo un máximo de 3 partículas (\textit{fermiones}). Cuando un fermión se absorbe en un hueco, puede ocupar dos diferentes estados cuánticos de energía 0 y }$\mathbf{\epsilon}$\textbf{, con degeneración 1 y 2, respectivamente. El sistema está en equilibrio a temperatura }$\mathbf{T.}$
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.6\textwidth]{huecos.png}     
+\end{Figura}
+    \begin{enumerate}
+        \item \textbf{Centrándonos en un hueco en particular, calcule la \textit{función de partición canónica} para los casos en los que entren en el hueco 1, 2 y 3 fermiones (}$\mathbf{Z_1(T)}$\textbf{ y }$\mathbf{Z_2(T)}$\textbf{ y }$\mathbf{Z_3(T)}$\textbf{ respectivamente).}\\ \\
+        En este caso, tenemos dos fases en equilibrio, el gas y los huecos.\\ \\
+        Como tratamos con fermiones, no podemos repetir estados cuánticos, pues por el Principio de Exclusión de Pauli solo podremos ocupar un máximo de una partícula por estado.\\ \\
+        Para el caso de una partícula, tenemos tres niveles posibles de ocupación, una posibilidad para energía $E=0$ y dos posibilidades para energía $E=\epsilon$. Entonces, la función de partición canónica vendrá dada por,
+        \begin{equation}
+            Z_1(T)=g_0e^{-\beta E_0}+g_{\epsilon}e^{-\beta\epsilon}=1\cdot e^{-\beta0}+2\cdot e^{-\beta\epsilon}=1+2e^{-\beta\epsilon}
+        \end{equation}
+        Para el caso de dos fermiones tendremos $\left(\begin{matrix}
+            3\\
+            2
+        \end{matrix}\right)=3$ combinaciones posibles y para cada combinación sumamos las energías de los niveles ocupados. Así,
+        \begin{enumerate}
+            \item \textbf{nivel 0 y nivel }$\epsilon_1$ $\to$ $E_1=0+\epsilon=\epsilon$.
+            \item \textbf{nivel 0 y nivel }$\epsilon_2$ $\to$ $E_2=0+\epsilon=\epsilon$.
+            \item \textbf{nivel} $\epsilon_1$ \textbf{y nivel }$\epsilon_2$ $\to$ $E_3=\epsilon+\epsilon=2\epsilon$.
+        \end{enumerate}
+        Luego, la función de partición canónica queda,
+        \begin{equation}
+            Z_2(T)=\sum_{i=1}^3e^{-\beta E_i}=2e^{-\beta\epsilon}+e^{-2\beta\epsilon}
+        \end{equation}
+        Para el caso de tres fermiones solo tenemos una posibilidad, pues solo tenemos 3 niveles. Luego $E=0+\epsilon+\epsilon=2\epsilon$, teniendo así una función de partición canónica, tal que
+        \begin{equation}
+            Z_3(T)=e^{-2\beta\epsilon}
+        \end{equation}
+        \item \textbf{Determine el \textit{potencial macrocanónico} del sistema de }$\mathbf{N_0}$\textbf{ huecos, }$\mathbf{J}$\textbf{. Emplee para ello la colectividad que considere más adecuada.}\\ \\
+Estamos trabajando con un número variable de partículas y un número fijo de $N_0$ huecos, pero cada hueco puede contener 0, 1, 2 o 3 partículas. Por tanto, la colectividad más adecuada es la macrocanónica, en la que la temperatura $T$, el volumen $V$ y el potencial químico $\mu$ son fijos y el número de partículas y la energía pueden fluctuar.\\ \\
+Comenzamos calculando la función de partición macrocanónica de un solo hueco, tal que
+\begin{equation}
+    \Theta_1=\sum_{n=0}^3\lambda^nZ_n(T)
+\end{equation}
+consideramos $Z_0=1$ pues es el vacío y los demás $Z_i$ los calculamos antes, así tenemos que
+\begin{equation}
+    \Theta_1=1+\lambda (1+2e^{-\beta\epsilon})+\lambda^2(2e^{-\beta\epsilon}+e^{-2\beta\epsilon})+\lambda^3e^{-2\beta\epsilon}
+\end{equation}
+donde $\lambda=e^{\beta\mu}$ es la fugacidad.\\ \\
+Ahora calculamos la función de partición macrocanónica del sistema de $N_0$ huecos, que viene dada por,
+\begin{equation}
+    \Theta_{huecos}=(\Theta_1)^{N_0}=\brackets{1+\lambda (1+2e^{-\beta\epsilon})+\lambda^2(2e^{-\beta\epsilon}+e^{-2\beta\epsilon})+\lambda^3e^{-2\beta\epsilon}}^{N_0}
+\end{equation}
+El potencial macrocanónico se define como $J=-kT\ln\Theta$, luego
+\begin{equation}
+    J=-kTN_0\ln\Theta_{1}=-kTN_0\ln\brackets{1+\lambda (1+2e^{-\beta\epsilon})+\lambda^2(2e^{-\beta\epsilon}+e^{-2\beta\epsilon})+\lambda^3e^{-2\beta\epsilon}}
+\end{equation}
+con $\lambda=e^{\beta\mu}$.        
+        \item \textbf{Calcule el \textit{número medio de fermiones} absorbidos en la superficie en función de }$\mathbf{T}$\textbf{ y }$\mathbf{\mu,<N>}$\\ \\
+El número medio de fermiones absorbidos en la superficie se define como
+\begin{equation}
+    <N>=\frac{1}{\beta}\left(\frac{\partial\ln\Theta_{huecos}}{\partial\beta}\right)_{T,V}=\lambda\left(\frac{\partial\ln\Theta_{huecos}}{\partial\lambda}\right)_{T,V}
+\end{equation}
+Luego, derivamos el logaritmo de la gran función de partición de los huecos, tal que
+\begin{equation}
+\begin{array}{c}
+    <N>=\lambda N_0\frac{1+2e^{-\beta\epsilon}+2\lambda(2e^{-\beta\epsilon}+e^{-2\beta\epsilon})+3\lambda^2e^{-2\beta\epsilon}}{1+\lambda(1+2e^{-\beta\epsilon})+\lambda^2(2e^{-\beta\epsilon})+\lambda^3e^{-2\beta\epsilon}}=N_0\frac{\lambda(1+2e^{-\beta\epsilon})+2\lambda^2(2e^{-\beta\epsilon}+e^{-2\beta\epsilon})+3\lambda^3e^{-2\beta\epsilon}}{1+\lambda(1+2e^{-\beta\epsilon})+\lambda^2(2e^{-\beta\epsilon})+\lambda^3e^{-2\beta\epsilon}}
+\end{array}
+\end{equation}
+o bien, poniéndolo en función de las funciones de partición canónicas, tenemos
+\begin{equation}
+    <N>=N_0\frac{Z_1\lambda+2Z_2\lambda^2+3Z_3\lambda^3}{Z_0+Z_1\lambda+Z_2\lambda^2+Z_3\lambda^3}
+\end{equation}
+        
+        \item \textbf{Sabiendo que los huecos se encuentran en equilibrio con un vapor, y suponiendo que dicho vapor se comporta como un gas ideal clásico, estudie el comportamiento del número medio de partículas absorbidas en los huecos en función de la presión del vapor.}\\ \\
+Para relacionar $<N>$ con la presión del gas, considerando que es un gas ideal clásico, podemos usar la expresión de $\lambda_g$ del gas y sustituirla en la expresión de $<N>$ por $\lambda$ de los huecos, pues al estar ambos sistemas en equilibrio, $\lambda=\lambda_g$. Calculamos esta fugacidad, sabiendo que la función de partición canónica de un gas ideal clásico de una partícula es
+\begin{equation}
+    Z_{1,g}=V\frac{(2\pi mkT)^{3/2}}{h^3}
+\end{equation}
+Luego, la gran función de partición del gas viene dada por,
+\begin{equation}
+    \Theta_{gas}=e^{\lambda_gZ_{1,g}}
+\end{equation}
+Calculamos el potencial macrocanónico del gas,
+\begin{equation}
+    J=-kT\ln\Theta_{gas}=-kT\lambda_g Z_{1,g}
+\end{equation}
+al ser un gas ideal clásico, este potencial se relaciona con la presión y el volumen, como $J=-PV$, luego,
+\begin{equation}
+    J=-P\cancel{V}=-kT\lambda_g\cancel{V}\frac{(2\pi mkT)^{3/2}}{h^3}
+\end{equation}
+Luego,
+\begin{equation}
+    \lambda_g=\frac{P}{kT}\frac{h^3}{(2\pi mkT)^{3/2}}
+\end{equation}
+donde $P$ es la presión del gas. Luego, sabiendo que el gas y los huecos están en equilibrio, $\lambda=\lambda_g$. Por tanto,
+\begin{equation}
+    <N>=N_0\frac{Z_1\lambda_g+2Z_2\lambda_g^2+3Z_3\lambda_g^3}{Z_0+Z_1\lambda_g+Z_2\lambda_g^2+Z_3\lambda_g^3}
+\end{equation}
+donde $\lambda_g$ y $Z_i$, $i=0,1,2,3$ vienen dados por,
+\[\begin{matrix}
+    \lambda_g=\frac{P}{kT}\frac{h^3}{(2\pi mkT)^{3/2}}; & Z_0=1; & Z_1=1+2e^{-\beta\epsilon} & Z_2=2e^{-\beta\epsilon}+e^{-2\beta\epsilon} & Z_3=e^{-2\beta\epsilon}
+\end{matrix}\]
+relacionando así $<N>$ con la presión del gas $P$.
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

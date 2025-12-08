@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación I. Física Estadística}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Marzo 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Una partícula libre de masa $m$ está obligada a moverse en una dimensión. Considerando que su Hamiltoniano es }$\mathbf{H=p^2/2+q^2/2}$\textbf{, correspondiente a un oscilador armónico unidimensional de masa $m=1$ y frecuencia }$\mathbf{\omega=1}$\textbf{, demuestre que el área del recinto rectangular con vértices }$\mathbf{(q_0,p_0)}$\textbf{, }$\mathbf{(q_0,2p_0)}$\textbf{, }$\mathbf{(2q_0,p_0)}$\textbf{ y }$\mathbf{(2q_0,2p_0)}$\textbf{ permanece invariante frente a la evolución natural del sistema (es decir, las ecuaciones de Hamilton preservan el volumen del espacio de las fases).}\\ \\
+Planteamos las ecuaciones de Hamilton,
+\begin{equation}
+        \dot{q}=\frac{\partial H}{\partial p}=p;\hspace{4mm}\dot{p}=\frac{\partial H}{\partial q}=q
+\end{equation}
+Luego, tenemos la ecuación diferencial,
+\begin{equation}
+    \ddot{q}=\dot{p}=-q\Rightarrow\ddot{q}+q=0
+\end{equation}
+que es la ecuación de un movimiento armónico simple, del cuál sabemos la solución, que es
+\begin{equation}
+    q(t)=A\sin(\omega t+\alpha)\overset{\curlybraces{\omega=1}}{=}A\sin(t+\alpha)
+\end{equation}
+Por tanto, como $p=\dot{q}$, entonces
+\begin{equation}
+    p(t)=A\cos(t+\alpha)
+\end{equation}
+Tenemos las condiciones iniciales,
+\begin{equation}
+    \begin{matrix}
+        q(t=0)=q_0=A\sin\alpha\\
+        p(t=0)=p_0=A\cos\alpha
+    \end{matrix}
+\end{equation}
+Por tanto, la solución será,
+\begin{equation}
+    \begin{matrix}
+        q(t)=p_0\sin t+q_0\cos t\\
+        p(t)=p_0\cos t-q_0\sin t
+    \end{matrix}
+\end{equation}
+Elevando al cuadrado ambas soluciones y sumando, llegamos a
+\begin{equation}
+    q^2(t)+p^2(t)=p_0^2+q_0^2=cte
+\end{equation}
+Luego, tenemos la ecuación de una circunferencia, es decir, los puntos se moverán siguiendo una trayectoria totalmente circular. Para ver si el área se preserva, calculamos el área inicial,
+\begin{equation}
+    S_0=q_0p_0
+\end{equation}
+pues se trata de un rectángulo de lados $q_0$ y $p_0$. Ahora, calculamos el área para un cierto $t$, tal que
+\begin{equation}
+    \begin{matrix}
+        (q_0,p_0)\overset{t}{\to}(p_0\sin t+q_0\cos t,p_0\cos t-q_0\sin t)\\
+        (2q_0,p_0)\overset{t}{\to}(2p_0\sin t+2q_0\cos t,p_0\cos t-q_0\sin t)\\
+        (q_0,2p_0)\overset{t}{\to}(p_0\sin t+q_0\cos t,2p_0\cos t-2q_0\sin t)\\
+        (2q_0,2p_0)\overset{t}{\to}(2p_0\sin t+2q_0\cos t,2p_0\cos t-2q_0\sin t)  
+    \end{matrix}
+\end{equation}
+Luego, vemos que sigue preservando la forma de rectángulo, pero esta vez de lados, 
+\begin{equation}
+    \begin{array}{l}
+        \overrightarrow{1,4} =(q_0\cos t,-q_0\sin t)  \\ \\
+        \overrightarrow{2,3} =(p_0\sin t,p_0\cos t)
+    \end{array}
+\end{equation}
+
+Vamos a multiplicarlos y ver si el área se preserva,
+\begin{equation}
+    \begin{array}{rl}
+         S(t)&=|\overrightarrow{1,4}\times\overrightarrow{2,3}|=|(q_0\cos t,-q_0\sin t)\times(p_0\sin t,p_0\cos t)|=\\ \\
+         &=\begin{vmatrix}
+             \hat{i} & \hat{j} & \hat{k}\\
+             q_0\cos t & -q_0\sin t & 0\\
+             p_0 \sin t & p_0\cos t & 0
+         \end{vmatrix}=|p_0q_0\sin^2t\hat{k}+p_0q_0\cos^2t\hat{k}|=|p_0q_0\hat{k}|=p_0q_0
+    \end{array}
+\end{equation}
+Luego se preserva el área en el espacio de fases.
+
+\item \textbf{Un sistema mecánico está formado por una partícula de masa $m=1$ sometida a la aceleración de la gravedad, $g=1$, y que puede moverse solo a lo largo del eje vertical $z$. Se sabe que el Hamiltoniano viene dado por}
+\[\mathbf{H=p^2/2+z}\]
+\textbf{y que la solución a las ecuaciones de Hamilton es}
+\[\mathbf{\left\lbrace\begin{matrix}
+    z(t)=z_0+p_0t-\frac{1}{2}t^2\\
+    p(t)=p_0-t
+\end{matrix}\right.}\]
+\begin{enumerate}
+    \item \textbf{Compruebe que este sistema dinámico verifica la \textit{ecuación de Liouville}}.\\ \\
+    Sabemos que la ecuación de Liouville es,
+    \begin{equation}
+        \frac{d\rho}{dt}=0
+    \end{equation}
+    Expandiendo tenemos,
+    \begin{equation}
+        \frac{d\rho}{dt}=\frac{\partial\rho}{\partial t}+\frac{\partial\rho}{\partial z}\dot{z}+\frac{\partial \rho}{\partial p}\dot{p}=0\Rightarrow\frac{\partial\rho}{\partial t}=\curlybraces{H,\rho}=\frac{\partial H}{\partial p}\frac{\partial\rho}{\partial z}-\frac{\partial H}{\partial z}\frac{\partial\rho}{\partial p}
+    \end{equation}
+    Suponiendo que el sistema está en equilibrio termodinámico, $\rho(z,p;t)=\rho(z,p)$, luego, $\partial\rho/\partial t=0$. Además,
+    \begin{equation}
+        \frac{\partial H}{\partial p}=p;\hspace{4mm}\frac{\partial H}{\partial z}=1
+    \end{equation}
+    Luego,
+    \[\dot{p}=-1;\hspace{4mm}\dot{z}=p\]
+    Por tanto, el flujo del sistema en el espacio de fases es $v=(\dot{z},\dot{p})=(p,-1)$, luego, la divergencia del flujo será,
+    \begin{equation}
+        \nabla\cdot v=\frac{\partial \dot{z}}{\partial z}+\frac{\partial\dot{p}}{\partial p}=0
+    \end{equation}
+Por tanto, se satisface el Teorema de Liouville.    
+
+    \item \textbf{Suponiendo que cuando la partícula alcanza el suelo \textit{rebota elásticamente} sobre él para volver a ascender, encuentre la densidad de probabilidad de encontrar la partícula en la posición $z$ en función de la energía, $E$ (\textit{sugerencia}: utilice la hipótesis ergódica y calcule dicha probabilidad a partir de un promedio temporal).}\\ \\
+Como estamos en una situación clásica, el Hamiltoniano corresponde con la energía, es decir, $H=E$.\\ \\
+Tomamos un $dz$, luego $dP(z)=\rho(z)dz$ que es la probabilidad de que la partícula tenga posición entre $z$ y $z+dz$. Luego,
+\begin{equation}
+    dP(z)=\rho(z)dz=\lim_{T\to\infty}\frac{\Delta t}{T}
+\end{equation}
+donde $\Delta t$ es el tiempo que el sistema está en $dz$ y $T$ es el tiempo total de evolución. Por tanto, como la partícula baja y sube, tendremos que
+\begin{equation}
+    \lim_{T\to\infty}\frac{\Delta t}{T}=\frac{2dt}{\tau}
+\end{equation}
+donde $\tau=\frac{2\pi}{\omega}$ es el periodo. Calculamos $z_{max}$, que será cuando la energía potencial sea máxima y la cinética se anule, es decir, $p=0$, luego
+\begin{equation}
+    E=z_{max}
+\end{equation}
+En general,
+\begin{equation}
+    E=\frac{p^2}{2}+z=\curlybraces{p=\dot{z}}=\frac{1}{2}\dot{z}^2+z=\frac{1}{2}\left(\frac{dz}{dt}\right)^2+z
+\end{equation}
+Luego,
+\begin{equation}
+    \frac{dz}{dt}=\sqrt{2\left(E-z\right)}\Rightarrow dt=\frac{dz}{\sqrt{2\left(E-z\right)}}
+\end{equation}
+Así, el periodo queda
+\begin{equation}
+    \tau=2\int dt=2\int_{z_{min}=0}^{z_{max}=E}\frac{dz}{\sqrt{2\left(E-z\right)}}
+\end{equation}
+Por tanto,
+\begin{equation}
+    \rho(z)dz=\frac{2dt}{\tau}=\frac{2\omega}{2\pi}\frac{dz}{\sqrt{2\left(E-z\right)}}
+\end{equation}
+Por comparación tenemos que
+\begin{equation}
+    \rho(z)=\frac{\omega}{\pi\sqrt{2\left(E-z\right)}}
+\end{equation}
+
+    
+\end{enumerate}
+\newpage
+\item \textbf{Considere una fuente emisora de partículas de espín 1, de modo que puede emitir en tres posibles estados ortonormales, que notaremos por }$\mathbf{\ket{-1}}$\textbf{, }$\mathbf{\ket{0}}$\textbf{ y }$\mathbf{\ket{1}}$\textbf{. Calcule la matriz densidad para estos tres posibles casos:}\\ \\
+Tenemos espín 1, luego, tendremos bosones; la base del espacio de Hilbert será,
+\begin{equation}
+    \curlybraces{\ket{-1},\ket{0},\ket{1}}
+\end{equation}
+Nos piden calcular la matriz densidad, que viene dada por
+\begin{equation}
+    \hat{\rho}(t)=\sum_ip_i\ket{\Psi^{(i)}(t)}\bra{\Psi^{(i)}(t)}\Rightarrow\rho_{mn}(t)=\sum_ip_ic_m^{(i)}(t)c_n^{(i)}(t)^*
+\end{equation}
+donde $p_i$ es la probabilidad de ocurrencia de cada microestado $\Psi^{(i)}(t)$.
+\begin{enumerate}
+    \item \textbf{La fuente emite partículas }$\mathbf{\ket{-1}}$\textbf{, }$\mathbf{\ket{0}}$\textbf{ y }$\mathbf{\ket{1}}$\textbf{ con probabilidad 1/3 cada una.}\\ \\
+Tendremos que las probabilidades son,
+\begin{equation}
+    p(-1)=\frac{1}{3}=p(0)=p(1)
+\end{equation}
+Por tanto
+\begin{equation}
+    \hat{\rho}=\frac{1}{3}\ket{-1}\bra{-1}+\frac{1}{3}\ket{0}\bra{0}+\frac{1}{3}\ket{1}\bra{1}
+\end{equation}
+Luego, la matriz densidad queda,
+\begin{equation}
+    \rho=\begin{pmatrix}
+        1/3 & 0 & 0\\
+        0 & 1/3 & 0\\
+        0 & 0 & 1/3
+    \end{pmatrix}
+\end{equation}
+
+    
+    \item \textbf{La fuente emite partículas en los siguientes dos estados, con probabilidad 1/2 en cada caso:}
+    \[\mathbf{\ket{\varphi_1}=\frac{1}{\sqrt{2}}\brackets{\ket{-1}+i\ket{0}}}\]
+    \[\mathbf{\ket{\varphi_2}=\frac{1}{\sqrt{3}}\brackets{-i\ket{-1}+\ket{0}+i\ket{1}}}\]
+Ahora tendemos que
+\begin{equation}
+    \rho=\frac{1}{2}\ket{\varphi_1}\bra{\varphi_1}+\frac{1}{2}\ket{\varphi_2}\bra{\varphi_2}
+\end{equation}
+Luego,
+\begin{equation}
+    \rho=\begin{pmatrix}
+        2/3 & -2i/3 & 1/6\\
+        2i/3 & 2/3 & -i/6\\
+        1/6 & i/6 & 1/6
+    \end{pmatrix}
+\end{equation}
+
+    
+    \item \textbf{Compruebe que en ambos casos la matriz densidad posee traza unidad y es autoadjunta.}\\ \\
+Vemos que
+\begin{equation}
+    Tr(\rho_a)=\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=1
+\end{equation}
+\begin{equation}
+    Tr(\rho_2)=\frac{2}{3}+\frac{2}{3}+\frac{1}{6}=1
+\end{equation}
+Veamos que son adjuntas, es decir, $\rho=\rho^{\dagger}=(\rho^T)^*$. La primera al ser diagonal y real es trivial que sea adjunta. Vemos la otra,
+\begin{equation}
+    (\rho^T)^*=\begin{pmatrix}
+        2/3 & 2i/3 & 1/6\\
+        -2i/3 & 2/3 & i/6\\
+        1/6 & -i/6 & 1/6
+    \end{pmatrix}^*=\begin{pmatrix}
+        2/3 & -2i/3 & 1/6\\
+        2i/3 & 2/3 & -i/6\\
+        1/6 & i/6 & 1/6
+    \end{pmatrix}=\rho
+\end{equation}
+Luego, es autoadjunta.
+    
+    \item \textbf{Para cada uno de los dos casos anteriores, determine el \textit{valor medio} del observable momento angular de espín en la componente $z$, que viene dado por la siguiente matriz de Pauli:}
+    \[\mathbf{J_z=\hbar\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}}\]
+    El valor medio del operador momento angular de espín viene dado por,
+    \begin{equation}
+        <J_z>=Tr(\rho J_z)
+    \end{equation}
+    Luego,
+    \begin{equation}
+        \rho J_z=\hbar\begin{pmatrix}
+        2/3 & -2i/3 & 1/6\\
+        2i/3 & 2/3 & -i/6\\
+        1/6 & i/6 & 1/6
+        \end{pmatrix}\begin{pmatrix}
+            1 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & 0 & -1
+        \end{pmatrix}=\hbar\begin{pmatrix}
+            2/3 & 0 & 0\\
+            0 & 0 & 0 \\
+            0 & 0 & -1/6
+        \end{pmatrix}
+    \end{equation}
+    Luego,
+    \begin{equation}
+        <J_z>=\hbar\frac{2}{3}-\hbar\frac{1}{6}=\frac{\hbar}{2}
+    \end{equation}
+    
+\end{enumerate}
+
+
+
+
+\item \textbf{Considere el oscilador armónico cuántico unidimensional, para el cual los autovalores del Hamiltoniano vienen dados por}
+\[\mathbf{\hat{H}\ket{\varphi_n}=E_n\ket{\varphi_n}=(n+1/2)\hbar\omega\ket{\varphi_n}\hspace{9mm}\forall n=0,1,\dots,\infty}\]
+\textbf{Para este sistema se define el operador densidad }$\mathbf{\hat{\rho}=A e^{-\beta\hat{H}}}$\textbf{, donde $A$ y }$\mathbf{\beta}$\textbf{ son dos constantes.}
+\begin{enumerate}
+    \item \textbf{Demuestre que, tomando como base del espacio de Hilbert a las funciones }$\mathbf{\varphi_n}$\textbf{, el operador densidad viene representado por una matriz diagonal de dimensión infinita. Determine los elementos de la diagonal, }$\mathbf{\rho_{nn}=\bra{\varphi_n}\hat{\rho}\ket{\varphi_n}.}$\\ \\
+Tenemos que
+\begin{equation}
+    e^{-\beta\hat{H}}\ket{\varphi_n}=e^{-\beta E_n}\ket{\varphi_n}=e^{-\beta(n+1/2)\hbar\omega}\ket{\varphi_n}
+\end{equation}
+Luego,
+\begin{equation}
+    \hat{\rho}\ket{\varphi_n}=Ae^{-\beta(n+1/2)\hbar\omega}\ket{\varphi_n}
+\end{equation}
+Los elementos de $\hat{\rho}$ vendrán dados por,
+\begin{equation}
+    \rho_{mn}=\bra{\varphi_m}\hat{\rho}\ket{\varphi_n}
+\end{equation}
+donde vemos que si $m\neq n$, entonces $\rho_{mn}=0$, pues los $\varphi_n$ son base y $\hat{\rho}$ es constante. Luego, tendremos una matriz diagonal de dimensión infinita. \\ \\
+Los elementos de la diagonal vendrán dados por,
+\begin{equation}
+    \rho_{nn}=\bra{\varphi_n}\hat{\rho}\ket{\varphi_n}=\bar{\varphi_n}Ae^{-\beta\hat{H}}\ket{\varphi_n}=Ae^{-\beta(n+1/2)\hbar\omega}\braket{\varphi_n|\varphi_n}=Ae^{-\beta(n+1/2)\hbar\omega}
+\end{equation}
+que serán los elementos de la diagonal
+
+    
+    \item \textbf{Determine la constante de normalización, $A$, sabiendo que }$\mathbf{Tr[\hat{\rho}]=1.}$\\ \\
+Sabemos que $Tr[\hat{\rho}]=1$, luego
+\begin{equation}
+    \sum_nAe^{-\beta(n+1/2)\hbar\omega}=1
+\end{equation}
+Por tanto,
+\begin{equation}
+    A=\frac{1}{\sum\limits_ne^{-\beta(n+1/2)\hbar\omega}}
+\end{equation}
+Tomándolo como una serie geométrica llegamos a
+\begin{equation}
+    A=\frac{e^{\frac{1}{2}\beta\hbar\omega}(1-e^{-\beta\hbar\omega})}{1}
+\end{equation}
+    
+    \item \textbf{Demuestre que el promedio de la energía es }$\mathbf{<E>=Tr[\hat{\rho}\hat{H}]=\hbar\omega\brackets{\frac{1}{2}+\frac{1}{e^{\beta\hbar\omega}-1}}}$\\ \\
+El operador Hamiltoniano será una matriz diagonal cuyos elementos son los $E_n=(n+1/2)\hbar\omega$, luego,
+\begin{equation}
+    \begin{array}{rl}
+         <E>&=\sum\limits_n\bra{\varphi_n}\hat{\rho}\hat{H}\ket{\varphi_n}=\sum\limits_n\bar{\varphi_n}\hat{\rho}E_n\ket{\varphi_n}=  \\ \\
+         & =\sum\limits_n(n+1/2)\hbar\omega\rho_{nn}=\sum_n(n+1/2)\hbar\omega\frac{e^{-\beta(n+1/2)\hbar\omega}}{e^{\frac{1}{2}\beta\hbar\omega}\left(1-e^{-\beta\hbar\omega}\right)}=\\ \\
+         &=\hbar\omega\sum\limits_n\frac{\left(ne^{-\beta(n+1/2)\hbar\omega}+\frac{1}{2}e^{-\beta(n+1/2)\hbar\omega}\right)}{e^{\frac{1}{2}\beta\hbar\omega}\left(1-e^{-\beta\hbar\omega}\right)}=\\ \\
+         &=\hbar\omega\brackets{\frac{e^{\frac{1}{2}\beta\hbar\omega}\left(1-e^{-\beta\hbar\omega}\right)e^{-\frac{1}{2}\beta\hbar\omega}e^{-\beta\hbar\omega}}{(1-e^{-\beta\hbar\omega})^2}+\frac{1}{2}\frac{e^{\frac{1}{2}\beta\hbar\omega}(1-e^{-\beta\hbar\omega})e^{-\frac{1}{2}\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}}}=\\ \\
+         &=\hbar\omega\left(\frac{1}{2}+\frac{1}{e^{\beta\hbar\omega}-1}\right)
+    \end{array}
+\end{equation}
+
+    
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
