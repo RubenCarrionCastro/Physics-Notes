@@ -4,14 +4,20 @@ The material is fully written by me, following standard references (Tong, Schwar
 
 📚 Contents
 1. Lecture Notes (notes/ or main.tex)
-A complete set of notes covering the core topics of Quantum Field Thoery:
+A complete set of notes covering the core topics of Quantum Field Theory:
 
 Introduction. Lorentz and Poincaré symmetries. Particles and Fields.
+
 Classical field theory.
+
 Quantization of free fields.
+
 Field interactions. S matrix and Feynman rules.
+
 Observables: cross sections and decay widths.
+
 Quantum Electrodynamics. Elementary processes at tree level.
+
 Gauge theories and spontaneous symmetry breaking. The Standard Model.
 
 📝 2. Solved Exercises (exercises/)
