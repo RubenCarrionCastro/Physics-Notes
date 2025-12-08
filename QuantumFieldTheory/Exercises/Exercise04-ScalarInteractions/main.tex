@@ -1,0 +1,384 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+\usepackage{feynmp-auto}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage{array, multirow, multicol}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación IV. Teoría de Campos y Partículas}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Abril 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Sean }$\mathbf{A}$\textbf{ y }$\mathbf{B}$\textbf{ campos reales escalares descritos por el Lagrangiano,}
+\begin{equation}
+    \mathbf{\mathscr{L}=\frac{1}{2}\brackets{\partial_{\mu}A\partial^{\mu}A-M^2A^2+\partial_{\mu}B\partial^{\mu}B-m^2B^2-gAB^2}}
+\end{equation}
+\textbf{y sean }$\mathbf{a}$\textbf{ y }$\mathbf{b}$\textbf{ las partículas asociadas a }$\mathbf{A}$\textbf{ y }$\mathbf{B}$\textbf{, respectivamente.}\\ \\
+Observando el Lagrangiano, podemos ver que $M$ es la masa de la partícula $a$ y $m$ es la masa de la partícula $b$. Además, tenemos dos términos libres, uno de $A$ y otro de $B$, que son respectivamente,
+\begin{equation}
+    \mathscr{L}_0^A=\frac{1}{2}\brackets{\partial_{\mu}A\partial^{\mu}A-M^2A^2};\hspace{6mm}\mathscr{L}_0^B=\frac{1}{2}\brackets{\partial_{\mu}B\partial^{\mu}B-m^2B^2}
+\end{equation}
+y un término de interacción,
+\begin{equation}
+    \mathscr{L}_{int}=-\frac{1}{2}gAB^2
+\end{equation}
+\begin{enumerate}
+    \item \textbf{¿Tiene esta teoría alguna simetría interna?}\\ \\
+    Podemos ver a ojo que la simetría $B\to-B$ es un simetría interna discreta de esta teoría, pues
+    \begin{equation}
+        \mathscr{L}(B)=\mathscr{L}(-B)
+    \end{equation}
+    ya que los términos de $B$ siempre son cuadráticos.
+    \item \textbf{¿Es }$\mathbf{a}$\textbf{ estable o puede desintegrarse? ¿Cómo y bajo qué condiciones?}\\ \\
+    Por conservación de la energía, descartamos la desintegración
+    \begin{equation}
+        a\to\emptyset
+    \end{equation}
+    Como el término de interacción del Lagrangiano es cuadrático con $B$, también descartamos la desintegración, 
+    \begin{equation}
+        a\to b
+    \end{equation}
+    Al ser cuadrático con $B$, imponiendo que $M\geq2m$, la desintegración siguiente sí es posible,
+    \begin{equation}
+        a\to b+b
+    \end{equation}
+    Por el término de interacción, las desintegraciones de $a$ en sumandos de $b$ mayores que 2 no son posibles.
+    \item \textbf{¿Es }$\mathbf{b}$\textbf{ estable o puede desintegrarse? ¿Cómo y bajo qué condiciones?}\\ \\
+     Por conservación de la energía, descartamos la desintegración
+    \begin{equation}
+        b\to\emptyset
+    \end{equation}
+   El término de interacción va con $A$ linealmente, por lo que la desintegración
+    \begin{equation}
+        b\to a
+    \end{equation}
+    podría ser posible, pero como la simetría interna del Lagrangiano es $B\to-B$ y $A\to A$, quiere decir que el campo $A$ es par bajo $\mathbb{Z}_2$, luego tiene 'paridad $\mathbb{Z}_2$' $+1$, y el campo $B$ es impar bajo $\mathbb{Z}_2$, luego tiene 'paridad $\mathbb{Z}_2$' $-1$. Por tanto, por conservación de 'paridad $\mathbb{Z}_2$', esta desintegración no es posible, cabe recalcar que esta 'paridad $\mathbb{Z}_2$' no se refiere a la paridad espacial, sino que se corresponde a la simetría interna discreta de $\mathbb{Z}_2$, solo que no sabía qué nombre darle. Además, por el término de interacción del Lagrangiano, desintegraciones de $b$ en sumandos de $a$ mayores a 1, tampoco serán posibles. Por tanto, $\boxed{b \text{ es estable}}$.
+    \item \textbf{Si alguna de estas desintegraciones es posible, calcula al orden más bajo no tri-vial la anchura de desintegración y la vida media de la partícula correspondiente.}\\ \\
+    La única desintegración que tenemos es,
+    \begin{equation}
+        a\to b+b
+    \end{equation}
+    imponiendo que $M\geq2m$.\\ \\
+    Estamos en el sistema de referencia centro de masas para el estado inicial. Para calcular la anchura de desintegración, $\Gamma(a\to b+b)$, usamos la fórmula de la anchura diferencial y luego integramos, tal que
+    \begin{equation}
+        d\Gamma(a\to b+b)=\frac{1}{2}\frac{|\mathscr{M}|}{M}d\Pi_{LIPS}(M,\vec{0})\Rightarrow\Gamma=\frac{1}{2}\frac{|\mathscr{M}|}{M}\int d\Pi_{LIPS}(M,\vec{0})
+    \end{equation}
+    donde
+    \begin{equation}
+        d\Pi_{LIPS}(M,\vec{0})=\frac{d^3\vec{p}_1}{(2\pi)^32E_1}\frac{d^3\vec{p}_2}{(2\pi)^32E_2}(2\pi)^4\delta^{(4)}(q-p_1-p_2)
+    \end{equation}
+    tomando $q=(M,\vec{0})$, es decir, el sistema está en reposo en el estado inicial. Como las partículas finales son idénticas, $E_f=E_1=E_2=\sqrt{|\vec{p}|^2+m^2}$. Luego, la integral del $d\Pi_{LIPS}$ vendrá dada por,
+    \begin{equation}
+        \int d\Pi_{LIPS}=\frac{1}{16\pi^2}\int\frac{d^3\vec{p}_1d^3\vec{p}_2}{E_f^2}\delta^{(4)}(q-p_1-p_2)
+    \end{equation}
+Podemos descomponer la delta como,
+\begin{equation}
+    \delta^{(4)}(q-p_1-p_2)=\delta(M-E_1-E_2)\delta^{(3)}(\vec{p}_1+\vec{p}_2)
+\end{equation}
+Luego, usamos la delta de momentos para integrar en $\vec{p}_2$, sabiendo que $\vec{p}_1=-\vec{p}_2$, así
+\begin{equation}
+    \int d^3\vec{p}_2\delta^{(3)}(\vec{p}_1+\vec{p}_2)=\int d^3\vec{p}_2\delta^{(3)}(\vec{p}_2-\vec{p}_2)=\int d^3\vec{p}_2\delta^{(3)}(\vec{0})=1
+\end{equation}
+Luego tenemos,
+\begin{equation}
+    \int d\Pi_{LIPS}=\frac{1}{16\pi^2}\int\frac{d^3\vec{p}_1}{E_f^2}\delta(M-E_1-E_2)
+\end{equation}
+Ahora pasamos a esféricas, tal que $d^3\vec{p}_1=|\vec{p}_1|^2d|\vec{p}_1|d\Omega$. Como la integral no depende de los ángulos, tenemos que
+\begin{equation}
+    \int d\Omega=4\pi
+\end{equation}
+Luego,
+\begin{equation}
+    \int d\Pi_{LIPS}=\frac{1}{4\pi}\int_0^{\infty}\frac{d|\vec{p}_1|}{E_f^2}|\vec{p}_1|^2\delta(M-E_1-E_2)
+\end{equation}
+Sabemos que la delta selecciona el punto $E_1+E_2=M$, luego, $2E_f=M$, por tanto, $E_f=\frac{M}{2}$. Luego,
+\begin{equation}
+    E_f^2=|\vec{p}_1|^2+m^2\Rightarrow|\vec{p}_1|^2=E_f^2-m^2\Rightarrow|\vec{p}_1|=\sqrt{\left(\frac{M}{2}\right)^2-m^2}
+\end{equation}
+Hacemos el cambio de variable siguiente,
+\begin{equation}
+    x(|\vec{p}_1|)=2E_f(|\vec{p}_1|)-M
+\end{equation}
+cuyo Jacobiano es,
+\begin{equation}
+    \frac{dx}{d|\vec{p}_1|}=\frac{d}{d|\vec{p}_1|}\left(2E_f-M\right)=\frac{d}{d|\vec{p}_1|}\left(2\sqrt{|\vec{p}_1|^2+m^2}-M\right)=\frac{2|\vec{p}_1|}{\sqrt{|\vec{p}_1|^2+m^2}}=\frac{2|\vec{p}_1|}{E_f}
+\end{equation}
+Por tanto tenemos,
+\begin{equation}
+    \int d\Pi_{LIPS}=\frac{1}{4\pi}\int_0^{\infty}\frac{dx}{E_f^2}|\vec{p}_1|^2\frac{E_f}{2|\vec{p}_1|}\delta(x)=\frac{1}{8\pi}\int_0^{\infty}\frac{dx}{E_f}|\vec{p}_1|\delta(x)=\frac{1}{8\pi}\frac{|\vec{p}_1|}{E_f}\int_0^{\infty}dx\delta(x)=\frac{|\vec{p}_1|}{16\pi E_f}
+\end{equation}
+donde
+\begin{equation}
+    \int_0^{\infty}dx\delta(x)=\frac{1}{2}\int_{-\infty}^{\infty}dx\delta(x)=\frac{1}{2}
+\end{equation}
+Usando lo discutido antes del cambio de variable, llegamos a 
+\begin{equation}
+    \int d\Pi_{LIPS}=\frac{1}{8\pi}\frac{2}{M}\sqrt{\left(\frac{M}{2}\right)^2-m^2}=\frac{1}{16\pi}\sqrt{1-\frac{4m^2}{M^2}}
+\end{equation}
+Por tanto, la anchura de desintegración queda,
+\begin{equation}
+    \Gamma=\frac{1}{2}\frac{|\mathscr{M}|^2}{16\pi M}\sqrt{1-\frac{4m^2}{M^2}}
+\end{equation}
+Ahora debemos calcular $\mathscr{M}$, y para ello, usaremos los diagramas de Feynman. Como nos piden el orden menor no trivial, tendremos diagramas tipo árbol con un vértice interno. Solo tendremos un único diagrama posible, que es
+\begin{center}
+\begin{fmffile}{Feynman-correcto}
+  \begin{fmfgraph*}(100,60)
+    \fmfright{i1,i2}       % Entradas visuales (ahora serán salidas físicas)
+    \fmfleft{o1}           % Salida visual (origen del vértice)
+
+    % Flechas SALIENDO del vértice hacia la derecha
+    \fmf{fermion,reverse,label=$b$}{v1,i1}
+    \fmf{fermion,reverse,label=$b$}{v1,i2}
+
+    % El fotón también sale hacia la izquierda (sin reverse)
+    \fmf{scalar,label=$a$}{v2,v1}
+    \fmf{phantom}{v2,o1}
+
+    % Etiquetas
+    \fmflabel{3}{i1}
+    \fmflabel{2}{i2}
+    \fmflabel{1}{v2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\[\hspace{1mm}\]
+Sabemos que, usando el Teorema LSZ, podemos relacionar la amplitud de colisión $\mathscr{M}$ con las funciones de Green. Además, sabemos que por cada orden de $g$ en los diagramas de Feynman, añadimos un $-ig$. Al estar a orden $g$ (solo un vértice interno), tendremos la función de Green siguiente,
+\begin{equation}
+    -ig\frac{i}{p_a^2-M^2+i\epsilon}\frac{i}{p_1^2-m^2+i\epsilon}\frac{i}{p_2^3-m^2+i\epsilon}
+\end{equation}
+Pero podemos usar las funciones de Green amputadas. Sabiendo que
+\begin{equation}
+    i\mathscr{M}=\hat{G}_{amputada}
+\end{equation}
+tenemos que
+\begin{equation}
+    i\mathscr{M}=-ig\Rightarrow|\mathscr{M}|^2=g^2
+\end{equation}
+Por tanto, la anchura de desintegración es,
+\begin{equation}
+    \Gamma(a\to b+b)=\frac{1}{2}\frac{g^2}{16\pi M}\sqrt{1-\frac{4m^2}{M^2}}
+\end{equation}
+Luego, la vida media de la partícula es,
+\begin{equation}
+    \tau=\frac{1}{\Gamma}=\frac{32\pi M}{g^2}\sqrt{\left(1-\frac{4m}{m^2}\right)^{-1}}
+\end{equation}
+    
+    \item \textbf{Calcula al orden más bajo no trivial la sección eficaz diferencial y total para un proceso }$\mathbf{bb\to bb.}$\\ \\
+    Ahora nos piden calcular la sección diferencial y total para el proceso
+    \begin{equation}
+        b+b\to b+b
+    \end{equation}
+    Usamos la fórmula general de la sección eficaz diferencial y total de un proceso de cuatro partículas idénticas, calculada en la relación de ejercicios anterior, tal que
+    \begin{equation}
+        \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{1}{64\pi^2E_{CM}^2}|\mathscr{M}|^2
+    \end{equation}
+    donde estamos en el sistema centro de masas, con $E_{CM}=E_1+E_2=E_3+E_4=2E_f=2E_i$ con $E_i=E_1=E_2=\sqrt{|\vec{p}|^2+m^2}=E_f=E_3=E_4$, pues al ser partículas idénticas, $|\vec{p}|\equiv|\vec{p}_1|=|\vec{p}_2|=|\vec{p}_3|=|\vec{p}_4|$.\\ \\
+    Como nos piden el orden mínimo no trivial, obviamos el caso de orden 0. Vemos que el caso de orden $g$ tampoco es posible porque con un solo vértice interno es imposible unir todas las ramas. 
+    \newpage
+    Por lo que estamos a orden $g^2$, teniendo tres únicos diagramas árbol posibles, que son\\ \\
+    \begin{multicols}{3}
+    \begin{center}
+\begin{fmffile}{diagrama1}
+\begin{fmfgraph*}(150,100)
+  \fmfleft{i1,i2}
+  \fmfright{o1,o2}
+  \fmf{fermion,label=$b$}{i1,v1}
+  \fmf{fermion,label=$b$}{i2,v1}
+  \fmf{dashes,label=$A$}{v1,v2}
+  \fmf{fermion,label=$b$}{v2,o1}
+  \fmf{fermion,label=$b$}{v2,o2}
+    \fmflabel{I}{v1}
+    \fmflabel{II}{v2}
+    \fmflabel{2}{i1}
+    \fmflabel{1}{i2}
+    \fmflabel{4}{o1}
+    \fmflabel{3}{o2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\begin{center}
+\begin{fmffile}{diagrama2}
+\begin{fmfgraph*}(150,100)
+  \fmfleft{i1,i2}
+  \fmfright{o1,o2}
+  \fmf{fermion,label=$b$}{i1,v1}
+  \fmf{fermion,label=$b$}{i2,v2}
+  \fmf{dashes,label=$A$}{v1,v2}
+  \fmf{fermion,label=$b$}{v1,o1}
+  \fmf{fermion,label=$b$}{v2,o2}
+    \fmflabel{I}{v1}
+    \fmflabel{II}{v2}
+    \fmflabel{2}{i1}
+    \fmflabel{1}{i2}
+    \fmflabel{4}{o1}
+    \fmflabel{3}{o2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{center}
+\begin{center}
+\begin{fmffile}{diagrama3}
+\begin{fmfgraph*}(150,100)
+  \fmfleft{i1,i2}
+  \fmfright{o1,o2}
+  \fmf{fermion,label=$b$}{v1,i1}
+  \fmf{fermion,label=$b$}{i2,v1}
+  \fmf{dashes,label=$A$}{v1,v2}
+  \fmf{fermion,label=$b$}{v2,o1}
+  \fmf{fermion,label=$b$}{o2,v2}
+    \fmflabel{I}{v1}
+    \fmflabel{II}{v2}
+    \fmflabel{4}{i1}
+    \fmflabel{1}{i2}
+    \fmflabel{3}{o1}
+    \fmflabel{2}{o2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{center}
+    \end{multicols}
+    Vemos que el propagador de la interacción debe ser el campo $A$.
+    El primer diagrama tiene la función de Green siguiente,
+    \begin{equation}
+        (-ig)^2\frac{i}{p_1^2+m^2+i\epsilon}\frac{i}{p_2^2+m^2+i\epsilon}\frac{i}{p_3^2+m^2+i\epsilon}\frac{i}{p_4^2+m^2+i\epsilon}\frac{i}{s-M^2+i\epsilon}
+    \end{equation}
+    teniendo un diagrama tipo $S$, pues $s=(p_1+p_2)^2$ es una variable de Mandelstam. El segundo diagrama tiene asociado la función de Green,
+    \begin{equation}
+        (-ig)^2\frac{i}{p_1^2+m^2+i\epsilon}\frac{i}{p_2^2+m^2+i\epsilon}\frac{i}{p_3^2+m^2+i\epsilon}\frac{i}{p_4^2+m^2+i\epsilon}\frac{i}{t-M^2+i\epsilon}
+    \end{equation}
+    teniendo un diagrama tipo $T$, pues $t=(p_1-p_3)^2$ es una variable de Mandelstam. El tercer diagrama tiene asociado la función de Green,
+    \begin{equation}
+        (-ig)^2\frac{i}{p_1^2+m^2+i\epsilon}\frac{i}{p_2^2+m^2+i\epsilon}\frac{i}{p_3^2+m^2+i\epsilon}\frac{i}{p_4^2+m^2+i\epsilon}\frac{i}{u-M^2+i\epsilon}
+    \end{equation}
+    teniendo un diagrama tipo $U$, pues $u=(p_1-p_4)^2$ es una variable de Mandelstam.\\ \\
+    Por tanto, usando las funciones de Green amputadas, la amplitud de colisión del proceso queda,
+    \begin{equation}
+        i\mathscr{M}=(-ig)^2\brackets{\frac{i}{s-M^2+i\epsilon}+\frac{i}{t-M^2+i\epsilon}+\frac{i}{u-M^2+i\epsilon}}
+    \end{equation}
+    pues las partículas $b$ son idénticas. Luego,
+    \begin{equation}
+        |\mathscr{M}|^2=g^4\brackets{\frac{i}{s-M^2}+\frac{i}{t-M^2}+\frac{i}{u-M^2}}\brackets{\frac{-i}{s-M^2}+\frac{-i}{t-M^2}+\frac{-i}{u-M^2}}
+    \end{equation}
+    Por tanto queda,
+    \begin{equation}
+        |\mathscr{M}|^2=g^4\brackets{\frac{1}{s-M^2}+\frac{1}{t-M^2}+\frac{1}{u-M^2}}^2
+    \end{equation}
+    Luego, la sección eficaz diferencial queda,
+    \begin{equation}
+         \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{g^4}{64\pi^2s}\brackets{\frac{1}{s-M^2}+\frac{1}{t-M^2}+\frac{1}{u-M^2}}^2
+    \end{equation}
+    donde usamos que $s=E_{CM}^2$.\\ \\
+    Ahora calculamos la sección eficaz total integrando la sección eficaz diferencial,
+    \begin{equation}
+        \sigma_{total}=\frac{g^4}{64\pi^2s}\int d\Omega\brackets{\frac{1}{s-M^2+i\epsilon}+\frac{1}{t-M^2+i\epsilon}+\frac{1}{u-M^2+i\epsilon}}^2
+    \end{equation}
+    introduciendo el factor $+i\epsilon$ para evitar divergencias y cuando terminemos el cálculo hacemos $\epsilon\to0$. Pero debemos tener cuidado, porque $t=t(\theta)$, pues $t=(p_1-p_3)^2=m^2-\frac{s}{2}(1-\cos\theta)$, y $u=u(\theta)$, pues $u=(p_1-p_4)^2=m^2-\frac{s}{2}(1+\cos\theta)$ luego tenemos
+    \begin{equation}\small
+         \sigma_{total}=\frac{g^4}{32\pi s}\int_0^{\pi} d\theta\sin\theta\brackets{\frac{1}{s-M^2}+\frac{1}{m^2-\frac{s}{2}(1-\cos\theta)-M^2}+\frac{1}{m^2-\frac{s}{2}(1+\cos\theta)-M^2}}^2
+    \end{equation}
+    esta integral no se puede resolver analíticamente, pero no tiene divergencias para $\theta\in[0,\pi]$, por lo que podemos quitar el factor $+i\epsilon$ para simplificar el cálculo numérico.
+\end{enumerate}
+\end{enumerate}
+\end{document}

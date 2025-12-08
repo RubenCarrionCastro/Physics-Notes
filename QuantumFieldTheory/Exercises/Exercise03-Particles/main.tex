@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+\usepackage{feynmp-auto}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación III. Teoría de Campos y Partículas}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Abril 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{En primera aproximación, la amplitud de colisión para un proceso }$\mathbf{\varphi\varphi\to\varphi\varphi}$\textbf{ de una partícula sin espín con carga eléctrica }$\mathbf{e}$\textbf{ es}
+\[\mathbf{\mathscr{M}_{34,12}=e^2\brackets{\frac{(p^{\mu}_1+p^{\mu}_3)(p_{2\mu}+p_{4\mu})}{t}+\frac{(p_1^{\mu}+p_4^{\mu})(p_{2\mu}+p_{3\mu})}{u}}}\]
+\textbf{donde }$\mathbf{e}$\textbf{ es la intensidad de la interacción y }$\mathbf{t,u}$\textbf{ son dos de las variables de Mandelstam. Calcula la sección eficaz diferencial. Debe salir el siguiente resultado:}
+\[\mathbf{\frac{d\sigma}{d\Omega}=\frac{\alpha^2}{4s}\brackets{\frac{s-u}{t}+\frac{s-t}{u}}^2}\]
+\end{enumerate}
+
+Consideramos un 'scattering' $2\to2$, es decir, colisionan dos partículas y generan otras dos, tal que,
+\[\varphi+\varphi\to\varphi+\varphi\]
+O bien,
+\begin{center}
+\begin{fmffile}{diagrama}
+\begin{fmfgraph*}(150,100)
+  \fmfleft{i1,i2}
+  \fmfright{o1,o2}
+  \fmf{fermion,label=$\varphi$}{i1,v1}
+  \fmf{fermion,label=$\varphi$}{i2,v1}
+  \fmf{photon,label=$\gamma$}{v1,v2}
+  \fmf{fermion,label=$\varphi$}{v2,o1}
+  \fmf{fermion,label=$\varphi$}{v2,o2}
+\end{fmfgraph*}
+\end{fmffile}
+\end{center}
+donde la partícula de interacción es el fotón, pues las partículas tienen carga y por tanto, estamos en una interacción electromagnética.\\ \\
+Tomamos el sistema de referencia centro de masas, 
+    \begin{equation}
+        p_1+p_2\to p_3+p_4
+    \end{equation}
+    con $\vec{p}_1=-\vec{p}_2$, $\vec{p}_3=-\vec{p}_4$ y $E_1+E_2=E_3+E_4=E_{CM}$, donde $E_{CM}$ es la energía total en el sistema centro de masas. Entonces,
+    \begin{equation}
+        d\Pi_{LIPS}=(2\pi)^4\delta^{(4)}(p_1+p_2-p_3-p_4)\frac{d^3p_3}{(2\pi)^3}\frac{1}{2E_3}\frac{d^3p_4}{(2\pi)^3}\frac{1}{2E_4}
+    \end{equation}
+    Podemos integrar en $\vec{p}_4$ usando la función delta, tal que
+    \begin{equation}
+        d\Pi_{LIPS}=\frac{1}{16\pi^2}d\Omega\int dp_f\frac{p_f^2}{E_3}\frac{1}{E_4}\delta(E_3+E_4-E_{CM})
+    \end{equation}
+    donde $p_f=|\vec{p}_3|=|\vec{p}_4|$ y $E_3=\sqrt{m_3^2+p_f^2}$ y $E_4=\sqrt{m_4^2+p_f^2}$. Hacemos ahora un cambio de variable de $p_f$ a $x(p_f)=E_3(p_f)+E_4(p_f)-E_{CM}$. El Jacobiano es
+    \begin{equation}
+        \frac{dx}{dp_f}=\frac{d}{dp_f}(E_3+E_4-E_{CM})=\frac{p_f}{E_3}+\frac{p_f}{E_4}=\frac{E_3+E_4}{E_3E_4}p_f
+    \end{equation}
+    y entonces, usando $E_3+E_4=E_{CM}$, tenemos
+    \begin{equation}
+        d\Pi_{LIPS}=\frac{1}{16\pi^2}d\Omega\int_{m_3+m_4-E_{CM}}^{\infty}dx\frac{p_f}{E_{CM}}\delta(x)=\frac{1}{16\pi^2}d\Omega\frac{p_f}{E_{CM}}\Theta(E_{CM}-m_3-m_4)
+    \end{equation}
+    donde $\Theta$ es la función escalón. Luego, la sección eficaz diferencial queda,
+    \begin{equation}
+        d\sigma=\frac{1}{2E_12E_2\left|\vec{v}_1-\vec{v}_2\right|}\frac{1}{16\pi^2}d\Omega\frac{p_f}{E_{CM}}|\mathscr{M}_{fi}|^2\Theta(E_{CM}-m_3-m_4)
+    \end{equation}
+    Usando que
+    \begin{equation}
+        \left|\vec{v}_1-\vec{v}_2\right|=\left|\frac{\left|\vec{p}_1\right|}{E_1}+\frac{\left|\vec{p}_2\right|}{E_2}\right|=\left|\vec{p}_i\right|\frac{E_{CM}}{E_1E_2}
+    \end{equation}
+    tenemos que
+        \begin{equation}
+            \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{1}{64\pi^2E_{CM}^2}\frac{\left|\vec{p}_f\right|}{\left|\vec{p}_i\right|}\left|\mathscr{M}_{fi}\right|^2\Theta(E_{CM}-m_3-m_4)
+        \end{equation}
+        La función escalón nos dice que el proceso es imposible si la energía del estado inicial, $E_{CM}=E_1+E_2$, no es suficiente para crear las demás partículas. Como todas las masas son iguales, tenemos que $|\vec{p}_f|=|\vec{p}_i|$, luego
+    \begin{equation}
+        \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{1}{64\pi^2E_{CM}^2}|\mathscr{M}_{fi}|^2
+    \end{equation}
+Luego, para nuestro caso, tendremos
+pa
+    \begin{equation}
+        \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{1}{64\pi^2E_{CM}^2}\left|e^2\brackets{\frac{(p^{\mu}_1+p^{\mu}_3)(p_{2\mu}+p_{4\mu})}{t}+\frac{(p_1^{\mu}+p_4^{\mu})(p_{2\mu}+p_{3\mu})}{u}}\right|^2
+    \end{equation}
+Por otro lado, la solución depende de $\alpha$, que es la constante de estructura fina, sabemos que viene dada por,
+\begin{equation}
+    \alpha=\frac{e^2}{4\pi}\approx\frac{1}{137}
+\end{equation}
+donde la hemos puesto en unidades naturales. También, la solución depende de las variables de Mandelstam, que se definen como,
+\begin{equation}
+    s=(p_1+p_2)^2=(p_3+p_4)^2;\hspace{6mm}t=(p_1-p_3)^2=(p_2-p_4)^2;\hspace{6mm}u=(p_1-p_4)^2=(p_2-p_3)^2
+\end{equation}
+Luego, considerando que los cuadrimomentos vienen dados por,
+\begin{equation}
+    p_1=(E_1,0,0,|\vec{p}_i|);\hspace{4mm}p_2=(E_2,0,0,-|\vec{p}_i|);\hspace{4mm}p_3=(E_3,|\vec{p}_f|\sin\theta,0,|\vec{p}_f|\cos\theta);\hspace{4mm}p_4=(E_4,-|\vec{p}_f|\sin\theta,0,-|\vec{p}_f|\cos\theta)
+\end{equation}
+Tendremos que,
+\begin{equation}
+    s=(p_1+p_2)^2=\left(E_1+\cancel{|\vec{p}_i|}+E_2-\cancel{|\vec{p}_i|}\right)^2=E_{CM}^2
+\end{equation}
+Pues $E_1+E_2=E_{CM}$.\\ \\
+Así, la primera parte de la expresión la podemos reescribir como,
+\begin{equation}
+    \frac{e^4}{64\pi^2E_{CM}^2}=\frac{\alpha^2}{4E_{CM}^2}=\frac{\alpha^2}{4s}
+\end{equation}
+Si desarrollamos la otra parte de la expresión tendremos productos de cuadrimomentos, que los podemos reescribir en función de las variables de Mandelstam, tal que
+\begin{equation}
+    s=p_1^2+p_2^2+2p_1p_2=2m_i^2+2p_1p_2\Rightarrow p_1p_2+m_i^2=\frac{s}{2}
+\end{equation}
+\begin{equation}
+    s=p_3^2+p_4^2+2p_3p_4=2m_f^2+2p_3p_4\Rightarrow p_3p_4+m_f^2=\frac{s}{2}
+\end{equation}
+\begin{equation}
+    t=p_1^2+p_3^2-2p_1p_3=m_i^2+m_f^2-2p_1p_2\Rightarrow p_1p_3=\frac{m_i^2+m_f^2-t}{2}
+\end{equation}
+\begin{equation}
+    t=p_2^2+p_4^2-2p_2p_4=m_i^2+m_f^2-2p_2p_4\Rightarrow p_2p_4=\frac{m_i^2+m_f^2-t}{2}
+\end{equation}
+\begin{equation}
+    u=p_1^2+p_4^2-2p_1p_4=m_i^2+m_f^2-2p_1p_4\Rightarrow p_1p_4=\frac{m_i^2+m_f^2-u}{2}
+\end{equation}
+\begin{equation}
+    u=p_2^2+p_3^2-2p_2p_3=m_i^2+m_f^2-2p_2p_3\Rightarrow p_2p_3=\frac{m_i^2+m_f^2-u}{2}
+\end{equation}
+En resumen,
+\begin{equation}
+    \begin{matrix}
+        m_i^2+(p_1p_2)=m_f^2+(p_3p_4)=\frac{s}{2}\\ \\
+        (p_1p_3)=(p_2p_4)=\frac{m_i^2+m_f^2-t}{2}\\ \\
+        (p_1p_4)=(p_2p_3)=\frac{m_i^2+m_f^2-u}{2}
+    \end{matrix}
+\end{equation}
+Luego, el numerador del primer sumando queda,
+\begin{equation}
+    \begin{array}{rl}
+        (p_1+p_3)(p_2+p_4) &=p_1p_2+p_1p_4+p_3p_2+p_3p_4= \\ \\
+         & =\frac{s}{2}-m_i^2+\frac{m_i^2+m_f^2-u}{2}+\frac{m_i^2+m_f^2-u}{2}+\frac{s}{2}-m_f^2=\\ \\
+         &=s-\cancel{m_i^2}+\cancel{m_i^2}-\cancel{m_f^2}+\cancel{m_f^2}-u=s-u
+    \end{array}
+\end{equation}
+El numerador del segundo sumando queda,
+\begin{equation}
+    \begin{array}{rl}
+        (p_1+p_4)(p_2+p_3) &=p_1p_2+p_1p_3+p_4p_2+p_4p_3= \\ \\
+         & =\frac{s}{2}-m_i^2+\frac{m_i^2+m_f^2-t}{2}+\frac{m_i^2+m_f^2-t}{2}+\frac{s}{2}-m_f^2=\\ \\
+         &=s-\cancel{m_i^2}+\cancel{m_i^2}-\cancel{m_f^2}+\cancel{m_f^2}-t=s-t
+    \end{array}
+\end{equation}
+Así, juntando todo, obtenemos
+\begin{equation}
+    \left(\frac{d\sigma}{d\Omega}\right)_{CM}=\frac{\alpha^2}{4s}\brackets{\frac{s-u}{t}+\frac{s-t}{u}}^2
+\end{equation}
+obteniendo el resultado esperado.
+
+
+\end{document}

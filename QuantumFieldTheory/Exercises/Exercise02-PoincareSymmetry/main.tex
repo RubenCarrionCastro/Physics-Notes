@@ -1,0 +1,676 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación II. Teoría de Campos y Partículas}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Marzo 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Considera las transformaciones de Lorentz }$\mathbf{R_x(\phi)}$\textbf{ y }$\mathbf{B_z(\eta)}$\textbf{, cuya actuación sobre espinores $LH$ están dadas por las matrices }$\mathbf{R_x(\phi)\doteq \exp\left(-i\phi\sigma_1/2\right)}$\textbf{ y }$\mathbf{B_z(\eta)\doteq\exp\left(-\eta\sigma_3/2\right)}$\textbf{, respectivamente. Considerando la correspondiente actuación sobre vectores, muestra que }$\mathbf{R_x(\phi)}$\textbf{ es una rotación en el plano }$\mathbf{y-z}$\textbf{ de ángulo }$\mathbf{\phi}$\textbf{ y que }$\mathbf{B_z(\eta)}$\textbf{ es un boost en dirección $z$ con rapidity }$\mathbf{\eta}$\textbf{. ¿Cuáles son las matrices que implementan la actuación de estas transformaciones sobre espinores $RH$?}
+\end{enumerate}
+Debemos ver que $R_x(\phi)$ y $B_z(\eta)$ son rotaciones en el plano $y-z$ de ángulo $\phi$ y boosts en dirección $z$ con rapidity $\eta$, respectivamente. \\ \\
+Sabemos que el grupo de Poincaré es el $SL(2,\mathbb{C})$, pero si trabajamos de forma local, podemos encontrar el grupo $SO(1,3)^{\uparrow}$, isomorfo localmente a $SL(2,\mathbb{C})$; luego trabajaremos en este grupo, donde las transformaciones de Lorentz, de forma general, son $\Lambda_{\nu}^{\mu}$ y cumplen que 
+\begin{equation}
+    \det\Lambda=1;\hspace{5mm}\Lambda_0^0>0
+\end{equation}
+Los elementos del grupo de Lorentz se escribirán de la forma $(\Lambda,a)$.\\ \\
+Además, sabemos que las rotaciones tienen la forma,
+\begin{equation}
+    \Lambda=\left(\begin{array}{c|c}
+        \mathbb{I} & 0 \\ \hline
+        0 & R
+    \end{array}\right)
+\end{equation}
+donde $R$ es la matriz de rotaciones $2\times 2$; y los boosts son de la forma,
+\begin{equation}
+    \Lambda=\begin{pmatrix}
+        \cosh{\eta} & 0 & 0 & \sinh{\eta}\\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        \sinh{\eta} & 0 & 0 & \cosh{\eta}
+    \end{pmatrix}
+\end{equation}
+Tendremos subgrupos, cuyos elementos vienen dados por,  $(\sigma_{\mu})_{\dot{\alpha}\alpha}\equiv\sigma_{\mu}\equiv(I,\vec{\sigma})_{\mu}$ y $(\bar{\sigma}_{\mu})^{\dot{\alpha}\alpha}\equiv\bar{\sigma}_{\mu}\equiv(I,-\vec{\sigma})_{\mu}$, donde $\vec{\sigma}$ son las matrices de Pauli, que son,
+\begin{equation}
+    \sigma_1=\begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix};\hspace{5mm}\sigma_2=\begin{pmatrix}
+        0 & -i\\
+        i & 0
+    \end{pmatrix};\hspace{5mm}\sigma_3=\begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix}
+\end{equation}
+Además, $\sigma^i=-\sigma_i$, pero $\bar{\sigma}^i=-\sigma^i$, luego $\bar{\sigma}^i=\sigma_i$.
+Por otro lado, una transformación $N$ puede descomponerse infinitesimalmente, tal que
+\begin{equation}
+    N\approx\mathbb{I}+M+O(M^2)\approx e^M+O(M^2)
+\end{equation}
+donde sabemos que $\det N=1=\det e^{Tr M}$, luego, $Tr M=0$. Luego, podemos definir una base compleja del espacio vectorial de las matrices $M$, tal que
+\begin{equation}
+    B_{\mathbb{C},M}=\curlybraces{i\frac{\sigma_j}{2};j=1,2,3}
+\end{equation}
+con
+\begin{equation}
+    \brackets{\frac{\sigma_i}{2},\frac{\sigma_j}{2}}=i\epsilon_{ijk}\frac{\sigma_k}{2}
+\end{equation}
+Luego, deberemos ver que $R_x(\phi)$ y $B_z(\eta)$ tienen la forma anteriormente descrita. Comenzamos con $R_x(\phi)$:
+\begin{equation}
+    \begin{array}{rl}
+        R_x(\phi) &\doteq e^{-i\phi\frac{\sigma_1}{2}}=\cos\left(\phi\frac{\sigma_1}{2}\right)-i\sin\left(\phi\frac{\sigma_1}{2}\right)\approx  \\ \\
+         & \approx\sum\limits_k\frac{(-1)^k\left(\phi\frac{\sigma_1}{2}\right)^{2k}}{(2k)!}-i\sum\limits_k\frac{(-1)^{k}\left(\phi\frac{\sigma_1}{2}\right)^{2k+1}}{(2k+1)!}=\sum\limits_k\frac{(-1)^k\phi^{2k}\mathbb{I}}{2^{2k}(2k!)}-i\sum\limits_k\frac{(-1)^k\phi^{2k+1}\sigma_1}{2^{2k+1}(2k+1)!}=\\ \\
+         &=\mathbb{I}\sum\limits_k\frac{(-1)^k\phi^{2k}}{2^{2k}(2k!)}-i\sigma_1\sum\limits_k\frac{(-1)^k\phi^{2k+1}}{2^{2k+1}(2k+1)!}=\mathbb{I}\cos\frac{\phi}{2}-i\sigma_1\sin\frac{\phi}{2}=\\ \\
+         &=\begin{pmatrix}
+             \cos\phi/2 & 0\\
+             0 & \cos\phi/2
+         \end{pmatrix}+\begin{pmatrix}
+             0 & -i\sin\phi/2\\
+             -i\sin\phi/2 & 0
+         \end{pmatrix}=\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}
+    \end{array}
+\end{equation}
+Para pasar a las rotaciones en 4 dimensiones, usamos que
+\begin{equation}
+    \Lambda_{\nu}^{\mu}=\frac{1}{2}Tr(\bar{\sigma}^{\mu}g\sigma_{\nu}g^{\dagger})
+\end{equation}
+donde $g$ es un elemento de $SL(2,\mathbb{C})$, ver la sección \ref{demostracion} para ver de donde viene esta fórmula. Particularizando para $R_x(\phi)$, tendremos que
+\begin{equation}
+    \Lambda_{\nu}^{\mu}=\frac{1}{2}Tr(\bar{\sigma}^{\mu}R_x\sigma_{\nu}R_x^{\dagger})
+\end{equation}
+donde esta fórmula servirá para calcular las componentes de $\Lambda$. Como la parte temporal no cambia, $\Lambda_0^0=1$ y $\Lambda_0^{i}=\Lambda_i^{0}=0$. Luego, para $\mu=\nu=i$:
+\begin{equation}
+    \begin{array}{l}
+         \Lambda_i^i=\frac{1}{2}Tr(\bar{\sigma}^iR_x\sigma_iR_x^{\dagger})= \frac{1}{2}\curlybraces{\overset{\Lambda_1^1}{\overbrace{Tr\brackets{\bar{\sigma}^1R_x\sigma_1R_x^{\dagger}}}},\overset{\Lambda_2^2}{\overbrace{\brackets{\bar{\sigma}^2R_x\sigma_2R_x^{\dagger}}}},\overset{\Lambda_3^3}{\overbrace{\brackets{\bar{\sigma}^3R_x\sigma_3R_x^{\dagger}}}}}=\\ \\
+          =\frac{1}{2}\left\lbrace Tr\brackets{\begin{pmatrix}
+             0 & 1 \\
+            1 & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             0 & 1\\
+             1 & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}\right.,\\ \\
+         Tr\brackets{\begin{pmatrix}
+             0 & i \\
+            -i & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             0 & -i\\
+             i & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}},\\ \\
+         \left.Tr\brackets{\begin{pmatrix}
+             1 & 0 \\
+            0 & -1
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             1 & 0\\
+             0 & -1
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}\right\rbrace=\\ \\
+         =\frac{1}{2}\curlybraces{Tr\brackets{\begin{pmatrix}
+             1 & 0\\
+             0 & 1
+         \end{pmatrix}},Tr\brackets{\begin{pmatrix}
+             \cos\phi & -i\sin\phi\\
+             -i\sin\phi & \cos\phi
+         \end{pmatrix}},Tr\brackets{\begin{pmatrix}
+             \cos\phi & i\sin\phi\\
+             i\sin\phi & \cos\phi
+         \end{pmatrix}}}=\\ \\
+         =\left(1,\cos\phi,\cos\phi\right)
+    \end{array}
+\end{equation}
+Luego, $\Lambda_1^1=1$ y $\Lambda_2^2=\Lambda_3^3=\cos\phi$.\\ \\
+Ahora, para $\mu=i\neq\nu=j$:
+\begin{equation}\small
+    \begin{array}{rl}
+        \mu=1,\nu=2 & \Lambda_1^2=\frac{1}{2}Tr\brackets{\bar{\sigma}^1R_x\sigma_2R_x^{\dagger}}=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+            0 & 1\\
+            1 & 0
+        \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             0 & -i\\
+             i & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}= \\ \\
+         & =\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             -i\cos\phi & \sin\phi\\
+             \sin\phi & i\cos\phi
+         \end{pmatrix}}=0==\Lambda_2^1\\ \\
+         \mu=1,\nu=3& \Lambda_1^3=\frac{1}{2}Tr\brackets{\bar{\sigma}^1R_x\sigma_3R_x^{\dagger}}=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             0 & 1\\
+             1 & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             1 & 0\\
+             0 & -1
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}=\\ \\
+         &=Tr\brackets{\begin{pmatrix}
+             -i\sin\phi & -\cos\phi\\
+             \cos\phi & i\sin\phi
+         \end{pmatrix}}=0=\Lambda_3^1\\ \\
+         \mu=2,\nu=3 & \Lambda_2^3=\frac{1}{2}Tr\brackets{\bar{\sigma}^2R_x\sigma_3R_x^{\dagger}}=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             0 & -i\\
+             i & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             1 & 0\\
+             0 & -1
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}=\\ \\
+         &=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             -\sin\phi & i\cos\phi\\
+             i\cos\phi & -\sin\phi
+         \end{pmatrix}}=-\sin\phi\\ \\
+         &\Lambda_3^2=\frac{1}{2}Tr\brackets{\bar{\sigma}^2R_x\sigma_3R_x^{\dagger}}=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             1 & 0\\
+             0 & -1
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & -i\sin\phi/2\\
+             -i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}\begin{pmatrix}
+             0 & -1\\
+             i & 0
+         \end{pmatrix}\begin{pmatrix}
+             \cos\phi/2 & i\sin\phi/2\\
+             i\sin\phi/2 & \cos\phi/2
+         \end{pmatrix}}=\\ \\
+         &=\frac{1}{2}Tr\brackets{\begin{pmatrix}
+             \sin\phi & -i\cos\phi\\
+             -i\cos\phi & \sin\phi
+         \end{pmatrix}}=\sin\phi
+    \end{array}
+\end{equation}
+El cálculo de las matrices se encuentra en \ref{matrices}. Por tanto, la matriz de Lorentz para $R_x(\phi)$ será,
+\begin{equation}
+    \Lambda(R_x(\phi))=\begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & \cos\phi & -\sin\phi\\
+        0 & 0 & \sin\phi & \cos\phi
+    \end{pmatrix}
+\end{equation}
+que, efectivamente, corresponde a una rotación en el plano $y-z$ de ángulo $\phi$.\\ \\
+Veamos ahora la matriz de $B_z(\eta)$:
+\begin{equation}
+    \begin{array}{rl}
+        B_z(\eta) &\doteq e^{-\eta\frac{\sigma_3}{2}}=\cosh\left(\eta\frac{\sigma_3}{2}\right)-\sin\left(\eta\frac{\sigma_3}{2}\right)\approx  \\ \\
+         & \approx\sum\limits_k\frac{\left(\eta\frac{\sigma_3}{2}\right)^{2k}}{(2k)!}-\sum\limits_k\frac{\left(\eta\frac{\sigma_3}{2}\right)^{2k+1}}{(2k+1)!}=\sum\limits_k\frac{\eta^{2k}\mathbb{I}}{2^{2k}(2k!)}-\sum\limits_k\frac{\eta^{2k+1}\sigma_3}{2^{2k+1}(2k+1)!}=\\ \\
+         &=\mathbb{I}\sum\limits_k\frac{\eta^{2k}}{2^{2k}(2k!)}-\sigma_3\sum\limits_k\frac{(-1)^k\eta^{2k+1}}{2^{2k+1}(2k+1)!}=\mathbb{I}\cosh\frac{\eta}{2}-\sigma_3\sin\frac{\eta}{2}=\\ \\
+         &=\begin{pmatrix}
+             \cosh\eta/2 & 0\\
+             0 & \cosh\eta/2
+         \end{pmatrix}+\begin{pmatrix}
+             -\sinh\eta/2 & 0\\
+             0 & \sinh\eta/2 
+         \end{pmatrix}=\begin{pmatrix}
+             \cosh\eta/2-\sinh\eta/2 & 0\\
+             0 & \cosh\eta/2+\sinh\eta/2 
+         \end{pmatrix}=\\ \\
+         &=\begin{pmatrix}
+             e^{-\eta/2} & 0\\
+             0 & e^{\eta/2}
+         \end{pmatrix}
+    \end{array}
+\end{equation}
+Volvemos a usar la fórmula de la traza, tal que
+\begin{equation}
+    \Lambda_{\nu}^{\mu}=\frac{1}{2}Tr\brackets{\bar{\sigma}^{\mu}B_z\sigma_{\nu}B_z^{\dagger}}
+\end{equation}
+Realizando los cálculos (ver la sección \ref{matrices2}), obtenemos
+\begin{equation}
+    \Lambda(B_z(\eta))=\begin{pmatrix}
+        \cosh\eta & 0 & 0 & \sinh\eta\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0\\
+        \sinh\eta & 0 & 0 & \cosh\eta
+    \end{pmatrix}
+\end{equation}
+que, efectivamente, corresponde a un boost con rapidity $\eta$.\\ \\
+Una vez demostrado la primera parte, procedemos a calcular $R_x(\phi)$ y $B_z(\eta)$ en la representación $RH$.\\ \\
+Sabemos que las representaciones $LH$ y $RH$ vienen dadas por,
+\begin{equation}
+    LH\to\left\lbrace\begin{array}{l}
+         \brackets{\rho(N)\varphi}_{\alpha}=N^{\beta}_{\alpha}\varphi_{\beta}  \\
+          \brackets{\rho'(N)\varphi}^{\alpha}=\left(\left(N^{-1}\right)^T\right)_{\beta}^{\alpha}\varphi^{\beta}
+    \end{array}\right.
+\end{equation}
+\begin{equation}
+    RH\to\left\lbrace\begin{array}{l}
+         \brackets{\bar{\rho}(N)\bar{\chi}}_{\dot{\alpha}}=\left(N^*\right)^{\dot{\beta}}_{\dot{\alpha}}\dot{\chi}_{\dot{\beta}}  \\
+          \brackets{\bar{\rho}'(N)\bar{\chi}}^{\dot{\alpha}}=\left(\left(N^{\dagger}\right)^{-1}\right)_{\dot{\beta}}^{\dot{\alpha}}\bar{\chi}^{\dot{\beta}}
+    \end{array}\right.
+\end{equation}
+donde $\varphi$ y $\bar{\chi}$ son espinores. Hemos escrito dos tipos de espinores para cada representación porque son equivalentes.\\ \\
+En el enunciado nos dicen que las transformaciones $R_x(\phi)$ y $B_z(\eta)$ en la representación $LH$ vienen dadas por
+\begin{equation}
+    R_x(\phi)\doteq e^{-i\phi\frac{\sigma_1}{2}};\hspace{5mm}B_z(\eta)\doteq e^{-\eta\frac{\sigma_3}{2}}
+\end{equation}
+y nos piden ver cómo son estas matrices en la representación $RH$. Vamos a considerar $N=e^M$, tomando la base antes descrita para las $M$, tal que
+\begin{equation}
+    M=\sum_{k=1}^3i\lambda_k\frac{\sigma_k}{2}
+\end{equation}
+donde los $\lambda_i$ son los coeficientes.\\ \\
+Vemos que, para un espinor general $LH$ tenemos,
+\begin{equation}
+    \rho(N)\varphi=\varphi\exp\left(\sum\limits_{k=1}^3i\lambda_k\frac{\sigma_k}{2}\right)
+\end{equation}
+donde hemos suprimido los índices. Luego, por comparación para $R_x(\phi)$, vemos que
+\begin{equation}
+    \rho(R_x(\phi))\varphi=\varphi\exp\left(\sum\limits_{k=1}^3i\lambda_k\frac{\sigma_k}{2}\right)=\varphi e^{-i\phi\frac{\sigma_1}{2}}
+\end{equation}
+Luego, $\lambda_3=\lambda_2=0$ y $\lambda_1=-\phi$. Además, para $B_z(\eta)$ tenemos,
+\begin{equation}
+     \rho(B_z(\eta))\varphi=\varphi\exp\left(\sum\limits_{k=1}^3i\gamma_k\frac{\sigma_k}{2}\right)=\varphi e^{-\eta\frac{\sigma_1}{2}}
+\end{equation}
+Por tanto, $\gamma_2=\gamma_1=0$ y $\gamma_3=i\eta$.\\ \\
+Ahora vamos a ver la relación entre los coeficientes de $LH$ con los de $RH$, pues la $N$ no cambia. Entonces, vemos que
+\begin{equation}
+    \rho(N)\bar{\chi}=\bar{\chi}\exp\left(\sum\limits_{k=1}^3i\lambda_k\frac{\sigma_k}{2}\right)^*=\bar{\chi}\exp\left(\sum\limits_{k=1}^3-i\lambda_k^*\frac{\sigma_k^*}{2}\right)\overset{\curlybraces{\sigma_k^*=\sigma_k}}{=}\bar{\chi}\exp\left(\sum\limits_{k=1}^3-i\lambda_k^*\frac{\sigma_k}{2}\right)
+\end{equation}
+Por tanto, los coeficientes de $LH$ y $RH$ se relacionan, tal que
+\begin{equation}
+    \lambda_k^{'(RH)}=-\lambda_k^{*(LH)}
+\end{equation}
+es decir, el coeficiente de $(RH)$ es igual a menos el coeficiente conjugado de $(LH)$. Luego,
+\begin{equation}
+    \begin{array}{rl}
+        R_x(\phi): & \lambda_k^{(LH)}=\lambda_1=-\phi\Rightarrow\lambda_k^{'(RH)}=-\lambda_1^*=\phi   \\
+         B_z(\eta): & \lambda_k^{(LH)}=\lambda_3=i\eta\Rightarrow\lambda_k^{'(RH)}=-\lambda_3^*=i\eta
+    \end{array}
+\end{equation}
+Por tanto, las matrices $R_x(\phi)$ y $B_z(\eta)$, en la representación $RH$ serán:
+\begin{equation}
+    R_x(\phi)^{(RH)}=e^{-i\phi\frac{\sigma_1}{2}};\hspace{5mm}B_z(\eta)=e^{\eta\frac{\sigma_3}{2}}
+\end{equation}
+donde no hemos tomado los conjugados de $\phi$ y $\eta$ porque al tratarse de un ángulo y de un rapidity, respectivamente, son magnitudes reales.
+\newpage
+\section{Obtención de la fórmula}\label{demostracion}
+La fórmula 
+
+\[
+\Lambda^\mu_{\ \nu} = \frac{1}{2} \text{Tr}(\bar{\sigma}^\mu g \sigma_\nu g^\dagger)
+\]
+
+proviene de la relación entre el grupo de Lorentz \( SO(1,3)^\uparrow \) y el grupo de transformaciones espinoriales \( SL(2, \mathbb{C}) \). Esta relación es fundamental en la representación espinorial del grupo de Lorentz y en la correspondencia entre matrices \( 2 \times 2 \) y cuadrivectores en espacio-tiempo.
+
+\subsection*{1. Contexto: Representación Espinorial del Grupo de Lorentz}
+El grupo de Lorentz \( SO(1,3)^\uparrow \) describe las transformaciones que preservan la métrica de Minkowski:
+
+\[
+\eta_{\mu\nu} = \text{diag}(1, -1, -1, -1).
+\]
+
+Sin embargo, el grupo de recubrimiento doble de \( SO(1,3)^\uparrow \) es \( SL(2, \mathbb{C}) \), que actúa sobre los espinores de Weyl. Esto significa que cualquier transformación de Lorentz \( \Lambda^\mu_{\ \nu} \) puede representarse por un elemento de \( SL(2, \mathbb{C}) \) denotado como \( g \).
+
+El objetivo es construir una correspondencia entre la representación en \( SL(2,\mathbb{C}) \) y el espacio de Minkowski.
+
+\subsection*{2. Relación entre cuadrivectores y matrices \( 2 \times 2 \)}
+Cualquier cuadrivector en espacio-tiempo \( x^\mu \) se puede asociar a una matriz hermítica de la forma:
+
+\[
+X = x^\mu \sigma_\mu = x^0 \mathbb{I} + x^i \sigma_i =
+\begin{pmatrix}
+x^0 + x^3 & x^1 - i x^2 \\
+x^1 + i x^2 & x^0 - x^3
+\end{pmatrix}.
+\]
+
+Aquí, las matrices \( \sigma_\mu \) son:
+
+\[
+\sigma^\mu = (\mathbb{I}, \sigma^i),
+\]
+
+\[
+\bar{\sigma}^\mu = (\mathbb{I}, -\sigma^i).
+\]
+
+La transformación de Lorentz debe actuar sobre \( X \) de manera que conserve la estructura de la métrica de Minkowski. Se define entonces la transformación:
+
+\[
+X' = g X g^\dagger.
+\]
+
+Esto garantiza que la transformación respeta la estructura del espacio-tiempo.
+
+\subsection*{3. Derivación de la fórmula}
+Como \( X = x^\mu \sigma_\mu \), después de la transformación tenemos:
+
+\[
+x'^\mu \sigma_\mu = g (x^\nu \sigma_\nu) g^\dagger.
+\]
+
+Tomamos la traza en ambos lados:
+
+\[
+\text{Tr}(x'^\mu \sigma_\mu) = \text{Tr}(g x^\nu \sigma_\nu g^\dagger).
+\]
+
+Utilizando la linealidad de la traza:
+
+\[
+x'^\mu = \frac{1}{2} \text{Tr}(\bar{\sigma}^\mu g \sigma_\nu g^\dagger) x^\nu.
+\]
+
+Comparando con la ecuación de una transformación de Lorentz \( x'^\mu = \Lambda^\mu_{\ \nu} x^\nu \), se obtiene la expresión:
+
+\[
+\Lambda^\mu_{\ \nu} = \frac{1}{2} \text{Tr}(\bar{\sigma}^\mu g \sigma_\nu g^\dagger).
+\]
+
+\newpage
+\section{Cálculo de matrices de las rotaciones}\label{matrices}
+\begin{Figura}
+\includegraphics[width=0.9\textwidth]{Matrices.pdf}
+
+\end{Figura}
+\newpage
+\section{Cálculo de matrices del boost}\label{matrices2}
+\begin{Figura}
+\includegraphics[width=0.9\textwidth]{Matrices2.pdf}
+
+\end{Figura}
+\newpage
+\section*{Ejercicio extra:}
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item \textbf{Consideremos el vector de Pauli-Lubanski, }$\mathbf{W_{\mu}=\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}J^{\nu\rho}P^{\sigma}}$
+    \begin{enumerate}
+        \item \textbf{Comprueba las siguientes relaciones:}
+        \begin{equation}
+            \mathbf{W_{\mu}P^{\mu}=0;\hspace{4mm}\brackets{W_{\mu},P_{\nu}}=0;\hspace{4mm}\brackets{J_{\mu\nu},W_{\rho}}=i\left(\eta_{\mu\rho}W_{\nu}-\eta_{\nu\rho}W_{\mu}\right);\hspace{4mm}\brackets{W_{\mu},W_{\nu}}=i\epsilon_{\mu\nu\rho\sigma}W^{\rho}P^{\sigma}}
+        \end{equation}
+        \begin{itemize}
+        \item  $W_{\mu}P^{\mu}=0$:\\ \\
+        Vemos que el resultado de $W^{\mu}P_{\mu}$ debe ser un escalar, pues están los índices contraídos. Por otro lado, al escribir el tensor de forma explícita, vemos que
+        \[W_{\mu}P^{\mu}=\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}J^{\nu\rho}P^{\sigma}P^{\mu}=\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}(P^{\sigma}P^{\mu})J^{\nu\rho}\]
+        Por lo que, vemos que tenemos un tensor simétrico, la parte de $P^{\sigma}P^{\mu}$, mientras que el tensor de Levi-Civita es antisimétrico, luego al tener 'antisimétrico $\times$ simétrico', el resultado es nulo.
+        \item $\brackets{W_{\mu},P_{\nu}}=0$:\\ \\
+        Escribiendo explícitamente el conmutador, tenemos
+        \[\brackets{W_{\mu},P_{\nu}}=\brackets{\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}J^{\nu\rho}P^{\sigma},P_{\nu}}\]
+        Usando la propiedad,
+        \[\brackets{ABC,D}=AB\brackets{C,D}+A\brackets{B,D}C+\brackets{A,D}BC\]
+        Llegamos a
+        \[\brackets{W_{\mu},P_{\alpha}}=\frac{1}{2}\curlybraces{\epsilon_{\mu\nu\rho\sigma}J^{\nu\rho}\brackets{P^{\sigma},P_{\alpha}}+\epsilon_{\mu\nu\rho\sigma}\brackets{J^{\nu\rho},P_{\alpha}}P^{\sigma}+\brackets{\epsilon_{\mu\nu\rho\sigma},P_{\alpha}}J^{\nu\rho}P^{\sigma}}\]
+        Al estar en el álgebra de Poincaré, sabemos (de teoría) que
+        \begin{equation}
+    \brackets{P_{\mu},P_{\nu}}=0;\hspace{4mm}\brackets{P_{\mu},J_{\rho\sigma}}=-i\left(\eta_{\mu\rho}P_{\sigma}-\eta_{\mu\sigma}P_{\rho}\right);\hspace{4mm}\brackets{J_{\mu\nu},J_{\rho\sigma}}=i\left(\eta_{\nu\rho} J_{\mu\sigma}-\eta_{\mu\rho} J_{\nu\sigma}+\eta_{\mu\sigma} J_{\nu\rho}-\eta_{\nu\sigma} J_{\mu\rho}\right)
+\end{equation}
+Por tanto, el primer sumando se anula, pues al ser $\brackets{P_{\mu},P_{\alpha}}=0$, entonces $\brackets{P^{\sigma},P_{\alpha}}=0$. Por otro lado, el tercer sumando también se anula, porque el tener un tensor de Levi-Civita solo en un conmutador siempre nos da cero. Analizando el segundo sumando llegamos a
+\[\brackets{J^{\nu\rho},P_{\alpha}}=-\brackets{P_{\alpha},J^{\nu\rho}}=i\left(\eta_{\alpha}^{\nu}P^{\rho}-\eta_{\alpha}^{\rho}P^{\nu}\right)\]
+Razonando igual que para la primera demostración, tendremos un tensor simétrico $P^{\rho}P^{\sigma}$ multiplicando por Levi-Civita, por lo que también se anulará. Así, $\brackets{W_{\mu},P_{\alpha}}=0$.
+\item $\brackets{J_{\mu\nu},W_{\rho}}=i\left(\eta_{\mu\rho}W_{\nu}-\eta_{\nu\rho}W_{\mu}\right)$:\\ \\
+Volvemos a escribir la forma explícita del conmutador:
+\begin{equation}
+    \brackets{J_{\mu\nu},W_{\rho}}=\brackets{J_{\mu\nu},\frac{1}{2}\epsilon_{\rho\sigma\lambda\delta}J^{\sigma\lambda}P^{\delta}}
+\end{equation}
+Usando la propiedad,
+\begin{equation}
+    \brackets{A,BCD}=BC\brackets{A,D}+B\brackets{A,C}D+\brackets{A,B}CD
+\end{equation}
+Luego,
+\begin{equation}\small
+    \begin{array}{rl}
+         
+    \brackets{J_{\mu\nu},W_{\rho}}&=\frac{1}{2}\curlybraces{\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}\brackets{J_{\mu\nu},P^{\delta}}+\epsilon_{\rho\sigma\lambda\delta}\brackets{J_{\mu\nu},J^{\sigma\lambda}}P^{\delta}+\cancelto{0}{\brackets{J_{\mu\nu},\epsilon_{\rho\sigma\lambda\delta}}}J^{\sigma\lambda}P^{\delta}}=  \\ \\
+         & =\frac{1}{2}\curlybraces{i\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}\left(\eta_{\nu}^{\delta}P_{\mu}-\eta_{\mu}^{\delta}P_{\nu}\right)+\cancelto{0}{\epsilon_{\rho\sigma\lambda\delta}\left(J_{\mu\nu}J^{\sigma\lambda}-J^{\sigma\lambda}J_{\mu\nu}\right)}P^{\delta}}=\\ \\
+         &=i\curlybraces{\eta_{\nu}^{\delta}\frac{1}{2}\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}P_{\mu}-\eta_{\mu}^{\delta}\frac{1}{2}\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}P_{\nu}}=i\curlybraces{\eta_{\nu}^{\delta}\frac{1}{2}\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}\eta_{\mu\alpha}P^{\alpha}-\eta_{\mu}^{\delta}\frac{1}{2}\epsilon_{\mu\sigma\lambda\delta}J^{\sigma\lambda}\eta_{\nu\beta}P^{\beta}}=\\ \\
+         &=i\left(\eta_{\mu\rho}W_{\nu}-\eta_{\nu\rho}W_{\mu}\right)
+    \end{array}
+\end{equation}
+donde en la segunda igualdad se anula el término porque $J_{\mu\nu}$ es un tensor antisimétrico, luego $J_{\mu\nu}J^{\sigma\lambda}$ es simétrico, y al multiplicar por Levi-Civita se anula. Hemos reescrito índices para obtener la expresión que queremos.
+\item $\brackets{W_{\mu},W_{\alpha}}=i\epsilon_{\mu\alpha\rho\sigma}W^{\rho}P^{\sigma}$:\\ \\
+        Tenemos que,
+        \begin{equation}
+        \begin{array}{rl}
+             
+            \brackets{W_{\mu},W_{\alpha}}&=\brackets{\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}J^{\rho\sigma}P^{\nu},\frac{1}{2}\epsilon_{\alpha\beta\gamma\delta}J^{\gamma\delta}P^{\beta}}
+        \end{array}
+        \end{equation}
+        Expandiendo el conmutador:
+
+\begin{equation}
+[W_{\mu},W_{\alpha}] = \frac{1}{4} \epsilon_{\mu\nu\rho\sigma} \epsilon_{\alpha\beta\gamma\delta} [J^{\rho\sigma} P^{\nu}, J^{\gamma\delta} P^{\beta}]
+\end{equation}
+
+Utilizando las relaciones de conmutación del álgebra de Poincaré:
+
+\begin{equation}
+[J^{\rho\sigma}, P^\nu] = i(\eta^{\sigma\nu} P^\rho - \eta^{\rho\nu} P^\sigma)
+\end{equation}
+
+\begin{equation}
+[J^{\rho\sigma}, J^{\gamma\delta}] = i (\eta^{\rho\gamma} J^{\sigma\delta} + \eta^{\sigma\delta} J^{\rho\gamma} - \eta^{\rho\delta} J^{\sigma\gamma} - \eta^{\sigma\gamma} J^{\rho\delta})
+\end{equation}
+
+Sustituyendo en la ecuación original:
+
+\begin{equation}
+[J^{\rho\sigma} P^{\nu}, J^{\gamma\delta} P^{\beta}] = i (\eta^{\sigma\nu} P^\rho - \eta^{\rho\nu} P^\sigma) J^{\gamma\delta} P^\beta + i (\eta^{\gamma\rho} J^{\sigma\delta} + \eta^{\sigma\delta} J^{\rho\gamma} - \eta^{\rho\delta} J^{\sigma\gamma} - \eta^{\sigma\gamma} J^{\rho\delta}) P^{\nu} P^{\beta}
+\end{equation}
+
+Multiplicamos por los símbolos de Levi-Civita:
+
+\begin{equation}
+\epsilon_{\mu\nu\rho\sigma} \epsilon_{\alpha\beta\gamma\delta} (i (\eta^{\sigma\nu} P^\rho - \eta^{\rho\nu} P^\sigma) J^{\gamma\delta} P^\beta + i (\eta^{\gamma\rho} J^{\sigma\delta} + \eta^{\sigma\delta} J^{\rho\gamma} - \eta^{\rho\delta} J^{\sigma\gamma} - \eta^{\sigma\gamma} J^{\rho\delta}) P^{\nu} P^{\beta})
+\end{equation}
+
+Usamos la identidad de contracción de dos símbolos de Levi-Civita:
+
+\begin{equation}
+\epsilon_{\mu\nu\rho\sigma} \epsilon_{\alpha\beta\gamma\delta} = -\det
+\begin{vmatrix}
+\eta_{\mu\alpha} & \eta_{\mu\beta} & \eta_{\mu\gamma} & \eta_{\mu\delta} \\
+\eta_{\nu\alpha} & \eta_{\nu\beta} & \eta_{\nu\gamma} & \eta_{\nu\delta} \\
+\eta_{\rho\alpha} & \eta_{\rho\beta} & \eta_{\rho\gamma} & \eta_{\rho\delta} \\
+\eta_{\sigma\alpha} & \eta_{\sigma\beta} & \eta_{\sigma\gamma} & \eta_{\sigma\delta}
+\end{vmatrix}
+\end{equation}
+
+Finalmente, obtenemos:
+
+\begin{equation}
+[W_{\mu}, W_{\alpha}] = i \epsilon_{\mu\alpha\beta\gamma} P^{\beta} W^{\gamma}
+\end{equation}
+que es la misma expresión que queríamos obtener, pero con otros índices, cosa que no importa, porque son índices del convenio de Einstein, luego son 'mudos'.
+
+        \end{itemize}
+        
+        \item \textbf{Demuestra que }$\mathbf{-W_{\mu}W^{\mu}}$\textbf{ es un operador de Casimir del álgebra de Poincaré.}\\ \\
+        Para ver que $-W_{\mu}W^{\mu}$ es un operador de Casimir del álgebra de Poincaré debemos ver que conmute con los generadores del grupo, que son $P_{\nu}=\eta_{\mu}^{\nu}P^{\mu}$ y $J_{\rho\sigma}=\eta_{\alpha}^{\rho}\eta_{\beta}^{\sigma}J^{\alpha\beta}$.\\ \\
+        Primero veamos la forma extendida del operador de Casimir $-W_{\mu}W^{\mu}$:
+        \begin{equation}
+- W_{\mu} W^{\mu} = - \left( \frac{1}{2} \epsilon_{\mu\nu\rho\sigma} J^{\rho\sigma} P^{\nu} \right) \left( \frac{1}{2} \epsilon^{\mu\alpha\beta\gamma} J_{\beta\gamma} P_{\alpha} \right)
+\end{equation}
+
+Expandiendo los productos,
+
+\begin{equation}
+- W_{\mu} W^{\mu} = - \frac{1}{4} \epsilon_{\mu\nu\rho\sigma} \epsilon^{\mu\alpha\beta\gamma} J^{\rho\sigma} P^{\nu} J_{\beta\gamma} P_{\alpha}
+\end{equation}
+
+Usamos la identidad de contracción de los tensores de Levi-Civita:
+
+\begin{equation}
+\epsilon_{\mu\nu\rho\sigma} \epsilon^{\mu\alpha\beta\gamma} = - \det
+\begin{vmatrix}
+\eta_{\nu}^{\alpha} & \eta_{\nu}^{\beta} & \eta_{\nu}^{\gamma} \\
+\eta_{\rho}^{\alpha} & \eta_{\rho}^{\beta} & \eta_{\rho}^{\gamma} \\
+\eta_{\sigma}^{\alpha} & \eta_{\sigma}^{\beta} & \eta_{\sigma}^{\gamma}
+\end{vmatrix}
+\end{equation}
+
+Que se puede descomponer como:
+
+\begin{equation}
+\epsilon_{\mu\nu\rho\sigma} \epsilon^{\mu\alpha\beta\gamma} = - (\eta_{\nu}^{\alpha} \eta_{\rho}^{\beta} \eta_{\sigma}^{\gamma} - \eta_{\nu}^{\alpha} \eta_{\rho}^{\gamma} \eta_{\sigma}^{\beta} + \eta_{\nu}^{\beta} \eta_{\rho}^{\gamma} \eta_{\sigma}^{\alpha} - \eta_{\nu}^{\beta} \eta_{\rho}^{\alpha} \eta_{\sigma}^{\gamma} + \eta_{\nu}^{\gamma} \eta_{\rho}^{\alpha} \eta_{\sigma}^{\beta} - \eta_{\nu}^{\gamma} \eta_{\rho}^{\beta} \eta_{\sigma}^{\alpha})
+\end{equation}
+
+Sustituyendo en la ecuación anterior y realizando las contracciones:
+
+\begin{equation}
+- W_{\mu} W^{\mu} = P_{\mu} P^{\mu} J_{\rho\sigma} J^{\rho\sigma} - 2 P_{\mu} J^{\mu\nu} P^{\rho} J_{\nu\rho}
+\end{equation}
+        Luego, vemos con $P_{\nu}$:
+        \begin{equation}
+            \begin{array}{rl}
+                \brackets{-W_{\mu}W^{\mu},P_{\alpha}} &= -W_{\mu}\brackets{W^{\mu},P_{\alpha}}-\brackets{W_{\mu},P_{\alpha}}W^{\mu}=-\eta^{\mu\rho}\curlybraces{W_{\mu}\cancelto{0}{\brackets{W_{\rho},P_{\alpha}}}+\cancelto{0}{\brackets{W_{\mu},P_{\alpha}}W_{\rho}}}=0
+            \end{array}
+        \end{equation}
+        
+        Vamos con el otro:
+        \begin{equation}
+            \begin{array}{rl}
+                \brackets{-W_{\mu}W^{\mu},J_{\alpha\beta}} &= -W_{\mu}\brackets{W^{\mu},J_{\alpha\beta}}-\brackets{W_{\mu},J_{\alpha\beta}}W^{\mu}=-\eta^{\mu\rho}\curlybraces{W_{\mu}\brackets{W_{\rho},J_{\alpha\beta}}+\brackets{W_{\mu},J_{\alpha\beta}}W_{\rho}} \\ \\
+                 & =i\eta^{\mu\rho}\curlybraces{W_{\rho}\left(\eta_{\beta\mu}W_{\alpha}-\eta_{\alpha\mu}W_{\beta}\right)+\left(\eta_{\beta\mu}W_{\alpha}-\eta_{\alpha\mu}W_{\beta}\right)W_{\rho}}=\\ \\
+                 &=-i\curlybraces{\delta_{\beta}^{\rho}W_{\rho}W_{\alpha}-\delta_{\beta}^{\rho}W_{\rho}W_{\beta}+\delta^{\mu}_{\beta}W_{\alpha}W_{\mu}-\delta^{\mu}_{\alpha}W_{\beta}W_{\mu}}= \\ \\
+                 &=-i\curlybraces{\cancel{W_{\alpha}W_{\beta}}-\cancel{W_{\beta}W_{\alpha}}+\cancel{W_{\beta}W_{\alpha}}-\cancel{W_{\alpha}W_{\beta}}}=0
+            \end{array}
+        \end{equation}
+        \newpage
+        \item \textbf{Escribe explícitamente las distintas componentes de }$\mathbf{W_{\mu}}$\textbf{ en una representación del álgebra de Poincaré que es múltiplo de la identidad para las cuatro componentes }$\mathbf{P^{\mu}}$\textbf{, con autovalores }$\mathbf{\left(p^0,p^1,p^2,p^3\right)=\left(E,0,0,E\right)}$\textbf{, y espinorial $LH$ bajo las transformaciones de Lorentz que no cambian estos autovalores. Usando componentes de }$\mathbf{W_{\mu}}$\textbf{, define una base del álgebra a este \textit{little group} y encuentra explícitamente las constantes de estructura. Argumenta que este álgebra es isomorfa al álgebra del grupo Euclídeo de traslaciones y rotaciones en dimensión 2. Calcula }$\mathbf{-W_{\mu}W^{\mu}}$\textbf{. ¿Es múltiplo de la identidad? ¿Debería serlo?}
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
