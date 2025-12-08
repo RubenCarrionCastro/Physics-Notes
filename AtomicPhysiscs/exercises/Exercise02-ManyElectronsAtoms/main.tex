@@ -1,0 +1,353 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+\usepackage{feynmp-auto}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Minitest II. Sistemas atómicos de muchos electrones}}}
+\author{Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Noviembre 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Considere la aproximación de campo medio para el átomo de litio con carga nuclear apantallada.}\\ \\
+La aproximación de campo medio, también conocida como aproximación de campo central, es la base para el cálculo en átomos polielectrónicos. Esta aproximación consiste en tomar un potencial $V(r)$ con simetría esférica y centrado en el núcleo, sometido a cada electrón del átomo. \\ \\
+El Hamiltoniano será del tipo,
+\begin{equation}
+    H=-\frac{1}{2}\sum_{i=1}^N\nabla_i^2-\sum_{i=1}^N\frac{Z}{r_i}+\sum_{i<j=1}^N\frac{1}{r_{ij}}
+\end{equation}
+Pero en este caso, al tener muchos electrones, el apantallamiento que provocan es tan grande, que el término $1/r_{ij}$ siempre es del orden de $-Z/r_i$, por lo que no podremos aplicar teoría de perturbaciones. Para solucionar esto, se define un potencial de campo medio del tipo,
+\begin{equation}
+    V(r)=-\frac{Z}{r}+S(r)
+\end{equation}
+donde $S(r)$ es un potencial promedio, siendo el apantallamiento de la carga nuclear, a una distancia $r$ del núcleo, debido a la densidad de carga electrónica contenida en el volumen esférico de radio $r$.\\ \\
+Se imponen ciertas condiciones al potencial, que son
+\begin{itemize}
+    \item A muy cortas distancias, el potencial debe tender al potencial culombiano, por lo que no hay apantallamiento,
+    \begin{equation}
+        \lim_{r\to0}V(r)=-\frac{Z}{r}\Longrightarrow S(r\to0)\to0
+    \end{equation}
+    \item A muy largas distancias, el potencial debe tender al culombiano generado por una carga $Z-(N-1)$,
+    \begin{equation}
+        \lim_{r\to\infty}V(r)=-\frac{Z-(N-1)}{r}\Longrightarrow S(r\to\infty)\to\frac{N-1}{r}
+    \end{equation}
+\end{itemize}
+Así, el Hamiltoniano queda como,
+\begin{equation}
+    H=\underbrace{\sum_{i=1}^n\left(-\frac{\nabla_i^2}{2}-\frac{Z}{r_i}+S(r_i)\right)}_{H_C}+\underbrace{\sum_{i<j=1}^N\frac{1}{r_{ij}}-\sum_{i=1}^NS(r_i)}_{H_1}
+\end{equation}
+donde al contener $S(r_i)$ parte de la repulsión, el efecto de $H_1$ sobre los niveles será menor que el de la repulsión electrostática, por lo que $H_1\lll H_C$ y podemos aplicar teoría de perturbaciones.
+\begin{enumerate}
+\item \textbf{Usando el valor experimental de la energía de ionización dada en NIST Ionization Energies, determine la constante de apantallamiento.}\\ \\
+Nos piden calcular la constante de apantallamiento, $S$, del Litio a partir de la energía de ionización experimental, que es
+\begin{equation}
+    E_{exp}=-0.1981418715\text{ Hartree}
+\end{equation}
+siendo la energía del nivel fundamental. Como el Litio tiene tres electrones, la configuración del nivel fundamental es
+\begin{equation}
+    \mathfrak{C}(Li)=1s^22s
+\end{equation}
+cuya degeneración será
+\begin{equation}
+    deg(1s^22s)=\begin{pmatrix}
+        2\\
+        2
+    \end{pmatrix}\begin{pmatrix}
+        2\\
+        1
+    \end{pmatrix}=1\cdot2=2
+\end{equation}
+Como nos piden determinar la CONSTANTE de apantallamiento, tomaremos el potencial apantallado como sigue,
+\begin{equation}
+    V(r)=-\frac{Z_{eff}}{r}=-\frac{Z-S}{r}
+\end{equation}
+donde $S$ es la denominada \textit{constante de apantallamiento}. Esto es la aproximación más simple del desarrollo que hicimos anteriormente.\\ \\
+Como tenemos una capa llena y la otra semillena, podemos aproximar el Litio como un átomo hidrogenoide, con electrón en $n=2$, cuya energía será
+\begin{equation}
+    E_{n}=-\frac{Z_{eff}^2}{2n^2}=-\frac{(Z-S)^2}{2n^2}
+\end{equation}
+Por tanto, la energía del estado fundamental será,
+\begin{equation}
+    E_{2}=-\frac{(Z-S)^2}{2\cdot4}=-\frac{(Z-S)^2}{8}
+\end{equation}
+Entonces, la constante de apantallamiento queda
+\begin{equation}
+    S=Z-\sqrt{-8E_{11}}
+\end{equation}
+Luego, la constante de apantallamiento para el Litio $(Z=3)$ queda
+\begin{equation}
+    S=3-\sqrt{8\cdot0.1981418715}\approx 1.740978566
+\end{equation}
+Luego, la carga efectiva será
+\begin{equation}
+    Z_{eff}=Z-S\approx1.259021434
+\end{equation}
+\item \textbf{Calcule el tamaño medio del átomo.}\\ \\
+Para calcular el tamaño medio del Litio, debemos introducir las funciones de onda hidrogenoides, pues estamos en esta aproximación. Estas funciones de onda son separables, del tipo
+\begin{equation}
+    \Psi(q)=\phi(\vec{r})\chi(\sigma)
+\end{equation}
+donde $\chi(\sigma)$ es la función de onda de la parte de espín y $\phi(\vec{r})$ es la función de onda espacial, que tomando simetría esférica, podemos separar la parte radial de la angular, tal que
+\begin{equation}
+    \phi_{nlm}(\vec{r})=\mathscr{R}_{nl}(r)Y_{lm}(\theta,\varphi)
+\end{equation}
+Luego, el tamaño medio del átomo será $<r>_{nlm}$, siendo un valor esperado que podemos calcular usando
+\begin{equation}
+    <r>_{nlm}=\int_{-\infty}^{+\infty} d^3\vec{r}\phi_{nlm}^*(\vec{r})r\phi_{nlm}(\vec{r})=\int_{0}^{\infty} r^3\mathscr{R}_{nl}^*(r)\mathscr{R}_{nl}(r)dr\int_{\Omega'}Y_{lm}^*(\Omega)Y_{lm}(\Omega)d\Omega
+\end{equation}
+Como los armónicos esféricos siempre están normalizados, tendremos que
+\begin{equation}
+    \int_{\Omega'}|Y_{lm}(\Omega)|^2d\Omega=1
+\end{equation}
+Luego, solo tendremos que calcular la integral radial. Para ello, usamos la forma explícita de los $\mathscr{R}_{nl}(r)$, que es
+\begin{equation}
+    \mathscr{R}_{nl}(r)=N_{nl}\rho^le^{-\rho/2}\mathscr{L}_{n+l}^{2l+1}(\rho)
+\end{equation}
+con 
+\begin{equation}
+    \rho=\frac{2\mu c Z\alpha}{\hbar n}r
+\end{equation}
+donde podemos hacer un agrupamiento de constantes que represente un 'radio de Bohr', pero en lugar de usar la masa del electrón, usamos la masa reducida del átomo, tal que
+\begin{equation}
+    a=\frac{4\pi\epsilon_0\hbar^2}{\mu e^2}\Longrightarrow\rho=\frac{2Zr}{na}
+\end{equation}
+Luego, la expresión se reduce a
+\begin{equation}
+    R_{nl}(r)=N_{nl}\left(\frac{2Z}{na}r\right)^le^{-Zr/na}\mathscr{L}_{n+l}^{2l+1}\left(\frac{2Z}{na}r\right)
+\end{equation}
+con
+\begin{equation}
+    N_{nl}=\left(\frac{2Z}{na}\right)^{3/2}\sqrt{\frac{(n-l-1)!}{2n(n+l)!}}
+\end{equation}
+donde $\mathscr{L}_{n+l}^{2l+1}(\rho)$ son los polinomios asociados de Laguerre, que cumplen la propiedad
+\begin{equation}
+    \int_0^{\infty}\rho^{2l+3}e^{-\rho}\left[\mathscr{L}_{n+l}^{2l+1}(\rho)\right]^2d\rho=\frac{2n(n+l)!}{(n-l-1)!}\brackets{3n^2-l(l+1)}
+\end{equation}
+Resolvemos la integral, usando el cambio de variable de $\rho$, por lo que
+\begin{equation}
+    r=\frac{na}{2Z}\rho;\hspace{3mm}dr=\frac{na}{2Z}d\rho
+\end{equation}
+Luego queda,
+\begin{align}
+       \int\limits_0^{\infty}r^3|\mathscr{R}_{nl}(r)|^2dr= & N_{nl}^2\int\limits_0^{\infty}r^3\left(\frac{2Z}{na}r\right)^{2l}e^{-2Zr/na}\left[\mathscr{L}_{n+l}^{2l+1}\left(\frac{2Z}{na}r\right)\right]^2dr= \\  \\
+         = & N_{nl}^2\left(\frac{na}{2Z}\right)^3\frac{na}{2Z}\int_0^{\infty}\rho^3\rho^{2l}e^{-\rho}\left[\mathscr{L}_{n+l}^{2l+1}(\rho)\right]^2d\rho=\\ \\
+         =&\cancel{\left(\frac{2Z}{na}\right)^3}\frac{(n-l-1)!}{2n(n+l)!}\left(\frac{na}{2Z}\right)^{\cancel{4}}\int_0^{\infty}\rho^{2l+3}e^{-\rho}\left[\mathscr{L}_{n+l}^{2l+1}(\rho)\right]^2d\rho=\\ \\
+         =&\left(\frac{na}{2Z}\right)\cancel{\frac{(n-l-1)!}{2n(n+l)!}}\cancel{\frac{2n(n+1)!}{(n-l-1)!}}\left[3n^2-l(l+1)\right]=\\ \\
+         =&n^2\frac{a}{Z}\left\lbrace1+\frac{1}{2}\left[1-\frac{l(l+1)}{n^2}\right]\right\rbrace=<r>_{nlm}
+\end{align}
+
+Entonces, como nuestro electrón de valencia está en la capa $2s$, tendremos que el tamaño medio del átomo de litio es $<r>_{200}$, y para una mejor aproximación, usaremos $Z_{eff}$ como $Z$. Así queda,
+\begin{equation}
+    <r>_{200}=4\frac{a}{Z_{eff}}\frac{3}{2}\approx 4.7656\cdot a
+\end{equation}
+Calculamos $a$ para obtener el tamaño medio en Armstrong, usando la masa reducida del litio,
+\begin{equation}
+    a=\frac{m_e}{\mu}a_0
+\end{equation}
+donde $a_0=0.529 \mathring{A}$ es el radio de Bohr. Luego, usando que la masa atómica del Litio es $M_{Li}\approx6.94$ uma$=1.15241\times10^{-26}$ kg.
+\begin{equation}
+    \mu=\frac{m_e\cdot M_{Li}}{M_{Li}+m_e}=\frac{9.10938\times10^{-31}\cdot1.15241\times10^{-26}}{9.10938\times10^{-31}+1.15241\times10^{-26}}\approx 9.108659994\times10^{-31}\text{ kg}
+\end{equation}
+Entonces,
+\begin{equation}
+    a=\frac{9.10938\times10^{-31}}{9.108659994\times10^{-31}}0.529=0.5290418155\mathring{A}
+\end{equation}
+Luego, el tamaño medio del átomo de litio será
+\begin{equation}
+    <r>_{200}=4.7656\cdot0.5290418155\approx 2.5212\mathring{A}
+\end{equation}
+\item \textbf{Con ese campo medio, prediga los valores de las energías de ionización de los primeros niveles excitados y compare con los resultados experimentales, NIST atomic levels.}\\ \\
+Los primeros niveles excitados del átomo de Litio tienen las configuraciones siguientes,
+\begin{equation}
+    \mathfrak{C}(Li^*)=1s^22p;\hspace{3mm}\mathfrak{C}(Li^{2*})=1s^23s;\hspace{3mm}\mathfrak{C}(Li^{3*})=1s^23p;\hspace{3mm}\dots
+\end{equation}
+Usaremos la carga efectiva calculada antes, que es $Z_{eff}=1.259021434$, y la energía será
+\begin{equation}
+    E_n=-\frac{Z_{eff}^2}{2n^2}
+\end{equation}
+Entonces, esta energía no diferencia entre estados excitados de la misma capa, pues para las configuraciones $1s^22s$ y $1s^22p$, tendremos que $n=2$, obteniendo la misma energía que la fundamental para el primer estado excitado, que es $E_2=-0.1981418715$ Hartree. Para el segundo y tercer estado excitado también tendremos la misma energía, pues $n=3$, siendo $E_3=-0.08806305396$ Hartree.\\ \\
+Las energías de los estados excitados del Litio según el NIST son las siguientes,
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{energias.png}
+    \captionof{table}{Tabla del NIST de la energía de los primeros estados excitados del Litio.}
+    \label{fig1}
+\end{Figura}
+Esta tabla toma como referencia la energía del estado fundamental, por lo que para comparar la energía de forma correcta con las que hemos obtenido, debemos sumarle a la energía de los estados excitados la energía del estado fundamental, obteniendo
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+\hline
+       Configuración & Nivel (Hartree) & Valor obtenido (Hartree) \\ \hline
+        $1s^22s$ & $-0.198121871$ & $-0.198121871$ \\ 
+        & & \\
+        $1s^22p$ & $\begin{matrix}
+            -0.130215771\\
+            -0.130214271
+        \end{matrix}$ & $-0.1981418715$\\ 
+        & & \\
+        $1s^23s$ & $-0.074161671$ & $-0.08806305396$\\ 
+        & & \\
+        $1s^23p$ & $\begin{matrix}
+            -0.057215471\\
+            -0.057215471
+        \end{matrix}$ & $-0.08806305396$\\ \hline
+    \end{tabular}
+\end{center}
+Vemos que los valores obtenidos difieren bastante con los valores experimentales y además no tienen en cuenta la $l$.
+\item \textbf{Usando los valores experimentales, refine su modelo de campo medio considerando un apantallamiento diferente en cada subcapa \textit{nl}, }$\mathbf{Z-S_{nl}.}$\textbf{ Determine el valor de cada constante de apantallamiento y discuta sus resultados.}\\ \\
+Para hacer este apartado, solo vamos a considerar las energías experimentales sin desdoblamiento en $J$ (las que pone 'term'), pues para ello debemos hacer otro tratamiento más fino.\\ \\
+Usando el mismo razonamiento que el usado en el apartado (a), pero tomando $E_{nl}$, tendremos las siguientes constantes de apantallamiento para cada configuración,
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        Configuración & Energía Exp. (Hartree) & $S_{nl}$ & $Z_{eff}^{(nl)}$ \\ \hline
+        $1s^22s$ & $-0.198121871$ & 1.740978566 & 1.259021434 \\ 
+        $1s^22p$ & $-0.130214771$ & 1.979354044 & 1.020645956 \\ 
+        $1s^23s$ & $-0.074161671$ & 1.844616913 & 1.553830387 \\ 
+        $1s^23p$ & $-0.057215471$ & 1.985170715 & 1.014829285 \\ \hline
+    \end{tabular}
+\end{center}
+donde hemos usado que
+\begin{equation}
+    S_{nl}=Z-n\sqrt{-2E_{nl}}
+\end{equation}
+\item \textbf{Calcule el tamaño del átomo.}
+Usando el tratamiento anterior, tenemos que el tamaño del átomo es
+\begin{equation}
+   <r>_{nlm}=n^2\frac{a}{Z_{eff}^{(nl)}}\left\lbrace1+\frac{1}{2}\left[1-\frac{l(l+1)}{n^2}\right]\right\rbrace
+\end{equation}
+con $a=0.52904418155\mathring{A}$.\\ \\
+Luego, el tamaño medio del átomo para cada estado excitado será,
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+        Configuración &  $Z_{eff}^{(nl)}$ & $<r>_{nlm}$ $(\mathring{A})$\\ \hline
+        $1s^22s$ &  1.259021434 & 2.5212 \\ 
+        $1s^22p$ &  1.020645956 & 2.5917 \\ 
+        $1s^23s$ &  1.155383087 & 6.1816 \\ 
+        $1s^23p$ &  1.014829285 & 6.5164 \\ \hline
+    \end{tabular}
+\end{center}
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

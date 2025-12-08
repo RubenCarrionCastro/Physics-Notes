@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+\usepackage{feynmp-auto}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Minitest I. Sistemas atómicos de dos electrones}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Septiembre 2025}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Escribe la función de onda 'ortho' de un sistema atómico de dos electrones en su estado fundamental. Justifica la respuesta.}\\ \\
+El sistema de dos electrones posee dos coordenadas generalizadas, $(q_1,q_2)$, pertenecientes a cada uno de los electrones. Por tanto, tendremos la función de onda total siguiente,
+\begin{equation}
+    \Psi(q_1,q_2)
+\end{equation}
+Estas coordenadas generalizadas tratan todos los grados de libertad de cada uno de los electrones, que serán su posición y su espín, tal que $q_i=(\vec{r}_i,\sigma_i)$, por tanto
+\begin{equation}
+    \Psi(q_1,q_2)=\Psi(\vec{r}_1,\sigma_1,\vec{r}_2,\sigma_2)=\Psi(\vec{r}_1,\vec{r}_2,\sigma_1,\sigma_2)
+\end{equation}
+Como el Hamiltoniano de un sistema de dos electrones es el siguiente,
+\begin{equation}
+    H=-\frac{1}{2}\sum_{i=1}^2\nabla_i^2-\sum_{i=1}^2\frac{Z}{r_i}+\frac{1}{r_{12}}
+\end{equation}
+vemos que no tenemos términos cruzados de la posición con el espín, por tanto, la función de onda total será factorizable en una parte espacial y otra de espín, tal que
+\begin{equation}
+    \Psi(q_1,q_2)=\phi(\vec{r}_1,\vec{r}_2)\chi(\sigma_1,\sigma_2)\equiv\ket{\Psi}=\ket{\phi}\otimes\ket{\chi}
+\end{equation}
+donde
+\begin{equation}\begin{array}{l}
+\ket{\phi}=\ket{n_1,l_1,m_{l_1};n_2,l_2,m_{l_2}}=\ket{n_1,l_1,m_{l_1}}\ket{n_2,l_2,m_{l_2}}\ket{n_1,l_1,m_{l_1}}\otimes\ket{n_2,l_2,m_{l_2}}\\ \\
+\ket{\chi}=\ket{s_1,m_{s_1};s_2,m_{s_2}}=\ket{s_1,m_{s_1}}\ket{s_2,m_{s_2}}=\ket{s_1,m_{s_1}}\otimes\ket{s_2,m_{s_2}}\equiv\ket{S,M_S}
+\end{array}
+\end{equation}
+o bien
+\begin{equation}\begin{array}{l}
+\phi(\vec{r}_1,\vec{r}_2)=\phi_{n_1l_1m_{l_1}}(\vec{r}_1)\phi_{n_2l_2m_{l_2}}(\vec{r}_2)\\ \\
+\chi(\sigma_1,\sigma_2)=\chi_{s_1m_{s_1}}(\sigma_1)\chi_{s_2m_{s_2}}(\sigma_2)
+\end{array}
+\end{equation}
+Como tenemos un sistema de dos electrones de espín $s_1=s_2=1/2$, tendremos un sistema de dos fermiones, por tanto, por el Teorema de Espín-Estadística, tendremos que la función de onda total debe ser completamente antisimétrica y por tanto las simetrías de la función de onda espacial y de espín deben ser opuestas, donde $sym(L)=(-1)^L$ y $sym(S)=(-1)^{S+1}$, siempre que ambos electrones ocupen orbitales equivalentes (acoplamiento LS).\\ \\
+Como tenemos $s_1=s_2=1/2$, con $m_{s_1}=m_{s_2}=\curlybraces{-1/2,+1/2}$, tendremos que $S=s_1\oplus s_2$ y aplicando la regla de adición, $|s_1-s_2|\leq S\leq s_1+s_2$, por tanto, $S=\curlybraces{0,1}$.\\ \\
+El estado 'ortho' se define como la función de onda total con parte espacial antisimétrica, por tanto, la parte de espín debe ser simétrica, tal que
+\begin{equation}
+    \ket{S,M_S}=\frac{1}{\sqrt{2}}\brackets{\ket{1/2,+1/2}\ket{1/2,-1/2}\pm\ket{1/2,-1/2}\ket{1/2,+1/2}}=\frac{1}{\sqrt{2}}\brackets{\ket{\uparrow\downarrow}\pm\ket{\downarrow\uparrow}}
+\end{equation}
+Luego, la parte simétrica será para $sym(S)=(-1)^{S+1}=(+1)$, luego $S=1$, por tanto, tendremos el triplete,
+\begin{equation}
+    \ket{1,1}=\ket{\uparrow\uparrow};\hspace{4mm} \ket{1,0}=\frac{1}{\sqrt{2}}\brackets{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}};\hspace{4mm} \ket{1,-1}=\ket{\downarrow\downarrow}
+\end{equation}
+Por otro lado, la parte antisimétrica de la función de onda espacial será,
+\begin{equation}
+    \phi^-(\vec{r}_1,\vec{r}_2)=\frac{1}{\sqrt{2}}\brackets{\phi_{n_1l_1m_{l_1}}(\vec{r}_1)\phi_{n_2l_2m_{l_2}}(\vec{r}_2)-\phi_{n_2l_2m_{l_2}}(\vec{r}_1)\phi_{n_1l_1m_{l_1}}(\vec{r}_2)}
+\end{equation}
+Como nos piden la función de onda total 'ortho' del estado fundamental, que tiene la configuración $1s^2$, tendremos que
+\begin{equation}
+    n_1=n_2=1;\hspace{4mm}l_1=l_2=0;\hspace{4mm}m_{l_1}=m_{l_2}=0
+\end{equation}
+Luego,
+\begin{equation}
+    \phi^-_{(1s^2)}(\vec{r}_1,\vec{r}_2)=\frac{1}{\sqrt{2}}\brackets{\phi_{100}(\vec{r}_1)\phi_{100}(\vec{r}_2)-\phi_{100}(\vec{r}_1)\phi_{100}(\vec{r}_2)}=0
+\end{equation}
+Por tanto,
+\begin{equation}
+    \Psi_{(1s^2)}^{ortho}(q_1,q_2)=\phi^-_{(1s^2)}(\vec{r}_1,\vec{r}_2)\chi_{(1s^2)}^+(\sigma_1,\sigma_2)=0
+\end{equation}
+Por tanto, la función de onda total 'ortho' del estado fundamental del sistema de dos electrones se anula y solo existe la función 'para', cosa que tiene sentido, pues para la función 'ortho' en el estado fundamental tenemos dos estados de espín del triplete que hacen que ambos electrones tengan exactamente los mismos números cuánticos, pues para el estado fundamental $n_1=n_2=1$, $l_1=l_2=0$ y $m_{l_1}=m_{l_2}=0$, luego tienen los mismos números cuánticos espaciales, entonces para los estados $\ket{1,1}$ y $\ket{1,-1}$ también se cumplen que $s_1=s_2=1/2$ y $m_{s_1}=m_{s_2}$, obteniendo dos estados donde aparecen fermiones con los mismos números cuánticos, incumpliendo el Principio de Exclusión de Pauli y como los estados del triplete tienen la misma probabilidad de existir es lógico que la parte espacial se anule para que este estado total no sea posible.\\ \\
+La única solución física posible para el estado fundamental será la 'para', que viene dada por
+\begin{equation}
+    \Psi^{para}_{(1s^2)}(q_1,q_2)= \underbrace{\phi_{1s}(\mathbf r_1)\phi_{1s}(\mathbf r_2)}_{\text{espacial simétrica}} \cdot \underbrace{\frac{1}{\sqrt2}\left(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}\right)}_{\text{singlete, }S=0}
+\end{equation}
+Además, sí existirán estados 'ortho' para estados excitados de átomos de dos electrones, como para la configuración $1s2s$, pues ya ambos electrones no tendrán los mismos números cuánticos al ser $1=n_1\neq n_2=2$. 
+\newpage
+\item \textbf{El átomo de helio neutro mantendrá sus dos electrones ligados siempre que:}
+\begin{enumerate}
+    \item $\mathbf{E<0}$\textbf{ u.a} \item $\mathbf{E<E_0(He^+)}$ \item $\mathbf{E<E_0(He^{++})}$ \item \textbf{Ninguna de las anteriores}
+\end{enumerate}
+\textbf{Justifica la respuesta}\\ \\
+La respuesta más correcta sería la $(b)$, pues si llegamos a la energía del estado fundamental del átomo $He^+$, $E_0(He^+)=-2$ u.a, estamos llegando a la energía mínima donde el ión $He^+$ es estable, luego estamos desligando uno de los dos electrones del $He$. La respuesta $(a)$ no es cierta del todo, pues aunque es verdad que necesitamos que $E<0$ u.a, debe ser menor que $E_0(He^+)$ para que tengamos los electrones ligados. La $(c)$ tampoco es cierta, porque es cierto que necesitamos que $E<E_0(He^{++})$, pero sabemos que $E_0(He^{+})<E_0(He^{++})$, por tanto si solo decimos que $E<E_0(He^{++})$ puede seguir teniendo un electrón libre al poder estar en el rango $E\in\brackets{E_0(He^{+}),E_0(He^{++})}$. Además, vemos que el ión $He^{++}$ tiene ambos electrones libres, por tanto $E_0(He^{++})=0$ u.a, pues por encima ya tendremos un espectro continuo completo.  
+\begin{equation}
+    E<E_0(He^+)=-2\text{ u.a}<E_0(He^{++})=0\text{ u.a}
+\end{equation}
+En conclusión, la $(b)$ es la más correcta. 
+
+\item \textbf{El estado fundamental del ión }$\mathbf{H^-}$\textbf{ es estable y está formado por 2 electrones. Justifica que }$\mathbf{E<-0.5}$\textbf{ u.a. ¿La energía de un electrón ligado es mayor o menor que la de un electrón libre?}\\ \\
+Sabemos que la energía de los átomos hidrogenoides es
+\begin{equation}
+    E_n=-\frac{Z^2}{2n^2}\text{ (u.a)}
+\end{equation}
+Luego, la energía fundamental del hidrógeno neutro es $E_0(H)=-0.5$ u.a, por tanto, si tenemos el sistema de dos electrones $H^-$, para que se mantenga estable y el electrón extra no se desligue obteniendo el $H$ neutro, la condición de estabilidad es $E_0(H^-)<-0.5$ u.a. Por tanto, $E<-0.5$ u.a para que el ión $H^-$ sea estable.\\ \\
+Sabemos que la energía de un electrón libre la podemos tomar como energía de referencia, teniendo que $E_{libre}=0$ u.a. La energía del estado fundamental del hidrógeno neutro es $E_0(H)=-0.5$ u.a y la del ión $H^-$ es $E_0^{exp}(H^-)=-0.52746$ u.a, por tanto, la energía de un electrón ligado será,
+\begin{equation}
+    E_{ligado}=E_0(H^-)-E_0(H)=-0.02746\text{ u.a}< 0\text{ u.a}
+\end{equation}
+Por tanto, la energía de un electrón ligado será menor que la de un electrón libre.\\ \\
+De hecho, este razonamiento puede hacerse sin saber el valor exacto de $E_0(H^-)$, pues sabiendo que $E(H^-)<-0.5$ u.a, tenemos que la energía de $H^-$ debe ser siempre menor que $E_0(H)=-0.5$ u.a, por tanto la resta $E_0(H^-)-E_0(H)$ será siempre un número negativo, luego será $E_{ligado}<0=E_{libre}$.
+\newpage
+\item \textbf{En el estudio del átomo de 2 electrones, al introducir el término repulsivo, ¿qué degeneraciones se rompen? Explica brevemente las degeneraciones.}\\ \\
+Las degeneraciones que se rompen al introducir el término repulsivo, $H'=1/r_{12}$, la será la degeneración de intercambio, pues aparece una integral de intercambio $K_{ab}$ y se separan el singlete del triplete de espín,
+\begin{equation}
+    E_{sing}=\epsilon_a+\epsilon_b+J_{ab}+K_{ab};\hspace{4mm}E_{trip}=\epsilon_a+\epsilon_b+J_{ab}-K_{ab}
+\end{equation}
+y la degeneración accidental, que se rompe en $l$ (y configuraciones dentro del mismo $n$), pues la energía ya no va a depender solo de $n$. Además, para configuraciones con $l_1=l_2$ ó $l_1\neq l_2$ que permiten varios $L$, el término repulsivo también rompe la degeneración en $L$, de modo que, por ejemplo para $p^2$,
+\begin{equation}
+    E(^3P)<E(^1D)<E(^1S)
+\end{equation}
+Las degeneraciones que permanecen al introducir el término repulsivo son las de $M_S$, $(2S+1)$, y de $M_L$, $(2L+1)$, siempre que no introduzcamos la interacción spín-órbita.
+
+
+
+
+\end{enumerate}
+
+\end{document}
