@@ -1,0 +1,75 @@
+%SECCION 2
+\section{Introducción} % Main chapter title
+\label{cap3-sec2} 
+%------------------------------------------------------------------------------
+
+Tal y como dice la frase de Albert Einstein, en este capítulo vamos a aprender las 'reglas del juego' de la Relatividad General; estas son la Geometría Diferenciable (sí, es Diferenciable, no Diferencial).\\ \\
+Para poder abordar este capítulo, es recomendable hacer una lectura del \textit{\textbf{Apéndice B. Espacios topológicos}}, pues usaremos bastantes conceptos de Topología que son recomendables recordar, de todas formas, volveremos a escribir las definiciones y Teoremas necesarios.
+\subsection{Prefacio}
+El espacio euclídeo y lorentziano tienen propiedades especiales. Dados $p$ y $q$, entonces $(p+q)$ también son puntos del espacio, luego, el espacio euclídeo y lorentziano son espacios vectoriales. Es decir, siempre podemos escribir
+\[x_p^{\mu}\vec{e}_{\mu}+x_q^{\mu}\vec{e}_{\mu}=(x_p^{\mu}+x_q^{\mu})\vec{e}_{\mu}\]
+donde $\vec{e}_{\mu}$ son los vectores de la base ortonormal del espacio vectorial,\\ \\
+En coordenadas curvilíneas esta propiedad se pierde.
+\begin{example}
+    Las coordenadas cilíndricas en dos dimensiones tenemos,
+    \[\begin{array}{cc}
+        x^1=r\cos\theta; & x^2=r\sin\theta \\
+        r=\sqrt{x_1^2+x_2^2}; & \theta=\arctan\left(\frac{x_2}{x_1}\right)
+    \end{array}\]
+    Vemos que $(p+q)$ ya no pertenece al espacio 'padre' en general, con $r_p+r_q$ ó $\theta_p+\theta_q$.
+\end{example}
+Por suerte, los desplazamientos infinitesimales sí forman un espacio vectorial. Es decir, el espacio tangente a cada punto de un espacio curvilíneo es un espacio vectorial.\\ \\
+Veamos cómo comparar dos puntos distintos de un espacio curvilíneo, pertenecientes a distintos espacios tangentes,
+\[\begin{array}{c}
+     dx^1=\cos\theta dr-r\sin\theta d\theta  \\
+     dx^2=\sin\theta dr+r\cos\theta d\theta 
+\end{array}\]
+Estos elementos forman un espacio vectorial. Tomando el diferencial de una función,
+\[df=\frac{\partial f}{\partial x^1}dx^1+\frac{\partial f}{\partial x^2}dx^2=\frac{\partial f}{\partial r}dr+\frac{\partial f}{\partial\theta}d\theta\]
+Por tanto, podemos hacer una identificación de las derivadas como los vectores y los diferenciables como los elementos de la base, tal que
+\[\begin{array}{rl}
+     df&=\frac{\partial f}{\partial x^1}dx^1+\frac{\partial f}{\partial x^2}dx^2=(\partial_{\mu}f)\vec{e}^{\mu}  \\
+     & =\frac{\partial f}{\partial r}dr+\frac{\partial f}{\partial\theta}d\theta=(\Tilde{\partial}_{\mu}f)\vec{\tilde{e}}^{\mu}
+\end{array}\]
+Identificamos $dx^{\mu}$ con una base de vectores covariantes y $\partial_{\mu}f$ con las componentes de la base. Todos los $d\vec{f}$ cumplen las propiedades de los elementos de un espacio vectorial.\\ \\
+Las leyes de transformación son,
+\[x^{\mu}\equiv x^{\mu}(\tilde{x});\hspace{5mm}dx^{\mu}\equiv\frac{\partial x^{\mu}}{\partial\tilde{x}^{\mu}}d\tilde{x}^{\mu}\]
+por tanto,
+\[\vec{e}^{\mu}\equiv\frac{\partial x^{\mu}}{\partial\tilde{x}^{\mu}}\vec{\tilde{e}}^{\mu}\]
+Entonces, las coordenadas transformarán como,
+\begin{equation}
+    \partial_{\mu}f=\frac{\partial\tilde{x}^{\nu}}{\partial x^{\mu}}\tilde{\partial}_{\nu}f
+\end{equation}
+Por tanto,
+\[\partial_{\mu}fdx^{\mu}=\left(\frac{\partial\tilde{x}^{\nu}}{\partial x^{\mu}}\tilde{\partial}_{\nu}f\right)\left(\frac{\partial x^{\mu}}{\partial\tilde{x}^{\sigma}}d\tilde{x}^{\sigma}\right)=\underbrace{\frac{\partial\tilde{x}^{\nu}}{\partial x^{\mu}}\frac{\partial x^{\mu}}{\partial\tilde{x}^{\sigma}}}_{\delta_{\sigma}^{\nu}}\tilde{\partial}_{\nu}fd\tilde{x}^{\sigma}f=\tilde{\partial}_{\mu}fd\tilde{x}^{\mu}\]
+Por tanto, tenemos que $\partial_{\mu}fdx^{\mu}=\tilde{\partial}_{\mu}fd\tilde{x}^{\mu}$ es covariante. Luego, para las coordenadas curvilíneas tenemos,
+\[\begin{array}{c}
+     \partial_r=\frac{\partial x^1}{\partial r}\partial x^1+\frac{\partial x^2}{\partial r}\partial x^2=\cos\theta\partial x^1+\sin\theta\partial x^2 \\
+     \partial_{\theta}=\frac{\partial x^1}{\partial\theta}\partial x^1+\frac{\partial x^2}{\partial \theta}\partial x^2=-r\sin\theta\partial x^1+r\cos\theta\partial x^2 
+\end{array}\]
+Así, el elemento de línea cambia como,
+\[ds^2=(dx^1)^2+(dx^2)^2=dr^2+r^2d\theta^2=(d\tilde{x}^1)^2+(\tilde{x}^1)^2(d\tilde{x}^2)^2\]
+Luego, antes teníamos que $\delta_{\mu\nu}=diag(1,1)$, mientras que ahora tenemos $g_{\mu\nu}=diag(1,r^2)$. Así, la métrica transforma según,
+\begin{equation}
+    \delta_{\mu\nu}=\frac{\partial x^{\sigma}}{\partial\tilde{x}^{\mu}}\frac{\partial x^{\rho}}{\partial\tilde{x}^{\nu}}\tilde{g}_{\sigma\rho}
+\end{equation}
+Por tanto, la métrica es un tensor con dos índices covariantes. A partir de ahora, en coordenadas curvilíneas, identificaremos $\partial_{\mu}$ con una base de vectores contravariantes, es decir,
+\[\partial_{\mu}\longleftrightarrow\vec{e}_{\mu}\]
+tal que $\vec{v}=v^{\mu}\vec{e}_{\mu}=\partial_{\mu}v^{\mu}$.\\ \\
+Ahora para derivar vectores deberemos tener cuidado. Notamos que si estamos en el espacio euclídeo con un vector $\vec{v}$ en coordenadas cartesianas, entonces derivamos como,
+\[d(\vec{v})=\partial_{\mu}(v^{\nu}\vec{e}_{\nu})dx^{\mu}=\left[(\partial_{\mu}v^{\nu})\vec{e}_{\nu}+v^{\nu}\cancelto{0}{(\partial_{\mu}\vec{e}_{\nu})}\right]dx^{\mu}=(\partial_{\mu}v^{\nu})\vec{e}_{\nu}dx^{\mu}\]
+donde hemos tachado el segundo sumando, pues en coordenadas cartesianas los vectores de la base son constantes, por lo que la derivada es nula.\\ \\
+Ahora vamos a derivar en coordenadas curvilíneas, tal que
+\[\begin{array}{rl}
+    d(\vec{\tilde{v}}) & =\tilde{\partial}_{\mu}(\tilde{v}^{\nu}\vec{\tilde{e}}_{\nu})d\tilde{x}^{\mu}=\left[(\tilde{\partial}_{\mu}\tilde{v}^{\nu})\vec{\tilde{e}}_{\nu}+\tilde{v}^{\nu}(\tilde{\partial}_{\mu}\vec{\tilde{e}}_{\nu})\right]d\tilde{x}^{\mu}=\left[(\tilde{\partial}_{\mu}\tilde{v}^{\nu})\vec{\tilde{e}}_{\nu}+\tilde{v}^{\nu}\Gamma_{\mu\nu}^{\sigma}\vec{\tilde{e}}_{\sigma}\right]d\tilde{x}^{\mu}=\left(\nabla_{\mu}\tilde{v}^{\nu}\right)\vec{\tilde{e}}_{\nu}d\tilde{x}^{\mu}
+\end{array}\]
+donde $\Gamma_{\mu\nu}^{\sigma}$ son los símbolos de Christoffel y $\nabla_{\mu}$ es la derivada covariante que satisface:
+\begin{enumerate}
+    \item $\nabla_{\mu}g_{\nu\sigma}=0$
+    \item $\Gamma_{\nu\sigma}^{\mu}=\frac{1}{2}g^{\mu\sigma}\left[g_{\sigma\nu,\rho}+g_{\sigma\rho,\nu}-g_{\rho\nu,\sigma}\right]$, con $g_{\sigma\nu,\rho}=\tilde{\partial}_{\rho}g_{\sigma\nu}$
+\end{enumerate}
+Por tanto, la derivada covariante se define como,
+\begin{equation}
+    \nabla_{\mu}v^{\nu}=\partial_{\mu}v^{\nu}+\Gamma_{\mu\sigma}^{\nu}v^{\sigma}
+\end{equation}
+donde usamos métricas planas en espacios curvilíneos, por lo que no requerimos del uso de variedades (esto lo veremos más adelante).

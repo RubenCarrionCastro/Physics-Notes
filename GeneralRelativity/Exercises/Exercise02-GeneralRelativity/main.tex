@@ -1,0 +1,534 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+% \usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr} % Headers and footers
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+ % All pages have headers and footers
+% Estilo de encabezado personalizado
+\fancyhf{} % Limpia todos los campos de encabezado y pie de página
+\renewcommand{\headrulewidth}{0pt} % Elimina la línea horizontal en el encabezado
+\fancyhead[RO,LE]{\thepage} % Números de página en el encabezado, en posición derecha en páginas impares y en posición izquierda en páginas pares
+
+% Configuración para las páginas iniciales de capítulos
+\fancyhead[R]{Rubén Carrión Castro}
+\fancyhead[L]{Entregable II}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\vvector}[4]{\begin{pmatrix}#1\\ #2\\ #3\\#4\end{pmatrix}}
+\newcommand{\covector}[4]{\begin{pmatrix}#1 & #2 & #3 & #4\end{pmatrix}}
+\newcommand{\abss}[1]
+{\begin{vmatrix}#1\end{vmatrix}^2}
+\newcommand{\upmunu}[2]{#1^{\mu}#2^{\nu}}
+\newcommand{\upnumu}[2]{#1^{\nu}#2^{\mu}}
+\newcommand{\downmunu}[2]{#1_{\mu}#2_{\nu}}
+\newcommand{\downnumu}[2]{#1_{\nu}#2_{\mu}}
+\newcommand{\prima}[1]{#1'}
+\newcommand{\ricci}[2]{\mathcal{R}_{#1 \rho #2}^{\rho}=\partial_{\lambda}\Gamma_{#1 #2}^{\lambda}-\partial_{#2}\Gamma_{#1 \lambda}^{\lambda}+\Gamma_{#1 #2}^{\sigma}\Gamma_{\sigma\lambda}^{\lambda}-\Gamma_{#1 \lambda}^{\sigma}\Gamma_{\sigma #2}^{\lambda}}
+
+\newcommand{\riccis}[4]{\partial_{#3}\Gamma_{#1 #2}^{#3}-\partial_{#2}\Gamma_{#1 #3}^{#3}+\Gamma_{#1 #2}^{#4}\Gamma_{#4 #3}^{#3}-\Gamma_{#1 #3}^{#4}\Gamma_{#4 #2}^{#3}}
+
+\newcommand{\ricciss}[5]{\partial_{#3}\Gamma_{#1 #2}^{#3}-\partial_{#2}\Gamma_{#1 #3}^{#3}+\Gamma_{#1 #2}^{#4}\Gamma_{#4 #3}^{#3}-\Gamma_{#1 #3}^{#4}\Gamma_{#4 #2}^{#3}+\Gamma_{#1 #2}^{#5}\Gamma_{#5 #3}^{#3}-\Gamma_{#1 #3}^{#5}\Gamma_{#5 #2}^{#3}}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Entregable II. Relatividad General}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Octubre 2024}
+\begin{document}
+\maketitle
+\setcounter{page}{1}
+\pagestyle{fancy}
+\begin{enumerate}
+\item \textbf{Considera el sistema gravedad-materia dado por la acción:}
+\[\mathbf{S=\int d^4x\sqrt{-g}\left(\frac{1}{2\kappa}\mathcal{R}-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\right)}\]
+\textbf{donde }$\mathbf{\kappa=8\pi G}$\textbf{, }$\mathcal{R}$\textbf{ el escalar de Ricci, }$\mathbf{F_{\mu\nu}}$\textbf{ es el tensor electromagnético, y la métrica en coordenadas cartesianas viene dada por:}
+\[\mathbf{ds^2=(1+\kappa z^2)dt^2-(1-\kappa y^2)dx^2-(1-\kappa y^2)^{-1}dy^2-(1+\kappa z^2)^{-1}dz^2}\]
+\begin{enumerate}
+    \item \textbf{¿Cuáles son los vectores de Killing asociados a esta métrica?}
+    \item \textbf{Calcula el tensor de Ricci y el escalar de curvatura.}
+    \item \textbf{Resuelve las ecuaciones de Einstein y calcula las componentes no nulas del tensor electromagnético.}
+\end{enumerate}
+\end{enumerate}
+\newpage
+Tenemos la métrica
+\begin{equation}
+ds^2=(1+\kappa z^2)dt^2-(1-\kappa y^2)dx^2-(1-\kappa y^2)^{-1}dy^2-(1+\kappa z^2)^{-1}dz^2
+\label{ec1}
+\end{equation}
+Por tanto, sabiendo que $ds^2=g_{\mu\nu}dx^{\mu}dx^{\nu}$, el tensor métrico vendrá dado por
+\begin{equation}
+    g_{\mu\nu}\equiv\begin{pmatrix}
+        1+\kappa z^2 & 0 & 0 & 0 \\
+        0 & -(1-\kappa y^2) & 0 & 0 \\
+        0 & 0 & -(1-\kappa y^2)^{-1} & 0 \\
+        0 & 0 & 0 & -(1+\kappa z^2)^{-1}
+    \end{pmatrix}
+\end{equation}
+donde vemos que es una matriz diagonal, y por tanto, $g^{\mu\nu}=1/g_{\mu\nu}$.
+\subsubsection*{Apartado (a)}
+
+ Sabemos que la ecuación de Killing es
+\begin{equation}
+\nabla_\mu k^{\nu}+\nabla_\nu k^{\mu}=0
+\label{ec2}
+\end{equation}
+que viene de la ecuación
+\begin{equation}
+\mathscr{L}_kg_{\mu\nu}=k^{\rho}\partial_{\rho}g_{\mu\nu}+g_{\rho\nu}\partial_{\mu}k^{\rho}+g_{\mu\rho}\partial_{\nu}k^{\rho}\equiv0
+\label{ec3}
+\end{equation}
+donde para llegar a (\ref{ec2}) hemos asumido que la variedad está equipada con la conexión de Levi-Civita. Además, sabemos que los campos vectoriales que solucionen la ecuación (\ref{ec2}) serán los denominados vectores de Killing.\\ \\
+Pero resolver esto aplicando la ecuación nos lleva a resolver un sistema de mínimo 10 EDPs, por lo que vamos a intentar buscar otra forma. Analicemos la métrica para ello,
+\[ds^2=\underbrace{(1+\kappa z^2)dt^2-(1+\kappa z^2)^{-1}dz^2}_{(1)}-\underbrace{(1-\kappa y^2)dx^2-(1-\kappa y^2)^{-1}dy^2}_{(2)}\]
+Haciendo en (1) el cambio de variable,
+\[z=r;\hspace{5mm}\kappa=\frac{1}{R_0}\Longrightarrow(1)=\left(1+\frac{r^2}{R_0^2}\right)dt^2-\left(1+\frac{r^2}{R_0^2}\right)^{-1}dz^2\]
+tenemos la métrica de anti-De Sitter dos-dimensional.\\
+Para encontrar el cambio de variable en (2), debemos resolver la ecuación diferencial siguiente,
+\[\alpha\equiv\int\frac{dy}{\sqrt{1-\kappa y^2}}=\frac{\arcsin(\sqrt{\kappa}y)}{\sqrt{\kappa}}+C\]
+tomando $C=0$ por simplicidad, tenemos el cambio de variable,
+\[y=\frac{\sin(\sqrt{\kappa}\alpha)}{\sqrt{\kappa}}\Longrightarrow(1-\kappa y^2)=(1-\sin^2(\sqrt{\kappa}\alpha))=\cos^2(\sqrt{\kappa}\alpha)\]
+Por tanto,
+\[(2)=-\cos^2(\sqrt{\kappa}\alpha)d\varphi^2-d\alpha^2\]
+Redefinimos $\theta=\sqrt{\kappa}\alpha+\frac{\pi}{2}$, así $\cos(\sqrt{\kappa}\alpha)=\sin\theta$ y $d\theta=\sqrt{kappa}d\alpha$. Así tenemos,
+\[y=\frac{\cos\theta}{\sqrt{\kappa}}\Longrightarrow 1-\kappa y^2=1-\cos^2\theta=\sin^2\theta\]
+y por tanto, tomando $x=\sqrt{\kappa}\varphi$, tenemos
+\[(2)=-\kappa(\sin^2\theta d\varphi^2+d\theta^2)\]
+ siendo la métrica de una esfera bidimensional de radio unidad.\\ \\
+ Así tenemos la métrica,
+ \[ds^2=\underbrace{\left(1+\frac{r^2}{R_0^2}\right)dt^2-\left(1+\frac{r^2}{R_0^2}\right)^{-1}dz^2}_{\text{Métrica de anti-De Sitter}}-\underbrace{\kappa(\sin^2\theta d\varphi^2+d\theta^2)}_{\text{Métrica de una esfera}}\]
+ Denotaremos el espacio de anti-De Sitter como $AdS^2$ y el espacio de la esfera unidad bidimensional como $\mathbb{S}^2$.\\
+ Por tanto, esta métrica describe un espacio tensorial, tal que
+ \[AdS^2\otimes\mathbb{S}^2\]
+Teniendo así un nuevo tensor métrico,
+\[\overline{g}_{\mu\nu}\equiv\begin{pmatrix}
+    1+\frac{r^2}{R_0^2} & 0 & 0 & 0\\
+    0 & -\left(1+\frac{r^2}{R_0^2}\right)^{-1} & 0 & 0\\
+    0 & 0 & -\kappa\sin^2\theta & 0 \\
+    0 & 0 & 0 & -\kappa
+\end{pmatrix}\]
+La construcción de los vectores de Killing en el espacio $AdS^2\otimes\mathbb{S}^2$, implica una combinación de los vectores de Killing asociados a los factores $AdS^2$ y $\mathbb{S}^2$, de manera que respeten la estructura del espacio.\\ \\
+Para $AdS^2$, el grupo isométrico es $S=(2,1)$, y hay 3 vectores de Killing asociados a las isometrías del espacio anti-De Sitter bidimensional, que son
+\[\begin{array}{rcl}
+    \overline{\xi}^{(1)}_{AdS^2} & = & \partial_t \\ \\
+    \overline{\xi}^{(2)}_{AdS^2} & = & t\partial_t+r\partial_r\\ \\
+    \overline{\xi}^{(3)}_{AdS^2} & = & \left(t^2+\frac{1}{1+r^2/R_0^2}\right)\partial_t+2tr\partial_r
+\end{array}\]
+Para $\mathbb{S}^2$, el grupo isométrico es $SO(3)$, y hay 3 vectores de Killing asociados a las rotaciones en la esfera bidimensional, que son
+\[\begin{array}{rcl}
+    \overline{\xi}^{(4)}_{\mathbb{S}^2} & = & \partial_{\varphi} \\ \\
+    \overline{\xi}^{(5)}_{\mathbb{S}^2} & = & -\sin(\varphi)\partial_{\theta}-\cot(\theta)\cos(\varphi)\partial_{\varphi}\\ \\
+    \overline{\xi}^{(6)}_{\mathbb{S}^2} & = & \cos(\varphi)\partial_{\theta}-\cot(\theta)\sin(\varphi)\partial_{\varphi}
+\end{array}\]
+Teniendo así un total de 6 vectores de Killing en el espacio $AdS^2\otimes\mathbb{S}^2$. Además, como este espacio tiene las dos métricas separadas, significa que los dos factores son ortogonales entre sí, y las isometrías de $AdS^2$ no afectan las coordenadas de $\mathbb{S}^2$, y viceversa.\\ \\
+Por tanto, los vectores de Killing del espacio completo se obtienen como una combinación directa de los vectores de Killing de cada factor. Formalmente, esto significa que:
+\begin{itemize}
+    \item Cada vector de Killing de $AdS^2$ se extiende al espacio total como un campo vectorial que actúa solo sobre las coordenadas de $AdS^2$, dejando inalteradas las coordenadas de $\mathbb{S}^2$. Así, si $\xi^{(i)}_{AdS^2}$ es un vector de Killing de $AdS^2$, entonces en el espacio total se representa como,
+    \[\xi^{(i)}=(\xi^{(i)}_{AdS^2},0)\]
+    donde el "0" indica que no hay componentes en las direcciones de $\mathbb{S}^2$.
+    \item De manera análoga, cada vector de Killing de $\mathbb{S}^2$ se extiende al espacio total como un campo vectorial que actúa solo sobre las coordenadas de $\mathbb{S}^2$, dejando onalteradas las coordenadas de $AdS^2$, tal que
+    \[\xi^{(j)}=(0,\xi^{(j)}_{\mathbb{S}^2})\]
+\end{itemize}
+Por tanto, el conjunto completo de vectores de Killing de $AdS^2\otimes\mathbb{S}^2$ es simplemente la unión disjunta de los vectores de Killing de $AdS^2$ y $\mathbb{S}^2$, tal que
+\[\curlybraces{\xi^{(i)}_{AdS^2}\text{ extendidos a }AdS^2\otimes\mathbb{S}^2}\bigcup\curlybraces{\xi^{(j)}_{\mathbb{S}^2}\text{ extendidos a }AdS^2\otimes\mathbb{S}^2}\]
+teniendo un total de 6 vectores de Killing. Así, los vectores de Killing del espacio total $AdS^2\otimes\mathbb{S}^2$ son,
+\[\begin{array}{ll}
+     \overline{\xi}_{(1)}=\partial_t;  & \overline{\xi}_{(4)}=\partial_{\varphi} \\ \\
+    \overline{\xi}_{(2)}=t\partial_t+r\partial_r; & \overline{\xi}^{(5)}= -\sin(\varphi)\partial_{\theta}-\cot(\theta)\cos(\varphi)\partial_{\varphi}\\ \\
+    \overline{\xi}^{(3)}=\left(t^2+\frac{1}{1+r^2/R_0^2}\right)\partial_t+2tr\partial_r; & \overline{\xi}^{(6)}=\cos(\varphi)\partial_{\theta}-\cot(\theta)\sin(\varphi)\partial_{\varphi}
+\end{array}\]
+Ahora debemos calcular los vectores de Killing de la métrica original, sabiendo que transforman como vectores bajo cambios de coordenadas, tal que
+\begin{equation}
+    \xi^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}^{\nu}
+\end{equation}
+Tenemos,
+\[\begin{array}{ccccc}
+    g_{\mu\nu} & \longrightarrow & \overline{g}_{\mu\nu} & \Longrightarrow & \text{Derivadas no nulas}\\ \\
+    \begin{matrix}
+        x^t=\partial_t & t=t
+    \end{matrix} & & \begin{matrix}
+        \overline{x}^t=\partial_t
+    \end{matrix} & & \frac{\partial x^t}{\partial\overline{x}^t}=1\\ \\
+    \begin{matrix}
+        x^x=\partial_x & x=\sqrt{\kappa}\varphi
+    \end{matrix} & & \begin{matrix}
+        \overline{x}^r=\partial_r 
+    \end{matrix} & & \frac{\partial x^x}{\partial\overline{x}^{\varphi}}=\sqrt{\kappa} \\ \\
+    \begin{matrix}
+        x^y=\partial_y & y=\cos(\theta)/\sqrt{\kappa}
+    \end{matrix} & & \overline{x}^{\varphi}=\partial_{\varphi} & & \frac{\partial x^y}{\partial\overline{x}^{\theta}}=-\frac{\sin\theta}{\sqrt{\kappa}}\\ \\
+    \begin{matrix}
+        x^z=\partial_z & z=r
+    \end{matrix} & & \overline{x}^{\theta}=\partial_{\theta} & & \frac{\partial x^z}{\partial\overline{x}^r}=1
+\end{array}\]
+Así tenemos,
+\[\xi_{(1)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(1)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\delta^{\nu}_{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^t}=\delta_t^{\mu}\equiv(1,0,0,0)\]
+
+\[\xi_{(2)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(2)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}(t\delta_t^{\nu}+r\delta_r^{\nu})=\frac{\partial x^{\mu}}{\partial\overline{x}^{t}}t+\frac{\partial x^{\mu}}{\partial\overline{x}^r}r=t\delta_t^{\mu}+z\delta_z^{\mu}\equiv(t,0,0,z)\]
+
+\[\xi_{(3)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(3)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\brackets{\left(t^2+\frac{1}{1+r^2/R_0^2}\right)\delta^{\nu}_t+2tr\delta^{\nu}_r}=\frac{\partial x^{\mu}}{\partial\overline{x}^{t}}\left(t^2+\frac{1}{1+r^2/R_0^2}\right)+\frac{\partial x^{\mu}}{\partial\overline{x}^{r}}2tr=\]
+\[=\left(t^2+\frac{1}{1+r^2/R_0^2}\right)\delta_t^{\mu}+2tr\delta_r^{\mu}=\left(t^2+\frac{1}{(1+\kappa z^2)}\right)\delta_t^{\mu}+2tz\delta_z^{\mu}\equiv\left(t^2+\frac{1}{(1+\kappa z^2)},0,0,2tz\right)\]
+
+\[\xi_{(4)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(4)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\delta_{\varphi}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\varphi}}=\sqrt{\kappa}\delta_{\varphi}^{\mu}=\delta_x^{\mu}\equiv(0,1,0,0)\]
+donde usamos $\varphi=x/\sqrt{\kappa}$.
+
+\[\xi_{(5)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(5)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\brackets{-\sin(\varphi)\delta_{\theta}^{\nu}-\cot(\theta)\cos(\varphi)\delta_{\varphi}^{\nu}}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\theta}}(-\sin(\varphi))+\frac{\partial x^{\mu}}{\partial\overline{x}^{\varphi}}(-\cot(\theta)\cos(\varphi))=\]
+\[=\frac{\sin(\theta)\sin(\varphi)}{\sqrt{\kappa}}\delta_{\theta}^{\mu}-\sqrt{\kappa}\cot(\theta)\cos(\varphi)\delta_{\varphi}^{\mu}=\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\sin\left(\frac{x}{\sqrt{\kappa}}\right)\delta_y^{\mu}-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\cos\left(\frac{x}{\sqrt{\kappa}}\right)\delta_x^{\mu}\equiv\]
+\[\equiv\left(0,-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\cos\left(\frac{x}{\sqrt{\kappa}}\right),\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\sin\left(\frac{x}{\sqrt{\kappa}}\right),0\right)\]
+
+donde usamos que $\theta=\arccos(\sqrt{\kappa}y)$ y $\varphi=x/\sqrt{\kappa}$.
+
+\[\xi_{(6)}^{\mu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\overline{\xi}_{(6)}^{\nu}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\nu}}\brackets{\cos(\varphi)\delta_{\theta}^{\nu}-\cot(\theta)\sin(\varphi)\delta_{\varphi}^{\nu}}=\frac{\partial x^{\mu}}{\partial\overline{x}^{\theta}}\cos(\varphi)-\frac{\partial x^{\mu}}{\partial\overline{x}^{\varphi}}\cot(\theta)\sin(\varphi)=\]
+\[=\frac{\sin(\theta)\sin(\varphi)}{\sqrt{\kappa}}\delta_{\theta}^{\mu}-\sqrt{\kappa}\cot(\theta)\sin(\varphi)\delta_{\varphi}^{\mu}=\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\cos\left(\frac{x}{\sqrt{\kappa}}\right)\delta_y^{\mu}-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\sin\left(\frac{x}{\sqrt{\kappa}}\right)\delta_x^{\mu}\equiv\]
+\[\equiv\left(0,-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\sin\left(\frac{x}{\sqrt{\kappa}}\right),\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\cos\left(\frac{x}{\sqrt{\kappa}}\right),0\right)\]
+
+donde usamos que $\theta=\arccos(\sqrt{\kappa}y)$ y $\varphi=x/\sqrt{\kappa}$.\\ \\
+Por tanto, los 6 vectores de Killing de esta métrica son,
+
+\[
+\xi_{(1)}^{\mu}=(1,0,0,0)\]
+\[
+\xi_{(2)}^{\mu}=(t,0,0,z)\]
+\[\xi_{(3)}^{\mu}=\left(t^2+\frac{1}{\kappa(1+\kappa z^2)},0,0,2tz\right)
+\]
+\[\xi_{(4)}^{\mu}=(0,1,0,0)
+\]
+\[\xi_{(5)}^{\mu}=\left(0,-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\cos\left(\frac{x}{\sqrt{\kappa}}\right),\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\sin\left(\frac{x}{\sqrt{\kappa}}\right),0\right)\]
+\[\xi_{(6)}^{\mu}=\left(0,-\sqrt{\kappa}\cot(\arccos(\sqrt{\kappa}y))\sin\left(\frac{x}{\sqrt{\kappa}}\right),\frac{\sin(\arccos(\sqrt{\kappa}y))}{\sqrt{\kappa}}\cos\left(\frac{x}{\sqrt{\kappa}}\right),0\right)\]
+\subsubsection*{Apartado (b)}
+Sabemos que el tensor de Ricci viene dado por el tensor de Riemann, que es
+\begin{equation}
+    \mathcal{R}_{\mu\nu\rho}^{\lambda}=\partial_{\nu}\Gamma_{\mu\rho}^{\sigma}-\partial_{\mu}\Gamma_{\nu\rho}^{\sigma}+\Gamma_{\mu\rho}^{\lambda}\Gamma_{\lambda\nu}^{\sigma}-\Gamma_{\nu\rho}^{\lambda}\Gamma_{\lambda\mu}^{\sigma}
+\end{equation}
+donde los $\Gamma_{\mu\rho}^{\lambda}$ y derivados, son lo símbolos de Christoffel. El tensor de Ricci viene dado por,
+\begin{equation}
+\mathcal{R}_{\mu\nu}=\mathcal{R}_{\mu\rho\nu}^{\rho}=\partial_{\lambda}\Gamma_{\mu\nu}^{\lambda}-\partial_{\nu}\Gamma_{\mu\lambda}^{\lambda}+\Gamma_{\mu\nu}^{\sigma}\Gamma_{\sigma\lambda}^{\lambda}-\Gamma_{\mu\lambda}^{\sigma}\Gamma_{\sigma\nu}^{\lambda}
+\end{equation}
+y el escalar de curvatura o escalar de Ricci viene dadod por,
+\begin{equation}
+    \mathcal{R}=g^{\mu\nu}\mathcal{R}_{\mu\nu}
+\end{equation}
+es decir, es la traza del tensor de Ricci.\\ \\
+Primero debemos calcular los símbolos de Christoffel de las componentes, de forma general vienen dados por,
+\begin{equation}
+    \Gamma_{\mu\nu}^{\lambda}=\frac{1}{2}g^{\lambda\sigma}\left(\partial_{\mu}g_{\nu\sigma}+\partial_{\nu}g_{\mu\sigma}-\partial_{\sigma}g_{\mu\nu}\right)
+    \label{ec5}
+\end{equation}
+Vemos que como las componentes del tensor métrico que no están en la diagonal se anulan, y que las componentes de la diagonal solo dependen de alguna de las variables $(t,x,y,z)$, se anulan bastantes símbolos de Christoffel, pues las derivadas que permanecen no nulas son las siguientes,
+\[\partial_zg_{tt} = 2\kappa z; \hspace{5mm} \partial_yg_{yy} =\frac{-2\kappa y}{(1-\kappa y^2)^2};\]
+\[\partial_yg_{xx} = 2\kappa y; \hspace{5mm} \partial_zg_{zz} =\frac{2\kappa z}{(1+\kappa z^2)^2};\]
+Nos damos cuenta que las derivadas no nulas son para los coeficientes del tensor métrico iguales, es decir, en la ecuación (\ref{ec5}), tenemos que $\lambda=\sigma$. Pero además, en las parciales solo están $z$ e $y$, por lo que $\mu$ y $\nu$ son $z$ ó $y$. Además, sabemos que los símbolos de Christoffel son simétricos, es decir, $\Gamma_{\mu\nu}^{\lambda}=\Gamma_{\nu\mu}^{\lambda}$. Así tenemos,
+\[\Gamma_{tz}^t=\Gamma_{zt}^{t}=\frac{1}{2}g^{tt}\left(\cancelto{0}{\partial_tg_{zt}}+\partial_{z}g_{tt}-\cancelto{0}{\partial_tg_{tz}}\right)=\frac{1}{2g_{tt}}\partial_zg_{tt}=\frac{1}{2(1+\kappa z^2)}2\kappa z=\frac{\kappa z}{1+\kappa z^2}\]
+\[\Gamma_{zz}^z=\frac{1}{2}g^{zz}\left(\cancel{\partial_zg_{zz}}+\partial_{z}g_{zz}-\cancel{\partial_zg_{zz}}\right)=\frac{1}{2g_{zz}}\partial_zg_{zz}=-\frac{(1+\kappa z^2)}{2}\frac{2\kappa z}{(1+\kappa z^2)^2}=\frac{-\kappa z}{(1+\kappa z^2)}\]
+\[\Gamma_{xy}^x=\Gamma_{yx}^{x}=\frac{1}{2}g^{xx}\left(\cancelto{0}{\partial_xg_{yx}}+\partial_{y}g_{xx}-\cancelto{0}{\partial_xg_{xy}}\right)=\frac{1}{2g_{xx}}\partial_yg_{xx}=\frac{-1}{2(1-\kappa y^2)}2\kappa y=\frac{-\kappa y}{1-\kappa y^2}\]
+\[\Gamma_{yy}^{y}=\frac{1}{2}g^{yy}\left(\cancel{\partial_yg_{yy}}+\partial_{y}g_{yy}-\cancel{\partial_tg_{yy}}\right)=\frac{1}{2g_{yy}}\partial_yg_{yy}=\frac{-1}{2}(1-ky^2)\frac{-2\kappa y}{(1-\kappa y^2)^2}=\frac{\kappa y}{1-\kappa y^2}\]
+\[\Gamma_{tt}^z=\frac{1}{2}g^{zz}\left(\cancelto{0}{\partial_tg_{tz}}+\cancelto{0}{\partial_tg_{tz}}-\partial_zg_{tt}\right)=\frac{-1}{2g_{zz}}\partial_zg_{tt}=\frac{1}{2}(1+\kappa z^2)2\kappa z=\kappa z(1+\kappa z^2)\]
+\[\Gamma_{xx}^y=\frac{1}{2}g^{yy}\left(\cancelto{0}{\partial_xg_{xy}}+\cancelto{0}{\partial_xg_{xy}}-\partial_yg_{xx}\right)=\frac{-1}{2g_{yy}}\partial_yg_{xx}=\frac{1}{2}(1-\kappa y^2)2\kappa y=\kappa y(1-\kappa y^2)\]
+Por tanto, podemos formar el tensor de Ricci componente a componente, sabiendo que algunas de ellas son nulas, pues hay algunos símbolos de Christoffer nulos.\\ \\
+Fijándonos en la ecuación (7), podemos ir calculando las componentes del tensor de Ricci, tal que,
+\[
+    \mathcal{R}_{tt}=\ricci{t}{t}
+\]
+Si nos fijamos en los términos no nulos de los símbolos de Christofel con $t$, tenemos que son distintos de cero $\Gamma_{tz}^t$ y $\Gamma_{tt}^{z}$. Por tanto, tendremos que $\lambda=t,z$ y $\sigma=t,z$. Así tenemos:
+\[\begin{array}{rl}
+    \mathcal{R}_{tt} & =\ricciss{t}{t}{t}{t}{z}+\\ \\
+    &+\ricciss{t}{t}{z}{t}{z} = \partial_z\Gamma_{tt}^z-\Gamma_{tz}^{t}\Gamma_{tt}^{z}+\Gamma_{tt}^{z}\Gamma_{zz}^{z}=\\ \\
+     & = \kappa(1+\kappa z^2)+2\kappa^2z^2-\kappa^2z^2-\kappa^2z^2=\kappa(1+\kappa z^2)\checkmark
+\end{array}\]
+Seguimos,
+\[\mathcal{R}_{ti}=\ricci{t}{i}\]
+pero como $i\neq t$, $\Gamma_{ti}^{\lambda}=0$, $\partial_t\Gamma_{\lambda i}^{\lambda}=0$ y $\partial_{\lambda}\Gamma_{ti}^{\lambda}=0$. El único término que puede que no se anule es el tercer término usando $i=z$, pero vemos que si $\sigma=z$, necesariamente para que el primer símbolo no se anule, $\lambda=t$, pero entonces el segundo Christofel se anula, pues $\Gamma_{zz}^t=0$, y si $\sigma=t$, necesariamente para no anularse el primer Christofel, $\lambda=z$, pero vemos que $\Gamma_{zz}^t=0$. Por tanto,
+\[\mathcal{R}_{tx}=\mathcal{R}_{xt}=0;\hspace{4mm}\mathcal{R}_{ty}=\mathcal{R}_{yt}=0;\hspace{4mm}\mathcal{R}_{tz}=\mathcal{R}_{zt}=0\]
+Seguimos,
+\[\mathcal{R}_{ij}=\ricci{i}{j}\]
+Si $i\neq j$, entonces $\Gamma_{ij}^{\lambda}=0$, así
+\[\mathcal{R}_{xy}=\mathcal{R}_{yx}=\cancelto{0}{-\partial_y\Gamma_{\lambda x}^{\lambda}}+\Gamma_{x\lambda}^{\sigma}\Gamma_{\sigma y}^{\lambda}=\Gamma_{xx}^{x}\cancelto{0}{\Gamma_{xy}^{x}}+\cancelto{0}{\Gamma_{xy}^y}\Gamma_{yy}^{y}=0\]
+Análogamente, los demás términos cruzados se anulan,
+\[\mathcal{R}_{xy}=\mathcal{R}_{yx}=0;\hspace{4mm}\mathcal{R}_{xz}=\mathcal{R}_{zx}=0;\hspace{4mm}\mathcal{R}_{yz}=\mathcal{R}_{zy}=0\]
+Por tanto, nos centramos en $i=j$,
+\[\mathcal{R}_{ii}=\ricci{i}{i}\]
+que trataremos uno por uno.
+\[\begin{array}{rl}
+    \mathcal{R}_{xx} & =\ricci{x}{x}=\\ \\
+   &= \ricciss{x}{x}{y}{x}{y}+\\ \\
+   &+\riccis{x}{x}{x}{y} = \partial_y\Gamma_{xx}^{y}-\Gamma_{xy}^{x}\Gamma_{xx}^{y}+\Gamma_{xx}^{y}\Gamma_{yy}^{y}=\\ \\
+   &=\kappa(1-\kappa y^2)-2\kappa^2y^2+\kappa^2y^2+\kappa^2y^2=\kappa(1-\kappa y^2)\checkmark
+\end{array}\]
+\[\begin{array}{rl}
+    \mathcal{R}_{yy} & =\ricci{y}{y}= \\ \\
+     & =\ricciss{y}{y}{y}{x}{y}+\\ \\
+     &+\ricciss{y}{y}{x}{x}{y}=\\ \\
+     &=-\partial_y\Gamma_{yx}^{x}+\Gamma_{yy}^{y}\Gamma_{yx}^{x}-\Gamma_{yx}^{x}\Gamma_{xy}^{x}=\frac{\kappa(1-\kappa y^2)+2\kappa^2y^2}{(1-\kappa y^2)^2}-\frac{\kappa^2y^2}{(1-\kappa y^2)^2}-\frac{\kappa^2y^2}{(1-\kappa y^2)^2}=\frac{\kappa}{(1-\kappa y^2)}\checkmark
+\end{array}\]
+\[\begin{array}{rl}
+    \mathcal{R}_{zz} &=\ricci{z}{z}=  \\ \\
+     & =\ricciss{z}{z}{z}{z}{t}+\\ \\
+     & +\ricciss{z}{z}{t}{z}{t}=\\ \\
+     &=-\partial_z\Gamma_{zt}^{t}+\Gamma_{zz}^{z}\Gamma_{zt}^{t}-\Gamma_{zt}^{t}\Gamma_{tz}^{t} =-\frac{\kappa(1+\kappa z^2)-2\kappa^2z^2}{(1+\kappa^2z^2)^2}-\frac{\kappa^2z^2}{(1+\kappa z^2)^2}-\frac{\kappa^2z^2}{(1+\kappa z^2)^2}=\frac{-\kappa}{(1+\kappa z^2)}\checkmark
+\end{array}\]
+Por tanto, el tensor de Ricci queda,
+\[\mathcal{R}_{\mu\nu}\equiv\begin{pmatrix}
+    \kappa(1+\kappa z^2) & 0 & 0 & 0 \\
+    0 & \kappa(1-\kappa y^2) & 0 & 0 \\
+    0 & 0 & \frac{\kappa}{(1-\kappa y^2)} & 0\\
+    0 & 0 & 0 & \frac{-\kappa}{(1+\kappa z^2)}
+\end{pmatrix}\]
+Por tanto, el escalar de Ricci queda,
+\[\mathcal{R}=g^{\mu\nu}\mathcal{R}_{\mu\nu}\]
+donde
+\[g^{\mu\nu}\equiv\begin{pmatrix}
+    (1+\kappa z^2)^{-1} & 0 & 0 & 0\\
+    0 & -(1-\kappa y^2)^{-1} & 0 & 0\\
+    0 & 0 & -(1-\kappa y^2) & 0 \\
+    0 & 0 & 0 & -(1+\kappa z^2)
+\end{pmatrix}\]
+Por tanto,
+\[\small
+\mathcal{R}=\begin{pmatrix}
+    (1+\kappa z^2)^{-1} & 0 & 0 & 0\\
+    0 & -(1-\kappa y^2)^{-1} & 0 & 0\\
+    0 & 0 & -(1-\kappa y^2) & 0 \\
+    0 & 0 & 0 & -(1+\kappa z^2)
+\end{pmatrix}\begin{pmatrix}
+    \kappa(1+\kappa z^2) & 0 & 0 & 0 \\
+    0 & \kappa(1-\kappa y^2) & 0 & 0 \\
+    0 & 0 & \frac{\kappa}{(1-\kappa y^2)} & 0\\
+    0 & 0 & 0 & \frac{-\kappa}{(1+\kappa z^2)}
+\end{pmatrix}=
+\]
+\[=\kappa-\kappa-\kappa+\kappa=0\]
+Luego, el escalar de Ricci es nulo.
+\subsubsection*{Apartado (c)}
+Sabemos que la ecuación de Einstein es
+\begin{equation}
+    \mathcal{R}_{\mu\nu}-\frac{1}{2}g_{\mu\nu}\mathcal{R}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}\mathcal{T}_{\mu\nu}
+\end{equation}
+donde $\mathcal{T}_{\mu\nu}$ es el tensor de energía-impulso, $G$ es la constante de gravitación universal, $c$ es la velocidad de la luz y $\Lambda$ es la constante cosmológica, que es distinta de cero en universos no estacionarios (en expansión). Vamos a considerar un universo estacionario y así $\Lambda=0$. Como trabajamos con unidades atómicas, consideramos $c=1$. Además hemos visto que el escalar de Ricci es nulo, por tanto, las ecuaciones de Einstein quedan como,
+\begin{equation}
+    \mathcal{R}_{\mu\nu}=8\pi G\mathcal{T}_{\mu\nu}
+\end{equation}
+Por tanto, el tensor de energía-momento es,
+\begin{equation}
+    \mathcal{T}_{\mu\nu}=\frac{1}{8\pi G}\mathcal{R}_{\mu\nu}\equiv\frac{1}{8\pi G}\begin{pmatrix}
+    \kappa(1+\kappa z^2) & 0 & 0 & 0 \\
+    0 & \kappa(1-\kappa y^2) & 0 & 0 \\
+    0 & 0 & \frac{\kappa}{(1-\kappa y^2)} & 0\\
+    0 & 0 & 0 & \frac{-\kappa}{(1+\kappa z^2)}
+\end{pmatrix}
+\end{equation}
+Sabemos que existe una relación entre el tensor de energía-impulso y el tensor electromagnético, que viene dada por
+\begin{equation}
+    \mathcal{T}^{\mu\nu}=-F^{\mu\rho}F_{\rho}^{\nu}+\frac{1}{4}g^{\mu\nu}F_{\rho\lambda}F^{\rho\lambda}
+\end{equation}
+Primero vamos a calcular,
+\begin{equation}
+    g_{\mu\nu}T^{\mu\nu}=-g_{\mu\nu}F^{\mu\rho}F_{\rho}^{\nu}+\frac{1}{4}g_{\mu\nu}g^{\mu\nu}F_{\rho\lambda}F^{\rho\lambda}=-\frac{1}{4}F_{\rho\lambda}F^{\rho\lambda}
+\end{equation}
+Pero como $0=\mathcal{R}=g_{\mu\nu}R^{\mu\nu}=8\pi G g_{\mu\nu}T^{\mu\nu}$, entonces tenemos que $F_{\rho\lambda}F^{\rho\lambda}=0$. Luego, nos queda
+\begin{equation}
+    T^{\mu\nu}=-F^{\mu\rho}F^{\nu}_{\rho}
+\end{equation}
+Además, sabemos que $F^{\mu\rho}$ por definición es:
+\begin{equation}
+    F^{\mu\rho}=\begin{pmatrix}
+        0 & -E_x & -E_y & -Ez\\
+        E_x & 0 & -B_z & B_y\\
+        E_y & B_z & 0 & -B_x\\
+        E_z & -B_y & B_x & 0
+    \end{pmatrix}
+\end{equation}
+y que $F_{\rho}^{\nu}=g_{\rho\mu}F^{\mu\nu}$. Por tanto,
+\[F_{0}^{\nu}=g_{00}F^{0\nu}=(1+\kappa z^2)\begin{pmatrix}
+    0 & -E_x & -E_y & -Ez
+\end{pmatrix}\]
+\[F_{1}^{\nu}=g_{11}F^{1\nu}=-(1-\kappa y^2)\begin{pmatrix}
+    E_x & 0 & -B_z & B_y
+\end{pmatrix}\]
+\[F_{2}^{\nu}=g_{22}F^{2\nu}=-(1-\kappa y^2)^{-1}\begin{pmatrix}
+    E_y & B_z & 0 & -B_x
+\end{pmatrix}\]
+\[F_{3}^{\nu}=g_{33}F^{3\nu}=-(1+\kappa z^2)^{-1}\begin{pmatrix}
+    E_z & -B_y & B_x & 0
+\end{pmatrix}\]
+Luego,
+\[F_{\rho}^{\nu}=\begin{pmatrix}
+    0 & -E_x(1+\kappa z^2) & -E_y(1+\kappa z^2) & -E_z(1+\kappa z^2) \\
+    -E_x(1-\kappa y^2) & 0 & B_z(1-\kappa y^2) & -B_y(1-\kappa y^2) \\
+    -E_y(1-\kappa y^2)^{-1} & -B_z(1-\kappa y^2)^{-1} & 0 & B_x(1-\kappa y^2)^{-1} \\
+    -E_z(1+\kappa z^2)^{-1} & B_y(1+\kappa z^2)^{-1} & -B_x(1+\kappa z^2)^{-1} & 0
+\end{pmatrix}\]
+Entonces podemos calcular $F^{\mu\rho}F_{\rho}^{\nu}\equiv \mathcal{F}^{\mu\nu}$, tal que
+\[\small
+\begin{array}{l}
+\mathcal{F}^{\mu\nu}=\begin{pmatrix}
+        0 & -E_x & -E_y & -Ez\\
+        E_x & 0 & -B_z & B_y\\
+        E_y & B_z & 0 & -B_x\\
+        E_z & -B_y & B_x & 0
+    \end{pmatrix}\begin{pmatrix}
+    0 & -E_x(1+\kappa z^2) & -E_y(1+\kappa z^2) & -E_z(1+\kappa z^2) \\
+    -E_x(1-\kappa y^2) & 0 & B_z(1-\kappa y^2) & -B_y(1-\kappa y^2) \\
+    -E_y(1-\kappa y^2)^{-1} & -B_z(1-\kappa y^2)^{-1} & 0 & B_x(1-\kappa y^2)^{-1} \\
+    -E_z(1+\kappa z^2)^{-1} & B_y(1+\kappa z^2)^{-1} & -B_x(1+\kappa z^2)^{-1} & 0
+\end{pmatrix}
+\end{array}\]
+Nos damos cuenta que $F^{\mu\rho}$ y $F_{\rho}^{\nu}$, son antisimétricos, por tanto, $\mathcal{F}^{\mu\nu}$ es simétrico, tal que $\mathcal{F}^{\mu\nu}=\mathcal{F}^{\nu\mu}$.\\
+Vamos a ir calculando componente a componente,
+\[\mathcal{F}^{00}=E_x^2(1-\kappa y^2)+E_y^2(1-\kappa y^2)^{-1}+E_z^2(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{11}=-E_x^2(1+\kappa z^2)+B_z^2(1-\kappa y^2)^{-1}+B_y^2(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{22}=-E_y^2(1+\kappa z^2)+B_z^2(1-\kappa y^2)+B_x^2(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{33}=-E_z^2(1+\kappa z^2)+B_y^2(1-\kappa y^2)+B_x^2(1-\kappa y^2)^{-1}\]
+\[\mathcal{F}^{01}=\mathcal{F}^{10}=E_yB_z(1-\kappa y^2)^{-1}-E_zB_y(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{02}=\mathcal{F}^{20}=-E_xB_z(1-\kappa y^2)+E_zB_x(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{03}=\mathcal{F}^{30}=E_xB_y(1-\kappa y^2)-E_yB_x(1-\kappa y^2)^{-1}\]
+\[\mathcal{F}^{12}=\mathcal{F}^{21}=-E_yE_x(1+\kappa z^2)-B_yB_x(1+\kappa z^2)^{-1}\]
+\[\mathcal{F}^{13}=\mathcal{F}^{31}=-E_xE_z(1+\kappa z^2)-B_zB_x(1-\kappa y^2)^{-1}\]
+\[\mathcal{F}^{23}=\mathcal{F}^{32}=-E_yE_z(1+\kappa z^2)-B_zB_y(1-\kappa y^2)\]
+Como $T_{\mu\nu}$ es diagonal, tendremos que $T^{\mu\nu}=1/T_{\mu\nu}$, es decir,
+\[T^{\mu\nu}=8\pi G\begin{pmatrix}
+    \frac{1}{\kappa(1+\kappa z^2)} & 0 & 0 & 0 \\
+    0 & \frac{1}{\kappa(1-\kappa y^2)} & 0 & 0 \\
+    0 & 0 & \frac{(1-\kappa y^2)}{\kappa} & 0\\
+    0 & 0 & 0 & \frac{-(1+\kappa z^2)}{\kappa}
+\end{pmatrix}=-\mathcal{F}^{\mu\nu}\]
+Por tanto, igualando componente a componente tenemos el siguiente sistema de 10 ecuaciones con 6 incógnitas (sabiendo que $\kappa=8\pi G)$:
+\[\frac{-1}{(1+\kappa z^2)}=E_x^2(1-\kappa y^2)+E_y^2(1-\kappa y^2)^{-1}+E_z^2(1+\kappa z^2)^{-1}
+\tag{i}\label{(i)}\]
+\[\frac{-1}{(1-\kappa y^2)}=-E_x^2(1+\kappa z^2)+B_z^2(1-\kappa y^2)^{-1}+B_y^2(1+\kappa z^2)^{-1}\tag{ii}
+\label{(ii)}\]
+\[-(1-\kappa y^2)=-E_y^2(1+\kappa z^2)+B_z^2(1-\kappa y^2)+B_x^2(1+\kappa z^2)^{-1}\tag{iii}
+\label{(iii)}\]
+\[(1+\kappa z^2)=-E_z^2(1+\kappa z^2)+B_y^2(1-\kappa y^2)+B_x^2(1-\kappa y^2)^{-1}\tag{iv}
+\label{(iv)}\]
+\[0=E_yB_z(1-\kappa y^2)^{-1}-E_zB_y(1+\kappa z^2)^{-1}\tag{v}
+\label{(v)}\]
+\[0=-E_xB_z(1-\kappa y^2)+E_zB_x(1+\kappa z^2)^{-1}\tag{vi}
+\label{(vi)}\]
+\[0=E_xB_y(1-\kappa y^2)-E_yB_x(1-\kappa y^2)^{-1}\tag{vii}
+\label{(vii)}\]
+\[0=-E_yE_x(1+\kappa z^2)-B_yB_x(1+\kappa z^2)^{-1}\tag{viii}
+\label{(viii)}\]
+\[0=-E_xE_z(1+\kappa z^2)-B_zB_x(1-\kappa y^2)^{-1}\tag{ix}
+\label{(ix)}\]
+\[0=-E_yE_z(1+\kappa z^2)-B_zB_y(1-\kappa y^2)\tag{x}
+\label{(x)}\]
+Resolver este sistema de ecuaciones es un suplicio, pues no es lineal y los métodos numéricos que he usado han fallado.\\ \\
+Realizando una búsqueda por internet, he encontrado que la métrica transformada en la del espacio $AdS^2\otimes\mathbb{S}^2$, es la métrica de Bertotti-Robinson, cuyo tensor electromagnético solo tiene componentes no nulas en las direcciones $r$ y $t$, tal que
+\[F_{tr}=-F_{rt}=\frac{Q}{R_0^2}=E_z\]
+donde $Q$ es una constante que representa la carga eléctrica. Es decir, tenemos un campo eléctrico radial.\\ \\
+Debemos deshacer el cambio de coordenadas $r=z$ y $\kappa=1/R_0^2$, usando la transformación de coordenadas de tensores, tal que
+\[F_{\mu\nu}=\frac{\partial x^{\alpha}}{\partial\overline{x}^{\mu}}\frac{\partial x^{\beta}}{\partial\overline{x}^{\nu}}\overline{F}_{\alpha\beta}\]
+En nuestro caso, $\mu=t$ y $\nu=r$, tal que
+\[\frac{\partial x^{\alpha}}{\partial\overline{x}^t}=\left\lbrace\begin{array}{lll}
+    1 & \text{si} & \alpha=t \\
+    0 & \text{si} & \alpha\neq t
+\end{array}\right.;\hspace{8mm}\frac{\partial x^{\beta}}{\partial\overline{x}^{r}}=\left\lbrace\begin{array}{lll}
+    1 & \text{si} & \beta=z \\
+    0 & \text{si} & \beta\neq z
+\end{array}\right.\]
+Por tanto,
+\[F_{tz}=\frac{\partial x^{t}}{\partial\overline{x}^{t}}\frac{\partial x^{z}}{\partial\overline{x}^{r}}\overline{F}_{tr}=F_{tr}=Q\kappa\]
+Por tanto, las únicas componentes no nulas del tensor electromagnético son $F_{tz}=E_z$ y $F_{zt}=-E_z$. Así, el tensor electromagnético queda,
+\[F_{\mu\nu}=\begin{pmatrix}
+    0 & 0 & 0 & -Q\kappa\\
+    0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0\\
+    Q\kappa & 0 & 0 & 0
+\end{pmatrix}\]
+
+\end{document}

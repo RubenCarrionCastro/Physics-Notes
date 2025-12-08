@@ -1,0 +1,29 @@
+%SECCION 5
+\section{Métrica de Minkowski y cuadrivectores} % Main chapter title
+\label{cap2-sec6} 
+Definimos un cuadrivector posición como,
+\[(ct,|vec{x})\equiv x^{\mu}=(x^0,x^1,x^2,x^3)\]
+donde $\mu$ es un etiqueta con $\mu=0,1,2,3$.\\ \\
+Recordemos que $ds^2=-c^2dt^2+d\vec{x}^2$, ahora tendremos,
+\[ds^2=-(dx^0)+(dx^1)^2+(dx^2)^2+(dx^3)^2=-(dx^0)^2+\sum_{i=1}^3(dx^i)^2=\sum_{\mu,\nu=0}^3\eta_{\mu\nu}dx^{\mu}dx^{\nu}\]
+Por tanto, $\eta_{\mu\nu}$ será,
+\[\eta_{\mu\nu}=diag[-1,1,1,1]=\begin{pmatrix}
+    -1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+\end{pmatrix}\]
+siendo $\eta_{\mu\nu}$ la métrica del espacio de Minkowski. Las propiedades son:
+\begin{enumerate}
+    \item La inversa está bien definida, tal que
+    \[\eta^{\mu\nu}=diag[-1,1,1,1]\]
+    así, $\eta_{\mu\nu}\eta^{\nu\rho}=\delta_{\mu}^{\rho}=diag[1,1,1,1]$.
+    \item La métrica con signo cambiado también se usa en diversos contextos, como en la física de partículas relativista.
+\end{enumerate}
+\subsection{Grupo de Poincaré}
+Recordemos que $ds^2=(ds')^2$ es un invariante; el grupo de simetrías que deja invariante a $ds^2$ es el grupo de Poincaré, formado por:
+\begin{itemize}
+    \item traslaciones espacio-temporales.
+    \item reflexiones en el espacio y en el tiempo.
+    \item transformaciones de Lorentz ortocronas (boosts y rotaciones espaciales) propias, es decir, aquellas que contengan a la identidad de forma continua.
+\end{itemize}

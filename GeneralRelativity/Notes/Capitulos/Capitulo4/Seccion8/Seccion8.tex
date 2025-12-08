@@ -1,0 +1,232 @@
+%SECCION 1
+\section{Soluciones dinámicas de las ecuaciones de Einstein} % Main chapter title
+\label{cap4-sec8} 
+
+Las ecuaciones de Einstein
+\[R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=T_{\mu\nu}\]
+son un conjunto de ecuaciones en derivadas parciales de segundo orden en $g_{\mu\nu}$ no lineales. Debido a la covariancia general tenemos 4 ecuaciones estáticas con derivadas primeras en $g_{\mu\nu}$ en la dirección temporal, teniendo 4 ligaduras.\\ \\
+Las ecuaciones de los campos materiales son similares y todo está acoplado.\\ \\
+$G_{\mu\nu}u^{\nu}$ no tiene derivadas segundas en la dirección $u^{\mu}$. Además, $(G_{\mu\nu}-\kappa T_{\mu\nu})u^{\nu}=0$, inicialmente los datos iniciales tienen que cumplir 4 ecuaciones.\\ \\
+En vacío, $G_{\mu\nu}n^{\nu}=0$, con $\mu=0,1,2,3$.\\ \\
+Teniendo en cuenta que $g_{\mu\nu}$ y $g_{\mu\nu}+\nabla_{\mu}\xi_{\nu}+\nabla_{\nu}\xi_{\mu}$ representan el mismo espacio-tiempo físico, tenemos otras 4 ecuaciones.\\ \\
+Si $G_{\mu\nu}$ son 10 ecuaciones, quitamos 4 ligaduras y 4 componentes de $g_{\mu\nu}$, quedando 2 grados de libertad dinámicos, siendo 2 polarizaciones de ondas gravitacionales (similar al electromagnetismo). 
+\\ \\
+No se conoce el espacio completo de soluciones.
+\\ \\
+Para gravedad en vacío existen teoremas de existencia y unicidad (Yuonne Choquet-Bruhat (1952)).\\
+Hay 3 formas de resolver las ecuaciones de Einstein:
+\begin{enumerate}
+    \item relatividad numérica.\\
+    \item soluciones aproximadas (ondas gravitacionales, límites newtonianos, etc.)\\
+    \item soluciones con simetría (agujeros negros con simetría esférica, modelos cosmológicos de Friedman-Roberson-Walker, etc.)
+\end{enumerate}
+\subsection{Espacio-tiempo de Schwarzschild}
+Es una solución de las ecuaciones de Einstein en vacío esféricamente simétrica, siendo invariante bajo el grupo de rotaciones $SO(3)$, teniendo 3 campos vectoriales de Killing que satisfacen $[\vec{v}^{(i)},\vec{v}^{(j)}]=\epsilon^{ijk}\vec{v}^{(k)}$, con $i,j,k=1,2,3$ (momentos angulares).\\ \\
+Asumiremos que la métrica es estática. Tenemos un CVK $t^{\mu}=\delta_t^{\mu}$. La métrica más general toma la forma,
+\begin{equation}
+    ds^2=-B(r)dt^2+A(r)dr^2+r^2(d\theta^2+\sin^2\theta d\varphi^2)
+\end{equation}
+donde $d\Omega^2=(d\theta^2+\sin^2\theta d\varphi^2)$ es una métrica asociada a la 2-esfera unidad.\\ \\
+Vamos a determinar estas constantes usando el método de las geodésicas, con el lagrangiano
+\[\Tilde{\mathscr{L}}=-B(r)\dot{t}^2+A(r)\dot{r}^2+r^2\dot{\theta}^2+r^2\sin^2\theta\dot{\varphi}^2\]
+Derivamos los símbolos de Christoffel,
+\[\Gamma_{tr}^t=\frac{1}{2}\frac{1}{B}\frac{dB}{dr}=\frac{1}{2}\frac{B'}{B}=\Gamma_{rt}^t\]
+\[\Gamma_{tt}^r=\frac{1}{2}\frac{B'}{A};\hspace{3mm}\Gamma_{rr}^r=\frac{1}{2}\frac{A'}{A};\hspace{3mm}\Gamma_{\theta\theta}^r=-\frac{r}{A}\]
+\[\Gamma_{\varphi\varphi}^r=-\frac{r\sin^2\theta}{A};\hspace{3mm}\Gamma_{\theta r}^{\theta}=\frac{1}{2}=\Gamma_{r\theta}^{\theta};\hspace{3mm}\Gamma_{\varphi\varphi}^{\theta}=-\cos\theta\sin\theta\]
+\[\Gamma_{r\varphi}^{\varphi}=\frac{1}{2}=\Gamma_{\varphi r}^{\varphi};\hspace{3mm}\Gamma_{\theta\varphi}^{\varphi}=\frac{\cos\theta}{\sin\theta}=\Gamma_{\varphi\theta}^{\varphi}\]
+Para el tensor de Riemann,
+\[R_{trtr}=\frac{1}{4}(2B''-B'\frac{A'}{A}-\frac{(B')^2}{B});\hspace{3mm}R_{t\theta t\theta}=\frac{rB'}{2A};\hspace{3mm}R_{t\varphi t\varphi}=\sin^2\theta\frac{rB'}{2A}\]
+\[R_{r\theta r\theta}=\frac{r A'}{2A};\hspace{3mm}R_{r\varphi r\varphi}=\sin^2\theta\frac{rA'}{2A};\hspace{3mm}R_{\theta\varphi\theta\varphi}=\frac{(A-1)r^2\sin^2\theta}{A}\]
+Para el tensor de Ricci,
+\[R_{tt}=\frac{1}{4A}\brackets{\left(\frac{4}{r}-\frac{A'}{A}\right)B'-\frac{(B')^2}{B}+2B''};\hspace{3mm}R_{rr}=\frac{1}{r}\frac{A'}{A}+\frac{1}{4B}\brackets{\frac{A'}{A}B'+\frac{(B')^2}{B}-2B''}\]
+\[R_{\theta\theta}=1+\frac{r}{2}\frac{A'}{A}-\frac{1}{A}-\frac{r}{2}\frac{B'}{AB};\hspace{3mm}R_{\varphi\varphi}=\sin^2\theta R_{\theta\theta}\]
+Usando que $G_{\mu\nu}=0$, entonces $R_{\mu\nu}=0$, luego
+\[-\frac{R_{tt}}{g_{tt}}+\frac{R_{rr}}{g_{rr}}=0\Rightarrow\frac{A'}{rA^2}+\frac{B'}{rAB}=0\Rightarrow\frac{A'}{A}=-\frac{B'}{B}\Rightarrow\left\lbrace\begin{array}{l}
+    A(r)=\frac{c_0}{B(r)} \\
+    B(r)=\frac{c_0}{A(r)} 
+\end{array}\right.\]
+Sustituyendo en $R_{\theta\theta}=0$ idénticamente y lo mismo para $R_{\varphi\varphi}=0$.\\
+Sustituyendo en 
+\[\frac{R_{rr}}{g_{rr}}=0\Rightarrow\frac{A'}{rA}-\frac{(A')^2}{rA^2}+\frac{A''}{2A^2}=0\Rightarrow\left\lbrace\begin{array}{l}
+     A(r)=\frac{c_1}{1+c_2/r}  \\
+     B(r)=\Tilde{c}_1(1+\frac{c_2}{r}) 
+\end{array}\right.\]
+En el límite de campo débil, $g_{tt}=-B(r)=-1+\frac{2GM}{r}$, por tanto $\Tilde{c}_1=1$, $c_2=-2GM$ y $c_0=1$. Así, la métrica en el espacio-tiempo de Schwarzschild es
+\[ds^2=-\left(1-\frac{2GM}{r}\right)dt^2+\frac{1}{1-\frac{2GM}{r}}dr^2+r^2d\Omega^2\]
+asumiendo que $t^{\mu}=\delta_t^{\mu}$ CVK, es decir, que la métrica es estática.
+\begin{theorem}[Teorema de Birkhoff]
+    Cualquier geometría de dimensión 4, esféricamente simétrica y que es Ricci plana ($R_{\mu\nu}=0\Rightarrow G_{\mu\nu}=0$), es decir, que se cumplan las ecuaciones de Einstein en vacío, es localmente difeomorfa a la métrica de Schwarzschild.    
+\end{theorem}
+En otras palabras, si tenemos un objeto esféricamente simétrico que rote o no, fuera de éste, la métrica será siempre de Schwarzschild.
+\begin{proof}
+    Sea $ds^2=-B(t,r)dt^2+A(t,r)dr^2+r^2d\Omega^2$. El tensor de Ricci cumple que $R_{\mu\nu}=0$, y en particular,
+    \[R_{tr}=\frac{\partial_tA}{rA}=\Rightarrow A=A(r)\]
+    Con esto calculamos,
+    \[\frac{R_{tt}}{-g_{tt}}+\frac{R_{rr}}{g_{rr}}=0\Rightarrow\frac{\partial_rA}{rA^2}+\frac{\partial_rB}{ABr}=0\]
+    como $A=A(r)$, solo nos queda que $B=\tau(t)\Tilde{B}(r)$, es decir, debe haber separación de variables. La función la podemos reabsorber mediante una reparametrización temporal, tal que
+    \[B(r,t)dt^2=\Tilde{B}(r)\underbrace{\tau(t)dt^2}_{dT^2}=\Tilde{B}(r)dT^2\]
+    Por tanto, tenemos la métrica,
+    \[ds^2=-\Tilde{B}(r)dT^2+A(r)dr^2+r^2d\Omega^2\]
+    El resto de la demostración es análoga a la demostración de la métrica de Schwarzschild.
+\end{proof}
+Este Teorema nos dice que no existen ondas gravitacionales esféricamente simétricas, es decir, una estrella pulsante no puede emitir una onda gravitacional, pues fuera de éstas, la métrica es estática. Para poder producirlas, debemos romper la simetría esférica.
+\subsection{Geometría del interior de una estrella estática y esféricamente simétrica}
+Asumimos un fluido perfecto con esta simetría y estático, donde consideramos que la estrella tiene un radio $R$, tal que su tensor de energía-impulso es
+\[\begin{array}{lcr}
+    T_{\mu\nu}=(\rho+P)u_{\mu}u_{\nu}+Pg_{\mu\nu} & \text{si} & r\leq R \\
+    T_{\mu\nu}=0 & \text{si} & r>R
+\end{array}\]
+donde $\rho=\rho(r)$, $P=P(r)$, $u^{\mu}u^{\nu}g_{\mu\nu}=-1$ y $u^{\mu}\propto\delta_t^{\mu}$. Así, como $\delta_t^{\mu}\delta_t^{\nu}g_{\mu\nu}=g_{tt}=-B(r)$, entonces $u^{\mu}=\delta_t^{\mu}/\sqrt{B(r)}$ y $u_{\mu}=g_{\mu\nu}u^{\nu}=-\delta_{\mu}^t\sqrt{B(r)}$. \\
+Por tanto, para $r\leq R$,
+\[T_{tt}=(\rho+P)u_tu_t+Pg_{tt}=\rho B\]
+Entonces, uasndo la definición del tensor de Einstein,
+\[G_{tt}=8\pi G T_{tt}=8\pi GB\rho\]
+Además,
+\[T_{rr}=g_{rr}P=AP\Rightarrow G_{rr}=8\pi GT_{rr}=8\pi GAP\]
+\[T_{\theta\theta}=g_{\theta\theta}P=r^2P\Rightarrow G_{\theta\theta}=8\pi GT_{\theta\theta}=8\pi Gr^2P\]
+\[T_{\varphi\varphi}=sin^2\theta T_{\theta\theta}\Rightarrow G_{\varphi\varphi}=\sin^2\theta G_{\theta\theta}\]
+Luego, sustituyendo $g_{\mu\nu}$ en $G_{\mu\nu}$ tenemos
+\[G_{tt}=\frac{B}{r^2}\left(1-\frac{1}{A}+\frac{rA'}{A^2}\right)\]
+\[G_{rr}=\frac{1}{r^2}(1-A)+\frac{B'}{rB}\]
+\[G_{\theta\theta}=\frac{r^2}{2AB}\left(-\frac{A'}{rA}+\frac{B'}{r}-\frac{A'B'}{2A}-\frac{(B')^2}{2B}+B''\right)\]
+Tenemos 3 ecuaciones de Einstein y necesitamos una cuarta ecuación, pero al tener un fluido perfecto, usamos también la ecuación de estado del fluido.
+\begin{itemize}
+    \item \textbf{Para $tt$}:
+    \[\frac{\cancel{B}}{r^2}=\left(1-\frac{1}{A}+\frac{rA'}{A^2}\right)=8\pi G\rho\cancel{B}\]
+    Si tomamos $A(r)=\frac{1}{1-2Gm(r)/r}$, entonces tenemos que
+    \[m(r)=4\pi\int_0^rd\Tilde{r}\Tilde{r}^2\rho(\Tilde{r})+m_0\]
+    siendo la masa que hay dentro del volumen de la estrella.\\ \\
+    Si $m_0\neq0$, tenemos una singularidad cónica, pues si calculamos el volumen propio de la estrella, será distinto a $4\pi R^2$. Por tanto, tomamos $m_0=0$.\\ \\
+    Notemos que $A>0$ siempre para que dentro de la estrella la métrica no haga cosas raras. Por tanto, $r\geq 2Gm(r)$. Además, la estrella en $r=R$ debe tener una geometría continua y debe 'pegar' bien con la métrica de Schwarzschild, de forma que $m(r=R)=M$. Como $A>0$, entonces $\frac{R}{2}\geq GM$, siendo $GM$ el \textit{radio de Schwarzschild}.\\ \\
+    La masa propia de la estrella es
+    \[M_p=4\pi\int_0^Rd\Tilde{r}\Tilde{r}^2\rho(\Tilde{r})\geq M\]
+    siendo mayor porque incluye la energía de enlace gravitacional.
+    \item \textbf{Para $rr$}:\\ \\
+    Vemos que la parte radial queda,
+    \[\frac{(1-A)}{r^2}+\frac{B'}{rB}=8\pi G P A\Rightarrow\frac{B'}{B}=\frac{2Gm(r)+8\pi Gr^3P(r)}{r(r-2Gm(r))}\]
+    Tenemos un límite newtoniano si $B=e^{2\phi}$ y $r^3P<<Gm(r)$ ó $r>>Gm(r)$, así queda,
+    \[\frac{d\phi}{dr}\approx\frac{m(r)}{r^2}\]
+    siendo el potencial gravitatorio.
+    \item \textbf{Para $\theta\theta$}:\\ \\
+    No da información adicional.
+\end{itemize}
+Además tenemos,
+\[0=\nabla^{\mu}T_{\mu\nu}=u_{\nu}u^{\mu}\nabla_{\mu}(\rho+P)+(\rho+\rho)\]
+donde $u_{\nu}u^{\mu}$ depende de $t$ y $\partial_t(\rho+P)=0$, que depende solo de $r$. Entonces tenemos,
+\[\brackets{y_{\nu}\nabla_{\mu}u^{\mu}+u^{\mu}\nabla_{\mu}u_{\nu}}+\nabla_{\nu}P=0\]
+Para $\nu=t$,
+\[\begin{array}{c}
+    \nabla_tP=\partial_tP=0 \\ \\
+    \underbrace{u_t\nabla_{\mu}u^{\mu}}_{=\underbrace{\partial_tu^t}_{0}+\underbrace{\Gamma_{\mu t}^{\mu}u_tu^u}_{0}}+\underbrace{u^t\partial_tu_t}_{0} +\underbrace{u^t\Gamma_{tt}^tu_t}_{0}
+\end{array}\]
+Luego, no contribuye.\\
+Para $\nu=r$,
+\[\begin{array}{rl}
+    \nabla_rP & =\partial_rP=P' \\ \\
+    \cancelto{0}{u_r}\nabla_{\mu}u^{\mu+u^t\nabla_tu_r} & =u^t\partial_tu_r+u_ru^t\Gamma_{tr}^{\mu}u_{\mu}=\\
+    &=-u^t\Gamma_{tr}^tu_t=\Gamma_{tr}^t=\frac{1}{2}\frac{B'}{B}\\ \\
+    u^{\mu}u_{\nu} &=u^tu_t=-1
+\end{array}\]
+Por tanto,
+\[\frac{1}{2}(\rho+P)\frac{B'}{B}+P'=0\]
+Sustituyendo $\frac{B'}{B}$, tenemos
+\begin{equation}  
+P'=-(\rho(r)+P(r))\frac{Gm(r)+4\pi r^3P(r)}{r(r-2Gm(r))}
+\label{eq4.8.1}
+\end{equation}
+siendo la \textbf{ecuación de Tolma-Oppenheimer-Volkof (TOV)}. 
+Representa la variación de la presión de una estrella estática en términos del contenido energético y $m(r)$. \\ \\
+El límite newtoniano será para $P<<\rho$ y $Gm(r)<<r$, tal que
+\[\frac{dP}{dr}=-\rho\frac{m(r)}{r^2}\]
+siendo la ecuación de equilibrio hidrostático.\\
+Si introducimos la ecuación de estado $P=\rho(r)$, podemos resolver el sistema.\\
+En cualquier caso, tenemos que $\rho(r>R)=0$ y $P(r>R)=0$.
+\subsection{Estrellas de densidad uniforme}
+Como la densidad es uniforme, tendremos
+\[\rho=\left\lbrace\begin{matrix}
+    \rho_0 & \text{si} & r\leq R\\
+    0 & \text{si} & r>R
+\end{matrix}\right.\]
+En este caso, la masa queda,
+\[m(r)=\left\lbrace\begin{matrix}
+    \frac{4\pi}{3}\rho_0r^3 & \text{si} & r\leq R\\ \\
+    \frac{4\pi}{3}\rho_0R^3 & \text{si} & r>R
+\end{matrix}\right.\]
+Sustituyendo en (\ref{eq4.8.1}), tenemos
+\[P(r)=\rho_0\frac{\left(1-\frac{2GM}{R}\right)^{1/2}-\left(1-\frac{2GMr^2}{R^3}\right)^{1/2}}{\left(1-\frac{2GMr^2}{R^3}\right)^{1/2}-3\left(1-\frac{2GM}{R}\right)^{1/2}}\]
+La presión en el centro de la estrella será
+\[P(r=0)=\rho_0\frac{1-\left(1-\frac{2GM}{R}\right)^{1/2}}{3\left(1-\frac{2GM}{R}\right)^{1/2}-1}=P_C\]
+siendo la presión crítica.\\ \\
+Si $R=\frac{9}{4}GM$, entonces $P_C\rightarrow\infty$.\\ \\
+Según la Relatividad General, no podemos tener estrellas esféricas y estáticas de densidad uniforme con $R\leq\frac{9}{4}GM$. Las estrellas de neutrones alcanzan densidades de $\rho\approx6\cdot10^{17}$ kg/m$^3$ y tendrán $M_{max}\leq10M_0$, siendo $M_0$ la masa del Sol. En realidad, las estrellas de neutrones no pueden ser más de 2 o 3 veces la masa del Sol.\\
+\textbf{(Ejercicio: Obtener $A(r)$ y $B(r)$ de las estrellas de neutrones)}.
+\subsection{Colapso gravitatorio. Modelo de Oppenheimer-Snyder}
+Asumimos una estrella esférica, de radio $R(t=t_0)=R_0$, de densidad uniforme $\rho=\rho(t)$ y sin presión $P=0$. Por tanto, tenemos que $T_{\mu\nu}=\rho u_{\mu}u_{\nu}$.\\ 
+Las ecuaciones de conservación nos dan 
+\[u^{\mu}\nabla_{\mu}u^{\nu}=0\]
+En la superficie de la estrella y teniendo en cuenta la continuidad de $g_{\mu\nu}$, las partículas seguirán las geodésicas,
+\[-\left(1-\frac{2GM}{r(s)}\right)\left(\frac{dt}{ds}\right)^2+\frac{1}{1-\frac{2GM}{r(s)}}\left(\frac{dr}{ds}\right)^2=-1\]
+En el límite $r(s)\to 2GM$, tenemos $\dot{t}|\to\infty$ y $\dot{r}\to0$, es decir, en coordenadas $(t,r)$ no veremos nunca a la estrella alcanzar $r\to2GM$. En coordenadas de tiempo propio sí lo hace, teniendo que la cantidad $u^{\mu}\xi_{\mu}=cte$, con $\xi^{\mu}=\delta_t^{\mu}$. Esto implica que
+\[\left(1-\frac{2GM}{r}\right)t
+0cte\overset{r\to\infty}{\approx}1\]
+Sustituyendo en $u^{\mu}u_{\nu}g_{\mu\nu}=1$, obtenemos que $\dot{r}=-\sqrt{\frac{2GM}{r}}$. Así,
+\[\Delta S=\int_{2GM}^R\frac{dr}{|\dot{r}|}=\frac{4GM}{3}\brackets{\left(\frac{R_0}{2GM}\right)^{3/2}-1}<\infty\]
+Además, podemos calcular lo que tarda desde $r=2GM$ hasta $r=0$, tal que
+\[\Delta S=\frac{4GM}{3}\Longrightarrow\Delta S\approx10^{-5}\frac{M}{M_0}\text{ (s)}
+\]
+Además, cuando se produce el colapso gravitacional, se crea un \textbf{agujero negro}.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Capitulos/Capitulo4/Seccion8/agujeronegro.png}
+    \captionof{figure}{Esquema de un rayo de luz entrando en un agujero negro.}
+    \label{Fig4.8.1}
+\end{Figura}
+donde los conos verdes son los \textit{conos de luz} y vemos que a partir del horizonte $r=2GM$ nada puede escapar del agujero negro, pues los conos de luz no tienen suficiente ángulo.\\ \\
+Además, dentro de un agujero negro nunca podremos llegar a ver la singularidad hasta que lleguemos a ella en un tiempo futuro, y también, usando la métrica de Schwarzschild, la coordenada radial se vuelve temporal y la temporal, radial, dentro del agujero negro. Pues, como
+\[ds^2=\left(1-\frac{2GM}{r}\right)dt^2+\frac{dr^2}{1-\frac{2GM}{r}}+r^2d\Omega^2\]
+Entonces,
+\[\begin{array}{rclc}
+     \nabla_{\mu}t\nabla_{\nu}tg^{\mu\nu}<0 & \text{si} & r>2GM & \equiv\text{Vector temporal}  \\ \\
+     \nabla_{\mu}r\nabla_{\nu}rg^{\mu\nu}>0 & \text{si} & r>2GM & \equiv\text{Vector espacial}  \\ \\
+     \nabla_{\mu}t\nabla_{\nu}tg^{\mu\nu}>0 & \text{si} & r<2GM & \equiv\text{Vector espacial}  \\ \\
+     \nabla_{\mu}r\nabla_{\nu}rg^{\mu\nu}<0 & \text{si} & r<2GM & \equiv\text{Vector temporal}  \\ \\
+\end{array}\]
+Roger Penrose demostró que las singularidades se forman tras el colapso de una estrella, de forma general.
+\subsection{Propiedades de la métrica de Schwarzschild}
+\begin{enumerate}[label=(\Roman*)]
+    \item La métrica es degenerada en $r=2GM$, $r=0$ y $\theta=0,\pi$. Se puede demostrar que para $r=2GM$ y $\theta=0,\pi$ son singularidades de coordenadas, es decir, si hacemos un cambio de coordenadas solucionamos estas singularidades. Además, el parámetro afín se comporta bien en $r=2GM$. Pero, para $r=0$, sí tenemos una singularidad física, que se aprecia calculando los escalares de curvatura, pues como $R_{\mu\nu}=0$ es un tensor, será cero también en cualquier coordenada, teniendo así que $R=0$ y $R_{\mu\nu}R^{\mu\nu}=0$, pero esto no da información.\\ \\
+    Podemos usar el escalar de Krestchmann, que viene dado por
+    \[K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=...=\frac{48G^2M^2}{r^6}\]
+    tal que $\lim_{r\to0}K=\infty$, es decir, las fuerzas de marea son infinitas, teniendo así una singularidad física.
+    \item Si $r=2GM$ tenemos $\nabla_{\mu}t\nabla_{\nu}tg^{\mu\nu}=0$, definiendo así el \textbf{horizonte de eventos} o de sucesos.
+    \item La métrica de Schwarzschild en $r<2GM$ es difeomorfa a una métrica de tipo Kantowski-Sachs, tal que
+    \[ds^2=-\frac{dT^2}{\frac{2GM}{T}-1}+\left(\frac{2GM}{T}-1\right)dx^2+T^2d\Omega^2\]
+    donde intercambiamos las coordenadas espaciales por las coordenadas temporales, denominándose homogénea, pues no depende de $x$, pero sí varía con $T$. Además, tiene singularidad en $T=0$, tal que $T\in(2GM,0)$.
+\end{enumerate}
+\subsection{Métrica de Kerr. Agujero negro en rotación. 1963}
+Se define como,
+\[\begin{split}
+ds^2=-\frac{\Delta(r)-a\sin^2\theta}{\Sigma(r,\theta)}dt^2-2a\sin^2\theta\frac{2GMr}{\Sigma(r,\theta)}d\varphi dt+\\
++\frac{(r^2+a^2)^2-\Delta(r)a^2\sin^2\theta}{\Sigma(r,\theta)}\sin^2\theta d\varphi^2+\frac{\Sigma(r,\theta)}{\Delta(r)}dr^2+\Sigma(r,\theta)d\theta^2
+\end{split}\]
+donde $a=\frac{J}{M}$, es decir, es el momento angular del agujero negro normalizado a su masa si $M>0$ y $GM>a$. Además,
+\[\Sigma(r,\theta)=r^2+a^2\cos^2\theta\]
+\[\Delta(r)=r^2+a^2-2GMr\]
+\subsubsection*{Propiedades}
+\begin{enumerate}[label=(\Roman*)]
+    \item Tiene dos campos vectoriales de killing, tales que
+    \[t^{\mu}=\delta_t^{\mu};\hspace{6mm}\varphi^{\mu}=\delta_{\varphi}^{\mu}\]
+    \item Tiene dos horizontes en 
+    \[r_{\pm}=GM\pm\sqrt{G^2M^2-a^2}\]
+    tal que $\lim_{a\to0}r_+=2GM$.
+    \item Tiene dos ergosferas (zonas del espacio-tiempo donde todavía podemos compensar la rotación del espacio-tiempo provocada por e agujero negro). Tiene una ergosfera en el horizonte exterior,
+    \[r_+<r<GM+\left(G^2M^2-a^2\cos^2\theta\right)^{1/2}<R_+\]
+\end{enumerate}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Capitulos//Capitulo4//Seccion8/agujerKerr.png}
+    \captionof{figure}{Esquema de un agujero negro de Kerr.}
+    \label{Fig4.8.2}
+\end{Figura}
+
+

@@ -1,0 +1,261 @@
+%SECCION 3
+\section{Derivada de Lie} % Main chapter title
+\label{cap3-sec5} 
+%------------------------------------------------------------------------------
+La derivada de Lie nos dice cómo derivar funciones escalares, campos vectoriales y campos tensoriales de forma general. Además, nos dice cómo conectar espacios tangentes $T_p$ y $T_q$ de dos puntos $p,q\in\mathscr{M}$ con $p\neq q$.\\ \\
+Para ello, necesitamos un campo vectorial $\vec{\xi}$, que define un conjunto de difeomorfismos. En concreto, por cada punto $p\in\mathscr{M}$ pasa una curva $\gamma_p(t)$ tal que
+\[\dot{\gamma}_p(t)=\xi^{\mu}(p)\]
+Esta curva define el difeomorfismo siguiente,
+\[\varphi_t(p)=\gamma_p(t);\hspace{4mm}\varphi_t:U\to\varphi_t(U)\]
+La derivada de Lie de una función escalar $f$ a lo largo de $\vec{\xi}$ se define como,
+\begin{equation}
+    \mathscr{L}_{\vec{\xi}}f|_p=\vec{\xi}(f)\equiv\xi^{\mu}\partial_{\mu}f
+\end{equation}
+La derivada de Lie de un campo vectorial se define como,
+\begin{equation}
+    \mathscr{L}_{\vec{\xi}}\vec{v}|_p=\lim_{t\to0}\frac{\varphi^*_t(\vec{v}(\varphi_t(p)))-\vec{v}|_p}{t}
+\end{equation}
+Se puede demostrar que
+\[\mathscr{L}_{\vec{\xi}}\vec{v}|_p=\brackets{\vec{\xi},\vec{v}}=-\mathscr{L}_{\vec{v}}\vec{\xi}|_p\]
+En coordenadas se escribe,
+\[(\mathscr{L}_{\vec{\xi}\vec{v}})^{\mu}=\xi^{\nu}\partial_{\nu}v^{\mu}-v^{\nu}\partial_{\nu}\xi^{\mu}\]
+Sus propiedades son:
+\begin{enumerate}
+    \item La derivada de Lie preserva el tipo tensorial, las simetrías y las operaciones.
+    \item Es una aplicación lineal.
+    \item Satisface la regla de Leibtniz,
+    \[\mathscr{L}_{\vec{\xi}}(\vec{u}\otimes\vec{v})=(\mathscr{L}_{\vec{\xi}}\vec{u})\otimes\vec{v}+\vec{u}\otimes(\mathscr{L}_{\vec{\xi}}\vec{v})\]
+    \item Cumple que
+    \[\left<\vec{f},\mathscr{L}_{\vec{\xi}}\vec{v}\right>=\mathscr{L}_{\vec{\xi}}(<\vec{f},\vec{v}>)-\left<\mathscr{L}_{\vec{\xi}}\vec{f},\vec{v}\right>\]
+\end{enumerate}
+La derivada de un tensor se define como
+\begin{equation}
+    \begin{array}{rl}
+    \mathscr{L}_{\vec{\xi}}\left(T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\right)&=\xi^{\mu}\partial_{\mu}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}-T^{\nu\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\partial_{\nu}\xi^{\mu_1}-T^{\mu_1\nu\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\partial_{\nu}\xi^{\mu_2}-\dots-T^{\mu_1\mu_2\dots\mu_{r-1}\nu}_{\nu_1\nu_2\dots\nu_s}\partial_{\nu}\xi^{\mu_r}+\\
+    &+T^{\mu_1\mu_2\dots\mu_r}_{\nu\nu_2\dots\nu_s}\partial_{\nu_1}\xi^{\nu}+\dots+T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_{s-1}\nu}\partial_{\nu_s}\xi^{\nu}
+    \end{array}
+\end{equation}
+La derivada de Lie nos permite saber cuándo hay una simetría, pues si $\mathscr{L}_{\vec{\xi}}\vec{v}=0$, entonces $\vec{v}$ es simétrico bajo $\varphi_t(p)$.\\ \\
+La derivada de Lie necesita conocer los campos vectoriales y sus derivadas en las direcciones no tangenciales a las curvas que unen $p$ y $q$. Como la derivada de Lie necesita mucha información de primeras, puesto que hay infinitos campos fuera de la curva, introduciremos la noción de \textbf{derivada covariante}. Esta derivada, por otro lado, solo necesitará información sobre la curva y las direcciones tangentes a ella.
+\subsection{Derivada covariante}
+La derivada covariante es una derivada que está enteramente definida en $T_p$ y al actuar sobre un tensor, $T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}$, nos devolverá otro tensor de tipo $(r,s+1)$, tal que
+\begin{equation}
+    \nabla_{\nu_{s+1}}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\equiv T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s;\nu_{s+1}}
+\end{equation}
+Sus propiedades son las siguientes:
+\begin{enumerate}
+    \item Es lineal,
+    \[\nabla_{\nu}\left(\alpha T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}+\beta S^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\right)=\alpha\nabla_{\nu}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}+\beta\nabla_{\nu}S^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\]
+    con $\alpha,\beta\in\mathbb{R}$.
+    \item Satisface la regla de Leibtniz (regla de la cadena),
+    \[\nabla_{\nu}\left(T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}S^{\rho_1\rho_2\dots\rho_{r'}}_{\sigma_1\sigma_2\dots\sigma_{s'}}\right)=S^{\rho_1\rho_2\dots\rho_{r'}}_{\sigma_1\sigma_2\dots\sigma_{s'}}\nabla_{\nu}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}+T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}\nabla_{\nu}S^{\rho_1\rho_2\dots\rho_{r'}}_{\sigma_1\sigma_2\dots\sigma_{s'}}\]
+    \item Conmuta con la contracción,
+    \[\nabla_{\nu}\left(T^{\mu\mu_2\dots\mu_r}_{\mu\nu_2\dots\nu_s}\right)=\nabla_{\nu}T^{\mu\mu_2\dots\mu_r}_{\mu\nu_2\dots\nu_s}\]
+    \item Sobre funciones actúa como,
+    \[\nabla_{\mu}f=(df)_{\mu}\]
+    En coordenadas,
+    \[(df)_{\mu}=\partial_{\mu}f\]
+\end{enumerate}
+De la propiedad 4. tenemos que 
+\[\nabla_{\mu}f=(d\vec{f})_{\mu}\partial_{\mu}f\]
+Sobre $<\vec{f},\vec{v}>=f_{\mu}v^{\mu}$ actúa $\nabla_{\mu}(f_{\nu}v^{\mu})=f_{\nu}\partial_{\mu}v^{\nu}$.
+\begin{remark}
+$\hspace{5mm}$
+    \begin{itemize}
+        \item $\partial_{\mu}v^{\nu}$ no es un tensor, pues
+        \[\partial'_{\mu}v^{'\nu}=\frac{\partial x^{\rho}}{\partial x^{'\mu}}\partial_{\rho}\left(\frac{\partial x^{'\nu}}{\partial x^{\sigma}}v^{\sigma}\right)=\frac{\partial x^{\rho}}{\partial x^{'\mu}}\frac{\partial x^{'\nu}}{\partial x^{\sigma}}\partial_{\rho}v^{\sigma}+\underbrace{\frac{\partial x^{\rho}}{\partial x^{'\mu}}\partial_{\rho}\left(\frac{\partial x^{'\nu}}{\partial x^{\sigma}}\right)v^{\sigma}}\]
+        donde el término señalado hace que no sea un tensor, pues hace que no transforme como un tensor.
+        \item $\nabla_{\mu}v^{\nu}$ es un tensor, pues
+        \[\begin{array}{cl}
+            \nabla_{\mu}(f_{\nu}v^{\nu}) & =\partial_{\mu}(f_{\nu}v^{\nu})=f_{\nu}\partial_{\mu}v^{\nu}+v^{\nu}\partial_{\mu}f^{\nu} \\
+            || & \\
+             f_{\nu}\nabla_{\mu}v^{\nu}+v^{\nu}\nabla_{\mu}f_{\nu}&=f_{\nu}\left(\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\rho}v^{\rho}\right)+v^{\nu}\left(\partial_{\mu}f_{\nu}+\overline{\Gamma}_{\mu\nu}^{\rho}f_{\rho}\right)=\\
+             &=f_{\nu}\partial_{\mu}v^{\nu}+v^{\nu}\partial_{\mu}f_{\nu}+\underbrace{\Gamma_{\mu\sigma}^{\rho}v^{\sigma}f_{\rho}+\overline{\Gamma}_{\mu\rho}^{\sigma}v^{\rho}f_{\sigma}}_{\begin{matrix}
+                 ||\\
+                 0
+             \end{matrix}}
+        \end{array}\]
+        donde el último término se anula porque $\overline{\Gamma}_{\mu\rho}^{\sigma}=-\Gamma_{\mu\rho}^{\sigma}$.
+    \end{itemize}
+\end{remark}
+En resumen, tenemos que
+\begin{equation}
+    \nabla_{\mu}v^{\nu}=\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\nu}v^{\rho}
+\end{equation}
+es la derivada covariante de vectores.
+\begin{equation}
+    \nabla_{\mu}f_{\nu}=\partial_{\mu}f_{\nu}-\Gamma_{\mu\nu}^{\rho}f_{\rho}
+\end{equation}
+es la derivada covariante de formas.\\ \\
+Notemos que $\nabla_{\mu}v^{\nu}$ es un tensor, pero $\partial_{\mu}v^{\nu}$ no es un tensor, por tanto $\Gamma_{\mu\nu}^{\rho}$ no transforma como un tensor, pues
+\[\Gamma_{\mu\rho}^{'\nu}=\frac{\partial x^{'\nu}}{\partial x^{\gamma}}\frac{\partial x^{\sigma}}{\partial x^{'\mu}}\frac{\partial x^{\delta}}{\partial x^{'\rho}}\Gamma_{\sigma\delta}^{\gamma}-\frac{\partial x^{\gamma}}{\partial x^{'\nu}}\frac{\partial x^{\sigma}}{\partial x^{'\rho}}\partial_{\gamma}\left(\frac{\partial x^{'\nu}}{\partial x^{\sigma}}\right)\]
+En cambio, la combinación $\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\nu}v^{\rho}$ sí es un tensor.\\ \\
+La derivada covariante de un tensor tipo $(r,s)$ viene dada por,
+\begin{equation}
+    \begin{array}{rl}
+        \nabla_{\mu}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s} & =\partial_{\mu}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}+\Gamma_{\mu\rho}^{\mu_1}T^{\rho\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_s}+\dots+\Gamma_{\mu\rho}^{\mu_r}T^{\mu_1\mu_2\dots\mu_{r-1}\rho}_{\nu_1\nu_2\dots\nu_s}- \\
+         & -\Gamma_{\mu\nu_1}^{\rho}T^{\mu_1\mu_2\dots\mu_r}_{\rho\nu_2\dots\nu_s}-\dots-\Gamma_{\mu\nu_s}^{\rho}T^{\mu_1\mu_2\dots\mu_r}_{\nu_1\nu_2\dots\nu_{s-1}\rho}
+    \end{array}
+\end{equation}
+En una base no coordenada cualquiera, tenemos que la diferencia de dos conexiones en un tensor de tipo $(1,2)$ se cumple que
+\[\left\lbrace\begin{array}{l}
+     (\nabla_a-\overline{\nabla}_a)f_b=-C_{ab}^{c}f_c \\
+     (\nabla_a-\overline{\nabla}_a)v^b=C_{ac}^bv^c 
+\end{array}\right.\hspace{4mm}\text{con}\hspace{3mm}C_{bc}^a=\Gamma_{bc}^a-\overline{\Gamma}_{bc}^a\text{, que es un tensor.}\]
+De entre todas las conexiones posibles, vamos a tomar aquellas conexiones que son simétricas, es decir, que $\nabla_{\mu}\nabla_{\nu}f=\nabla_{\nu}\nabla_{\mu}f$. Por tanto, tendremos que los símbolos de Christoffel, en una base coordenada, son simétricos,
+\[\Gamma_{\mu\nu}^{\rho}=\Gamma_{\nu\mu}^{\rho}=\Gamma_{(\mu\nu)}^{\rho}\]
+Como consecuencia, tenemos que
+\[\left(\mathscr{L}_{\vec{\xi}}\vec{v}\right)^{\mu}=\xi^{\nu}\partial_{\nu}v^{\mu}-v^{\nu}\partial_{\nu}\xi^{\mu}=\xi^{\nu}\nabla_{\nu}v^{\mu}-v^{\nu}\nabla_{\nu}\xi^{\mu}\]
+Por tanto, podemos sustituir $\partial_{\mu}\to\nabla_{\mu}$ en la derivada de Lie.
+\section{Conexión de Levi-Civita}
+Es la única conexión simétrica y compatible con la métrica, es decir, 
+\[\nabla_{\mu}g_{\nu\rho}=\partial_{\mu}g_{\nu\rho}-\Gamma_{\mu\nu}^{\sigma}g_{\sigma\rho}-\Gamma_{\mu\rho}^{\sigma}g_{\nu\sigma}=0\]
+Por tanto, podemos llegar a una definición de los símbolos de Christoffel en la conexión de Levi-Civita que solo depende de la métrica, tal que
+\begin{equation}
+    \Gamma_{\nu\rho}^{\mu}=\frac{1}{2}g^{\mu\sigma}\left(g_{\sigma\nu,\rho}+g_{\sigma\rho,\nu}-g_{\nu\rho,\sigma}\right)
+\end{equation}
+La conexión de Levi-Civita preserva las normas y los ángulos bajo el transporte paralelo (que se explicará en la siguiente sección).\\ \\
+Además, para la conexión de Levi-Civita se cumple que
+\begin{equation}
+    \left(\mathscr{L}_{\vec{\xi}}g_{\mu\nu}\right)=\nabla_{\mu}\xi_{\nu}+\nabla_{\nu}\xi_{\mu}
+\end{equation}
+Podemos calcular las simetrías de nuestra variedad resolviendo $\left(\mathscr{L}_{\vec{\xi}}g_{\mu\nu}\right)=\nabla_{\mu}\xi_{\nu}+\nabla_{\nu}\xi_{\mu}=0$, obteniendo así las cantidades simétricas de nuestra variedad con la métrica escogida.
+\section{Transporte paralelo}
+Es una forma 'barata' de movernos de un punto $p$ a un punto $q$ de la variedad. Decimos que es 'barata' porque solo necesitamos una curva $\gamma_p(t)$ que pase por $p$ y $q$, y una conexión $\nabla_a$.\\ \\
+Sea $\vec{v}\in T_p$ y sea $t^a$ el vector tangente a $\gamma_p(t)$. Dada una conexión $\nabla_a$, se define el transporte paralelo de $\vec{v}$ sobre $\gamma_p(t)$ como
+\begin{equation}
+    t^a\nabla_av^b=0
+\end{equation}
+teniendo una solución única. En coordenadas tenemos que  $t^{\mu}=\dot{x}^{\mu}=\frac{dx^{\mu}}{dt}$, tal que
+\begin{equation}
+    t^{\mu}\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\nu}t^{\mu}v^{\rho}=0
+\end{equation}
+que equivale a
+\begin{equation}
+    \dot{x}^{\mu}\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\nu}\frac{dx^{\mu}}{dt}v^{\rho}=\frac{dv^{\nu}}{dt}+\Gamma_{\mu\rho}^{\nu}\frac{dx^{\mu}}{dt}v^{\rho}=0
+\end{equation}
+Tenemos un conjunto de $n-$ecuaciones diferenciales ordinarias de primer orden y lineales en $v^{\mu}$. Existe solución y es única. Además, cualquier combinación lineal de vectores $v^{\mu}$ también es un vector de transporte paralelamente.\\ \\
+El transporte paralelo induce un isomorfismo entre los espacios tangentes $T_p$ y $T_q$. Este isomorfismo depende de $\nabla_{\mu}$ y de $\gamma_p(t)$.
+\begin{note}
+    Si la curvatura asociada a $\nabla_a$ es cero, entonces el transporte paralelo no dependerá de $\gamma_p(t)$.
+\end{note}
+Para la conexión de Levi-Civita, dados $v^{\mu}$ y $u^{\mu}$, que satisfacen $t^{\mu}\nabla_{\mu}v^{\nu}=0$ y $t^{\mu}\nabla_{\mu}u^{\nu}=0$, con $t^{\mu}$ tangente a $\gamma_p(t)$, entonces
+\begin{equation}
+    t^{\mu}\nabla_{\mu}\left(v^{\nu}u^{\rho}g_{\nu\rho}\right)=u^{\rho}g_{\nu\rho}\cancelto{0}{t^{\mu}\nabla_{\mu}v^{\nu}}+v^{\nu}g_{\nu\rho}\cancelto{0}{t^{\mu}\nabla_{\mu}u^{\rho}}+v^{\nu}u^{\rho}t^{\mu}\cancelto{0}{\nabla_{\mu}g_{\nu\rho}}=0
+\end{equation}
+Por tanto, los ángulos y las normas de los vectores se preservan al ser transportados paralelamente con la conexión de Levi-Civita, independientemente de $\gamma_p(t)$.
+\section{Geodésicas}
+Una curva $\gamma_p(s)$, donde usamos el parámetro afín $s$, se dice que es geodésica si su vector tangente cumple que,
+\begin{equation}
+    \frac{dv^{\mu}}{ds}=0\Longleftrightarrow v^{\mu}\nabla_{\mu}v^{\nu}=0
+\end{equation}
+Este parámetro afín es único salvo multiplicación y adición de una constante. En coordenadas tenemos,
+\[\begin{array}{c}
+     v^{\mu}\partial_{\mu}v^{\nu}+\Gamma_{\mu\rho}^{\nu}v^{\mu}v^{\rho}=0  \\
+      ||| \\
+      \frac{dx^{\mu}}{ds}\partial_{\mu}\left(\frac{dx^{\nu}}{ds}\right)+\Gamma_{\mu\rho}^{\nu}\frac{dx^{\mu}}{ds}\frac{dx^{\rho}}{ds}=0
+\end{array}\]
+Por tanto, la ecuación de la geodésica queda
+\begin{equation}
+    \frac{d^2x^{\nu}}{ds^2}+\Gamma_{\mu\rho}^{\nu}\frac{dx^{\mu}}{ds}\frac{dx^{\rho}}{ds}=0
+\end{equation}
+teniendo así un sistema de $n-$ecuaciones diferenciales ordinarias de segundo orden no lineales. Estas ecuaciones diferenciales tienen solución y es única, pues satisfacen teoremas de existencia y unicidad.\\ \\
+Localmente, podemos encontrar coordenadas normales $x=x(x')$, donde la ecuación de las geodésicas queda como,
+\begin{equation}
+    \frac{d^2x^{'\mu}}{ds^2}=0
+\end{equation}
+\subsection{Geodésicas como Principio Variacional}
+Postulamos una acción,
+\begin{equation}
+    S=\int\sqrt{ds^2}=\int\sqrt{g_{\mu\nu}(x)\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}}d\lambda=\int\mathcal{L}d\lambda
+\end{equation}
+donde si $\mathcal{L}^2>0$, entonces tenemos vectores espaciales.\\ \\
+Si interpretamos $\mathcal{L}$ como un Lagrangiano, podemos obtener las ecuaciones de Euler-Lagrange, tal que
+\[\frac{\partial\mathcal{L}}{\partial x^{\mu}}-\frac{d}{d\lambda}\left(\frac{\partial\mathcal{L}}{\partial\dot{x}^{\mu}}\right)=0\]
+o bien,
+\[\frac{\partial(\mathcal{L}^2)}{dx^{\mu}}-\frac{d}{d\lambda}\left(\frac{\partial(\mathcal{L}^2)}{\partial \dot{x}^{\mu}}\right)=-2\frac{\partial\mathcal{L}}{\partial\dot{x}^{\mu}}\dot{\mathcal{L}}\]
+donde $\dot{x}^{\mu}=\frac{\partial x^{\mu}}{\partial\lambda}$. Lo calculamos,
+\[\begin{array}{l}
+     \frac{\partial(\mathcal{L}^2)}{\partial x^{\mu}}=(\partial_{\mu}g_{\rho\nu})\frac{dx^{\rho}}{d\lambda}\frac{dx^{\nu}}{d\lambda}  \\ \\
+     \frac{\partial(\mathcal{L}^2)}{\partial\dot{x}^{\mu}}=2g_{\mu\nu}\frac{dx^{\nu}}{d\lambda} \\ \\
+     \frac{d}{d\lambda}\left(\frac{\partial (\mathcal{L}^2)}{\partial\dot{x}^{\mu}}\right)=2g_{\mu\nu}\frac{d^2x^{\nu}}{d\lambda^2}+2(\partial_{\sigma}g_{\mu\nu})\frac{dx^{\sigma}}{d\lambda}\frac{dx^{\nu}}{d\lambda}
+\end{array}\]
+Por tanto,
+\[\frac{\partial(\mathcal{L}^2)}{\partial x^{\mu}}-\frac{d}{d\lambda}\left(\frac{\partial(\mathcal{L}^2)}{\partial\dot{x}^{\mu}}\right)=-2g_{\mu\nu}\left(\frac{d^2x^{\nu}}{d\lambda^2}+\Gamma_{\rho\sigma}^{\nu}\dot{x}^{\rho}\dot{x}^{\sigma}\right)=-2\frac{\partial\mathcal{L}}{\partial\dot{x}^{\mu}}\dot{\mathcal{L}}\]
+Entonces, la ecuación de la geodésica generalizada queda,
+\begin{equation}
+    \frac{d^2x^{\mu}}{d\lambda^2}+\Gamma_{\rho\sigma}^{\mu}\dot{x}^{\rho}\dot{x}^{\sigma}=\dot{x}^{\mu}\frac{\dot{\mathcal{L}}}{\mathcal{L}}
+\end{equation}
+Para llegar a la ecuación de la geodésica debemos usar el parámetro afín, pues el término de la derecha de la igualdad no se anula debido a que $\lambda$ no es el parámetro afín. Luego, redefinimos $\mathcal{L}d\lambda\equiv ds$, teniendo así la ecuación de la geodésica,
+\begin{equation}
+    \frac{d^2x^{\mu}}{ds^2}+\Gamma_{\rho\sigma}^{\mu}\frac{dx^{\rho}}{ds}\frac{dx^{\sigma}}{ds}=0
+\end{equation}
+\subsection{Derivación de los términos de Christoffel mediante las geodésicas}
+Tomamos como Lagrangiano $\Tilde{\mathcal{L}}=g_{\mu\nu}\dot{x}^{\mu}\dot{x}^{\nu}$. Veamos un ejemplo de cómo derivar los símbolos de Christoffel usando la ecuación de la geodésica.
+\begin{example}
+    Tomamos la métrica en coordenadas cilíndricas,
+    \[ds^2=dr^2+r^2d\theta^2+dz^2\]
+    por tanto, el Lagrangiano queda
+    \[\Tilde{\mathcal{L}}=\dot{r}^2+r^2\dot{\theta}^2+\dot{z}^2\]
+    resolvemos las ecuaciones de Euler-Lagrange, \\
+    para el eje $z$:
+    \[\frac{\partial\Tilde{\mathcal{L}}}{\partial z}=0;\hspace{3mm}\frac{\partial\mathcal{L}}{\partial\dot{z}}=2\dot{z}\Rightarrow 0-\frac{d}{ds}(2\dot{z})=0\Rightarrow\ddot{z}=0\]
+    luego, las ecuaciones de la geodésica para el eje $z$ quedan,
+    \[\ddot{z}+\Gamma_{\mu\nu}^z\dot{x}^{\mu}\dot{x}^{\nu}=0\]
+    por tanto $\Gamma_{\mu\nu}^z=0$.\\
+    Para el eje $r$:
+    \[\frac{\partial\Tilde{L}}{\partial r}=2r\dot{\theta}^2;\hspace{3mm}\frac{\partial\Tilde{\mathcal{L}}}{\partial\dot{r}}=2\dot{r}\Rightarrow 2r\theta^2-\frac{d}{ds}(2\dot{r})=0\Rightarrow\ddot{r}=r\dot{\theta}\]
+    luego, las ecuaciones de la geodésica para el eje $r$ quedan,
+    \[\ddot{r}+\Gamma_{\mu\nu}^r\dot{x}^{\mu}\dot{x}^{\nu}=0\]
+    por tanto,
+    \[\Gamma
+    _{\theta\theta}^r=-r;\hspace{3mm}\Gamma_{r\theta}^r=0=\Gamma_{rz}^r=\Gamma_{zr}^r=\Gamma_{\theta r}^r\]
+    Para el eje $\theta$:
+    \[\frac{\partial\Tilde{\mathcal{L}}}{\partial\theta}=0;\hspace{3mm}\frac{\partial\Tilde{\mathcal{L}}}{\partial\dot{\theta}}=2r^2\dot{\theta}\Rightarrow0-\frac{d}{ds}(2r^2\dot{\theta})=0\]
+    luego, las ecuaciones de la geodésica para el eje $\theta$ quedan,
+    \[\ddot{\theta}+2\frac{1}{r}\dot{r}\dot{\theta}=0\]
+    por tanto,
+    \[\Gamma_{r\theta}^{\theta}=\frac{1}{r}=\Gamma_{\theta r}^{\theta}\]
+    donde no aparece el 2 porque es simétrico.
+\end{example}
+\subsection{Densidad tensorial}
+Sea un tensor $T^{\mu\nu\dots}_{\rho\sigma\dots}$ multiplicando a $(\sqrt{g})^{\omega}$, con $\omega=\dots,-2,-1,0,1,2,\dots$, su derivada covariante se define como
+\begin{equation}
+    \nabla_{\mu}\left(\sqrt{g}^{\omega}T^{\mu_1\mu_2\dots}_{\nu_1\nu_2\dots}\right)=(\sqrt{-g})^{\omega}\nabla_{\mu}T^{\mu_1\mu_2\dots}_{\nu_1\nu_2\dots}-\frac{\omega}{2}\Gamma_{\nu\mu}^{\nu}(\sqrt{g})^{\omega}T^{\mu_1\mu_2\dots}_{\nu_1\nu_2\dots}
+\end{equation}
+de forma que $\nabla_{\mu}(\sqrt{g})=0$.
+\section{Tensores de Curvatura}
+Dada una conexión $\nabla_a$ y una uno-forma, el operador $(\nabla_a\nabla_b-\nabla_b\nabla_a)f_c$ es lineal, es decir, sea $h$ una función escalar, entonces
+\[(\nabla_a\nabla_b-\nabla_b\nabla_a)(hf_c)=h(\nabla_a\nabla_b-\nabla_b\nabla_a)f_c\]
+Esto implica que
+\begin{equation}
+    (\nabla_a\nabla_b-\nabla_b\nabla_a)f_c=\mathscr{R}_{abc}^df_d
+\end{equation}
+donde $\mathscr{R}_{abc}^d$ es el \textbf{tensor de Riemann}, se puede interpretar como que $\nabla_a\nabla_b\equiv\rightarrow\uparrow$ y $\nabla_b\nabla_a\equiv\uparrow\rightarrow$, sacando así la curvatura de la variedad.\\ \\
+Para derivar $(\nabla_a\nabla_b-\nabla_b\nabla_a)v^c$, recordemos que la conexión es simétrica, por tanto $(\nabla_a\nabla_b-\nabla_b\nabla_a)(f_cv^c)=0$, luego
+\begin{equation}
+    (\nabla_a\nabla_b-\nabla_b\nabla_a)v^c=\mathscr{R}_{abd}^cv^d
+\end{equation}
+Las propiedades del tensor de Riemann son:
+\begin{enumerate}
+    \item Es antisimétrico, $\mathscr{R}_{abc}^d=-\mathscr{R}_{bac}^d$.
+    \item $\mathscr{R}_{[abc]}^d=0$, puesto que $\nabla_{[a}\nabla_{b}f_{c]}=0$.
+    \item Cumple la identidad de Bianchi,
+    \[\nabla_{[a}\mathscr{R}_{bc]d}^e=0\]
+    puesto que $\nabla_{[a}\nabla_{b}\nabla_{c]}f_d=0$.
+    \item Si la conexión es de Levi-Civita, entonces tenemos que
+    \[(\nabla_a\nabla_b-\nabla_b\nabla_a)T^{a_1a_2\dots}_{b_1b_2\dots}=-\mathscr{R}_{abc}^{a_1}T^{ca_2\dots}_{b_1b_2\dots}-\dots+\mathscr{R}_{abb_1}^cT^{a_1a_2\dots}_{cb_2\dots}+\dots\]
+    Luego, en una base coordenada en la conexión de Levi-Civita, podemos definir el tensor de Riemann como,
+    \begin{equation}
+        \mathscr{R}_{\mu\nu\rho}^{\sigma}=\partial_{\nu}\Gamma_{\mu\rho}^{\sigma}-\partial_{\mu}\Gamma_{\nu\rho}^{\sigma}+\Gamma_{\mu\rho}^{\lambda}\Gamma_{\lambda\nu}^{\sigma}-\Gamma_{\nu\rho}^{\lambda}\Gamma_{\lambda\mu}^{\sigma}
+    \end{equation}
+\end{enumerate}
+El \textbf{tensor de Ricci} se define como,
+    \begin{equation}
+        \mathscr{R}_{ab}=\mathscr{R}_{acb}^c
+    \end{equation}
+El \textbf{escalar de Ricci} se define como,
+\begin{equation}
+    \mathscr{R}=\mathscr{R}_{ab}g^{ab}
+\end{equation}
+Para la conexión de Levi-Civita, tenemos que el tensor de Ricci es simétrico, es decir, $\mathscr{R}_{ab}=\mathscr{R}_{ba}$.

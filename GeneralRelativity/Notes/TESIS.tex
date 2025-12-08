@@ -1,0 +1,192 @@
+\documentclass[12pt, oneside]{Thesis}
+\usepackage[spanish,mexico]{babel}
+\usepackage[sectionbib, square, comma, numbers, sort&compress]{natbib} 
+\hypersetup{urlcolor=black, colorlinks=true} 
+\usepackage{amsmath} 
+\usepackage{mathrsfs}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{braket} 
+\usepackage{mathtools}
+\usepackage{bibunits} 
+\usepackage{float}
+\usepackage{blindtext}
+% \usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[colorinlistoftodos, prependcaption, textsize=tiny]{todonotes}
+%\setlength{\parindent}{0.5cm}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\diag}{\mathrm{diag}}
+\renewcommand{\qedsymbol}{\rule{0.5em}{0.5em}}
+\usepackage[spanish]{cleveref}
+\usepackage[spanish]{babelbib}
+%\selectbiblanguage{spanish}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{bbm}
+\usepackage[many]{tcolorbox}
+\usepackage[toc]{appendix}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\newtheorem{observacion}[teorema]{Observaci\'on}
+\newtheorem{hipotesis}[teorema]{Hip\'otesis}
+\usepackage{xpatch}
+\usepackage{xcolor}
+\newcommand{\bl}{\color{blue}}
+% \newcommand{ }{\color{red}}
+\newcommand{\cc}{\color{cyan}}
+\newcommand{\cm}{\color{magenta}}
+\xpatchcmd{\proof}{\itshape}{\normalfont\proofnamefont}{}{}
+% \renewcommand{\refname}{Bibliografía de Figuras}
+% \renewcommand{\bibname}{Nuevo Título de Bibliografía}
+% \usepackage[usenames,dvipsnames]{color}
+%Este pequeño bloque permite que el número de la ecuación permanezca del tamaño del resto del texto
+%si se decide hacer small el tamaño de la ecuación.
+%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\normalsize#1}}
+\makeatother
+%%%%%%%%%%%%%%%%
+\newtheorem{propiedad}{Propiedades}[section]
+\newtheorem{axioma}{Axioma}[section]
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\qedsymbol}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\funct}[3]{#1:\hspace{1mm} #2\to #3}
+\newcommand{\abs}[1]{|#1|}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+
+\newcommand{\proofnamefont}{\bfseries}
+\setlength {\marginparwidth}{2cm}
+\begin{document}
+
+
+	\frontmatter 
+	\setstretch{1.5} 
+	\fancyhead{} 
+	\rhead{\thepage} 
+	\lhead{} 
+	\pagestyle{fancy} 
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+	\hypersetup{pdftitle={\titulo}}
+	\hypersetup{pdfauthor=\autor}
+%---------------------------------------------------------------------------
+	\input{Portada}
+	\input{Dedicatoria}
+	% \input{Agradecimientos}
+	%\listoftodos
+	\input{Contenido}
+	\mainmatter 
+	\pagestyle{fancy} 
+    
+    \input{Introduccion/Introduccion}
+    \input{Capitulos/Capitulo1/Capitulo1}
+    \input{Capitulos/Capitulo2/Capitulo2}
+    \input{Capitulos/Capitulo3/Capitulo3}
+    \input{Capitulos/Capitulo4/Capitulo4}
+    \input{Capitulos/Capitulo5/Capitulo5}
+    \input{Capitulos/Capitulo6/Capitulo6}
+        
+	\begin{appendices}
+    	%\input{Apendices/Apendice A/ApendiceA}
+           \input{Apendices/ApendiceB}
+           \input{Apendices/ApendiceC}
+	 \end{appendices}
+%---------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%---------------------------------------------------------------------------
+
+\newpage
+\lhead{\emph{Bibliografía}}
+\input{librarys/library}
+\addcontentsline{toc}{section}{\textbf{Bibliografía}}
+
+% \renewcommand{\refname}{Bibliografía de Figuras}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------BIBLIOGRAFÍA DE FIGURAS------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\bibname{Bibliografía de Figuras}
+\begin{thebibliography}{99}
+    \bibitem{BFig1-ApB}
+        Richard L. Bishop and Samuel I. Goldberg, \textit{Tensor Analysis on Manyfolds}. Garden City, New York, Dover edition, 1968-1980-2023. ISBN 978-0-486-64039-6. Pag. 21 \label{BFig1-ApB}
+\bibitem{BFig2-ApB}
+        Richard L. Bishop and Samuel I. Goldberg, \textit{Tensor Analysis on Manyfolds}. Garden City, New York, Dover edition, 1968-1980-2023. ISBN 978-0-486-64039-6. Pag. 25 \label{BFig2-ApB} 
+\bibitem{BFig3-ApB}
+        Richard L. Bishop and Samuel I. Goldberg, \textit{Tensor Analysis on Manyfolds}. Garden City, New York, Dover edition, 1968-1980-2023. ISBN 978-0-486-64039-6. Pag. 36 \label{BFig3-ApB}         
+\bibitem{BFig4-ApB}
+        Richard L. Bishop and Samuel I. Goldberg, \textit{Tensor Analysis on Manyfolds}. Garden City, New York, Dover edition, 1968-1980-2023. ISBN 978-0-486-64039-6. Pag. 40 \label{BFig4-ApB} 
+\end{thebibliography}
+
+
+
+
+
+
+
+\addcontentsline{toc}{section}{\textbf{Bibliografía de Figuras}}
+
+\end{document}

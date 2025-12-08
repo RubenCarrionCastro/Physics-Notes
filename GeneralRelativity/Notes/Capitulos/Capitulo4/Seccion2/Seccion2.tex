@@ -1,0 +1,79 @@
+%SECCION 1
+\section{Ecuaciones de Einstein} % Main chapter title
+\label{cap4-sec2} 
+%------------------------------------------------------------------------------
+Como la ecuación de la geodésica describe las curvas, vamos a estudiar el límite de esta ecuación para llegar a una generalización. La ecuación que conocemos es 
+\begin{equation}
+    \frac{d^2x^{\mu}}{d\tau^2}+\Gamma_{\nu\rho}^{\mu}\dot{x}^{\nu}\dot{x}^{\rho}=0
+\end{equation}
+donde $\tau$ es el tiempo propio y $\dot{x}^{\mu}=\partial_{\tau}x^{\mu}$.
+\subsubsection*{Límite newtoniano (campo débil)}
+Tomamos este límite imponiendo que:
+\begin{enumerate}
+    \item las velocidades son $|\vec{v}|<< c$.
+    \item el campo gravitatorio débil
+    \[g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}\]
+    donde $\eta_{\mu\nu}$ es la métrica de Minkowski y $|h_{\mu\nu}|<<1$.
+    \item $h_{\mu\nu}$ es estático.
+\end{enumerate}
+Entonces usando (1), tenemos que
+\[\frac{dx^i}{d\tau}\frac{1}{c}<<\frac{dt}{d\tau}\Longrightarrow\frac{dx^i}{dt}<<1\]
+implicando que
+\[\frac{d^2x^{\mu}}{d\tau^2}+\Gamma_{tt}^{\mu}\left(\frac{dt}{d\tau}\right)^2\approx0\]
+Además, como $\eta_{\mu\nu}$ y $h_{\mu\nu}$ son estáticos, entonces $g_{\mu\nu}$ es estático, así
+\[\Gamma_{tt}^{\mu}=\frac{1}{2}g^{\mu\lambda}\left(\cancelto{\partial_tg_tt=0}{2g_{t\lambda,t}}-g_{tt,\lambda}\right)=-\frac{1}{2}g^{\mu\lambda}g_{tt,\lambda}\]
+Aplicando (2) queda que $g_{\mu\nu}g^{\nu\rho}=\delta_{\mu}^{\rho}$ y por tanto $g^{\mu\nu}=g^{\mu\nu}-h^{\mu\nu}+\mathscr{O}(h^2)$ con $h^{\mu\nu}=\eta^{\mu\rho}\eta^{\nu\sigma}h_{\rho\sigma}$. De forma que $\Gamma_{tt}^{\mu}=-\frac{1}{2}\eta^{\mu\nu}h_{tt,\nu}+\mathscr{O}(h^2)$. En resumen,
+\begin{equation}
+    \frac{d^2x^{\mu}}{d\tau^2}-\frac{1}{2}\eta^{\mu\nu}h_{tt,\nu}\left(\frac{dt}{d\tau}\right)^2=0
+\end{equation}
+Entonces, para $\mu=t$, aplicando (3) $\eta^{t\nu}h_{tt,\nu}=\eta^{tt}\cancelto{0}{h_{tt,\nu}}=0$, tenemos que
+\[\frac{d^2t}{d\tau^2}=0\Longrightarrow t=a\tau+b\]
+Para $\mu=i=x,y,z$ tenemos
+\[\frac{d^2x^i}{d\tau^2}-\frac{1}{2}\eta^{i\nu}h_{tt,\nu}\left(\frac{dt}{d\tau}\right)^2=0\overset{\curlybraces{t=\tau+b}}{\Longrightarrow}\frac{d^2x^i}{d\tau^2}-\frac{1}{2}h_{tt,i}=0\]
+Además, sabemos que la ecuación de Newton es
+\[\frac{d^2x^i}{d\tau^2}+\Phi_{,i}=0\]
+y comparando ambas ecuaciones, vemos que $g_{tt}=-1-2\Phi$. Por tanto, la ecuación de las geodésicas nos permite obtener las ecuaciones de Newton.\\ \\
+Usando la ecuación de Poisson, $\nabla^2\Phi=4\pi G\rho$, podemos reconstruir las ecuaciones dinámicas de $g_{\mu\nu}$, pero necesitamos las derivadas segundas de $g_{\mu\nu}$:
+\begin{itemize}
+    \item \textbf{Opción A}: $\nabla_{\mu}\nabla^{\mu}\rightarrow$ Problema con $\nabla_{\mu}g_{\mu\nu}=0$.
+    \item \textbf{Opción B}: El tensor de curvatura $R_{\mu\nu\rho}^{\sigma}$ tiene derivadas segundas de $g_{\mu\nu}$. Notemos que $\rho=T_{tt}$, siendo $T_{\mu\nu}$ es el tensor de energía-impulso del contenido material.
+\end{itemize}
+Sabemos que $T_{\mu\nu}$ es un tensor simétrico de tipo $(0,2)$ y la conservación de la energía implica que $\nabla^{\mu}T_{\mu\nu}=0$. Por tanto, el primer tensor de curvatura candidato es $R_{\mu\nu}$, el tensor de Ricci, que también simétrico de tipo $(0,2)$, tal que $R_{\mu\nu}=\kappa T_{\mu\nu}$; pero esto no es correcto, pues si tomamos la traza a ambos lados de la igualdad queda $R=\kappa T$, donde $R=R_{\mu\nu}g^{\mu\nu}$ y $T=T_{\mu\nu}g^{\mu\nu}$, entonces
+\[\left.\begin{array}{cll}
+    \nabla^{\mu}R_{\mu\nu} & = & \frac{1}{2}\nabla_{\nu}R=\frac{1}{2}\kappa\nabla_{\nu}T \\
+    || & & \\
+    \kappa\nabla^{\mu}T_{\mu\nu}=0
+\end{array}\right\rbrace\Rightarrow\nabla_{\nu}T=0\]
+cosa que solo ocurre en vacío, por lo que nos está restringiendo información importante, haciendo que este resultado no tenga sentido para cuando no estamos en vacío.
+\begin{itemize}
+    \item \textbf{Opción C}: Podemos usar el tensor de Einstein, que es $G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R$, y por tanto, las ecuaciones de Einstein quedan
+    \[G_{\mu\nu}=\kappa T_{\mu\nu}\Longrightarrow R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=\kappa T_{\mu\nu}\]
+    Por tanto, $\nabla^{\mu}G_{\mu\nu}=0$ y es compatible con $\nabla^{\mu}T_{\mu\nu}=0$.
+\end{itemize}
+Ahora debemos hallar el valor de $\kappa$, y para determinarlo, volvemos al límite newtoniano,
+\[g_{tt}=-1+h_{tt};\hspace{4mm}g^{tt}=-1-h_{tt}+\mathscr{O}(h^2)\]
+Notemos que $T=g^{\mu\nu}T_{\mu\nu}=g^{tt}T_{tt}=-T_{tt}+\mathscr{O}(h^2)$, por lo que las ecuaciones de Einstein se pueden reescribir como,
+\begin{equation}
+    R_{\mu\nu}=\kappa\left(T_{\mu\nu}-\frac{1}{2}g_{\mu\nu} T\right)
+\end{equation}
+\begin{proof}
+    (...)
+\end{proof}
+Entonces,
+\[R_{tt}=\frac{1}{2}\kappa\left(T_{tt}-\frac{1}{2}g_{tt}T\right)=\frac{1}{2}\kappa\left(T_{tt}+\frac{1}{2}(-T_{tt})\right)=\frac{1}{2}\kappa T_{tt}\]
+y también,
+\[R_{tt}=R_{t\mu t}^{\mu}=R_{tit}^i=\partial_i\Gamma_{tt}^i-\partial_t\cancelto{0}{\Gamma_{it}^i}+\cancelto{\mathscr{O}(h^2)}{\Gamma_{i\lambda}^i\Gamma_{tt}^{\lambda}-\Gamma_{t\lambda}^i\Gamma_{it}^{\lambda}}=\partial_i\Gamma_{tt}^i=-\frac{1}{2}\partial_i\partial^ih_{tt}=-\frac{1}{2}\nabla^2h_{tt}\]
+Por tanto, igualando,
+\[\nabla^2\Phi=\frac{1}{2}\kappa T_{tt}\]
+pues $h_{tt}=-2\Phi$. Por tanto, usando la ecuación de Poisson,
+\[\nabla^2 h_{tt}=-2\nabla^2\Phi=-2\cdot(4\pi G\rho)=-\kappa T_{tt}=-\kappa\rho\]
+Entonces,
+\begin{equation}
+    \kappa=8\pi G
+\end{equation}
+con $c=1$. 
+Por tanto, las ecuaciones de Einstein quedan,
+\begin{equation}
+    R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R=8\pi GT_{\mu\nu}
+\end{equation}
+Vemos que en el límite clásico obtenemos la ecuación de Poisson.

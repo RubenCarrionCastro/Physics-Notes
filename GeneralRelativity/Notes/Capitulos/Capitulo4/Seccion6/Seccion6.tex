@@ -1,0 +1,92 @@
+%SECCION 1
+\section{Ecuaciones de Einstein y Principio de Mínima Acción} % Main chapter title
+\label{cap4-sec6} 
+
+La acción de la formulación Lagrangiana para la relatividad general es formulada por Hilbert, pero éste dejó que Einstein lo publicara, y así, la acción de la relatividad general se denomina \textit{acción de ''Hilbert-Einstein''}. Se construye con cantidades invariantes bajo transformaciones generales de coordenadas (difeomorfismos). Se define como,
+\begin{equation}
+    S_{HE}=\int d^4x\sqrt{|g|}R
+\end{equation}
+donde $\sqrt{|g|}$ es el Jacobiano y $R$ el escalar de Ricci. que involucra derivadas segundas de $g_{\mu\nu}$, pero se pueden eliminar integrando por partes.\\ \\
+Consideramos variaciones $\delta g_{\mu\nu}$ que se anulan en la frontera, es decir, $\left.\delta g_{\mu\nu}\right|_{\partial\mathscr{M}}=0$. Así, podemos variar la acción, tal que
+\begin{equation}
+    \delta S_{HE}=\int d^4x\brackets{\sqrt{|g|}g^{\mu\nu}\delta R_{\mu\nu}+\sqrt{|g|}(\delta g^{\mu\nu})R_{\mu\nu}+(\delta\sqrt{|g|})g^{\mu\nu}R_{\mu\nu}} 
+\end{equation}
+donde, asumiendo que la conexión es de Levi-Civita, tenemos
+\[\delta\sqrt{|g|}=-\frac{1}{2}\sqrt{|g|}g_{\mu\nu}\delta g^{\mu\nu};\hspace{5mm}\delta R_{\mu\nu\rho}^{\sigma}=\nabla_{\nu}(\delta\Gamma_{\mu\rho}^{\sigma})-\nabla_{\mu}(\delta\Gamma_{\nu\rho}^{\sigma})\]
+recordando que $\delta\partial()=\partial\delta()$ y que $\Gamma$ no es un tensor, pero $\delta\Gamma$ sí lo es.
+\begin{proof}
+    (...)
+\end{proof}
+Por tanto,
+\begin{equation}
+    g^{\mu\nu}\delta R_{\mu\nu}=\nabla_{\nu}\left(g^{\mu\rho}\delta\Gamma_{\mu\rho}^{\nu}-g^{\nu\rho}\delta\Gamma_{\sigma\rho}^{\sigma}\right)=\nabla_{\nu}v^{\nu}
+\end{equation}
+es decir, es igual a la divergencia de un vector. Por tanto,
+\begin{equation}
+    \int_{\mathscr{M}}d^4x\sqrt{|g|}g^{\mu\nu}\delta R_{\mu\nu}=\int_{\mathscr{M}}d^4x\sqrt{|g|}\nabla_{\nu}v^{\nu}=\int_{\partial\mathscr{M}}d\sigma n_{\nu}v^{\nu}=0
+\end{equation}
+donde hemos usado el Teorema de Stokes.\\ \\
+Si acoplamos materia,
+\[S=\frac{1}{\kappa}S_{HE}+S_{\mathscr{M}}\]
+y tomamos variaciones con respecto a $g_{\mu\nu}$,
+\[\begin{array}{rl}
+     \delta_gS&=\frac{1}{\kappa}\delta_gS_{HE}+\delta_gS_{\mathscr{M}}=0  \\
+     & =\frac{1}{\kappa}\int d^4x\sqrt{|g|}(R_{\mu\nu}-\frac{1}{2}gR-\kappa T_{\mu\nu})\delta g^{\mu\nu}=0
+\end{array}\]
+donde hemos definido el tensor de energía-impulso como $T_{\mu\nu}=-\frac{1}{\sqrt{g}}\frac{\delta S_{\mathscr{M}}}{\delta g^{\mu\nu}}$ y $T^{\mu\nu}=\frac{1}{\sqrt{|g|}}\frac{\delta S_{\mathscr{M}}}{\delta g_{\mu\nu}}$.\\ \\
+En términos de la densidad lagrangiana (o Lagrangiano), tenemos
+\[S_{\mathscr{M}}=\int d^4x\sqrt{|g|}\mathscr{L}_{\mathscr{M}}=\int d^4x\mathcal{L}_{\mathscr{M}}\]
+donde $\mathscr{L}_{\mathscr{M}}$ es el Lagrangiano y $\mathcal{L}_{\mathscr{M}}$ es la densidad lagrangiana. Así, el tensor de energía-impulso se reescribe como 
+\[T^{\mu\nu}=\frac{2}{\sqrt{|g|}}\frac{\partial\mathcal{L}_{\mathscr{M}}}{\partial g_{\mu\nu}}=2\frac{\partial\mathscr{L}_{\mathscr{M}}}{\partial g_{\mu\nu}}+g^{\mu\nu}\mathscr{L}_{\mathscr{M}}\]
+\[T_{\mu\nu}=-\frac{2}{\sqrt{|g|}}\frac{\partial\mathcal{L}_{\mathscr{M}}}{\partial g^{\mu\nu}}=-2\frac{\partial\mathscr{L}_{\mathscr{M}}}{\partial g^{\mu\nu}}+g_{\mu\nu}\mathscr{L}_{\mathscr{M}}\]
+El tensor $T_{\mu\nu}$ es conservado como consecuencia de la invariancia bajo transformaciones generales de coordenadas (difeomorfismos) de la acción,
+\begin{equation}
+    S_{\mathscr{M}}=\int_{\mathcal{M}}d^4x\mathscr{L}(\phi,\nabla\phi,g)
+\end{equation}
+Dado una densidad lagrangiana, aplicamos un difeomorfismo y vemos como transforman los campos.
+Consideramos un difeomorfismo $\xi^{\mu}$ que se anula en frontera $\partial\mathscr{M}$. Tal que
+\[\delta_{\xi}\phi=-\mathcal{L}_{\xi}\phi;\hspace{5mm}\delta_{\xi}g_{\mu\nu}=-\mathcal{L}_{\xi}g_{\mu\nu}=-2\nabla_{(\mu}\xi_{\nu)}\]
+teniendo así una variación de la acción tal que
+\[\delta_{\xi}S_{\mathscr{M}}=-\int_{\mathscr{M}}d^4x(\delta_{\phi}\mathcal{L}_{\mathscr{M}}\mathcal{L}_{\xi}\phi+\frac{\delta\mathcal{L}_{\mathscr{M}}}{\delta g_{\mu\nu}}\Delta_{\mu}\xi_{\nu})\]
+donde $\delta_{\phi}\mathscr{L}_{\mathscr{M}}\mathscr{L}_{\xi}\phi=0$, pues se cumplen las ecuaciones del movimiento. Así,
+\[\delta_{\xi}S_{\mathscr{M}}=-\int d^4x\sqrt{|g|}(T^{\mu\nu}\nabla_{\mu}\xi_{\nu})=-\int d^4x\sqrt{|g|}\brackets{\underbrace{\nabla_{\mu}(T^{\mu\nu}\xi_{\nu})}_{\int_{\partial\mathscr{M}}(...)=0\text{( }\xi^{\mu}\text{ es cero en }\partial\mathscr{M})}-\xi_{\nu}\nabla_{\mu}T^{\mu\nu}}=0\]
+Derivando $T_{\mu\nu}$ tenemos las acciones,
+\[\text{Campo escalar}:\hspace{4mm}S_{\phi}=-\frac{1}{2}\int d^4x\sqrt{|g|}(\nabla_{\mu}\phi\nabla_{\nu}\phi g^{\mu\nu}+m^2\phi^2)\]
+\[\text{Campo electromagnético}:\hspace{4mm}S_A=-\frac{1}{16\pi}\int d^4x\sqrt{|g|}F_{\mu\nu}F^{\mu\nu};\hspace{3mm}F_{\mu\nu}=2\nabla_{[\mu,}A_{\nu]}\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

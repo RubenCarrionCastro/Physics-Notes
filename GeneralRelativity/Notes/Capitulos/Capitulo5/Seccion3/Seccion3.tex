@@ -1,0 +1,86 @@
+\section{Ecuación de la desviación geodésica} % Main chapter title
+\label{cap5-sec3} 
+
+Recordamos que $T^{\mu}$ es el vector tangente a la geodésica, que satisface $T^{\mu}\nabla_{\mu}T^{\nu}=0$ y que $\gamma_s(t)=\gamma_{p(s)}(t)$, es decir, la familia de geodésicas $\gamma_s(t)$ definen una superficie 2-D en la variedad $\mathscr{M}$, tal que $t$ y $s$ pueden definir coordenadas en la superficie (siempre que las geodésicas se crucen).\\ \\
+Si definimos $S^{\mu}$ como el campo vectorial que define el desplazamiento infinitesimal entre geodésicas, entonces $T^{\mu}$ y $S^{\mu}$ son vectores de una base coordenada, es decir, $\alpha_sT^{\mu}=0$, de forma que
+\[S^{\mu}\nabla_{\mu}T^{\nu}=T^{\mu}\nabla_{\mu}S^{\nu}\]
+Por tanto, definimos la velocidad relativa de separación entre geodésicas como $v^{\mu}=T^{\nu}\nabla_{\nu}S^{\mu}$.\\ \\
+Veamos ahora como escribir esto en función de la curvatura, y como $T^{\mu}$ y $S^{\mu}$ son vectores de una base coordenada, es decir, conmutan, así
+\[\begin{array}{rl}
+    a^{\mu} & =T^{\nu}\nabla_{\nu}(T^{\rho}\nabla_{\rho}S^{\mu})=T^{\nu}\nabla_{\nu}(S^{\rho}\nabla_{\rho}T^{\mu})=(T^{\nu}\nabla_{\nu}S^{\rho})\nabla_{\rho}T^{\mu}+T^{\nu}S^{\rho}\nabla_{\nu}\nabla_{\rho}T^{\mu}= \\
+     & =\underbrace{(T^{\nu}\nabla_{\nu}S^{\rho})}_{S^{\nu}\nabla_{\nu}T^{\rho}}\nabla_{\rho}T^{\mu}+T^{\nu}S^{\rho}\nabla_{\rho}\nabla_{\nu}T^{\mu}-\mathscr{R}_{\nu\rho\sigma}^{\mu}S^{\rho}T^{\nu}T^{\sigma}= \\
+     &=S^{\nu}\nabla_{\nu}\underbrace{(T^{\rho}\nabla_{\rho}T^{\mu})}_{=0\text{ (al ser geodésica)}}-\mathscr{R}_{\nu\rho\sigma}^{\mu}S^{\rho}T^{\nu}T^{\sigma}=-\mathscr{R}_{\nu\rho\sigma}^{\mu}S^{\rho}T^{\nu}T^{\sigma}=\frac{d^2S^{\mu}}{dt^2}
+\end{array}\]
+siendo esta la ecuación de la geodésica, donde $t$ es el parámetro afín de la geodésica.
+\subsection{Efecto de la una onda gravitacional que pasa cerca del observador}
+Tomemos un conjunto de objetos en reposo relativo inicialmente con cuadrivelocidad $u^{\mu}=\delta_{t}^{\mu}$. Suponemos que dos de estos objetos están separados una distancia $S^{\mu}$. La ecuación de la geodésica es,
+\[\frac{d^2S^{\mu}}{dt^2}=\mathscr{R}_{\nu00}^{\mu}S^{\nu}=...=\frac{1}{2}(\partial^2_th^{\mu}_{\nu})S^{\nu}\]
+donde $h^{\mu}_{\nu}$ es una perturbación que cumple el gauge radiativo (realmente da igual en qué gauge trabajar, pues la curvatura y las ecuaciones de Einstein son independientes de los gauges; usamos este gauge porque sabemos la forma de $h^{\mu}_{\nu}$).\\ \\
+Supongamos que $H_x=0$ y $H_t\neq0$, entonces $S^t=0=S^z$ y
+tenemos dos ecuaciones geodésicas, tales que
+\[\frac{d^2S^x}{dt^2}=\frac{1}{2}S^xH_+(-\omega^2e^{ik_{\mu}x^{\mu}})\]
+\[\frac{d^2S^y}{dt^2}=-\frac{1}{2}S^yH_+(-\omega^2e^{ik_{\mu}x^{\mu}})\]
+Integramos estas ecuaciones y obtenemos,
+\[S^x=S^x(0)\left(1+\frac{1}{2}H_+e^{ik_{\mu}x^{\mu}}\right)\]
+\[S^y=S^y(0)\left(1-\frac{1}{2}H_+e^{ik_{\mu}x^{\mu}}\right)\]
+El efecto de la onda gravitacional sería el siguiente,
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{onda1.png}
+    \captionof{figure}{Efecto que sufren los objetos cuando pasa la onda gravitacional.}
+    \label{fig5.1}
+\end{Figura}
+es decir, los objetos se contraen en la dirección vertical y horizontal.\\ \\
+Análogamente, para la polarización $H_x\neq0$ y $H_+=0$, tenemos las soluciones,
+\[S^x=S^x(0)+\frac{1}{2}H_xS^y(0)e^{ik_{\mu}x^{\mu}}\]
+\[S^y=S^y(0)+\frac{1}{2}H_xS^x(0)e^{ik_{\mu}x^{\mu}}\]
+Los efectos de la onda gravitacional son los siguientes,
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{onda2.png}
+    \captionof{figure}{Efecto que sufren los objetos cuando pasa la onda gravitacional.}
+    \label{fig5.2}
+\end{Figura}
+es decir, los objetos se contraen en las direcciones oblicuas.\\ \\
+No es difícil ver que si realizamos una rotación de 180º, el resultado es invariante, por tanto, las ondas gravitacionales \textbf{tienen espín 2}.\\ \\
+También existe la polarización circular, tal que
+\[H_{+2}=\frac{1}{\sqrt{2}}(H_++iH_x)\]
+\[H_{-2}=\frac{1}{\sqrt{2}}(H_+-iH_x)\]
+cuyo efecto es una rotación de los objetos sin contraerlos.\\ \\
+Si tenemos un interferómetro de Fabry-Perot, podemos llegar a medir estas ondas gravitacionales, pues dejamos los espejos en un péndulo, y cuando pase la onda hará que se muevan, tal que
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{f-p.png}
+    \captionof{figure}{Efecto de la onda gravitacional sobre un interferómetro de Fabry-Perot.}
+    \label{fig:enter-label}
+\end{Figura}
+\subsection{Generación de las ondas gravitacionales}
+Las ecuaciones de Einstein en el gauge de Lorentz las podemos escribir como,
+\[\hspace{0mm}^{(1)}8\pi GT_{\mu\nu};\hspace{4mm}-\frac{1}{2}\partial^{\sigma}\partial_{\sigma}\overline{h}_{\mu\nu}=8\pi GT_{\mu\nu};\hspace{4mm}\partial^{\mu}T_{\mu\nu}=0\Rightarrow\partial^{\mu}\overline{h}_{\mu\nu}=0\]
+Esta ecuación la podemos resolver utilizando las funciones de Green, tal que
+\[\overline{h}_{\mu\nu}(x)=-16\pi \mathscr{G}\int_{\mathscr{M}}G(x-y)T_{\mu\nu}(y)d^4y\]
+donde $x$ es la posición de la onda gravitacional, $y$ es la posición de la fuente y $\mathscr{G}$ es una función de Green. Por tanto, podemos decir que las funciones de Green son fuentes en el espacio.\\ \\
+De todas las funciones de Green usaremos la función de Green \textit{retardada}, que representa la onda gravitacional de una fuente puntual que viaja hacia el futuro, siendo
+\[\mathscr{G}(x-y)=-\frac{1}{4\pi|\vec{x}-\vec{y}|}\delta\left(|\vec{x}-\vec{y}-(x^0-y^0)|\right)\cdot\Theta(x^0-y^0)\]
+donde
+\[\Theta(x^0-y^0)=\left\lbrace\begin{array}{rl}
+    1 & \text{si}\hspace{3mm} x^0>y^0 \\
+    0 &   \text{en otro caso}
+\end{array}\right.\]
+Así, nos garantizar poder evaluar el cono de luz pasado de la onda gravitacional.\\ \\
+Notemos que $t=x^0$ es el tiempo presente.\\ \\
+Si $y^0\geq x^0=t$, entonces $\mathscr{G}(x-y)=0$, es decir, solo nos interesan las contribuciones de las fuentes en tiempos $y^0<t$. Luego, integrando en $y_0$ tenemos,
+\[\overline{h}_{\mu\nu}(t,\vec{x})=-4G\int\frac{1}{|\vec{x}-\vec{y}|}T_{\mu\nu}\delta\left(t-|\vec{x}-\vec{y}|,\vec{y}\right)d^3\vec{y}\]
+Nos referimos a $t_r=t-\frac{|\vec{x}-\vec{y}|}{c}$ como \textit{tiempo retardado}. Así, dejando $t_r$ fijo y tomando $|\vec{x}|>>|\vec{y}|$, tenemos que $|\vec{x}-\vec{y}|\approx R$, tal que
+\[\overline{h}_{\mu\nu}(t,\vec{x})=-\frac{4G}{R}\int T_{\mu\nu}(t_r,\vec{y})d^3\vec{y}\]
+Como $\partial_t\overline{h}_{0\nu}=\sum\limits_{i=1}^{3}\partial_i\overline{h}_{i\nu}$, entonces $\overline{h}_{i\nu}$ determina a $\overline{h}_{0j}$ y $\overline{h}_{00}$. Por tanto, solo necesitamos estudiar la siguiente integral,
+\[\int T^{ij}(t_r,\vec{y})d^3y=\int d^3y\left[\cancelto{0}{\frac{\partial}{\partial y^k}\left(T^{ik}y^j\right)}-\cancelto{\partial_tT^{0i}}{\frac{\partial T^{ik}}{\partial y^k}}y^j\right]=-\frac{\partial}{\partial t_r}\int d^3y T^{0i}y^j=...=\frac{1}{2}\frac{\partial^2}{\partial t_r^2}\int d^3y T^{00}y^iy^j\]
+Además podemos escribirlo en términos del tensor de momento cuadrupolar, tal que
+\[\int T^{ij}(t_r,\vec{y})d^3y=\frac{1}{6}\partial^2_{t_r}q^{ij}\]
+donde 
+\[q^{ij}(t_r,R)=3\int d^3y T^{00}(t_r,y)y^iy^j\]
+es el tensor de momento cuadrupolar. En resumen tenemos,
+\begin{equation}
+    \overline{h}_{ij}(t,\vec{x})=-\frac{2G}{3R}\partial^2_{t_r}q_{ij}(t_r,R)
+\end{equation}
+con $t_r=t-R/c$, siendo $R$ la distancia a la fuente, $t$ el tiempo de recepción y $t_r$ el tiempo de emisión. Por tanto, si $\partial^2_{t_r}\neq0$, entonces se formarán ondas gravitacionales. No hay contribución dipolar debido a la conservación del tensor energía-impulso $T_{\mu\nu}$.

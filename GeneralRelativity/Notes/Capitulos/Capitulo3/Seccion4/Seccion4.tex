@@ -1,0 +1,45 @@
+%SECCION 4
+\section{Aplicaciones diferenciables y difeomorfismos} % Main chapter title
+\label{cap3-sec4} 
+%------------------------------------------------------------------------------
+Si tenemos una solución relacionada por un difeomorfismo con la solución de las ecuaciones de Einstein, entonces la nueva solución es exactamente igual.
+\begin{definition}
+    Una aplicación diferenciable $U:\mathscr{M}\to\mathscr{M}'$ es $\mathscr{C}^{\infty}$ si y solo si, dados dos atlas $\curlybraces{(U_{\alpha},\phi_{\alpha})}$, $\curlybraces{(U'_{\beta},\phi'_{\beta})}$ de $\mathscr{M}$ y $\mathscr{M}'$ respectivamente, si las funciones
+    \[\phi_{\beta}'\circ\varphi\circ\phi_{\alpha}':\mathbb{R}^n\to\mathbb{R}\]
+    son $\mathscr{C}^{\infty}$. Es decir, las coordenadas de $\mathscr{M}$ mapean suavemente a $\mathscr{M}'$. (En principio, $dim\mathscr{M}\neq dim\mathscr{M}'$).
+\end{definition}
+La aplicación $\varphi$ induce a una aplicación (natural) entre funciones de $\mathscr{M}'$ a $\mathscr{M}$. 
+\begin{definition}
+    Definimos $\varphi^*$ como el \textit{pull-back} ('la aplicación hacia atrás') para $f':\mathscr{M}'\to\mathbb{R}$ tal que
+    \[\left.(\varphi^*f')\right|_p=f'\circ\varphi(p):\mathscr{M}\to\mathbb{R}\]
+\end{definition}
+En el lenguaje de coordenadas, esto quiere decir que si $f'(x'):\mathbb{R}^{n'}\to\mathbb{R}$, entonces $f'(x)=f'(x'(x))$.\\ \\
+La aplicación inversa al pull-back se nombra como push-forward y se denota por $\varphi_*$. Para funciones, a priori, no está definida, ya que necesitamos $\varphi^{-1}$, que no está definido, al igual que $x'=x'(x)$ sí está bien definido, pero su inversa no.\\ \\
+Debemos notar que $\varphi$ sí induce una aplicación push-forward en el espacio tangente $T_p$. Pues si tenemos un vector $\vec{v}\in T_p$, entonces el vector $(\varphi_*\vec{v})\in T_{p'=\varphi(p)}$ sí está bien definido, y se define como
+\[(\varphi_*\vec{v})\left.(f')\right|_{p=\varphi(p)}=\vec{v}\left.(\varphi^*f')\right|_p=\vec{v}\left.(f'\circ\varphi)\right|_p\]
+En coordenadas tenemos que
+\[\vec{v}\left.(f\circ\varphi)\right|_p=v^{\mu}\partial_{\mu}\left(f(x'(x))\right)=v^{\mu}\frac{\partial x^{'\nu}}{\partial x^{\mu}}\partial'_{\nu}f=\left((\varphi_*)^{\mu}_{\nu}v^{\nu}\right)\partial'_{\mu}f'=(\varphi_*\vec{v})\left.(f')\right|_{p'=\varphi(p)}\]
+En resumen,
+\begin{equation}
+    (\varphi_*)^{\mu}_{\nu}=\frac{\partial x^{'\mu}}{\partial x^{\nu}}
+\end{equation}
+Normalmente, la transformación pull-back para vectores implica conocer $\varphi^{-1}$, que no está definido.\\ \\
+Para las uno-formas, el pull.back está bien definido, pues dado $\vec{f}'\in T_{p'=\varphi(p)}^*$, tenemos que
+\[<\varphi^*\vec{f}',\vec{v}>|_p=<\vec{f}',\varphi_*\vec{v}>|_p\]
+En el lenguaje de coordenadas tenemos que
+\[(\varphi^*\vec{f}')_{\mu}v^{\mu}=f'_{\mu}(\varphi_*)^{\mu}_{\nu}v^{\nu}\]
+por tanto, tenemos que
+\[(\varphi^*\vec{f})_{\mu}=\frac{\partial x^{'\nu}}{\partial x^{\mu}}f'_{\nu}\]
+Recordemos que el diferencial de $f'$ es una uno-forma; y que el pull-back y el diferencial conmutan; por tanto,
+\[<\varphi^*(f\vec{f}'),\vec{v}>|_p=<d\vec{f}',\varphi_*\vec{v}>|_{\varphi(p)}=(\varphi_*\vec{v})(f')|_{\varphi(p)}=\vec{v}(\varphi^*f')|_p=<d(\varphi^*f'),\vec{v}>|_p\]
+\begin{definition}
+    Un difeomorfismo es una aplicación diferenciable $\varphi:\mathscr{M}\to\mathscr{M}'$, tal que tanto ella como su inversa son biyectivas y de clase $\mathscr{C}^{\infty}$, siempre que $dim\mathscr{M}=dim\mathscr{M}'$.
+\end{definition}
+Tanto las aplicaciones pull-back como las push-forward están bien definidas en el contexto de los difeomorfismos. Son isomorfos entre los espacios tangentes y cotangentes.\\ \\
+En resumen, diremos que si $\mathscr{M}$ y $\mathscr{M}'$ están relacionados mediante un difeomorfismo y tenemos $(\mathscr{M},g)$ y $(\mathscr{M}',g')$, entonces \textbf{son físicamente indistinguibles}.\\ \\
+Los difeomorfismos son una simetría de la relatividad general y tienen estructura de grupo, es decir, $\varphi_!\circ\varphi_2=\varphi_3$.\\ \\
+Los difeomorfismos se pueden entender como transformaciones activas que mapean tensores en $p$ a tensores en $q=\varphi(p)$, donde $p,q\in\mathscr{M}$. Pero admiten una perspectiva como transformaciones pasivas. Si tenemos una base coordenada con $x^{\mu}$ en un entorno $U$ de $p$, y la nueva base con $x^{'\mu}$ en un entorno $U'$ de $q=\varphi(p)$, siempre podemos definir unas nuevas coordenadas
+\[y^{\mu}(p)=x^{'\mu}(\varphi(p))\]
+un pull-back, tal que $x^{\mu}=x^{\mu}(y)$.\\
+En resumen, transformamos tensores en $p$ a tensores en $p$.\\ \\
+Desde un punto de vista físico, trabajar con transformaciones pasivas o activas es indistinguible, y como estamos acostumbrados a las pasivas, usaremos estas.

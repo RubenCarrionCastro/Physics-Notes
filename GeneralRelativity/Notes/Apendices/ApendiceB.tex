@@ -1,0 +1,161 @@
+\chapter{Espacios topológicos}
+\label{ApendiceB}
+\lhead{Ap\'endice B. \emph{Espacios topológicos}}
+
+El principal interés de explicar los Espacios Topológicos surge del hecho de que el espacio-tiempo en Relatividad General tiene la estructura de un espacio topológico. En este apéndice recogemos varias definiciones y teoremas clave relativos a los espacios topológicos. 
+\begin{definition}
+    Un \textit{espacio topológico} $(X, \mathcal{T})$ se trata de un conjunto $X$ con una colección $\mathcal{T}$ de subconjuntos de $X$ que satisface las siguientes propiedades:
+    \begin{enumerate}
+        \item La unión de un colección arbitraria finita o infinita de subespacios pertenecientes a $\mathcal{T}$, también pertenece a $\mathcal{T}$, es decir, si $O_{\alpha}\in\mathcal{T}$ para todo $\alpha$, entonces $\bigcup\limits_{\alpha}O_{\alpha}\in\mathcal{T}$.
+        \item La intersección de un número finito de subespacios de $\mathcal{T}$ pertenece también a $\mathcal{T}$, es decir, si $O_1,\dots O_n\in\mathcal{T}$, entonces $\bigcap\limits_{i=1}^{n}O_i\in\mathcal{T}$.
+        \item El conjunto completo $X$ y el conjunto vacío $\emptyset$, pertenecen a $\mathcal{T}$.
+    \end{enumerate}
+    \label{def-A-0-1}
+\end{definition}
+\begin{note}
+    $\mathcal{T}$ es referido a una \textit{topología} sobre $X$, y los subconjuntos de $X$, que se enumeran en la colección $\mathcal{T}$, se denominan \textit{conjuntos abiertos}.
+\end{note}
+Cualquier conjunto $X$ se puede convertir fácilmente en un espacio topológico tomando $\mathcal{T}=\curlybraces{\text{todos los subconjuntos de }X}$, denominado \textit{topología discreta}, o tomando $\mathcal{T}=\curlybraces{X,\emptyset}$, denominado \textit{topología indiscreta}.\\
+Un ejemplo mucho más interesante es el espacio topológico que se obtiene tomando $\mathcal{T}=\mathbb{R}$, el conjunto de los números reales, y definiendo $\mathcal{T}$ para que esté formado por todos los subconjuntos de $\mathbb{R}$, que puede ser expresado como la unión de intervalos abiertos $(a,b)$. Así, tomando $\mathcal{T}$ de esta forma sobre $\mathbb{R}$, un intervalo abierto es un conjunto abierto; históricamente, este ejemplo es la razón por la que la terminología de 'conjunto abierto' se usa en la discusión de un espacio topológico abstracto.\\ \\
+También podemos definir topologías inducidas, pues la definición de espacio topológico nos permite jugar con los subconjuntos de subconjuntos.
+\begin{definition}
+    Si $(X, \mathcal{T})$ es un espacio topológico y $A$ es un subconjunto cualquiera de $X$, podemos convertir $A$ en un espacio topológico definiendo la topología $\mathcal{S}$ en $A$, que consiste en todos los subconjuntos de $A$ que pueden expresarse como intersecciones de elementos de $\mathcal{T}$ con $A$, es decir, $\mathcal{S} = \{ U \mid U = A \cap O, \, O \in \mathcal{T} \}$. $\mathcal{S}$ se llama la '\textbf{topología inducida}' (o '\textbf{topología relativa}').
+\end{definition}
+En estos espacios topológicos también podemos definir un producto cartesiano, pues al trabajar con conjuntos está bien definido. De hecho, si $(X_1,\mathcal{T}_1)$ y $(X_2,\mathcal{T}_2)$ son espacios topológicos, entonces podemos introducir el producto cartesiano, \[X_1\times X_2=\curlybraces{(x_1,x_2)\mid x_1\in X_1,x_2\in X_2}\] dentro de un espacio topológico $(X_1\times X_2,\mathcal{T})$, definiendo $\mathcal{T}$ para que esté compuesto por todos los subconjuntos de $X_1\times X_2$, que pueden ser expresados como uniones de la forma $O_1\times O_2$ con $O_1\in\mathcal{T}_1$ y $O_2\in\mathcal{T}_2$. $\mathcal{T}$ se denomina \textbf{\textit{producto topológico}}, y usando esta definición de topología en $\mathbb{R}$, por construcción de topologías producto, podemos definir una topología en $\mathbb{R}^n$ La topología que obtenemos es la misma que se obtendría directamente definiendo $\mathcal{T}$ para que esté formado por todos los subconjuntos de $\mathbb{R}^n$, que pueden ser expresados por uniones de bolas abiertas.\\ \\
+También podemos definir la continuidad de las funciones de los conjuntos de los espacios topológicos,
+\begin{definition}
+    Sean \( (X, \mathcal{T}) \) un espacio topológico con topología \( \mathcal{T} \), y \( (Y, \mathcal{S}) \) un espacio topológico con topología \( \mathcal{S} \). Decimos que una función \( f : X \to Y \) es continua si para todo conjunto abierto \( O \in \mathcal{S} \) (es decir, cualquier conjunto abierto en \( Y \)), la imagen inversa de \( O \) bajo \( f \), denotada como 
+\[
+f^{-1}[O] = \{ x \in X \mid f(x) \in O \},
+\]
+es un conjunto abierto en \( X \) (es decir, \( f^{-1}[O] \in \mathcal{T} \)).
+\end{definition}
+Para funciones de $\mathbb{R}$ en $\mathbb{R}$, es fácil verificarlo usando la definición de topología sobre $\mathbb{R}$, esta definición de continuidad es equivalente a la definición usual $\epsilon-\delta$.
+\begin{definition}
+    Si $f$ es continua, inyectiva, sobreyectiva y su inversa es continua, entonces $f$ se denomina \textbf{\textit{homeomorfismo}}, y $(X,\mathcal{T})$ y $(Y,\mathcal{S})$ se dice que son homemorfos. Los espacios topológicos homeomorfos tienen las mismas propiedades que los espacios topológicos.
+\end{definition}
+Antes hemos usado el concepto de 'conjunto abierto', pero también podemos definir los 'conjuntos cerrados', de forma que si $(X,\mathcal{T})$ es un espacio topológico, un subconjunto $C$ de $X$ se dice que es \textit{cerrado} si su complemento $X-C\equiv\curlybraces{x\in X\mid x\notin C}$ es abierto. Así, por ejemplo, un intervalo cerrado $\brackets{a,b}$ de $\mathbb{R}$ (con la topología estándar sobre $\mathbb{R}$) es un conjunto cerrado. A partir de los axiomas de los espacios topológicos, es inmediato ver que la intersección de cualquier colección arbitraria de conjuntos cerrados es cerrada y que la unión de un número finito de conjuntos cerrados es también cerrada. Cabe resaltar que un conjunto puede ser ni abierto y ni cerrado, por ejemplo, el intervalo medio-abierto $[a,b)$ en $\mathbb{R}$; o puede ser abierto y cerrado al mismo tiempo, como son todos los subconjuntos de la topología discreta. De hecho, la posibilidad de tener subconjuntos abiertos y cerrados a la vez da origen a la definición de \textbf{conectividad},
+\begin{definition}
+    Un espacio topológico $(X,\mathcal{T})$ se dice que es \textit{conexo} (o conectado) si el único subconjunto que es abierto y cerrado al mismo tiempo es el conjunto completo $X$ y el conjunto vacío $\emptyset$.
+\end{definition}
+Tenemos que $\mathbb{R}^n$, con la topología estándar definida, es conexo.\\ \\
+En topología, uno de los conceptos fundamentales asociados a un subconjunto de un espacio es el de su adhesión. Este concepto permite formalizar la idea de los puntos donde el conjunto 'se acumula' dentro del espacio, incluyendo tanto los puntos que pertenecen al conjunto como aquellos que se encuentran arbitrariamente cerca de él. Formalmente, podemos definir la adhesión de la siguiente manera,
+\begin{definition}
+    Sea $(X,\mathcal{T})$ es un espacio topológico y $A$ es un subconjunto arbitrario de $X$, la \textit{adhesión} (o \textit{cierre}), $\overline{A}$, de $A$ se define como la intersección de todos los conjuntos cerrados que contienen a $A$.
+\end{definition}
+Claramente, $\overline{A}$ es cerrado, contiene a $A$, y es igual a $A$ si y solo si $A$ es cerrado.
+\begin{definition}
+    Sea $(X,\mathcal{T})$ es un espacio topológico y $A$ es un subconjunto arbitrario de $X$, el \textit{interior} de $A$ se define como la unión todos los conjuntos abiertos contenidos dentro de $A$.
+\end{definition}
+Claramente, el interior de $A$ es abierto, está contenido en $A$, y es igual a $A$ si y solo si $A$ es abierto. 
+\begin{definition}
+    $(X,\mathcal{T})$ es un espacio topológico y $A$ es un subconjunto arbitrario de $X$, la \textit{frontera} de $A$, denotada como $\mathring{A}$, se define como todos los puntos que se encuentran en $\overline{A}$, pero no están en el interior de $A$.
+\end{definition}
+
+\begin{definition}
+    Sea $(X,\mathcal{T})$ un espacio topológico, un \textit{entorno} de $x\in X$ es cualquier $A\subset X$ tal que $x$ pertenece al interior de $A$. 
+\end{definition}
+En particular, cualquier conjunto abierto conteniendo $x$ es un entorno de $x$.
+\begin{definition}
+    Una \textit{base de entornos} en $x$ es una colección de entornos de $x$ tal que todo entorno de \( x \) contiene a algún elemento de esta colección.
+\end{definition}
+En particular, la colección de todos los conjuntos abiertos conteniendo $x$ es una base de entornos sobre $x$, aunque generalmente hay muchas otras posibilidades para bases de entornos. 
+\begin{definition}
+Una \textit{base de entornos} de $X$ es una especificación de una base de entornos para cada $x\in X$
+\end{definition}
+Las topologías suelen definirse especificando una base de entornos. El procedimiento es el siguiente:
+\begin{enumerate}
+    \item Un entorno de $x$ es cualquier conjunto que contiene a algún entorno base de $x$.
+
+    \item Un conjunto es abierto si es un entorno de cada uno de sus puntos.
+\end{enumerate}
+Este proceso asegura que todos los conjuntos abiertos se generan a partir de la base de entornos, cumpliendo con las propiedades necesarias para definir una topología en el espacio. También es interesante ver que los conjuntos cerrados, los puntos de adherencia y de frontera pueden definirse directamente en términos de la base de entornos,
+\begin{definition}
+        Un conjunto \( G \) es \textit{cerrado} si y solo si, para cada punto \( x \) que no pertenece a \( G \), existe una base de entornos de \( x \) que no interseca a \( G \). La \textit{adherencia} de un conjunto \( A \) consiste en aquellos puntos \( x \) tales que cada base de entornos de \( x \) interseca a \( A \). La \textit{frontera} de \( A \) consiste en aquellos puntos \( x \) tales que cada base de entornos de \( x \) interseca tanto a \( A \) como a \( X - A \).
+\end{definition}
+\subsubsection*{Espacios métricos}
+Las bases de entornos, y por tanto las topologías, frecuentemente se definen en términos de una \textit{métrica} o \textit{función distancia}, que es la función $d:\hspace{2mm}X\times X\to\mathbb{R}$, que verifica:
+\begin{enumerate}
+    \item Para todo $x,y\in X$, $d(x,y)\geq 0$ (positividad).
+    \item Si $d(x,y)=0$, entonces $x=y$ (no degeneración).
+    \item Para todo $x,y\in X$, $d(x,y)=d(y,x)$ (simetría).
+    \item Para todo $x,y,z\in X$, $d(x,y)+d(y,z)\geq d(x,z)$ (desigualdad triangular).
+\end{enumerate}
+No hay ningún cambio esencial si también añadimos $+\infty$ como un valor de $d$. Un conjunto con función métrica se denomina \textbf{\textit{espacio métrico}}.
+\begin{definition}
+    La \textit{bola abierta} con centro en $x$ y radio $r>0$ con respecto a $d$ se define como 
+    \[
+    B(x,r)=\curlybraces{y\mid d(x,y)<r}
+    \]
+\end{definition}
+Entonces, puede demostrarse que cada bola abierta serviría como base de entornos para una topología $X$, la \textit{topología métrica} de $d$.
+\\ \\
+De forma más general: \textbf{\textit{Para cualquier espacio métrico, la colección de todos los subconjuntos que pueden expresarse como uniones de bolas abiertas define una topología}}.\\ \\
+\subsubsection*{Espacio Hausdorff}
+Vamos a introducir los espacios Hausdorff, pues nos permiten definir las variedades y son muy útiles en Geometría Diferencial. 
+\begin{definition}
+    Un espacio topológico $(X,\mathcal{T})$ se dice que es \textit{Hausdorff} si para cada par de puntos distintos $p,q\in X$, $p\neq q$, existen conjuntos abiertos $O_p$, $O_q\in\mathcal{T}$ tal que $p\in O_p$, $q\in O_q$, y $O_p\cap O_q=\emptyset$.
+\end{definition}
+Es fácil comprobar que $\mathbb{R}^n$, con la topología estándar, es Hausdorff. También tenemos que una topología métrica siempre es Hausdorff.
+\subsubsection*{Compacidad}
+Una de las nociones más importantes en topología es es la de la \textit{compacidad}, que se define como,
+\begin{definition}
+    Sea $(X,\mathcal{T})$ un espacio topológico y $A$ un subconjunto de $X$, una colección $\curlybraces{O_{\alpha}}$ de conjuntos abiertos se denomina \textit{recubrimiento abierto} de $A$ si la unión de estos conjuntos contiene a $A$, i.e. $A\subseteq\bigcup\limits_{\alpha}O_{\alpha}$. Una subcolección de estos conjuntos $\curlybraces{O_{\alpha}}$ que también recubren $A$ es referida como un \textit{sub-recubrimiento}. El conjunto $A$ se denomina \textit{compacto} si cada recubrimiento abierto de $A$ tiene un sub-recubrimiento finito (i.e., un sub-recubrimiento que consiste solo en un número finito de conjuntos).
+\end{definition}
+Así, por ejemplo, en cualquier espacio topológico, un conjunto formado por un solo punto, es compacto. Por otro lado, el intervalo abierto $(0,1)$ en $\mathbb{R}$ (con la topología estándar) no es compacto ya que los conjuntos $O_n=(1/n,1)$ para $n=2,3,\dots$, ceden un recubrimiento abierto de $(0,1)$ el cuál admite sub-recubrimientos no finitos.\\ \\
+Los siguientes teoremas describen las implicaciones de la compacidad y muestran la utilidad de esta noción. Las demostraciones pueden encontrarse en cualquier texto de topología (e.g., Hocking and Young 1961; Kelley 1955).\\ \\
+Quizás, el teorema más importante relativo a subconjuntos compactos de $\mathbb{R}$ es el Teorema de Heine-Borel,
+\begin{theorem}[\textbf{Heine-Borel}]
+    Un intervalo cerrado $[a,b]$ de números reales es compacto (con la topología estándar sobre $\mathbb{R}$).
+\end{theorem}
+La relación general entre conjuntos compactos y cerrados se describe con los siguientes dos teoremas, las demostraciones son directas,
+\begin{theorem}
+    Sea $(X,\mathcal{T})$ un espacio topológico de Hausdorff y sea $A\subset X$ compacto. Entonces $A$ es cerrado.
+\end{theorem}
+\begin{theorem}
+    Sea $(X,\mathcal{T})$ compacto y $A\subset X$ cerrado. Entonces $A$ es compacto.
+\end{theorem}
+Combinando los tres teoremas anteriores, llegamos al siguiente enunciado importante sobre la compacidad de subconjuntos de $\mathbb{R}$,
+\begin{theorem}
+    Un subconjuntos $A$ de los números reales es compacto si y solo si es cerrado y acotado.
+\end{theorem}
+Se demuestra fácilmente que la propiedad de compacidad se conserva en mapas continuos. Tenemos,
+\begin{theorem}
+    Una función continua de un espacio topológico compacto en $\mathbb{R}$ es acotada y alcanza sus valores máximo y mínimo.
+\end{theorem}
+El siguiente teorema proporciona una extensión inmediata de los resultados de compacidad de $\mathbb{R}$ para $\mathbb{R}^n$.
+\begin{theorem}[\textbf{Teorema de Tychonoff}]
+    Sea $(X_1,\mathcal{T}_1)$ y $(X_2,\mathcal{T}_2)$ espacios topológicos compactos. Entonces, el producto cartesiano $X_1\times X_2$ es compacto en el producto topológico.
+\end{theorem}
+\begin{theorem}
+    El teorema anterior puede generalizarse para aplicar el producto de infinitos productos topológicos, pero el axioma de elección es necesario para esta generalización.
+\end{theorem}
+Un corolario de este teorema y el anterior es
+\begin{corollary}
+    Un subconjunto, $A$, de $\mathbb{R}^n$ es compacto si y solo si es cerrado y acotado.
+\end{corollary}
+Así, por ejemplo, la esfera $n$-dimensional $S^n$ (definida como el conjunto de puntos en $\mathbb{R}^{n+1}$ satisfaciendo $x_1^2+\dots+x_n{n+1}^2=1$) en la topología inducida es compacta, así que es fácil ver que es un conjunto cerrado y acotado de $\mathbb{R}^{n+1}$.
+\subsubsection*{Convergencia de sucesiones}
+Otra noción que necesitaremos es la de convergencia de sucesiones. 
+\begin{definition}
+Una sucesión $\curlybraces{x_n}$ de puntos en un espacio topológico $(X,\mathcal{T})$ se dice que \textit{converge} a un punto $x$ si en cualquier entorno abierto $O$ de $x$ (i.e., un conjunto abierto $O$ que contiene $x$), hay un $N$ tal que $x_n\in O$, para todo $n>N$.
+\end{definition}
+El punto $x$ se dice que es el \textit{límite} de la sucesión. Es fácil comprobar que para $\mathbb{R}$ (con la topología estándar) esto lleva a la definición usual de convergencia.
+\begin{definition}
+    Un punto $y\in X$ se dice que es un \textit{punto de acumulación} (o \textit{punto límite}) de $\curlybraces{x_n}$ si cada entorno abierto de $y$ contiene infinitos números de la sucesión.
+\end{definition}
+Sin embargo, en un espacio topológico general, si $y$ es un punto de acumulación de $\curlybraces{x_n}$, podría no ser posible encontrar una sucesión $\curlybraces{y_n}$ de puntos de la sucesión $\curlybraces{x_n}$ tal que $\curlybraces{y_n}$ converge hacia $y$. No obstante, el sentido de la convergencia de sucesiones hacia $y$ siempre será posible si $(X,\mathcal{T})$ es \textit{primero numerable}, esto es, si para cada $p\in X$ hay una colección numerable $\curlybraces{O_n}$ de conjuntos abiertos tal que cada entorno abierto, $O$, de $p$ contiene al menos un miembro de esta colección. Para $\mathbb{R}^n$, las bolas abiertas con radio racional centradas en puntos con coordenadas racionales, componen una colección numerable de conjuntos abiertos.\\ \\
+Una relación importante entre compacidad y convergencia de sucesiones está expresada en el Teorema de Bolzano-Weiestrass,
+\begin{theorem}[\textbf{Teorema de Bolzano-Weiestrass}]
+    Sea $(X,\mathcal{T})$ un espacio topológico y sea $A\subset X$. Si $A$ es compacto, entonces cada sucesión $\curlybraces{x_n}$ de puntos de $A$ tiene un punto de acumulación en $A$. Inversamente, si $(X,\mathbb{T})$ es segundo numerable y cada sucesión en $A$ tiene un punto de acumulación en $A$, entonces $A$ es compacto. Así, en particular, si $(X,\mathcal{T})$ es segundo numerable, $A$ es compacto si y solo si cada sucesión en $A$ tiene una convergencia de sucesiones cuyo límite está en $A$.
+\end{theorem}
+\subsubsection*{Para-compacidad}
+Finalmente, definimos la noción de \textit{para-compacidad}, una propiedad que las variedades deben satisfacer para evitar que sean "demasiado grandes".
+\begin{definition}
+    -Sea $(X,\mathcal{T})$ un espacio topológico y sea $\curlybraces{O_{\alpha}}$ un recubrimiento abierto de $X$. Un recubrimiento abierto $\curlybraces{V_{\beta}}$ se dice que es un \textit{refinamiento} de $\curlybraces{O_{\alpha}}$ si para cada $V_{\beta}$ existe un $O_{\alpha}$ tal que $V_{\beta}\subset O_{\alpha}$.\\
+    -El recubrimiento $\curlybraces{V_{\beta}}$ se dice que es \textit{localmente finito} si cada $x\in X$ tiene un entorno abierto $W$ tal que solo un número finito de $V_{\beta}$ satisfacen que $W\cap V_{\beta}\neq\emptyset$.\\
+    -El espacio topológico $(X,\mathcal{T})$ se dice que es \textit{para-compacto} si cada recubrimiento abierto $\curlybraces{O_{\alpha}}$ de $X$ tiene un recubrimiento localmente finito $\curlybraces{V_{\beta}}$.
+\end{definition}
+%\subsubsection*{Variedades}
+Los conceptos de variedades se explican en el Apéndice B.\\ \\
+No es difícil ver que (verlo en e.g., Hocking and Young 1961) que cualquier espacio topológico de Hausdorff que sea localmente compacto (i.e., tal que cada punto tiene un entorno abierto con adherencia compacta) y que pueda ser expresado como una unión numerable de subconjuntos, es para-compacto. Así, $\mathbb{R}^n$, $S^m$ y sus productos verifican fácilmente ser para-compactos. En efecto, no es fácil construir ejemplos de espacios topológicos que satisfagan todos los requisitos de una variedad pero que no sean para-compactos; la 'recta larga' (ver Hocking and Young 1961) es quizás el ejemplo más simple, aunque para definirla se requiere el axioma de elección.\\ \\

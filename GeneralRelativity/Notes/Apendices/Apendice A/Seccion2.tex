@@ -1,0 +1,768 @@
+ % Main chapter title
+\label{Ap-A-sec2}
+\section{Teoría de Conjuntos}
+\subsection{Teoría intuitiva de conjuntos}
+Un conjunto es una colección de objetos, con ciertas propiedades.\
+\begin{example}
+\begin{tabular}{c c c}
+$\left\lbrace1,2,3,4\right\rbrace$ & $\lbrace perro,gato,caballo \rbrace$ & $\mathbb{R},\mathbb{N},$ ... 
+\end{tabular}
+\end{example}
+En el Siglo XIX, George Cantor estableció las bases de la teoría de conjuntos mediante una serie de Axiomas. Estos, son verdades básicas que se admiten como ciertas sin demostrarse, a partir de las cuáles se deducen cosas.
+\subsection{Axiomas de la Teoría de Conjuntos de Zermelo-Fraenkel}
+Durante décadas se intentó construir un sistema axiomático satisfactorio para la Teoría de Conjuntos. Hasta que en 1930, cuando Zermelo publica un sistema muy parecido al utilizado hoy en día, conocido como Zermelo-Fraenkel.
+\begin{axioma}[\textbf{Axioma de Extensión}]
+Si todo elemento de $X$ es un elemento de $Y$, y todo elemento de $Y$ es un elemento de $X$, entonces $X = Y$.
+\[X = Y \Longleftrightarrow (\forall x:x\in X\Longrightarrow x\in Y)\wedge(\forall x:x\in Y\Longrightarrow x\in X)\]
+\end{axioma}
+Este axioma puede expresarse en otras palabras diciendo que dos conjuntos que tienen los mismos elementos son idénticos.
+\begin{axioma}[\textbf{Axioma de Existencia del conjunto vacío}]
+Hay un conjunto que no tiene elementos. Se representa por el símbolo $\emptyset$
+\end{axioma}
+\begin{axioma}[\textbf{Axioma de Separación}]
+Sea $P(x)$ una propiedad de $x$. Para cualquier conjunto $A$, hay un conjunto $B$, tal que $x\in B$ si y solo si $x\in A\wedge P(x)$
+\[\exists B:x\in B\Longleftarrow x\in A\wedge P(x)\]
+\end{axioma}
+Una consecuencia importante de este axioma es que el conjunto de todos los conjuntos no existe.
+\begin{proof}
+Supongamos lo contrario, sea $U$ el conjunto de todos los conjuntos y consideremos la propiedad $P(x)\equiv x\not\in x$. EL Axioma de Separación nos dice que existe un conjunto $R$, tal que:
+\[x\in R\Longleftrightarrow x\in U\wedge x\not\in x\]
+Es decir, $x$ es un elemento de $R$ si y solo $x$ es un conjunto y $x$ no es miembro de sí mismo. Como $R$ es un conjuntos, entonces $R\in U$, por tanto, $R$ puede o no verificar la propiedad $P(x)$. Si $R\not\in R$ entonces $R\in R$, es decir, $(R\not\in R)\wedge(R\in R)$, una contradicción. Por otro lado, si $R\in R$ entonces $r$ sí verifica la propiedad $P(x)$, es decir, $R\not\in R$, nuevamente $(R\not\in R)\wedge(R\in R)$, una contradicción. Por tanto no existe el conjunto $U$.
+\end{proof}
+\begin{axioma}[\textbf{Axioma del Par}]
+Para cualesquiera $a$ y $b$, hay un conjunto $C$, tal que $x\in C$ si y solo si $x=a$ ó $x=b$.
+\[\forall a,b;\hspace{2mm}\exists C:\forall x(x\in C\Longleftrightarrow x=a\vee x=b)\]
+\end{axioma}
+Definimos al par no ordenado de $a$ y $b$, como el conjunto que tiene a $a$ y $b$ como elementos, y lo denotamos como $\lbrace a,b\rbrace$. Podemos formar el par no ordenado $\lbrace a,a\rbrace$, el cual se denota $\lbrace a\rbrace$, y se llama conjunto singular o unitario de $a$.\\
+El Axioma del Par asegura que todo conjunto es un elemento de algún conjunto, y dos conjuntos cualesquiera son simultáneamente de algún mismo conjunto.
+\begin{axioma}[\textbf{Axioma de Unión}]
+Para cualesquier conjunto $S$, existe un conjunto $U$, tal que $x\in U$ si y solo si $x\in X$ para algún $X\in S$.
+\end{axioma}
+Al ser $U$ único, nos permite dar la siguiente definición:
+\begin{definition}
+Llamaremos unión de $S$ y lo denotaremos por $\cup^{S}$ al conjunto tal que 
+\[\bigcup^{S}=\lbrace x:\exists X\in S \backslash x\in X \rbrace\]
+\end{definition}
+Si queremos hacer una unión de conjuntos, tal que $A$ y $B$ son dos conjuntos, definimos
+\[A\cup B=\lbrace x:x\in A\vee x\in B \rbrace\]
+Este Axioma es muy poderoso, pues podemos formar la unión de un número infinito de conjuntos.
+\begin{definition}
+$A$ es un subconjunto de $B$ si cualquier elemento de $A$ pertenece a $B$. En otras palabras, $A$ es un subjonjunto de $B$ si, para todo $x,x\in A\Rightarrow x\in B$. Escribiremos $A\subseteq B$ ó $B\supseteq A$ para denotar que $A$ es subconjunto de $B$.
+\end{definition}
+Si $A$ y $B$ son dos conjuntos tales que $A\subseteq B$ y $B\subseteq A$, entonces $A$ y $B$ tienen los mismos elementos y, por tanto, $A=B$.
+\begin{axioma}[\textbf{Axioma del Conjunto Potencia}]
+Para cualquier conjunto $X$ existe un conjunto $S$ tal que $A\in S$ si y solo si $A\subseteq X$.
+\end{axioma}
+Este Axioma nos asegura que dado un conjunto cualquiera podemos formar un nuevo conjunto cuyos miembros son exactamente los subconjuntos del conjunto dado.\\
+Puesto que el conjunto $S$ está unívocamente determinado, llamaremos al conjunto $S$ de todos los subconjuntos de $X$, el conjunto potencia de $X$ y es denotado por $\mathcal{P}(X)$.\\ 
+El número de elementos del conjunto potencia viene dado por $2^{n}$ elementos.
+\begin{proof}
+$\mathcal{P}(X)\equiv$ Conjunto potencia, tal que $X=\lbrace 1, 2, ... , n \rbrace$\\ \\
+-Si n = 0, entonces $A=\emptyset$ y $\mathcal{P}(X)$ tendrá un elemento, luego queda demostrado.\\ \\
+-Si n $\geq$ 1, entonces $A=\lbrace X_{1},...,X_{n} \rbrace$. El conjunto potencia estará formado por $X_{1},X_{2},...,X_{n}$ y las múltiples combinaciones que haya. Ahora si decidimos esas combinaciones, tenemos la opción de que $X_{1}$ esté o no esté, dos posibilidades, de igual forma para $X_{2}$, e igual hasta $X_{n}$.
+\end{proof}
+Gráficamente:
+\begin{Figura}
+\centering
+    \includegraphics[width=0.5\textwidth]{Apendices/Apendice A/ImagenesA/Demostracion 1.png}
+    \label{fig}
+\end{Figura}
+\begin{definition}
+Dada una colección de conjuntos $S$, se define la intersección de ellos como
+\[\bigcap^{S}=\lbrace x:x\in X,\forall X\in S \rbrace\]
+En particular, dados dos conjuntos $A$ y $B$:
+\[A\cap B=\lbrace x:x\in A\wedge x\in B \rbrace\]
+\end{definition}
+\begin{axioma}[\textbf{Axioma de Fundación}]
+En cada conjunto no vacío $A$ existe $u\in A$ tal que $u$ y $A$ no tienen elementos en común, es decir, para cualquier $x$, si $x\in A$ entonces $x\not\in u$.
+\[\forall A\neq \emptyset,\exists u\in A:u\cap A=\emptyset\]
+\end{axioma}
+\begin{theorem}
+Ningún conjunto no vacío puede ser elemento de sí mismo, es decir, para cualquier $X\neq\emptyset$, $X\not\in X$. Además, si $A$ y $B$ son conjuntos no vacíos, entonces no es posible que ocurran simultáneamente $A\in B$ y $B\in A$.
+\end{theorem}
+\begin{proof}
+Supongamos que existe un conjunto no vacío $X$ tal que $X\in X$. Por el Axioma del Par, $\lbrace X\rbrace$ también es un conjunto, y puesto que $X$ es el único miembro de $\lbrace X\rbrace$, el conjunto $\lbrace X\rbrace$ contradice el Axioma de Fundación, ya que $X$ y $\lbrace X\rbrace$ tienen a $X$ como elemento común, es decir, todo elemento de $\lbrace X\rbrace$ tiene un elemento común con $\lbrace X\rbrace$. Por otro lado, si $A$ y $B$ son conjuntos no vacíos, consideremos el par no ordenado $\lbrace A,B\rbrace$ y proceda de modo análogo a lo anterior.
+\end{proof}
+\begin{definition}
+Llamaremos sucesor de un conjunto $X$ al conjunto $S(X)=X\cup \lbrace X\rbrace$
+\end{definition}
+\begin{definition}
+Llamaremos a un conjunto $A$ inductivo si verifica:
+\begin{enumerate}[label=(\roman*)]
+\item  $0\in A$
+\item  $x\in A$ implica $S(x)\in A$
+\end{enumerate}
+\end{definition}
+ \begin{axioma}[\textbf{Axioma de Infinitud}]
+Existe un conjunto inductivo
+\end{axioma}
+Este axioma puede usarse para construir el conjunto de los números naturales.
+\begin{axioma}[\textbf{Esquema de Reemplazo}]
+Sea $A$ un conjunto y sea $P(x,y)$ una propiedad tal que para todo $x\in A$ existe un único $y$ para el cual $P(x,y)$ se satisface. Entonces existe un conjunto $B$ tal que $y\in B$ si y solo si $P(x,y)$ se satisface.
+\[\exists B:y\in B\Longleftrightarrow\exists x(x\in A\wedge P(x,y))\]
+\end{axioma}
+Este axioma permite definir el "conjunto imagen de una aplicación". Así, "para todo conjunto $S$ y cualquier función $f$ definida en $S$, existe un conjunto $T$ tal que $f(x)\in T$ para todo $x\in S$".
+\begin{axioma}[\textbf{Axioma de Elección}]
+Para toda colección de conjuntos no vacíos $\mathscr{A}$, existe una función que selecciona un elemento de cada uno
+\[\forall\mathscr{A}(\forall A\in \mathscr{A}, A\neq\emptyset\Longrightarrow\exists f:\mathscr{A}\longrightarrow\cup\mathscr{A}:\forall A\in\mathscr{A}, f(A)\in\mathscr{A})\]
+\end{axioma}
+\subsection{Álgebra de conjuntos}
+\subsubsection{Operaciones Fundamentales}
+\begin{propiedad}
+\begin{enumerate}
+    \item  $A\subseteq A$
+\item  Si $A\subseteq B$ y $B\subseteq C$ entonces $A\subseteq C$
+\item  $A\subseteq B$ y $B\subseteq A$ si y solo si $A=B$
+\end{enumerate}
+\end{propiedad}
+Estas tres propiedades se expresan brevemente diciendo que la propiedad de contención es reflexiva, transitiva y antisimétrica, respectivamente.
+\begin{definition}
+Si $A$ y $B$ son conjuntos, la unión de $A$ y $B$, es el conjunto
+\[A\cup B=\lbrace x:(x\in A)\vee(x\in B) \rbrace\]
+La intersección de $A$ y $B$ es el conjunto
+\[A\cap B=\lbrace x:(x\in A)\wedge(x\in B) \rbrace\]
+\end{definition}
+Si $A$ y $B$ tienen elementos en común, entonces $A\cap B\neq\emptyset$.
+\begin{theorem}
+Para cualesquiera conjuntos $A,B,C,D$ tenemos:
+\begin{enumerate}[label=\roman*)]
+    \item  $A\cap B\subseteq A\subseteq A\cup B$
+\item  Si $A\subseteq C$ y $B\subseteq D$ entonces $A\cap B\subseteq C\cap D$ y $A\cup B\subseteq C\cup D$
+\item  $A\subseteq C$ y $B\subseteq C$ si y solo si $A\cup B\subseteq C$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\roman*)]
+    \item Primero vamos a demostrar $A\cap B\subseteq A$; sea $x\in A\cap B\Longleftrightarrow x\in A\wedge x\in B\Longrightarrow x\in A$.\\
+    Ahora vamos con $A\subseteq A\cup B$; si $x\in A\Longrightarrow x\in A\vee x\in B\Longrightarrow x\in A\cup B$. Por tanto, queda demostrado. $\qed$
+    \item Empezamos demostrando $A\subseteq C$ y $B\subseteq D\Longrightarrow A\cap B\subseteq C\cap D$;\\
+    si $x\in A\cap B\Longrightarrow x\in A\wedge x\in B\Longrightarrow x\in C\wedge x\in D\Longrightarrow x\in C\cap D$.\\ 
+    Ahora demostramos $A\subseteq C$ y $B\subseteq D\Longrightarrow A\cup B\subseteq C\cup D$; si $x\in A\cup B$\\ $\Longrightarrow x\in A\vee x\in B\Longrightarrow x\in C\vee x\in D\Longrightarrow x\in C\cup D$. Luego, queda demostrado.$\qed$
+    \item Demostramos esta dirección $A\subseteq C$ y $B\subseteq C\Longrightarrow A\cap B\subseteq C$; si $x\in A\cup B,$\\ $ x\in A\vee x\in B\Longrightarrow x\in C$\\ 
+    Demostramos la otra dirección $A\cup B\subseteq C\Longrightarrow A\subseteq C$ y $B\subseteq C$; si $x\in A\Longrightarrow x\in C\Longrightarrow A\subseteq C$ y si $x\in B\Longrightarrow x\in C\Longrightarrow B\subseteq C$, por tanto, queda demostrado. \qedhere
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+Las operaciones $\cap$ y $\cup$ son:
+\begin{enumerate}
+    \item  Reflexivas:
+\[ A\cap A = A = A\cup A,\forall A\]
+\item  Asociativas:
+\[A\cap(B\cap C)=(A\cap B)\cap C\] 
+\[A\cup(B\cup C)=(A\cup B)\cup C\]
+\item  Conmutativa:
+\[A\cap B=B\cap A\]
+\[A\cup B=B\cup A\]
+\item  Más aún, $\cap$ distribuye sobre $\cup$ y $\cup$ distribuye sobre $\cap$:
+\[A\cap(B\cup C)=(A\cap B)\cup(A\cap C)\]
+\[A\cup(B\cap C)=(A\cup B)\cap(A\cup C)\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+    \item Empezamos demostrando $A\cap A=A$\\
+    $x\in A\wedge x\in A\Leftrightarrow x\in A$.\\
+    Ahora demostramos $A=A\cup A$\\
+    $x\in A\vee x\in A\Leftrightarrow x\in A$.\\
+    Luego, queda demostrado. $\qed$
+    \item Empezamos demostrando $A\cap(B\cap C)\subseteq(A\cap B)\cap C$\\
+    $A\cap(B\cap C)\Longrightarrow x\in A\wedge(x\in B\wedge x\in C)=(x\in A\wedge x\in B)\wedge x\in C\Longrightarrow (A\cap B)\cap C$.\\
+    Vemos la otra parte,\\
+    $(A\cap B)\cap C\Longrightarrow(x\in A\wedge x\in B)\wedge x\in C=x\in A\wedge(x\in B\wedge x\in C)\Longrightarrow A\cap(B\cap C)\qed$
+    Vemos ahora con la unión.\\
+    Empezamos demostrando $A\cup(B\cup C)\subseteq(A\cup B)\cup C$\\
+    $A\cup(B\cup C)\Longrightarrow x\in A\vee(x\in B\vee x\in C)=(x\in A\vee x\in B)\vee x\in C\Longrightarrow (A\cup B)\cup C$\\
+    Vemos la otra parte.\\
+    $(A\cup B)\cup C\Longrightarrow (x\in A\vee x\in B)\vee x\in C=x\in A\vee(x\in B\vee x\in C)\Longrightarrow A\cup(B\cup C)\qed$
+    \item Trivial.$\qed$
+    \item Empezamos con $A\cup(B\cap C)\subseteq(A\cap B)\cup(A\cap C)$\\
+    si $x\in A\cap(B\cup C)\Longrightarrow x\in A\wedge x\in B\cup C\Longrightarrow x\in B\vee x\in C$\\
+    $\left.\begin{matrix}
+    si & x\in A\wedge x\in B & \Longrightarrow & x\in A\cap B\\
+    si & x\in A\wedge x\in C & \Longrightarrow & x\in A\cap C
+    \end{matrix}\right\rbrace x\in(A\cap B)\cup(A\cap C)$\\  
+     Vemos ahora la otra parte.\\
+     si $x\in (A\cap B)\cup(A\cap C)$, entonces\\
+     $\left.\begin{matrix}
+         x\in A\cap B & \Longrightarrow & x\in A\wedge x\in B\\
+         x\in A\cap C & \Longrightarrow & x\in A\wedge x\in C
+     \end{matrix}\right\rbrace\Rightarrow x\in A\wedge x\in A\cup C\Longrightarrow x\in A\cap(B\cup C)\qed$\\
+     Vemos ahora $A\cup(B\cap C)\subseteq (A\cup B)\cap(A\cup C)$\\
+     si $x\in A\cup(B\cap C)\Longrightarrow x\in A\vee x\in B\cap C\Rightarrow x\in B\wedge x\in C$\\
+     $\left.\begin{matrix}
+         si & x\in A\vee x\in B & \Longrightarrow & x\in A\cup B\\
+         si & x\in A\vee x\in C & \Longrightarrow & x\in A\cup C
+     \end{matrix}\right\rbrace x\in(A\cup B)\cap(A\cup C)$\\ \\
+     Vemos la otra parte.\\
+     si $x\in (A\cup B)\cap(A\cup C)\Rightarrow\begin{matrix}
+         x\in A\vee x\in B\\
+         x\in A\vee x\in C
+     \end{matrix}\Rightarrow x\in A\vee x\in B\cap C\Rightarrow x\in A\cup(B\cap C)$ \qedhere
+\end{enumerate}
+\end{proof}
+\begin{proposition}
+Los siguientes enunciados son equivalentes:
+\begin{enumerate}[label=(\roman{enumi})]
+    \item $A\subseteq B$
+\item  $A=A\cap B$
+\item  $B=A\cup B$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) $\Longrightarrow$ (ii)\\ 
+si $x\in A\Longrightarrow x\in B \Longrightarrow x\in A\cap B\Longrightarrow A\subseteq A\cap B$, además $A\cap B\subseteq A$ está probado en el Teorema de antes.\\ \\
+(ii) $\Longrightarrow$ (iii)\\
+Si $A=A\cap B\Longrightarrow B=A\cup B$, luego, ¿estará $B\subseteq A\cup B$? Si $x\in B\Longrightarrow x\in A\cup B$. Si $x\in A\cup B\Longrightarrow x\in A\vee x\in B$, como $x\in A=A\cap B\Longrightarrow x\in A\wedge x\in B$, por tanto $x\in B$.\\ \\
+(iii) $\Longrightarrow$ (ii)\\
+$B=A\cup B=A\subseteq A\cup B\Longrightarrow A\subseteq B$.
+\end{proof}
+\begin{definition}
+Se define la diferencia de dos conjuntos $A$ y $B$ como
+\[A\backslash B=\lbrace x\in A: x\not\in B \rbrace\]
+\end{definition}
+\begin{remark}
+    -Si $A\neq \emptyset$, entonces $(A\cup A)\backslash A\neq A\backslash(A\cup A)$\\ \\
+    -La diferencia de conjuntos no es conmutativa.\\ \\
+    -$x\not\in A\backslash B\Longleftrightarrow x\not\in A\wedge c\not\in B$\\ \\
+    -$x\in A\backslash(A\backslash B)\Leftrightarrow x\in A\wedge x\not\in A\backslash B\Leftrightarrow (x\in A)\wedge(x\not\in A\vee x\not\in B)\Leftrightarrow (x\in A\wedge x\not\in A)\vee(x\in A\wedge x\in B)\Leftrightarrow x\in A\cap B$, es decir, $A\cap B=A\backslash(A\backslash B)$
+\end{remark}
+\begin{propiedad}
+    \begin{enumerate}[label=\roman*)]
+        \item $A\backslash\emptyset=A$
+        \item $A\backslash B=A\backslash A\cap B$
+        \item $A\backslash B=A\Leftrightarrow A\cap B=\emptyset$
+        \item $A\backslash(B\backslash C)$ no es asociativa.
+    \end{enumerate}
+\end{propiedad}
+\begin{definition}
+    Si $A\subseteq B$, el complemento de $A$ con respecto de $B$ es el conjunto 
+    \[B\backslash A=A^C=\bar{A}=A^C_B\]
+\end{definition}
+\begin{theorem}
+    Para cualquier conjunto $A$, $B$ y cualquier conjunto $E$, tal que $A\cup B\subseteq E$, se tiene:
+    \begin{enumerate}[label=\alph*)]
+        \item $A\backslash B=A\cap (E\backslash B)$
+        \item $A\cap (E\backslash A)=\emptyset$, $A\cup(E\backslash A)=E$
+        \item $E\backslash (E\backslash A)=A$
+        \item $E\backslash\emptyset=E$, $E\backslash E=\emptyset$
+        \item $A\subseteq B\Leftrightarrow E\backslash B\subseteq E\backslash A$
+    \end{enumerate}
+\end{theorem}
+\begin{enumerate}[label=\alph*)]
+    \item \begin{proof}
+    $x\in A\cap(E\backslash B)\Leftrightarrow x\in A\wedge x\in(E\backslash B)\Leftrightarrow x\in A\wedge (x\in E\wedge x\not\in B)\Leftrightarrow\left\lbrace\begin{matrix}
+        A\subseteq E\\
+        \vee\\
+        B\subseteq E
+    \end{matrix}\right\rbrace\Leftrightarrow$\\
+$\Leftrightarrow x\in A\wedge\left[(x\in A\vee x\in B)\wedge x\not\in B\right]\Leftrightarrow x\in A\wedge(x\in A\wedge x\not\in B\vee\cancelto{\emptyset}{x\in B\wedge x\not\in B})\Leftrightarrow$\\$\Leftrightarrow x\in A\wedge x\not\in B\Leftrightarrow x\in A\backslash B$
+\end{proof}
+\item \begin{proof}
+    $A\cap(E\backslash A)=A\backslash A=\emptyset \qed$\\
+    $x\in A\cup(E\backslash A)\Leftrightarrow x\in A\vee (x\in E\wedge x\not\in A)\Leftrightarrow x\in A\vee x\in E\wedge\cancelto{\emptyset}{x\in A\vee x\not\in A}\Leftrightarrow x\in E$, pues $A\subseteq E$.
+\end{proof}
+\item \begin{proof}
+    $E\backslash(E\backslash A)=E\cap A=A$
+\end{proof}
+\item \begin{proof}
+    $x\in E\backslash\emptyset\Leftrightarrow x\in E\wedge x\not\in \emptyset \Leftrightarrow x\in E \qed$
+    $x\in E\wedge\not\in E\Leftrightarrow x\in\emptyset$
+\end{proof}
+\item Trivial. $\qedsymbol$
+\end{enumerate}
+
+\begin{theorem}[\textbf{Leyes de Morgan}]
+    Si $A,B\subseteq X$, entonces:
+    \begin{enumerate}[label=\alph*)]
+        \item $X\backslash (A\cup B)=(A\backslash A)\cap(X\backslash B)$
+        \item $X\backslash(A\cap B)=(X\backslash A)\cup(X\backslash B)$
+    \end{enumerate}
+\end{theorem}
+\begin{enumerate}[label=\alph*)]
+    \item \begin{proof}
+        $x\in X\backslash (A\cup B)\Leftrightarrow x\in X\wedge x\not\in(A\cup B)\Leftrightarrow x\in X\wedge (x\not\in A\wedge x\not\in B)\Leftrightarrow\newline\Leftrightarrow x\in X\backslash A\wedge x\in X\backslash B$
+    \end{proof}
+    \item \begin{proof}
+        Usando la primera ley, $X\backslash\left[(X\backslash A)\cup(X\backslash B)\right]=\left[X\backslash(X\backslash A)\right]\cap\left[X\backslash(X\backslash B)\right]=A\cap B$, entones $(X\backslash A)\cup(X\backslash B)=X\backslash(A\cap B)$
+    \end{proof}
+\end{enumerate}
+\begin{definition}
+    Sean $A,B$ dos conjuntos, se define la diferencia simétrica como,
+    \[A\triangle B\coloneqq\left\lbrace x:x\in A\wedge x\not\in B \right\rbrace \cup\left\lbrace x: x\not\in A\wedge x\in B
+       \right\rbrace\] 
+\end{definition}
+\begin{propiedad}$\hspace{5mm}$
+    \begin{enumerate}[label=\roman*)]
+        \item $A\triangle B=(A\cup B)\backslash (A\cap B)$
+        \begin{proof}
+            $x\in(A\cup B)\backslash(A\cap B)\Leftrightarrow x\in(A\cup B)\wedge x\not\in(A\cap B)\Leftrightarrow (x\in A\vee x\in B)\wedge(x\not\in A\wedge x\not\in B)\Leftrightarrow(x\in A\wedge x\not\in B)\vee(x\in B\wedge x\not\in A)\Leftrightarrow x\in A\triangle B$
+        \end{proof}
+        \item $A\triangle \emptyset =A$
+        \begin{proof}
+            $x\in A\triangle\emptyset\Leftrightarrow (x\in A\wedge x\not\in\emptyset)\vee(x\not\in A\wedge x\in\emptyset)\Leftrightarrow x\in A$
+        \end{proof}
+        \item $A\triangle A=\emptyset$
+        \begin{proof}
+            $x\in A\triangle A\Leftrightarrow (\cancelto{\emptyset}{x\in A\wedge x\not\in A})\vee(\cancelto{\emptyset}{x\not\in A\wedge x\in A})\Leftrightarrow x\in\emptyset$
+        \end{proof}
+        \item $A\triangle B=B\triangle A$
+        \begin{proof}
+            $x\in A\triangle B\Leftrightarrow(x\in A\wedge x\not\in B)\vee(x\not\in A\wedge x\in B)\Leftrightarrow\newline\Leftrightarrow(x\in B\wedge x\not\in A)\vee(x\in B\wedge x\not\in A)\Leftrightarrow x\in B\triangle A$
+        \end{proof}
+        \item $A\triangle(B\triangle C)=(A\triangle B)\triangle C$
+        \item $A\cap (B\triangle C)=(A\cap B)\triangle (A\cap C)$
+        \begin{proof}
+        $\hspace{1mm}$\\
+            $x\in A\cap(B\triangle C)\Leftrightarrow x\in A\wedge x\in(B\triangle C)\Leftrightarrow x\in A\wedge\left[(x\in B\wedge x\not\in C)\vee (x\not\in B\wedge x\in C)\right]\Leftrightarrow\newline$
+            $\Leftrightarrow x\in A\wedge\left[\cancel{(x\in B\vee x\not\in B)}\wedge(x\in B\vee x\in C)\wedge(x\not\in B\vee x\not\in C)\wedge\cancel{(x\in C\vee x\not\in C)}\right]\Leftrightarrow\newline$
+            $\Leftrightarrow x\in A\wedge\left[(x\in B\vee x\in C)\wedge(x\not\in B\vee x\not\in C)\right]\Leftrightarrow\left[x\in A\wedge(x\in B\vee x\in C)\right]\vee\left[x\in A\wedge(x\not\in B\vee x\not\in C)\right]\Leftrightarrow\newline$
+            $\Leftrightarrow\left[(x\in A\wedge x\in B)\vee(x\in A\wedge x\in C)\right]\vee\left[(x\in A\wedge x\not\in B)\vee(x\in A\wedge x\not\in C)\right]\Leftrightarrow\newline$
+            $\Leftrightarrow (x\in A\wedge x\in B)\vee(x\in A\wedge x\not\in B)\vee(x\in A\wedge x\in C)\vee(x\in A\wedge x\not\in C)\Leftrightarrow\newline\Leftrightarrow(A\cap B)\triangle(A\cap C)$
+        \end{proof}
+        \item si $A\triangle B=A\triangle C\Rightarrow B=C$
+        \item $A\backslash B=A\triangle(A\cap B)$
+        \begin{proof}
+            $x\in A\triangle(A\cap B)\Leftrightarrow\left[x\in A\wedge x\not\in(A\cap B)\right]\vee\left[x\not\in A\wedge x\in(A\cap B)\right]\Leftrightarrow\newline$
+            $\Leftrightarrow\left[x\in A\wedge (x\not\in A\vee x\not\in B)\vee\cancel{\left[x\not\in A\wedge x\in A\wedge x\in B\right]}\right]\Leftrightarrow\newline$
+            $\Leftrightarrow\cancel{(x\in A\wedge x\not\in A)}\vee(x\in A\wedge x\not\in B)\Leftrightarrow x\in A\backslash B$
+        \end{proof}
+        \item $A\cup B=A\triangle B\triangle(A\cap B)$
+    \end{enumerate}
+\end{propiedad}
+\subsubsection{Producto cartesiano}
+\begin{definition}
+    Dados $A$ y $B$ conjuntos, se define el producto cartesiano como
+    \[A\times B=\left\lbrace(a,b):a\in A\wedge b\in B\right\rbrace\]
+    Son todos los pares ordenados $(a,b)$ tales que $a\in A$ y $b\in B\newline$.
+    Esta definición se puede generalizar para n-conjuntos $A,B,C,\dots,N$, tal que
+    \[A\times B\times C\times\dots\times N=\left\lbrace(a,b,c,\dots,n):a\in A,b\in B,c\in C,\dots, n\in N\right\rbrace\]
+\end{definition}
+\begin{definition}
+    Dados dos conjuntos $A$ y $B$, se denomina grafo ($G$) a todo subconjunto del producto cartesiano $A\times B$.\\
+    Dado un grafo $G\subseteq A\times B$, se llama proyección primera ($\Pi_{A}G$) al conjunto formado por las primeras componentes de los pares de $G$.
+    \[\Pi_{A}G=\left\lbrace a\in A:\exists b\in B\text{ tal que }(a,b)\in G\right\rbrace\]
+    Dado un grafo $G\subseteq A\times B$, se denomina proyección segunda ($\Pi_{B}G$) al conjunto formado por las segundas componentes de los pares de $G$.
+    \[\Pi_{B}G=\left\lbrace b\in B:\exists a\in A\text{ tal que }(a,b)\in G\right\rbrace\]
+\end{definition}
+\begin{propiedad}
+$\newline$
+    \begin{enumerate}[label=(\alph*)]
+        \item $A\times B=\emptyset\Leftrightarrow A=\emptyset\vee B=\emptyset$
+        \begin{proof}
+           Para $(a,b)\in A\times B=\emptyset\Leftrightarrow(a,b)\in\emptyset\Leftrightarrow a\in A, b\in B\Leftrightarrow a\in\emptyset\vee b\in\emptyset\Leftrightarrow\newline\Leftrightarrow A=\emptyset\vee B=\emptyset$ 
+        \end{proof}
+        \item Si $C\times D\neq\emptyset\Rightarrow C\times D\subseteq A\times B\Leftrightarrow C\subseteq A\wedge D\subseteq B$
+        \item $A\times(B\cup C)=(A\times B)\cup(A\times C)$
+        \begin{proof}
+        $\hspace{1mm}$\\
+            $A\times(B\cup C)\equiv\left\lbrace a\in A\wedge(d\in B\vee d\in C)\right\rbrace\equiv\left\lbrace(a\in A\wedge d\in B)\vee(a\in A\wedge d\in C)\right\rbrace\equiv\newline\equiv(A\times B)\cup(A\times C)$
+        \end{proof}
+        \item $A\times(A\cap B)=(A\times B)\cap(A\times C)$
+        \begin{proof}
+            $(a,b)\in A\times(B\cap C)\Leftrightarrow a\in A\wedge(b\in(A\cap C))\Leftrightarrow a\in A\wedge (b\in B\wedge b\in C)\Leftrightarrow\newline$
+            $\Leftrightarrow(a\in A\wedge b\in B)\wedge(a\in A\wedge b\in C)\Leftrightarrow(a,b)\in(A\times B)\cap(A\times C)$
+        \end{proof}
+        \item Si $A\neq\emptyset, B\neq\emptyset$ se tiene $A\times B=B\times A\Leftrightarrow A=B$
+    \end{enumerate}
+\end{propiedad}
+\subsubsection{Relaciones}
+\begin{definition}
+    Un conjunto $R$ es una relación (binaria) si todo elemento de $R$ es un par ordenado, es decir, si para todo $z\in R$, existen $(x,y)$ tales que $z=(x,y)$. Si $R\subseteq A\times B$, diremos que $R$ es una relación de $A$ en $B$, o entre $A$ y $B$; y si $R\subseteq A\times B$, diremos simplemente que $R$ es una relación en $A$.\\
+    Este conjunto también puede definirse como todo subconjunto de un producto cartesiano,
+    \[R\subseteq A\times B; aRb\Leftrightarrow(a,b)\in R\]
+    Si $(a,b)\in R$ diremos que $a$ está relacionado con $b$.
+\end{definition}
+\begin{definition}
+    Sea $A$ un conjunto, se llama relación identidad $Id_{A}\subseteq A\times A$
+    \[Id_{A}=\left\lbrace(a,a): a\in A\right\rbrace\]
+\end{definition}
+\begin{definition}
+    El conjunto de todos los $x$ que están en relación $R$ con algún $y$, es llamado dominio de $R$ y es denotado por $domR$
+    \[domR=\left\lbrace x:\exists y\text{ tal que }xRy\right\rbrace\]
+\end{definition}
+\begin{definition}
+    El conjunto de todos los $y$ tales que para algún $x$, $x$ está relacionado en relación $R$ con $y$, es llamado rango de $R$ y denotado por $ranR$
+    \[ranR=\left\lbrace y:\exists x\text{ tal que }xRy\right\rbrace\]
+\end{definition}
+\begin{definition}
+    La imagen de un conjunto $A$ bajo $R$, es el conjunto de todos los elementos $y$ del rango de $R$ en relación $R$ con algún elemento de $A$. Se denota por $R(A)$. Así,
+    \[R(A)=\left\lbrace y\in ranR:\exists x\in A \text{ tal que } xRy\right\rbrace\]
+    La imagen inversa de un conjunto $B$ bajo $R$ es el conjunto de todos los elementos $x$ del dominio de $R$ en relación $R$ con algún elemento de $B$. Este conjunto se denota $R^{-1}(B)$
+    \[R^{-1}(B)=\left\lbrace x\in domR:\exists y\in B \text{ tal que } xRy\right\rbrace\]
+\end{definition}
+\begin{definition}
+    Sea $R$ una relación. La relación inversa de $R$ es el conjunto
+    \[\left\lbrace z: z=(x,y)\wedge(y,x)\in R\right\rbrace\]
+    es decir
+    \[(x,y)\in R^{-1}\Leftrightarrow(y,x)\in R\]
+\end{definition}
+\begin{definition}
+    Sean $R$ y $S$ relaciones. La composición de $R$ y $S$ es la relación
+    \[S\circ R=\left\lbrace(x,z):\exists y \text{ para el cual } (x,y)\in R\wedge(y,z)\in S\right\rbrace\]
+\end{definition}
+\subsubsection{Funciones}
+\begin{definition}
+    Una relación $f$ es llamada función si $(a,b)\in f$ y $(a,c)\in f$ implica que $b=c$ para cualesquiera $a,b,c$. 
+    En otras palabras, una relación $f$ es una función si y solo si para todo $a\in domf$ hay exactamente un $b$, tal que $(a,b)\in f$. Este único $b$ es llamado valor de $f$ en $a$ y es usualmente denotado por $f(a)$. 
+    En general, si $domf=A$ y $ranf=B$, es costumbre emplear la notación,
+    \[\begin{matrix}
+        f: & A & \longrightarrow & B \\
+           & a & \rightarrow     & f(a)
+    \end{matrix}\]
+\end{definition}
+\begin{definition}
+    Si $C\subseteq A$ y $D\subseteq B$ se tiene:\\
+    -\textit{Imagen del conjunto }$C$: $f(c)=\left\lbrace b\in B\backslash b=f(c) \text{ para algún } c\in C\right\rbrace$\\
+    -\textit{Imagen inversa de }$D$: $f^{-1}(d)=\left\lbrace a\in A\backslash f(a)\in D\right\rbrace$
+\end{definition}
+\begin{proposition}
+    Supongamos que $f:X\longrightarrow Y$ es una función, entonces
+    \begin{enumerate}[label=(\alph*)]
+        \item Para $A\subseteq X$ resulta que $A=\emptyset\Leftrightarrow f(A)=\emptyset$
+        \begin{proof}
+            Esto se obtiene ya que $f$ es función, es decir, $\forall x\in X, \exists y\in Y$ tal que $(a,y)\in f$ y por la definición $f(A)=\left\lbrace f(x): x\in A\right\rbrace$. Si $A=\emptyset$, no hay nada que pertenezca al $\emptyset$.
+        \end{proof}
+        \item $f^{-1}(\varnothing)=\emptyset$
+        \begin{proof}
+            Por la definición tenemos que $f^{-1}(D)=\left\lbrace a\in A\backslash f(a)\in D\right\rbrace$, en este caso, $\newline f^{-1}(\varnothing)=\left\lbrace \varnothing\in\emptyset\backslash f(\varnothing)\in\emptyset\right\rbrace$
+        \end{proof}
+        \item $f(\left\lbrace x\right\rbrace)=\left\lbrace f(x)\right\rbrace$
+        \begin{proof}
+            Esto se debe a que $(x,y_1)\in f$ y $(x,y_2)\in f$ implica $y_1=y_2$.
+        \end{proof}
+        \item Si $A\subseteq B\subseteq X\Rightarrow f(A)\subseteq f(B)\wedge f(B)\backslash f(A)\subseteq f(A\backslash B)$
+        \begin{proof}
+            Veamos primero que $f(A)\subseteq f(B)$. Si $y\in f(A)\Rightarrow\exists x\in A$ tal que $f(x)=y$. Como $A\subseteq B\Rightarrow x\in B$, luego $y\in f(B)$. Por tanto, $f(A)\subseteq f(B)\qed$\\
+            Si $y\in f(B)\backslash f(A)\Rightarrow y\in f(B)\wedge y\not\in f(A)$, por lo que se deduce la existencia de $x\in B$ tal que $f(x)=y$. Además, como $y\not\in f(A)$, entonces para cualquier $a\in A$, $f(a)\neq y$, con lo cual $x\in B\backslash A$; así, $y\in f(A\backslash B)$
+        \end{proof}
+        \item Si $A'\subseteq B'\subseteq Y\Rightarrow f^{-1}(A')\subseteq f^{-1}(B')$ y $f^{-1}\backslash f^{-1}(B')= f^{-1}(A'\backslash B')$
+        \begin{proof}
+            Veamos primero que $f^{-1}(A')\subseteq f^{-1}(B')$, si $A'\subseteq B'$. Si $x\in f^{-1}(A')$ entonces $\exists y\in A'$ tal que $f(x)=y$. Como $A'\subseteq B'$ e $y\in B'$, $x\in f^{-1}(B')$. \\Por tanto, $f^{-1}(A')\subseteq f^{-1}(B')\qed$\\
+            Ahora veamos que $f^{-1}(B'\backslash A')=f^{-1}(B')\backslash f^{-1}(A')$. En efecto, $x\in f^{-1}(B'\backslash A')\Leftrightarrow\exists y\in B'$ e $y\not\in A'$ tal que $f(x)=y\Leftrightarrow x\in f^{-1}(B')\backslash f^{-1}(A')$
+        \end{proof}
+        \item Si $\left\lbrace A_{\alpha}\right\rbrace_{\alpha\in I}$ es una colección de subconjuntos de $X$, entonces
+        \[\begin{matrix}
+            f(\cup_{\alpha\in I}A_{\alpha})=\cup_{\alpha I})f(A_{\alpha}), & f(\cap_{\alpha\in I}A_{\alpha})=\cap_{\alpha\in I}f(A_{\alpha})\\
+            f^{-1}(\cup_{\alpha\in I}A_{\alpha})=\cup_{alpha\in I}f^{-1}(A_{\alpha}), & f^{-1}(\cap_{\alpha\in I}A_{\alpha})=\cap_{\alpha\in I}f^{-1}(A_{\alpha})
+        \end{matrix}\]
+        \item Si $A\subseteq X$ es tal que $A\subseteq f^{-1}(f(A))$.\\ 
+              Si $A'\subseteq Y\Rightarrow f(f^{-1}(A'))=A'\cap f(X)$
+              \begin{proof}
+                 Si $x\in A\subseteq X\Rightarrow f(X)\in f(A)\rightarrow x\in f^{-1}(f(A))\qed$\\
+                 Si $A'\subseteq Y\Rightarrow f(f^{-1}(A'))=A'\cap f(X)$\\
+                 \begin{tabular}{c|}
+                     $\subseteq$ \\ \hline 
+                 \end{tabular}
+                 Sea $y\in f(f^{-1}(A'))=f(C), \exists x\in\left\lbrace a\in X\backslash f(a)\in A'\right\rbrace$, es decir, $x\in C$ tal que $f(X)=y$, esta $y=f(x)\in A'\wedge y=f(x)\in f(X)\Rightarrow y\in A'\cap f(X)\qed$\\
+                 \begin{tabular}{c|}
+                     $\supseteq$ \\ \hline 
+                 \end{tabular}
+                 Sea $y\in A'\cap f(X)\Rightarrow y\in f(f^{-1}(A'))$; $y\in A'\cap f(X)\Rightarrow y\in A'\wedge y\in f(X)\Rightarrow y=f(x), x\in X$. $x\in f^{-1}(A)\Rightarrow y=f(X)\in f(f^{-1}(A'))$
+              \end{proof}
+    \end{enumerate}
+\end{proposition}
+\subsubsection*{Observación}
+Dadas $f$ y $g$ funciones, $f=g\Leftrightarrow dom f=domg\wedge f(x)=g(x), \forall x\in dom f$.
+\begin{definition}
+    Para poder definir la composición de dos funciones $f$ y $g$, es necesario que $ranf\subseteq domf$. En particular, para $f:A\longrightarrow B$ y $g:B\longrightarrow C$, definimos \[\begin{matrix}
+        g\circ f: & A & \longrightarrow & C \\
+         & x & \rightarrow & g(f(x))
+    \end{matrix}\]
+\end{definition}
+\begin{proposition}
+    Sean $f: A\longrightarrow B$, $g: B\longrightarrow C$ y $h:C\longrightarrow D$ funciones.
+    \begin{enumerate}[label=(\alph*)]
+        \item Si $A'\subseteq A\Rightarrow g\circ f(A')=g(f(A'))$
+        \begin{proof}
+            Por definición.
+        \end{proof}
+        \item Si $C'\subseteq C\Rightarrow (g\circ f)^{-1}(C')=f^{-1}(g^{-1}(C'))$
+        \begin{proof}
+            Por definición.
+        \end{proof}
+        \item $h\circ(g\circ f)=(h\circ g)\circ f$
+        \begin{proof}
+            $(x,z)\in h\circ(g\circ f)\Leftrightarrow \exists w$ tal que $(x,w)\in g\circ f$ y $(w,z)\in h\Leftrightarrow \exists y$ tal que $(x,y)\in f$,
+            $(y,w)\in g$ y $(w,z)\in h\Leftrightarrow (x,y)\in f$ y $(y,z)\in h\circ g\Leftrightarrow (x,z)\in (h\circ g)\circ f$
+        \end{proof}
+    \end{enumerate}
+\end{proposition}
+\begin{definition}
+    \begin{enumerate}[label=(\alph*)]
+        \item Sea $f: X\longrightarrow Y$ una función, se dice que $f$ es inyectiva si no hay dos elementos con la misma imagen, es decir, 
+        \[\forall(x,y)\in X, f(x)=f(y)\Rightarrow x=y\]
+        \item Se dice que $f$ es sobreyectiva si todo elemento de $Y$ es imagen de algún elemento de $X$, es decir,
+        \[\forall y\in Y, \exists! x\in X \text{ tal que } f(x)=y\]
+        \item Se dice que $f$ es biyectiva si es inyectiva y sobreyectiva.
+        \item Se dice que $f$ es invertible si existe $f^{-1}: Y\longrightarrow X$ tal que $f^{-1}\circ f=Id_{X}$ y $f\circ f^{-1}=Id_{Y}$.
+    \end{enumerate}
+\end{definition}
+\begin{theorem}
+    Una función es invertible si y solo si es biyectiva:
+    \begin{enumerate}[label=(\alph*)]
+        \item Si $f:A\longrightarrow B$ es invertible $\Rightarrow$ es inyectiva
+        \item Si $f:A\longrightarrow B$ es invertible $\Rightarrow$ es sobreyectiva
+        \item Si $f:A\longrightarrow B$ es biyectiva $\Rightarrow ranf=B$ y e puede definir la función inversa $f^{-1}: B\longrightarrow A$ tal que $\forall y\in B$, $x=f^{-1}(y)$ es el único $x\in A$ verificando $f(x)=y$. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+$\newline$
+    \begin{tabular}{c|}
+         $\Rightarrow$ \\ \hline
+    \end{tabular}
+    $f$ invertible $\Rightarrow$ $f$ biyectiva:\\
+    Supongamos que $f$ es invertible, es decir, $\exists f^{-1}$.\\
+    Veamos si $f$ es inyectiva:\\
+    Sean $x_1,x_2\in X$ tales que $f(x_1)=f(x_2)\Rightarrow x_1=f^{-1}(f(x_1))=f^{-1}(f(x_2))=x_2\qed$\\ \\
+    Veamos si $f$ es sobreyectiva:\\
+    Sea $y\in Y$, tenemos $f(f^{-1}(y))=y$ (si la llamamos $x:= f^{-1}(y)\Rightarrow f(x)=y$), \\luego $y\in Im f=f(X)\qed$\\ \\
+    \begin{tabular}{c|}
+        $\Leftarrow$ \\ \hline
+    \end{tabular}
+    $ f$ invertible $\Leftarrow$ $f$ biyectiva:\\
+    Supongamos que $f$ es biyectiva.
+    Para demostrar que $f$ es invertible, debemos encontrar $g:Y\longrightarrow X$ tal que $g\circ f=1_X$ y $f\circ g=1_Y$. Dado $y\in Y$, sabemos que existe, (porque $f$ es sobreyectiva), un único, (porque $f$ es inyectiva), elemento $x\in X\backslash f(x)=y$.
+    Definimos $g(y)$ como ese elemento de $X$.\\
+    Tenemos $\left\lbrace\begin{array}{rl}
+        \forall a\in X, g(f(a))= & \text{el único elemento de la preimagen de } f(a)=a\\
+        \forall b\in Y, f(g(b))=b, & g(b)\equiv \text{preimagen de} b
+    \end{array}\right\rbrace\Rightarrow\\ \\
+    \Rightarrow g\circ f=1_X, f\circ g=1_Y\Rightarrow f$ es invertible.  
+\end{proof}
+
+\begin{theorem}
+    Sea $f: X\longrightarrow Y$ una función con $X\neq\emptyset$. Entonces los siguientes enunciados son equivalentes:
+    \begin{enumerate}[label=(\alph*)]
+        \item $f$ es inyectiva
+        \item $\forall x_1,x_2\in X$ con $x_1\neq x_2\Rightarrow f(x_1)\neq f(x_2)$
+        \item Existe $g:Y\longrightarrow X$ tal que $g\circ f=Td_X$
+        \item Para cualesquiera $h,k: Z\longrightarrow X$, $f\circ h=f\circ k\Rightarrow h=k$
+        \item Para todo $A\subseteq X$, $f^{-1}(f(A))=A$
+        \item Para cualquiera $A\subseteq B\subseteq X$, $f(B\backslash A)=f(B)\backslash f(A)$
+        \item Para cualesquiera $A\subseteq X$, $B\subseteq X$, $f(A\cap B)=f(A)\cap f(B)$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+$\newline$
+    \begin{tabular}{c c c|}
+        (a) & $\Rightarrow$ & (b)\\ \hline
+    \end{tabular}
+    \\
+    
+    Por definición de inyectividad. $\qed$\\ \\
+    \begin{tabular}{c c c|}
+        (b) & $\Rightarrow$ & (c)\\ \hline
+    \end{tabular}
+    \\
+    
+    Sea $x_0\in X$ y definimos $g: Y\longrightarrow X$ del siguiente modo: $g(y)\left\lbrace\begin{matrix}
+        x_0 & \text{si} & y\not\in f(X)\\
+        x & \text{si} & y=f(x)
+    \end{matrix}\right.$ $g$ es una función, pues si $(y,x_1)\in g$ y $(y,x_2)\in g$ tenemos dos posibilidades:\\
+    si $y\not\in f(X)\Rightarrow x_1=x_2=x_0;$ si $y\in f(X)\Rightarrow f(x_1)=f(x_2)$ y por (b) $x_1=x_2\qed$\\ \\
+    \begin{tabular}{c c c|}
+        (c) & $\Rightarrow$ & (d)\\ \hline
+    \end{tabular}
+    \\
+    
+    Si $h,k:Z\longrightarrow X$ son funciones tales que $f\circ h=f\circ k\Rightarrow$ por hipótesis existe una función $g: Y\longrightarrow X$ tal que $g\circ f=Id_X$, con lo cual, $h=Id_X\circ h=(g\circ f)\circ h=g\circ(f\circ h)=(g\circ f)\circ k=Id_X\circ k=k\qed$\\ \\
+    \begin{tabular}{c c c|}
+        (d) & $\Rightarrow$ & (e)\\ \hline
+    \end{tabular}
+    \\
+    
+    Sea $A\subseteq X$. Sabemos que $A\subseteq f^{-1}(f(A))$ para cualquier función. Si $x\in f^{-1}(f(A))$, entonces $f(x)\in A$, luego existe $a\in A$ tal que $f(a)=f(x)$. Sean $h,k:\left\lbrace1\right\rbrace\longrightarrow X$ definidas como $h(1)=a$ y $k(1)=x$, entonces $f\circ h=f\circ k$. Por hipótesis, $h=k$ y así, $a=x$, con esto se concluye que $f^{-1}(f(A))\subseteq A\qed$\\ \\
+    \begin{tabular}{c c c|}
+        (e) & $\Rightarrow$ & (f)\\ \hline
+    \end{tabular}
+    \\
+
+    Sean $A$ y $B$ conjuntos tales que $A\subseteq B\subseteq X$ y supongamos que $f(x)\in f(B\backslash A)$ con $x\in B\backslash A$, entonces $f(x)\in f(B)$; pero como $x\not\in A$ y $A=f^{-1}(f(A))$, entonces $x\not\in f^{-1}(f(A))$. Esto implica que $f(x)\not\in f(A)$; así, $f(x)\in f(B)\backslash f(A)$. Como siempre ocurre $f(B)\backslash f(A)\subseteq f(B\backslash A)$, concluimos entonces que $f(B)\backslash f(A)=f(B\backslash A)\qed$\newpage
+    \begin{tabular}{c c c|}
+        (f) & $\Rightarrow$ & (g)\\ \hline
+    \end{tabular}
+    \\
+
+    Sean $A\subseteq X$ y $B\subseteq X$. Se sabe que $f(A\cap B)\subseteq f(A)\cap f(B)$. Si $y\in f(A)\cap f(B)$ entonces $y=f(x)$ con $x\in A$. Si ocurriera $x\not\in B\Rightarrow x\in X\backslash B$. Por lo cual, $f(x)\in f(X\backslash B)=f(X)\backslash f(B)$, y así, $y=f(x)\not\in f(B)$ que es una contradicción. Por lo tanto, $f(x)\in f(B)$ implica $x\in B$, y así $x\in A\cap B$. Por lo anterior, $y\in f(A\cap B)\qed$\\ \\
+    \begin{tabular}{c c c|}
+        (g) & $\Rightarrow$ & (a)\\ \hline
+    \end{tabular}
+    \\
+
+    Trivial.
+\end{proof}
+
+\subsubsection{Relaciones de equivalencia}
+\begin{definition}
+    Sea $R$ una relación en un conjunto $X$. \\
+    Se dice que la relación es de equivalencia si se verifica:
+    \begin{enumerate}[label=(\alph*)]
+        \item \textbf{Reflexivilidad}: $\forall x\in X$, $xRx$
+        \item \textbf{Simetría}: $\forall x,y\in X$ tales que $xRy\Leftrightarrow yRx$
+        \item \textbf{Transitividad}: $\forall x,y,z$ tales que $(xRy)\wedge(yRz)\Rightarrow xRz$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Sea $x\in X$, se llama su clase de equivalencia $\brackets{x}$, tal que
+    \[\brackets{x}=\curlybraces{y\in X\backslash xRy}\]
+    siendo $x$ su representante.
+\end{definition}
+\subsubsection*{Observación}
+-Sean $x,y\in X$, $xRy\Rightarrow\brackets{x}=\brackets{y}$\\
+
+-Sean $x,y\in X$, $\brackets{x}\cap\brackets{y}=\emptyset\Rightarrow x\cancel{R}y$\\
+
+-Se puede definir de forma equivalente $m\equiv n(mod p)$, "$m$ es congruente con $n$ módulo $p$" si $m-n$ es múltiplo de $p$.
+\begin{definition}
+    Al conjunto formado por las clases de equivalencia se llama conjunto cociente: $X/ R$.
+    \[xRy\Leftrightarrow x\equiv y(mod2); \mathbb{Z}/ R=\curlybraces{\brackets{0}, \brackets{1}}\equiv\mathbb{Z}_2\]
+    \[xRy\Leftrightarrow x\equiv y(mod3); \mathbb{Z}/R=\curlybraces{\brackets{0},\brackets{1},\brackets{2}}\equiv\mathbb{Z}_3\]
+    \[xRy\Leftrightarrow x\equiv y(mod n);\mathbb{Z}/R=\curlybraces{\brackets{0},\brackets{1},\brackets{2},\dots, \brackets{n-1}}\equiv\mathbb{Z}_n\]
+\end{definition}
+\subsubsection{Relación de orden}
+\begin{definition}
+Sea $X$ un conjunto y $R$ una relación.\\
+Se dice que la relación es de orden si verifica:
+\begin{enumerate}[label=(\alph*)]
+    \item \textbf{Reflexivilidad}: $\forall x\in X$, $xRx$
+    \item \textbf{Antisimetría}: $\forall x,y\in X$, si $(xRy)\wedge (yRx)\Rightarrow x=y$
+    \item \textbf{Transitividad}: $\forall x,y,z\in X$, si $(xRy)\wedge(y,Rz)\Rightarrow xRz$
+\end{enumerate}
+Se dice que el orden es total si $\forall x,y\in X$, $(xRy)\vee(yRx)$
+\end{definition}
+\subsubsection{Cardinalidad}
+\begin{definition}
+    Se dice que un conjunto $S$ es finito si existe una función biyectiva $f$ de $S$ en los $n$ primeros números naturales para algún $n\in\mathbb{N}$, es decir,
+    \[\exists f: S\longleftarrow\curlybraces{1,2,\dots,n}\text{ función biyectiva}\]
+    En este caso, se dirá que $n$ es el cardinal de $S$ y se denotará por $\# S=n$.\\
+    En caso contrario, se dirá que $S$ es un conjunto infinito.\\
+    Por convenio, diremos que $\# X=0\Leftrightarrow X=\emptyset$.
+\end{definition}
+\begin{proposition}
+    La cardinalidad de un conjunto verifica las siguientes propiedades:
+    \begin{enumerate}[label=(\alph*)]
+        \item Si $X$ es un conjunto finito e $Y\subseteq X$, entonces $X$ es finito y $\# Y\leq \# X$
+        \item Si $X$ es un conjunto finito y $f$ una función definida en $X$, entonces $f(X)$ es finito y $\# f(X)\leq\# X$.
+        \item si $X,Y$ son conjuntos finitos, entonces $X\cup Y$ es finito y $\#(X\cup Y)=\# X+\# Y-\#(X\cap Y)$
+    \end{enumerate}
+\end{proposition}
+\begin{definition}
+    Se dice que un conjunto es numerable si tiene el mismo cardinal que los números naturales, es decir, existe $f:A\longrightarrow\mathbb{N}$ biyectiva.\\
+    Esto significa que los elementos de $A$ pueden ordenarse de la forma, $a_1,a_2,\dots,a_n,\dots$ con $f(a_j)=j$ para cada $j$.\\
+    Si existe $f:A\longrightarrow B$ inyectiva, entonces $\# A\leq \#B$.
+\end{definition}
+\begin{proposition}
+    $\mathbb{Q}$ es numerable.
+\end{proposition}
+\begin{proposition}
+    $\mathbb{R}$ no es numerable.
+\end{proposition}
+\begin{proof}
+    $\newline$
+    Por reducción al absurdo:\\ \\
+    Supongamos que $\mathbb{R}$ es numerable, entonces se puede ordenar, $\mathbb{R}=\curlybraces{x_1,x_2,x_3,\dots}$ siendo
+    \[\begin{matrix}
+        x_1 &=&2'39721\dots \\
+        x_2&=&14'057143\dots \\
+        x_3&=&-25'31429\dots \\ 
+        x_4&=&125'32124\dots \\
+        \vdots & &
+    \end{matrix}\]
+ si definimos un $x=0'd_1d_2d_3d_4\dots$ tal que $d_1$ es el primer decimal de $x_1$, $d_2$ el segundo decimal de $x_2$ y así sucesivamente. Por tanto, $x\neq x_n$, pues $d_n\neq$decimal n-ésimo de $x_n$. Que $x$ no pertenezca a $\mathbb{R}$ es absurdo, luego como el absurdo proviene de suponer que $\mathbb{R}$ es numerable, entonces $\mathbb{R}$ no es numerable, es decir, $\#\mathbb{N}<\#\mathbb{R}$
+ \end{proof}
+ \begin{theorem}
+     Sea $X$ un conjunto vacío y finito. Entonces $\mathcal{P}(X)$ es finito y $\#\mathcal{P}(X)=2^{\#X}$
+ \end{theorem}
+ \begin{proof}
+     Para ver que $\mathcal{P}(X)$ es finito, podemos razonar por inducción sobre el cardinal de $X$. 
+     \\
+     Si $\#X=0\Rightarrow X=\emptyset$ y $\mathcal{P}(X)=\curlybraces{\emptyset}$ es finito.\\
+     Supongamos cierto que para $\#X=n$ se tiene $\mathcal{P}(X)$ finito y probémoslo para $n+1$.\\
+     Supongamos que $\#X=n+1$ y denotaremos por $X=\curlybraces{a_1,a_2,\dots,a_n,a_{n+1}}$.\\ 
+     Sea $Y=X_{\curlybraces{Y_{n+1}}}$. Se tiene entonces que $\mathcal{P}(X)=\mathcal{P}(Y)\cup U$, donde $U=\curlybraces{U\in\mathcal{P}:a_{n+1}\in U}$.\\
+     Además $\#U=\#\mathcal{P}(Y)$ ya que $\begin{matrix}
+                                            f: & U & \longrightarrow & \mathcal{P}(Y)\\
+                                             & U & \rightarrow & U/\curlybraces{a_{n+1}}
+                                            \end{matrix}$ es biyectiva.\\ 
+Por tanto, $\mathcal{P}(X)$ es la unión de dos conjuntos finito y, por tanto, es finito.$\qed$\\
+Demostrar su cardinal puede hacerse ordenando conjuntos en $\mathcal{P}(X)$ por su tamaño. Suponiendo $\#X=n$,
+\[\left.\begin{matrix}
+    \text{cardinal } 0: & \emptyset & \rightarrow 1=\begin{pmatrix}
+                                                     n\\
+                                                     0
+                                            \end{pmatrix}\\
+    \text{cardinal } 1: & \curlybraces{x},\forall x\in X & \rightarrow n=\begin{pmatrix}
+                                                     n\\
+                                                     1
+                                            \end{pmatrix}\\
+    \text{cardinal } 2: &  &  \begin{pmatrix}
+                                                     n\\
+                                                     2
+                                            \end{pmatrix}\\
+    \text{cardinal } 3: &  &  \begin{pmatrix}
+                                                     n\\
+                                                     3
+                                            \end{pmatrix}\\
+    \vdots & & 
+\end{matrix}\right\rbrace\begin{pmatrix}
+                                                     n\\
+                                                     0
+                                            \end{pmatrix}+ \begin{pmatrix}
+                                                     n\\
+                                                     1
+                                            \end{pmatrix}+\begin{pmatrix}
+                                                     n\\
+                                                     2
+                                            \end{pmatrix}+\begin{pmatrix}
+                                                     n\\
+                                                     3
+                                            \end{pmatrix}+\dots+\begin{pmatrix}
+                                                     n\\
+                                                     n
+                                            \end{pmatrix}=2^n\]
+    
+ \end{proof}
+ \begin{axioma}
+     Existen conjuntos llamados números cardinales con la propiedad de que para cualquier conjunto $X$, hay un único cardinal $\abs{X}$ (el número cardinal de $X$), y para cualesquiera conjuntos $X$ e $Y$, son equipotentes si y solo si $\abs{X}=\abs{Y}$.
+ \end{axioma}
+Si $X$ es finito, entonces $\abs{X}=\#X$.
+\begin{definition}
+    Dados dos conjuntos $A$ y $B$, diremos que la cardinalidad de $A$ es menor o igual que la cardinalidad de $B$, $\abs{A}<\abs{B}$ si existe una función inyectiva\\
+    $f:A\longrightarrow B$.
+\end{definition}
+\subsubsection*{Observación}
+Es fácil concluir que para cualquier conjunto infinito $X$ se tiene que $\abs{X}>n$ para cualquier $n\in\mathbb{N}$.
+\begin{theorem}
+    $\abs{X}\leq\abs{Y}$ es un orden parcial en la clase de los números cardinales. Además, si $A_1\subseteq B\subseteq A$ y $\abs{A_1}=\abs{A}$, entonces $\abs{A}=\abs{B}$.
+\end{theorem}
+\begin{theorem}[\textbf{Teorema de Cantor-Schröder-Bernstein}]
+Si $A$ y $B$ son conjuntos tales que $\abs{A}\leq\abs{B}$ y $\abs{B}\leq\abs{A}$, entonces $\abs{A}=\abs{B}$.
+\end{theorem}
+\begin{proof}
+    Si $\abs{A}\leq\abs{B}$, entonces existe una función inyectiva $f:A\longrightarrow B$, y como $\abs{B}\leq\abs{A}$, existe $g:B\longrightarrow A$ inyectiva. La función $g\circ f:A\longrightarrow A$ es inyectiva y $\abs{A}=\abs{g\circ f(A)}$; además, $g\circ f(A)\subseteq g(B)\subseteq A$. Luego, $\abs{g(B)}=\abs{A}$. Por otro lado, $\abs{B}=\abs{g(B)}$, por tanto, $\abs{A}=\abs{B}$.
+\end{proof}
+\begin{theorem}[\textbf{Teorema de Cantor}]
+    Para todo conjunto $A$, se tiene $\#A<\#(\mathcal{P}(A))$
+\end{theorem}
+\begin{proof}
+    Si $A=\emptyset\Rightarrow\mathcal{P}(A)=\curlybraces{\emptyset}$ y así $\abs{A}<\abs{\mathcal{P}(A)}$.\\
+    Si $A\neq\emptyset$ es claro que la función $\begin{matrix}
+        f: & X & \longrightarrow & \mathcal{P}(X)\\
+         & x & \rightarrow & \curlybraces{x}
+    \end{matrix}$ es inyectiva, con lo cual $\abs{A}<\abs{\mathcal{P}(X)}$.\\
+    Por otra parte, si $g:A\longrightarrow\mathcal{P}(A)$ es cualquier función, entonces el conjunto $S=\curlybraces{x\in A:x\not\in g(x)}$ no está en el rango de $g$, de aquí que $g$ no puede ser sobreyectiva. Por tanto $\abs{A}<\abs{\mathcal{P}(A)}$
+\end{proof}
+La teoría de cardinales de conjuntos infinitos fue especialmente estudiada por Cantor. No es el objetivo hacer aquí un estudio detallado de esta teoría, sin embargo enumeraremos algunas de las conclusiones principales.
+\begin{itemize}
+    \item Es costumbre denotar por $\aleph_0$ al cardinal $\abs{\mathbb{N}}$.
+    \item Se puede definir/concluir que $\abs{\mathbb{R}}=\abs{\mathcal{P}(\mathbb{N})}=2^{\aleph_0}$.
+    \item El teorema de Cantor permite afirmar $\aleph_0\leq 2^{\aleph_0}$.
+    \item Se define $\aleph_1$ como el menor cardinal mayor que $\aleph_0$, es decir, el menor cardinal mayor que el cardinal del conjunto de los números naturales.
+    \item En la teoría de ZFC, el axioma de elección permite afirmar $\aleph_1\leq 2^{\aleph_0}$.
+    \item La hipótesis del continuo afirma que $\aleph_1=2^{\aleph_0}=\abs{\mathbb{R}}$.
+    \item Los trabajos de Kurt Gödel (1938) y Paul Cohen (1963) demostraron que de hecho la hipótesis del continuo es indecidible dentro de la axiomática de Zermelo-Fraenkel (ZF). Esto quiere decir que la hipótesis del continuo no puede ser demostrada a partir de ZF (ni desconfirmada dentro de la teoría de conjuntos ordinaria dada por los axiomas ZF).
+    \item La hipótesis del continuo generalizada afirma que:
+    \[\forall n>0:(\abs{A}=\aleph_n\rightarrow\abs{\mathcal{P}(A)=\aleph_{n+1}})\]
+    \item El conjunto de todas las funciones reales tiene cardinal $\aleph_2=\aleph_1^{\aleph_1}$.
+    \item El conjunto de las funciones continuas tiene cardinal $\aleph_1=\aleph_1^{\aleph_0}$, ya que una función continua queda especificada si se conoce su valor sobre los números racionales, que son un conjunto numerable.
+\end{itemize}

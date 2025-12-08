@@ -1,0 +1,76 @@
+\subsection{Contrtacción de tensores} % Main chapter title
+\label{cap1-sec2-subsec3} 
+
+ Una vez que hemos visto cómo subir y bajar índices, podemos definir una operación denominada \textbf{contracción} de tensores, la cuál encoge un tensor $(r,s)$ a uno $(r-1,s-1)$. La definición general se obtiene a partir del siguiente caso especial.
+
+\begin{lemma}
+    Hay una única aplicación lineal
+    $C:\Omega_1^1\to\mathbb{R}$
+    llamada \textit{contracción (1,1)}, tal que
+    \[\begin{array}{rlll}
+        C: & \Omega_1^1 (V)& \to & \mathbb{R} \\
+         & \ptensor{v}{f} & \mapsto & C(\ptensor{v}{f})=f(v)
+    \end{array}\]
+    para todo $v\in V$ y $f\in V^*$.
+\end{lemma}
+\begin{proof} (Esta demostración usa el concepto de matrices de cambio de base, por lo que se recomienda ver la sección \ref{CambioBasesTensores(1,1)})\\ 
+    Tomando $B=\curlybraces{v^1,v^2,\dots,v^n}$ base de $V$ y $B^*= \curlybraces{f_1,f_2,\dots,f_n}$ base de $V^*$, podemos escribir un tensor de tipo $(1,1)$ como
+    \[A\equiv\sum A^i_j\ptensor{f_i}{v^j}\]
+    Como $C(\ptensor{f_i}{v^j})=f_i(v^j)=\delta^j_i$, por la condición de base dual, no nos queda otra opción, más que definir,
+    \[C(A)=\sum A_i^i=\sum A(f_i,v^i)\]
+    Entonces, $C$ tiene las propiedades requeridas en las bases $B,B^*$. Luego, para obtener la función general requerida es suficiente con mostrar que esta definición es independiente de la elección del sistema de coordenadas. Así, tomando una nueva base de $V$, $B'=\curlybraces{w^1,w^2,\dots,w^n}$ y otra de $V^*$, $B^{*'}=\curlybraces{q_1,q_2,\dots,q_n}$, tenemos
+    \[\begin{array}{rrl}
+        C(A) & = & \sum\limits_mA(q_m,w^m)= \sum\limits_mA\left(\sum\limits_i a_i^mf_m,\sum_jb_m^jv^m\right)\\
+         & = & \sum\limits_{i,j,m}a_i^mb_m^jA(f_i,v^j)=\sum\limits_{i,j}\delta^j_iA(f_i,v^j)\\
+         & = & \sum\limits_iA(f_i,v^j)
+    \end{array}\]
+\end{proof}
+\noindent Para extender las contracciones $(1,1)$, $C$, a un tensor de un tipo mayor, el esquema es especificar una componente covariante y otra contravariante y aplicar $C$ a estos.\\
+
+\noindent Suponemos un tensor $A\in\Omega_r^s(V)$ y $1\leq r$ y $1\leq j \leq s$. Fijamos las formas $p_1,p_2,\dots,p_{r-1}$ y los vectores $u_1,u_2,\dots ,u_{s-1}$. Entonces la función
+\[(p,u) \to A(p_1, \dots, \underbrace{p_{i}}_{\mathclap{i\text{-ésima componente contravariante}}}, \dots, p_{r-1}, u^{1}, \dots, \overbrace{u^{j}}^{\mathclap{j\text{-ésima componente covariante}}}, \ldots, u^{s-1})\]
+es un tensor $(1,1)$ que puede escribirse como
+
+\[A(p_1,\dots,\cdot,\dots,p_{r-1},u^1,\dots,\cdot,\dots,u^{s-1})\]
+Aplicando la contracción $(1,1)$ a este tensor, produce una función de valor real denotada por
+
+\[\left(C_j^iA\right)\left(p_1,\dots,p_{r-1},u^1,\dots,u^{s-1}\right)\]
+Siendo $C_j^iA$ una función multilineal. Por tanto, esto es un tensor de tipo $(r-1,s-1)$ llamado \textit{la contracción de }$A$\textit{ sobre }$i,j$.
+
+%\begin{definition}
+ %   La contracción de un tensor $A$ de tipo $(r,s)$ con respecto al índice contravariante $p$ $(p\leq r)$ y al índice covariante $q$ $(q\leq s)$ es el tensor de tipo $(r-1,s-1)$, teniendo las componentes,
+  %  \[B^{i_1\dots i_{r-1}}_{j_1\dots j_{s-1}}=A^{i_1\dots i_{p-1}ki_p\dots i_{r-1}}_{j_1\dots j_{q-1}kj_q\dots j_{s-1}}\]
+%\end{definition}
+
+\begin{note}
+    Para poder contraer tensores, debemos tener superíndices y subíndices, así, podemos usar primero la métrica para subir o bajar índices y luego aplicar la contracción.
+   \end{note} 
+\begin{example}
+        Si tenemos un tensor de tipo (0,2),
+    $S\equiv S_{\alpha\beta}$, podemos hacer,
+    \[\begin{array}{rllll}
+        S_{\alpha\beta} & \to & g^{\gamma\alpha}S_{\alpha\beta}=S^{\alpha}_{\beta} & \to & C^1_1S^{\gamma}_{\beta}=S^{\beta}_{\beta} \\
+        \text{Tensor (0,2)} & \to & \text{Tensor (1,1)} & \to &\text{Escalar}
+    \end{array}\]
+    cosa que se puede simplificar simplemente usando,
+    \[S\equiv S_{\alpha\beta}\to g^{\beta\alpha}S_{\alpha\beta}=S^{\beta}_{\beta}\]
+    es decir, podemos contraer tensores con la propia métrica.
+\end{example}
+
+\begin{example}
+    Si
+    \[U^j_i=T^{kj}_{ik}\]
+    entonces
+    \[U'^{j'}_{i'}=T'^{k'j'}_{i'k'}=S^i_{i'}S^l_{k'}R^{k'}_kR^{j'}_jT^{kj}_{il}=S^i_{i'}\delta^l_kR^{j'}_jT^{kj}_{il}=S^i_{i'}R^{j'}_jT^{kj}_{ik}=S^i_{i'}R^{j'}_jU^j_i\]
+    donde hemos utilizado $S^l_{k'}R^{k'}_k=\delta^l_k$. Vemos que se transforma como un tensor (1,1).\\
+
+\noindent    Así, dado un tensor $T^{ij}_{kl}$ de tipo (2,2), serán posible las 4 contracciones
+    \[T^{kj}_{ki},\hspace{3mm}T^{jk}_{ik},\hspace{3mm}T^{kj}_{ik},\hspace{3mm}T^{jk}_{ki}\]
+    que originan 4 tensores de tipo (1,1). Por otro lado, las dos posibles contracciones dobles que dan lugar a un escalar (tensor de tipo (0,0)) son
+    \[T^{kj}_{kj},\hspace{3mm}T^{jk}_{kj}\]
+\end{example}
+\begin{note}
+    El producto escalar $(\mathbb{R}^n,g_{ij})$ también se puede contraer. Pues $g_{ij}$ es un tensor de tipo (0,2), al cual le podemos aplicar una contracción 1,1, pero primero lo pasamos a un tensor de tipo (1,1), variando sus índices, tal que
+    \[C^1_1\left(g^{ki}g_{ij}\right)=C^1_1(g^k_j)=g^j_j=n\]
+    donde sabemos que vale $n$, pues al ser un espacio de dimensión $n$, la matriz asociada a $g$ será $G\in\mathcal{M}_{n\times n}$ y por tanto, la traza será la suma de $n$-elementos. Sabemos que estos elementos son el 1, porque la traza es invariante frente a los cambios de base (cosa que veremos más adelante), por tanto, si cogemos el producto escalar usual en la base usual, la matriz asociada es la matriz de Gram, cuyos elementos son todos nulos, salvo la diagonal que está formada por 1.
+\end{note}

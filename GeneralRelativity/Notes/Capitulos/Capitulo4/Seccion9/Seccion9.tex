@@ -1,0 +1,126 @@
+%SECCION 1
+\section{Testeos clásicos de la Relatividad General} % Main chapter title
+\label{cap4-sec9} 
+
+\subsection{Geodésicas en una geometría de Schwarzschild}
+Sea $u^{\mu}=\frac{dx^{\mu}}{d\tau}=\dot{x}^{\mu}$ el vector tangente a una geodésica y $\tau$ es el parámetro afín. La norma es $u^{\mu}u^{\nu}g_{\mu\nu}=\mathscr{E}$, donde si $\mathscr{E}=0$, tenemos vectores nulos y si $\mathscr{E}=-1$, tenemos vectores temporales. Usando la métrica de Schwarzschild tenemos,
+
+\[u^{\mu}u^{\nu}g_{\mu\nu}=-\left(1-\frac{2GM}{r}\right)\dot{t}^2+\frac{\dot{r}^2}{1-\frac{2GM}{r}}+r^2\dot{\varphi}^2=\mathscr{E}\]
+donde $\theta=\pi/2$, representando el plano ecuatorial.\\ \\
+Recordamos que tenemos dos campos vectoriales de Killing, $t^{\mu}=\delta_t^{\mu}$ y $\Psi^{\mu}=\delta_{\Psi}^{\mu}$, indicando que tenemos dos cantidades conservadas, que serán,
+\[-u^{\mu}t^{\nu}g_{\mu\nu}=\left(1-\frac{2GM}{r}\right)\dot{t}=E\]
+\[u^{\mu}\Psi^{\nu}g_{\mu\nu}=r^2\dot{\varphi}=L\]
+donde definimos las siguientes cantidades conservadas:
+\[\left.\begin{array}{rl}
+    E: & \text{Energía por unidad de masa en reposo.} \\
+    L: & \text{Momento angular por unidad de masa en reposo.}
+\end{array}\right\rbrace\text{ si }\mathscr{E}=-1\]
+Si $\mathscr{E}=0$, definimos $\hbar E$ y $\hbar L$, que son la energía y el momento angular de un fotón.\\ \\
+Podemos resolver $u^{\mu}u^{\nu}g_{\mu\nu}=\mathscr{E}$ como 
+\[\frac{1}{2}\dot{r}^2+V(r)=\frac{E^2}{2};\hspace{4mm}V(r)=\frac{1}{2}\left(1-\frac{2GM}{r}\right)\left(\frac{L^2}{r^2}-\mathscr{E}\right)\]
+Tomando $\dot{r}=0$, estudiamos órbitas circulares, tal que $V'(r)=0$ y $V''$ nos dicen si son órbitas estables o no. Para $\mathscr{E}=-1$, se puede comprobar que si $L^2<12G^2M^2$, entonces $V'(r)\neq0$, por lo que no hay órbitas circulares, sino que caen desde $r=2GM$ hasta $r=0$.\\ \\
+Si $L^2>12G^2M^2$, entonces $V'(r)=0$ y obtenemos
+\[R_{\pm}=\frac{L^2\pm(L^4-12L^2G^2M^2)}{2GM}\]
+teniendo con $R_+$ una órbita estable alrededor del objeto de masa $M$, y con $R_-$ tenemos una órbita inestable.\\ \\
+Notemos que $R_+>6GM$ y que $L>>2GM$, entonces podemos aproximar $R_+\approx\frac{L^2}{GM}$, siendo éste el límite newtoniano.\\ \\
+Existen órbitas circulares a radios menores, pero éstas son inestables, pues $3GM<R_-<6GM$, siendo $R_-$ es inestable, y como el mínimo del momento angular es $L^2=12G^2M^2$, entonces para $3GM$, $L^2\to\infty$.\\ \\
+Podemos expresar $L=L(R_{\pm},M)$ y $E=E(R_{\pm},M)$ resolviendo $V'(R_{\pm})=0$, tal que
+\[E=\sqrt{2V(R_{\pm})}=\frac{R_{\pm}-2GM}{R_{\pm}^{1/2}\left(R_{\pm}-3GM\right)^{1/2}}\]
+de forma que
+\[\lim_{R_+\to\infty}E=1;\hspace{4mm}\lim_{R_-\to3GM}E=\infty;\hspace{4mm}\lim_{R_+\to6GM}E=\left(\frac{8}{2}\right)^{1/2}\lesssim1\]
+La energía radiada en forma de onda gravitacional desde $R_+>>6GM$ hasta $R_+\sim6GM$ será 
+\[\Delta E=1-\left(\frac{8}{9}\right)^{1/2}=0.06\]
+donde hemos comparado los dos límites de $R_+$. Este resultado nos dice que el cuerpo pierde un $6\%$ de su masa, emitiendo energía en forma de onda gravitacional.
+\subsection{Variación del perihelio de Mercurio}
+La variación del perihelio de Mercurio no se puede explicar con Newton, siendo ésta de $574.10\pm0.65$ arcsec/siglo. La corrección relativista es de 43 arcsec/siglo.\\ \\
+Dado una órbita circular, y desplazamos ligeramente con respecto a $r=R_+$, tal que 
+\[r(t)=R_++\delta r(t)\Longrightarrow\delta\ddot{r}+\delta rV''(R_+)=0\]
+La frecuencia asociada al tiempo propio es
+\[\omega_r^2=\left.\frac{d^2V}{dr^2}\right|_{r=R_+}=\frac{GM(R_+-6GM)}{R_+^3(R_+-3GM)}\]
+La frecuencia angular es $\omega_{\varphi}=\dot{\varphi}$, tal que
+\[\omega^2_{\varphi}=\frac{L^2}{R_+^4}=\frac{GM}{R_+^2(R_+-3GM)}\]
+En el límite newtoniano tenemos que $\omega_r\approx\omega_{\varphi}$.\\ \\
+Las órbitas no circulares en la mecánica newtoniana son cerradas, pues $\omega_r\approx\omega_{\varphi}$, pero en Relatividad General, las órbitas no circulares son abiertas, pues $\omega_r\neq\omega_{\varphi}$.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Capitulos/Capitulo4/Seccion9/perihelio.png}
+    \captionof{figure}{Comparación de una órbita cerrada y una abierta.}
+    \label{Fig4.9.1}
+\end{Figura}
+En las órbitas abiertas hay una precesión del ángulo en el que los máximos (o mínimos) de $\delta_r$ son alcanzados.\\ \\
+La frecuencia de precesión es
+\[\omega_p=\omega_{\varphi}-\omega_r=-\brackets{\left(1-\frac{6GM}{R_+}\right)^{1/2}-1}\omega_{\varphi}\]
+En el límite $R_+>>2GM$, tenemos
+\[\omega_p\approx\frac{3(GM)^{3/2}}{c^2R_+^{5/2}}\]
+Para una órbita elíptica tenemos
+\[\omega_p\approx\frac{3(GM)^{3/2}}{c^2a^{5/2}(1-e)}\]
+donde $a$ es el semieje mayor y $e$ es la excentricidad.
+\subsection{Corrimiento al rojo gravitacional}
+Supongamos dos observables estáticos, $O_1$ y $O_2$, con $R_1<R_2$. Al ser estáticos $u_i^{\mu}\propto\delta_t^{\mu}$ tal que $u_i^{\mu}u_i^{\nu}g_{\mu\nu}=-1$, con $i=1,2$. Así,
+\[u_1^{\mu}=\left.\frac{\delta_t^{\mu}}{\sqrt{-g_{tt}}}\right|_{r=R_1};\hspace{5mm}u_2^{\mu}=\left.\frac{\delta_t^{\mu}}{\sqrt{-g_{tt}}}\right|_{r=R_2}\]
+Suponemos que $O_1$ manda una señal luminosa a $O_2$. El vector tangente $k^{\mu}$ a la trayectoria geodésica (las trayectorias de los rayos de luz en cualquier geometría es siempre una geodésica) es nulo.\\ \\
+La cantidad $k_{\mu}\xi^{\mu}$ es conservada, es decir,
+\[\left.k_{\mu}\xi^{\mu}\right|_{r=R_1}=\left.k_{\mu}\xi^{\mu}\right|_{r=R_2}\]
+Las frecuencias de emisión y recepción son,
+\[\omega_1=\left.k_{\mu}u_1^{\mu}\right|_{r=R_1};\hspace{5mm}\omega_2=\left.k_{\mu}u_2^{\mu}\right|_{r=R_2}\]
+Entonces, si $R_1<R_2$ y $\omega_2<\omega_1$, tenemos
+\[\frac{\omega_1}{\omega_2}=\frac{\left.(-g_{tt})^{1/2}\right|_{r=R_2}}{\left.(-g_{tt})^{1/2}\right|_{r=R_1}}=\frac{\sqrt{1-\frac{GM}{R_2}}}{\sqrt{1-\frac{GM}{R_1}}}\Rightarrow\frac{\Delta\omega}{\omega}\overset{\curlybraces{\begin{matrix}
+    R_1>>2GM\\
+    R_2>>GM
+\end{matrix}}}{\approx}\frac{GM}{R_2}-\frac{GM}{R_1}=\Delta\Phi\]
+que coincide con lo medido en el experimento de Pond y Rebka en 1960.\\ \\
+En este caso, hay un corrimiento al rojo, pues está escapando la luz del pozo de potencial. (Puede interpretarse como un efecto Doppler, pero en vez de tener dos observadores en movimiento, los tenemos estáticos y, o bien el propio espacio se mueve, o bien hay un flujo de espacio entre ambos observadores.)
+\subsection{Deflexión de la luz}
+Vamos a estudiar geodésicas nulas, $\mathscr{E}=0$. En este caso, el potencial es
+\[V(r)=\frac{L^2}{2r^3}\left(r-2GM\right)\]
+y se puede ver que solo tenemos una órbita circular inestable en $r=3GM$ con $E^2=2V(r=3GM)=\frac{L^2}{27G^2M^2}$.\\ \\
+Definimos el parámetro de impacto aparente como
+\[b=\frac{L}{E}\]
+si $M=0$, entonces $b$ sí es el parámetro de impacto real, definido como la distancia de máximo acercamiento, es decir, $\dot{r}=0$.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Capitulos//Capitulo4//Seccion9/acercamiento1.png}
+    \captionof{figure}{Esquema del parámetro de impacto.}
+    \label{fig4.9.2}
+\end{Figura}
+Existe un radio de impacto crítico $b_C=3^{3/2}GM$, siendo un parámetro de impacto para un objeto masivo, de forma que si $r<b_C$, todo cae dentro del agujero negro.\\ \\
+La sección eficaz del agujero negro vendrá dado por
+\[\sigma=\pi b_C^2=27\pi G^2M^2\]
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{acercamiento2.png}
+    \captionof{figure}{Esquema de un agujero negro.}
+    \label{fig4.8.3}
+\end{Figura}
+Si estamos justo en $r=b_C$, comenzamos a orbitar el agujero negro sin caer; en este límite es donde se encuentra el \textbf{disco de acreción} de un agujero negro, siendo una órbita inestable, pues con una pequeña perturbación terminas cayendo dentro.\\ \\
+$R_0$ es el punto de máximo acercamiento, que obtenemos resolviendo la ecuación
+\[E=2V(R_0)\Rightarrow R_0^3-b^2(R_0-2GM)=0\]
+donde el $R_0$ que nos interesa será la solución mayor de la ecuación y si $M=0$, tenemos que $R_0=b$. Si $M\neq0$, tendremos
+\[R_0=\frac{2b}{\sqrt{3}}\cos\left(\frac{1}{3}\arccos\left[-\frac{3^{3/2}GM}{b}\right]\right)\]
+La trayectoria, se obtendrá resolviendo,
+\[\frac{\dot{\varphi}}{\dot{r}}=\frac{d\varphi}{dr}=\frac{L}{r^2}\left(E^2-\frac{L^2}{r^3}(r-2GM)\right)^{-1/2}\]
+y como la trayectoria es simétrica en $(-\infty,R_0]$ y $[R_0,+\infty)$, tenemos
+\[\Delta\varphi=2\int_{R_0}^{\infty}\frac{dr}{\sqrt{r^4b^{-2}-r(r-2GM)}}\]
+Si $M=0$, tenemos que $\Delta\varphi=\pi$, pues $\Delta\varphi=2\arcsin(\cancelto{1}{b/R_0})=\pi$.\\
+Si $M\neq0$, entonces $\Delta\varphi=\pi+\delta\phi$, donde si $\delta\phi<<<1$, entonces $R_0\sim b$ y $r>>2GM$, obteniéndose que
+\[\delta\phi=\frac{4GM}{bc^2}\]
+siendo la ecuación de la deflexión de la luz relativista. Esta ecuación sirve para trayectorias fuera del límite fuerte (radio de la estrella).\\ \\
+Si se hace con Newton, sale que $\delta\phi_N\propto\frac{1}{2}\delta\phi$, debido a que con Newton no se tiene en cuenta las correcciones relativistas.\\ \\
+Para el Sol tenemos que $M=M_O$ y $b=R_O$, luego $\delta\phi_O=1,75$ arcsec.
+\subsection{Dilatación temporal gravitatoria}
+Tomamos 
+\[\frac{\dot{t}}{\dot{r}}=\frac{dt}{dr}=\left(1-\frac{2GM}{r}\right)^{-1}\brackets{1-\left(1-\frac{2GM}{r}\right)\frac{b^2}{r^2}}^{-1/2}\]
+Asumimos que mandamos un rayo desde la superficie de un cuerpo masivo y vuelve.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Capitulos/Capitulo4/Seccion9/temporal.png}
+    \captionof{figure}{Esquema del experimento mental.}
+    \label{Fig4.9.4}
+\end{Figura}
+Vemos que resolviendo esta ecuación tenemos,
+\[\Delta t=2\int_{R_1}^{R_2}\frac{dr}{1-\frac{2GM}{r}}=...=2r+4GM\left.\ln|r-2GM|\right|_{R_1}^{R_2}\]
+Si $M=0$, tenemos que $\Delta t_0=2\frac{R_2-R_1}{c}$.\\ \\
+Si $M\neq0$, tenemos que $\Delta t=\Delta t_0+\delta t$, con $\delta t=\frac{4GM}{c^3}\ln\left(\frac{R_2}{R_1}\right)$.\\ \\
+Pero lo tenemos en el espacio coordenado, y al ser un observador estático en $r=R_1$, debemos pasar al tiempo propio, tal que
+\[\Delta\tau=\left(1-\frac{2GM}{c^2R_1}\right)\Delta t\approx\Delta t_0-\frac{2GM}{R_1c^2}\Delta t_0+\frac{4GM}{c^3}\ln\left(\frac{R_2}{R_1}\right)\]
+Si tomamos un láser desde la superficie de la Tierra y rebota en un espejo en la superficie de la Luna, obtenemos, $\Delta t_0\approx4\cdot10^{-6}$ s, $\frac{-2GM}{R_1c^2}\Delta t_0\approx-6\cdot10^{-9}$ s y $\delta t\approx 2,4\cdot10^{-1}$ s.

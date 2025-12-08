@@ -1,0 +1,264 @@
+\subsection{Producto tensorial: caso de dos términos} % Main chapter title
+\label{cap1-sec2-subsec1} 
+Vamos a ver qué es el \textbf{producto tensorial} y cómo los tensores se definen a partir de este.
+\begin{proposition}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial, $\scalar{\cdot}{\cdot}$ el producto escalar euclídeo y $B=\curlybraces{v_1,\dots,v_n}$ base de $V$, 
+    \[\begin{array}{cccl}
+        f_v: & V & \to & V^*\\
+         & v & \mapsto & f_v(v)=\scalar{v}{\cdot}
+    \end{array}\]
+     $f_v$ es una aplicación lineal, concretamente es un isomorfismo.
+\end{proposition}
+\begin{proof}
+    Vemos que $f_v$ es aplicación lineal,
+    \[f_v(w_1+w_2)=\scalar{v}{w_1+w_2}=\scalar{v}{w_1}+\scalar{v}{w_2}=f_v(w_1)+f_v(w_2)\checkmark \]
+    \[f_v(\lambda\cdot w)=\scalar{v}{\lambda\cdot w}=\lambda\scalar{v}{w}=\lambda f_v(w)\checkmark\]
+    para $\forall\lambda\in\mathbb{K}$ y $\forall w_1,w_2,w\in V$. Luego, es aplicación lineal.\\ \\
+    Veamos que es isomorfo demostrando que es biyectivo, pues ya hemos visto que es aplicación lineal.\\
+    Sabemos que $ker\curlybraces{f_v}=\curlybraces{0}\Leftrightarrow f_v$ es inyectiva. Luego, vemos si $ker\curlybraces{f_v}=\curlybraces{0}$:
+    \[ker\curlybraces{f_v}=\curlybraces{w\in V,f_v(w)=0}=\curlybraces{w\in V;\scalar{v}{w}=0\Leftrightarrow w=0}\]
+    Por tanto, $ker\curlybraces{f_v}=\curlybraces{0}$ y así, $f_v$ es inyectiva. $\checkmark$\\ \\
+    Usando el Primer Teorema de isomorfía, tenemos que $dim(V)=\cancelto{0}{dim(ker\curlybraces{f_v})}+dim(Im f_v)$, pero como la $dim B=dim B^*$, siendo $B$ base de $V$ y $B^*$ base de $V^*$, entonces $dimV=dimV^*$, y por tanto, $dimV=dimImf_v=dimV^*$, luego $Imf_v$ es $V^*$ y por tanto, $f_v$ es sobreyectiva. $\checkmark$\\
+    Luego, $f_v$ es un isomorfismo.
+\end{proof}
+\noindent Veamos cómo se define el producto tensorial y sus propiedades.
+\begin{definition}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial, $V^*$ el dual de $V$, y $g^1,g^2\in V^*$ aplicaciones lineales, tal que $g^1:V\to\mathbb{K}$ y $g^2:V\to\mathbb{K}$. Así, definimos el producto tensorial como,
+    \begin{enumerate}[label=(\roman*)]
+        \item Producto tensorial entre dos formas $g^1,g^2\in V^*$,
+        \[\begin{array}{cccl}
+            \ptensor{g^1}{g^2}: & V\times V & \to & \mathbb{K}\\
+            & (v,w) & \mapsto & g^1(v)g^2(w)
+        \end{array}\]
+        \item Producto tensorial entre dos vectores $v_1,v_2\in V$,
+        \[\begin{array}{cccl}
+            \ptensor{v_1}{v_2}: & V^*\times V^* & \to & \mathbb{K}\\
+             & (f,g) & \mapsto & f(v_1)g(v_2)
+        \end{array}\]
+        \item Producto tensorial de una forma y un vector $v_1\in V$, $f^1\in V^*$,
+        \[\begin{array}{cccl}
+            \ptensor{v_1}{f^1}: & V^*\times V & \to & \mathbb{K}\\
+             & (g,w) & \mapsto & g(v_1)f^1(w)
+        \end{array}\]
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    Los productos tensoriales definidos anteriormente son formas bilineales.
+\end{proposition}
+\begin{proof} 
+Usando $\forall v_1,v_2,u_1,u_2,v,w,u\in V$, $\forall f^1,f^2,g,p,q\in V^*$ y $\forall \lambda\in\mathbb{K}$,
+    \begin{enumerate}[label=(\roman*)]
+        \item \[\begin{array}{cccl}
+            \ptensor{f^1}{f^2}: & V\times V & \to & \mathbb{K}\\
+            & (v,w) & \mapsto & f^1(v)f^2(w)
+        \end{array}\]
+        siendo $f^1,f^2\in V^*$. Veamos que es forma bilineal,
+        \[\begin{array}{lrl} \text{\textbullet)} &(\ptensor{f^1}{f^2})(u_1+u_2,v)=&f^1(u_1+u_2)f^2(v)=\brackets{f^1(u_1)+f^1(u_2)}f^2(v)\\ &=&f^1(u_1)f^2(v)+f^1(u_2)f^2(v)=(\ptensor{f^1}{f^2})(u_1,v)+(\ptensor{f^1}{f^2})(u_2,v),\checkmark\\  \text{\textbullet)} &(\ptensor{f^1}{f^2})(v,u_1+u_2)  =&f^1(v)f^2(u_1+u_2)=f^1(v)\brackets{f^2(u_1)+f^2(u_2)}\\ &=&f^1(v)f^2(u_1)+f^1(v)f^2(u_2)=(\ptensor{f^1}{f^2})(v,u_1)+(\ptensor{f^1}{f^2})(v,u_2)\checkmark\\
+             \text{\textbullet)} & (\ptensor{f^1}{f^2})(\lambda v,u) =& f^1(\lambda v)f^2(u)=\lambda f^1(v)f^2(u)=\lambda(\ptensor{f^1}{f^2})(v,u)\checkmark\\
+        \text{\textbullet)}&(\ptensor{f^1}{f^2})(u,\lambda v)=&f^1(u)f^2(\lambda v)=\lambda f^1(u)f^2(v)=\lambda(\ptensor{f^1}{f^2})(u,v)\checkmark
+          \end{array}\]
+        Luego, $\ptensor{f^1}{f^2}$ es una forma bilineal. $\qedh $
+        \item \[\begin{array}{cccl}
+            \ptensor{v_1}{v_2}: & V^*\times V^* & \to & \mathbb{K}\\
+             & (f,g) & \mapsto & f(v_1)g(v_2)
+        \end{array}\]
+         \[\begin{array}{lrl}
+         \text{\textbullet)}&(\ptensor{v_1}{v_2})(f^1+f^2,g)=&(f^1+f^2)(v_1)g(v_2)=\brackets{f^1(v_1)+f^2(v_1)}g(v_2)\\
+         &=&f^1(v_1)g(v_2)+f^2(v_1)g(v_2)=(\ptensor{v_1}{v_2})(f^1,g)+(\ptensor{v_1}{v_2})(f^2,g)\checkmark\\
+         \text{\textbullet)}&(\ptensor{v_1}{v_2})(g,f^1+f^2)=&g(v_1)(f^1+f^2)(v_2)g=g(v_1)\brackets{f^1(v_2)+f^2(v_2)}\\
+         &=&g(v_1)f^1(v_2)+g(v_1)f^2(v_2)=(\ptensor{v_1}{v_2})(g,f^1)+(\ptensor{v_1}{v_2})(g,f^2)\checkmark\\
+         \text{\textbullet)}&(\ptensor{v_1}{v_2})(\lambda f,g)=&(\lambda f)(v_1)g(v_2)=\lambda f(v_1)g(v_2)=\lambda(\ptensor{v_1}{v_2})(f,g)\checkmark\\
+         \text{\textbullet)}&(\ptensor{v_1}{v_2})(g,\lambda f)=&g(v_1)(\lambda f)(v_2)=\lambda g(v_1)f(v_2)=\lambda(\ptensor{v_1}{v_2})(g,f)\checkmark
+         \end{array}\]
+        Luego, $\ptensor{v_1}{v_2}$ es una forma bilineal. $\qedh $
+        \item \[\begin{array}{cccl}
+            \ptensor{v_1}{f^1}: & V^*\times V & \to & \mathbb{K}\\
+             & (g,w) & \mapsto & g(v_1)f(w)
+        \end{array}\]
+        \[\begin{array}{lrl}
+        \text{\textbullet)}&(\ptensor{v_1}{f^1})(p+q,w)=&(p+q)(v_1)f^1(w)=\brackets{p(v_1)+q(v_1)}f^1(w)=\\
+        &=&p(v_1)f^1(w)+q(v_1)f^1(w)=(\ptensor{v_1}{f^1})(p,w)+(\ptensor{v_1}{f^1})(q,w)\checkmark\\
+        \text{\textbullet)}&(\ptensor{v_1}{f^1})(g,u+w)=&g(v_1)f^1(u+w)=g(v_1)\brackets{f^1(u)+f^1(w)}=\\
+        &=&g(v_1)f^1(u)+g(v_1)f^1(w)=(\ptensor{v_1}{f^1})(g,u)+(\ptensor{v_1}{f^1})(g,w)\checkmark\\
+        \text{\textbullet)}&(\ptensor{v_1}{f^1})(\lambda g,w)=&(\lambda g)(v_1)f^1(w)=\lambda g(v_1)f^1(w)=\lambda(\ptensor{v_1}{f^1})(g,w)\checkmark\\
+        \text{\textbullet)}&(\ptensor{v_1}{f^1})(g,\lambda w)=&g(v_1)f^1(\lambda w)=\lambda g(v_1)f^1(w)=\lambda(\ptensor{v_1}{f^1})(g,w)\checkmark
+        \end{array}\]
+            Luego, $\ptensor{v_1}{f^1}$ es una forma bilineal. \qedhere
+    \end{enumerate}
+\end{proof}
+\noindent El producto tensorial no se da solo entre elementos de los espacios vectoriales o duales, sino que también se puede dar entre espacios, siendo el nuevo espacio generado un \textbf{espacio vectorial}.
+\begin{proposition}
+    El espacio $\ptensor{V}{V}$ tiene estructura de espacio vectorial.
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item Vemos que $(\ptensor{V}{V},+)$ es grupo abeliano:
+        \begin{enumerate}[label=(\roman*)]
+            \item Vemos si la operación $+$ es cerrada:
+            \\
+            $\forall v,w,z\in V$ con $\ptensor{v}{w},\ptensor{v}{z},\ptensor{w}{z}\in\ptensor{V}{V}$, tenemos que ver si $\ptensor{(v+w)}{z}\in\ptensor{V}{V}$. Sabemos que,
+            \[\begin{array}{cccl}
+                \ptensor{v}{w}: & \pcart{V^*}{V^*} & \to &\mathbb{R}  \\
+                 & (f,g) & \mapsto & f(v)g(w)
+            \end{array}\]
+            luego,
+            \[\begin{array}{cccl}
+                \ptensor{(v+w)}{z}: & \pcart{V^*}{V^*} & \to &\mathbb{R}  \\
+                 & (f,p) & \mapsto & f(v+w)p(z)
+            \end{array}\]
+            Entonces,
+            \[(\ptensor{(v+w)}{z})(g,p)=f(v+w)p(z)=\brackets{f(v)+f(w)}p(z)=\]\[=f(v)p(z)+f(w)p(z)=(\ptensor{v}{z})(f,p)+(\ptensor{w}{z})(f,p)\]
+            Luego, $\ptensor{(v+w)}{z}\in\ptensor{V}{V}$ y así, la operación $+$ es cerrada. $\checkmark$
+            \item Asociatividad:
+            \\
+            Sean $\ptensor{a}{b},\ptensor{c}{d},\ptensor{e}{f}\in\ptensor{V}{V}$, tenemos que ver si $\ptensor{a}{b}+\brackets{\ptensor{c}{d}+\ptensor{e}{f}}=\brackets{\ptensor{a}{b}+\ptensor{c}{d}}+\ptensor{e}{f}$, tal que
+            \[(\ptensor{a}{b}+\brackets{\ptensor{c}{d}+\ptensor{e}{f}})(p,q)=p(a)q(b)+\brackets{p(c)q(d)+p(e)q(f)}=p(a)q(b)+p(c+e)q(d+f)=\]
+            \[=p(a+c+e)q(b+d+f)=p(a+c)q(b+d)+p(e)q(f)=\brackets{p(a)q(b)+p(c)q(d)}+p(e)q(f)=\]\[=(\brackets{\ptensor{a}{b}+\ptensor{c}{d}}+\ptensor{e}{f})(p,q)\checkmark\]
+            \item Elemento neutro:\\
+            Sea $\ptensor{e_1}{e_2}\in\ptensor{V}{V}$ el elemento neutro de $\ptensor{V}{V}$, tal que
+            \[\ptensor{e_1}{e_2}+\ptensor{v}{w}=\ptensor{v}{w}+\ptensor{e_1}{e_2}=\ptensor{v}{w}\]
+            Vemos el valor de este elemento neutro,
+            \[(\ptensor{e_1}{e_2}+\ptensor{v}{w})(f,g)=(\ptensor{v}{w})(f,g)\]
+            \[f(e_1)g(e_2)+f(v)+g(w)=f(v)g(w)\]
+            \[f(e_1+v)g(e_w+w)=f(v)g(w)\Leftrightarrow\left\lbrace\begin{matrix}
+                e_1=0\\
+                e_2=0
+            \end{matrix}\right.\]
+            luego, $\ptensor{e_1}{e_2}=0$. $\checkmark$
+            \item Elemento simétrico:
+            \\
+            $\forall\ptensor{v}{u}\in\ptensor{V}{V}$, $\exists\ptensor{\Tilde{v}}{\Tilde{u}}\in\ptensor{V}{V}$, tal que
+            \[\ptensor{v}{u}+\ptensor{\Tilde{v}}{\Tilde{u}}=\ptensor{\Tilde{v}}{\Tilde{u}}+\ptensor{v}{u}=\ptensor{e_1}{e_2}=0\]
+         Veamos quién es $\ptensor{\Tilde{v}}{\Tilde{u}}$,
+        \[(\ptensor{v}{u}+\ptensor{\Tilde{v}}{\Tilde{u}})(f,g)=f(v)g(u)+f(\Tilde{v})g(\Tilde{u})=(\ptensor{0}{0})(f,g)=f(0)g(0)\]
+        luego,
+        \[v+\Tilde{v}=0\Rightarrow\Tilde{v}=-v\]
+        \[u+\Tilde{u}=0\Rightarrow\Tilde{u}=-u\]
+        Por tanto, el elemento simétrico de $\ptensor{v}{u}$ es $\ptensor{(-v)}{(-u)}$. $\checkmark$
+        \item Conmutabilidad:\\
+        Sean $\ptensor{v}{w},\ptensor{u}{z}\in\ptensor{V}{V}$, entonces
+        \[(\ptensor{v}{w}+\ptensor{u}{z})(f,g)=f(v)g(w)+f(u)g(z)=f(v+u)g(w+z)=\]\[=f(u+v)g(z+w)=f(u)g(z)+f(v)g(w)=(\ptensor{u}{z}+\ptensor{v}{w})(f,g)\checkmark\]
+    Luego, es grupo abeliano. $\checkmark$
+         \end{enumerate}
+         \item Doble propiedad distributiva:
+         \begin{enumerate}
+             \item $\forall\lambda,\mu\in\mathbb{R}$, $\forall\ptensor{v}{w}\in\ptensor{V}{V}$,
+             \[(\lambda+\mu)\cdot(\ptensor{v}{w})(f,g)=(\lambda+\mu)f(v)g(w)=\]\[=\lambda f(v)g(w)+\mu f(v)g(w)=\lambda(\ptensor{v}{w})(f,g)+\mu(\ptensor{v}{w})(f,g)\checkmark\]
+             \item $\forall\lambda\in\mathbb{R}$, $\forall\ptensor{v}{w},\ptensor{u}{z}\in\ptensor{V}{V}$, tenemos que
+             \[\lambda(\ptensor{v}{w})(f,g)+\lambda(\ptensor{u}{z})(f,g)=\lambda f(v)g(w)+\lambda f(u)g(z)=\]\[=\lambda\brackets{f(v)g(w)+f(u)g(z)}=\lambda(\ptensor{v}{w}+\ptensor{u}{z})(f,g)\checkmark\]
+             \end{enumerate}
+             \item Propiedad pseudo-asociativa:\\
+             $\forall\lambda,\mu\in\mathbb{R}$; $\forall\ptensor{v}{w}\in\ptensor{V}{V}$, tenemos que
+             \[\lambda\cdot\brackets{\mu\cdot(\ptensor{v}{w})(f,g)}=\lambda\brackets{\mu f(v)g(w)}=\lambda f(\mu v)g(\mu w)=\]\[=f(\lambda\mu v)g(\lambda\mu w)=f(\mu\lambda v)g(\mu\lambda w)=\mu\brackets{f(\lambda v)g(\lambda w)}=(\mu\cdot\lambda)f(v)g(w)=(\mu\cdot\lambda)(\ptensor{v}{w})(f,g)\checkmark\]
+             \item Elemento unitario del cuerpo: $\forall\ptensor{v}{w}\in\ptensor{V}{V}$; $\Tilde{\mu}\in\mathbb{R}$, entonces $\Tilde{\mu}\cdot\ptensor{v}{w}=\ptensor{v}{w}\cdot\Tilde{\mu}=\ptensor{v}{w}$
+             \[(\Tilde{\mu}\cdot\ptensor{v}{w})(f,g)=f(\Tilde{\mu}v)g(\Tilde{\mu}w)=(\ptensor{v}{w})(f,g)=f(v)g(w)\Rightarrow\begin{matrix}
+                 \Tilde{\mu}\cdot v=v\\
+                 \Tilde{\mu}\cdot w=w
+             \end{matrix}\Leftrightarrow\Tilde{\mu}=1\checkmark\]
+       \end{enumerate}
+       Luego, $(\ptensor{V}{V}, +, \cdot)$ es un $\mathbb{R}$-espacio vectorial.
+\end{proof}
+\noindent Al igual que cualquier otro espacio vectorial, el espacio $V\otimes V$ deberá tener una \textbf{base}.
+\begin{proposition}
+    Si tenemos un $V$ espacio vectorial sobre $\mathbb{K}$ con base $B=\curlybraces{v_1,\dots,v_n}$, entonces todo $\ptensor{v}{w}$ será combinación lineal de los elementos de la base de $\ptensor{V}{V}$ dada por $\ptensor{B}{B}=\curlybraces{\ptensor{v_i}{v_j}}_{i,j=1}^{n}$
+\end{proposition}
+\begin{proof}
+    Queremos ver que $\curlybraces{\ptensor{v_i}{}v_j}_{i,j=1}^n$ es base de $\ptensor{V}{V}$. Para ello, tendremos que ver que esta base $\ptensor{B}{B}$ complete el espacio $\ptensor{V}{V}$ y que los vectores de la misma sean linealmente independientes.\\
+    Sabemos que $\ptensor{v}{w}\in\ptensor{V}{V}$ y que
+    \[\begin{array}{cccl}
+        \ptensor{v}{w}: & \pcart{V^*}{V^*} & \to & \mathbb{R}\\
+         & (f,g) & \mapsto & f(v)g(w)
+    \end{array}\]
+    Luego, para que la base $\ptensor{B}{B}$ complete el espacio $\ptensor{V}{V}$, se deberá poder expresar cualquier vector $\ptensor{v}{w}\in\ptensor{V}{V}$ como combinación lineal de los vectores de $\ptensor{B}{B}$. Podemos usar $B=\curlybraces{v_i}_{i=1}^n$ base de $V$, tal que
+    \[v=\sum\limits_{i=1}^n\lambda^iv_i=\lambda^iv_i,\hspace{4mm}w=\sum\limits_{j=1}^n\mu^jv_j=\mu^jv_j\]
+    Por tanto, usando $f,g\in V^*$, tenemos que
+    \[\ptensor{v}{w}(f,g)=f(v)g(w)=f(\lambda^iv_i)g(\mu^jv_j)=\lambda^if(v_i)\mu^jg(v_j)=\lambda^i\mu^jf(v_i)g(v_j)=\lambda^i\mu^j(\ptensor{v_i}{v_j})(f,g)\]
+    Luego, hemos expresado un vector del espacio $\ptensor{V}{V}$ como combinación lineal de los vectores de la base $\ptensor{B}{B}$. $\checkmark$\\ \\
+    Veamos que son linealmente independientes, para ello, se debe cumplir que,
+    \[\sum\limits_{i,j=1}^n\lambda^{ij}(\ptensor{v_i}{v_j})=\lambda^{ij}(\ptensor{v_i}{v_j})=0\Leftrightarrow\lambda^{ij}=0\]
+    Sabiendo que la base de $V^*$ es $B^*=\curlybraces{f^1,f^2,\dots,f^n}$, tal que
+    \[f^i(v_i)=1\hspace{5mm}f^j(v_i)\overset{i\neq j}{=}0\Rightarrow f^i(v_j)=\delta_{ij}\]
+    Podemos evaluar lo anterior en dos elementos arbitrarios de $B^*$, tal que
+    \[0=\lambda^{ij}(\ptensor{v_i}{v_j})(f^n,f^m)= \lambda^{ij}f^n(v_i)f^m(v_j)=\lambda_{ij}\delta_{n}^i\delta_{m}^j=\lambda^{nm}\]
+    luego, $\lambda^{nm}=0$ y por tanto, los vectores son linealmente independientes. $\checkmark$\\ \\
+    Así, hemos demostrado que $\ptensor{B}{B}$ es base de $\ptensor{V}{V}$.
+\end{proof}
+
+\begin{note}
+    Denotaremos $\ptensor{v}{w}\equiv h$, tal que
+    \[
+    \begin{array}{cccl}
+        h: & \pcart{V^*}{V^*} & \to & \mathbb{R} \\
+         & (f^i,f^j) & \mapsto & h(f^i,f^j)=h^{ij}
+    \end{array}
+    \]
+    siendo $f^i,f^j\in B^*$. Por tanto, para dos $p,q\in V^*$ cualesquiera, escribiremos
+    \[(\ptensor{v}{w})(p,q)=h(p,q)=h\left(\sum_{i=1}^np_if^i,\sum_{j=1}^nq_jf^j\right)=p_iq_j(f^i,f^j)=h^{ij}p_iq_j\]
+\end{note}
+\noindent Veamos algunas \textbf{propiedades} del producto tensorial.
+\begin{proposition}
+    Sea $V$ un $\mathbb{R}$-espacio vectorial,
+    \begin{enumerate}[label=(\roman*)]
+        \item $\ptensor{(v_1+v_2)}{w}=\ptensor{v_1}{w}+\ptensor{v_2}{w}$; $\forall v_1,v_2,w\in V$.
+        \item $\ptensor{w}{(v_1+v_2)}=\ptensor{w}{v_1}+\ptensor{w}{v_2}$, $\forall v_1,v_2,w\in V$.
+        \item $\ptensor{(\lambda v)}{w}=\lambda\ptensor{v}{w}$, $\forall v,w\in V$, $\forall\lambda\in\mathbb{R}$.
+        \item $\ptensor{w}{(\lambda v)}=\lambda\ptensor{w}{v}$, $\forall v,w\in V$, $\forall \lambda\in\mathbb{R}$.
+        \item $\ptensor{v}{w}\neq\ptensor{w}{v}$.
+        \item $\ptensor{v}{w}\neq0$ si $v\neq0$ ó $w\neq 0$.
+        \item Sea $\ptensor{a}{b}\neq0$, $\ptensor{a}{b}=\ptensor{a'}{b'}\Leftrightarrow a'=\lambda a$ y $b'=\lambda^{-1}b$.
+        \item $\ptensor{V}{W}$ es isomorfo con $\ptensor{W}{V}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item $\forall v_1,v_2,w\in V$,
+        \[(\ptensor{(v_1+v_2)}{w})(f,g)=f(v_1+v_2)g(w)=\brackets{f(v_1+f(v_2)}g(w)=\]\[=f(v_1)g(w)+f(v_2)g(w)=(\ptensor{v_1}{w})(f,g)+(\ptensor{v_2}{w})(f,g)\qedh\]
+        \item $\forall v_1,v_2,w\in V$,
+        \[(\ptensor{w}{(v_1+v_2)})(f,g)=f(w)g(v_1+v_2)=f(w)\brackets{g(v_1)+g(v_2)}=\]\[=f(w)g(v_1)+f(w)g(v_2)=(\ptensor{w}{v_1})(f,g)+(\ptensor{w}{v_2})(f,g)\qedh\]
+        \item $\forall v,w\in V$ y $\forall\lambda\in\mathbb{R}$,
+        \[(\ptensor{(\lambda\cdot v)}{w})(f,g)=f(\lambda\cdot v)g(w)=\lambda\cdot f(v)g(w)=\lambda\cdot(\ptensor{v}{w})(f,g)\qedh\]
+        \item $\forall v,w\in V$ y $\forall\mu\in\mathbb{R}$,
+        \[(\ptensor{w}{(\lambda\cdot v)})(f,g)=f(w)g(\lambda\cdot v)=\lambda\cdot f(w)g(v)=\lambda\cdot(\ptensor{w}{v})(f,g)\qedh\]
+        \item Vemos que, $(\ptensor{v}{w})(f,g)=f(v)g(w)$ y que $(\ptensor{w}{v})(f,g)=f(w)g(v)$, luego estos elementos serían iguales solo si $f\equiv g$. $\qedh$
+        \item Sean $v,w\in V$ y $f,g\in V^*$, tales que $f\not\equiv0$ y $g\not\equiv0$, entonces
+        \[(\ptensor{v}{w})(f,g)=f(v)g(w)=0\Leftrightarrow\begin{matrix}
+            f(v)=0 & \Leftrightarrow v=0\\
+            \text{ó} & \\
+            g(w)=0 & \Leftrightarrow w=0
+        \end{matrix}\qedh\]
+        \item \begin{tabular}{c|}
+             $\Rightarrow$ \\ \hline
+        \end{tabular} 
+        Sea $\ptensor{a}{b}=\ptensor{a'}{b'}$ entonces
+        \[(\ptensor{a}{b})(f,g)=f(a)g(b)=(\ptensor{a'}{b'})(f,g)=f(a')g(b')\]
+        luego,
+        \[f(a)g(b)=f(a')g(b')\]
+        pero como $a\neq a'$ y $b\neq b'$, debe haber una relación entre ambos, de tal forma que se cumpla la igualdad anterior. Supondremos que $a$ y $a'$ tienen una relación lineal (la más sencilla), tal que $a'=\lambda a+c$, luego 
+        \[f(a)g(b)=f(a')g(b')=f(\lambda a+c)g(b')=f(\lambda a)g(b')+f(c)g(b')=\lambda f(a)g(b')+f(c)g(b')\]
+        Agrupamos términos de la igualdad, tal que,
+        \[0:\hspace{5mm}0=f(c)g(b')\]
+        \[f(a):\hspace{5mm}g(b)=\lambda g(b')\]
+        Por la propiedad \textit{(vi)}, como $b'\neq0$, entonces $c=0$. Además,
+        \[g(b)=\lambda g(b')\Rightarrow g(b')=\lambda^{-1}g(b)\Rightarrow g(b')=g(\lambda^{-1}b)\Rightarrow b'=\lambda^{-1}b\]
+        Luego,
+        \[\begin{matrix}
+            a'=\lambda a\\
+            b'=\lambda^{-1}b
+        \end{matrix}\hspace{4mm}\checkmark\]
+        \begin{tabular}{c|}
+             $\Leftarrow$ \\ \hline
+        \end{tabular} 
+        Sea $a'=\lambda a$ y $b'=\lambda^{-1}b$, entonces
+        \[(\ptensor{a'}{b'})(f,g)=f(a')g(b')=f(\lambda a)g(\lambda^{-1}b)=\cancel{\lambda}\cancel{\lambda^{-1}}f(a)g(b)=(\ptensor{a}{b})(f,g)\checkmark\]
+        \item Sean $V,W$ espacios vectoriales, tales que
+        \[\begin{array}{ccl}
+            \ptensor{V}{W} & \to & \ptensor{W}{V}  \\
+            \ptensor{v}{w} & \mapsto & \ptensor{w}{v}
+        \end{array}\]
+        Si suponemos que $dimV=n$ y $dimW=m$, sabemos por tanto que $dim(V\otimes W)=n\cdot m$ y $dim(W\otimes V)=m\cdot n$, luego tienen la misma dimensión y por tanto, son isomorfos. $\checkmark$\\ \\
+        También podemos hacerlo sin usar la proposición de que $dim(\ptensor{V}{W})=n\cdot m$. Es claro ver que la aplicación es inyectiva, pues no hay dos elementos con la misma imagen, ya que la imagen se forma al permutar los elementos. Luego, al ser inyectivo, tenemos que $dimKer=0$. Por el Primer Teorema de Isomorfía,
+        \[dim(\ptensor{V}{W})=\cancelto{0}{dimKer}+dimIm=dimIm=dim(\ptensor{W}{V})\]
+        Luego, como $\ptensor{V}{W}$ y $\ptensor{W}{V}$ tienen la misma dimensión, entonces son isomorfos.
+    \end{enumerate}
+\end{proof}

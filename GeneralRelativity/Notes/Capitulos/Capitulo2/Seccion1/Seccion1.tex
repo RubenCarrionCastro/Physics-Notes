@@ -1,0 +1,43 @@
+%SECCION 1
+\section{Repaso histórico} % Main chapter title
+\label{cap2-sec1} 
+%------------------------------------------------------------------------------
+	La física clásica, del siglo XIX, era una física bien asentada. La cuál explica la mecánica con el libro de Sir Isaac Newton titulado \textit{Philosophiae Naturalis Principia Mathematica} y el electromagnetismo se explica con el libro de Maxwell titulado \textit{Electricity and Magnetism}.\\
+ En 1887, Michelson y Morley iniciaron una revolución en la física con un experimento para medir la velocidad de la luz. El experimento consistía en medir la velocidad de la luz de un rayo paralelo al eje de rotación de la Tierra y de otro rayo perpendicular a este, esperándose obtener resultados diferentes. En cambio, se observó que ambos rayos iban exactamente igual, cosa que no tenía sentido en la época., por tanto, determinaron que la velocidad de la luz no era instantánea, sino que debía ser finita, y llegaron a un resultado de ésta bastante próximo al valor actual de la velocidad de la luz.
+ \subsection{Relatividad Galileana}
+ El Principio de Relatividad de Galileo establece que,
+ \begin{center}
+ \textit{''Es imposible determinar a base de experimentos (mecánicos) si un sistema de referencia está en reposo o en movimiento uniforme y rectilíneo''.}
+ \end{center}
+ Esto se derivó de que en la Relatividad Galileana hay un espacio absoluto en el que las leyes de Newton son ciertas. Definiremos un \textit{sistema de referencia inercial} (SRI) como aquel sistema referencia que se mueve a velocidad constante respecto al espacio absoluto. Además, todos los sistemas de referencia inerciales comparten un tiempo absoluto. Pero con la definición de SRI, el Principio de Relatividad se debe reformular con este concepto, así tenemos el Principio de Relatividad en formulación de equivalencia, que dice que
+ \begin{center}
+ \textit{''Todos los sistemas inerciales son equivalentes, es decir, todos los observadores inerciales ven la misma física''.}
+ \end{center}
+ \textbf{Leyes de Newton}\\ \\
+ La Ley de Newton por excelencia es $\vec{F}=m\vec{a}=-\nabla V(\vec{r}-\vec{r}_0)$, donde $V$ es la función potencial. Esta ley (y las demás) transforman bien bajo el grupo de transformaciones de Galileo, que son:
+ \begin{enumerate}
+     \item \textbf{Traslaciones temporales:}
+     \[t\to t'=t+t_0\]
+     \item \textbf{Traslaciones espaciales:}
+     \[\vec{r}\to\vec{r}'=\vec{r}+\vec{r}_i+\vec{v}t\]
+     donde $\vec{v}$ es la velocidad relativa de un SRI con respecto al otro, y $\vec{r}_i$ es el vector de posición entre los orígenes de ambos SRI al inicio.
+     \item \textbf{Rotaciones espaciales:}
+     \[\vec{a}'=R(\theta)\vec{a}\]
+     donde $R(\theta)$ es la matriz de rotación.
+\end{enumerate}
+Se puede ver que las Leyes de Newton no son covariantes, pero sí transforman bien, pues la física se mantiene, esto quiere decir que \textit{las Leyes de Newton de la física transforman de forma covariante}.\\ \\
+El grupo de transformaciones de Galileo son simetrías que dan lugar a cantidades conservadas. Por tanto, si tenemos un Lagrangiano que sea invariante bajo traslaciones temporales, tendremos que el sistema conserva energía; si es invariante bajo traslaciones espaciales, conserva momento lineal; y si es invariante bajo rotaciones espaciales; conserva momento angular.\\ \\
+El grupo de transformaciones de Galileo NO deja invariante las ecuaciones de Maxwell, que son
+\[(i)\hspace{2mm}\nabla\cdot\vec{E}=\rho/\epsilon_0;\hspace{5mm}(iii)\hspace{2mm}\nabla\cdot\vec{B}=0\]
+\[(ii)\hspace{2mm}\nabla\times\vec{B}=\partial_t\vec{E}/c^2+\mu_0\vec{J};\hspace{5mm}(iv)\hspace{2mm}\nabla\times\vec{E}=-\partial_t\vec{B}\]
+Si $\rho=0$ y $\vec{J}=0$, es decir, estamos en vacío, podemos combinar las ecuaciones de Maxwell en una sola ecuación de ondas que se propaga a velocidad $c=299792,458$ m/s, resultado muy próximo al valor obtenido por Michelson y Morley, que además es independiente del sistema de referencia.
+\subsection{Transformaciones de Lorentz}
+
+Las transformaciones de Lorentz hacen que las ecuaciones de Maxwell transformen bien (sean covariantes). Estas transformaciones son:
+\[\begin{array}{rcrc}
+    (i) & t'=\gamma\left(t-\frac{v}{c^2}x\right); & (iii) & y'=y \\
+    (ii) & x'=\gamma\left(x-vt\right); & (iv) & z'=z
+\end{array}\]
+donde $v$ es la velocidad relativa entre SRI (que suponemos que se mueven en el eje $X$), y $\gamma=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}$.\\ \\
+Como estas transformaciones hacen que las leyes de Maxwell sean covariantes, diremos que las transformaciones de Lorentz sean más fundamentales que las transformaciones de Galileo.\\ \\
+Además, vemos que por la transformación $(i)$ el tiempo ya \textbf{no es absoluto}, sino que depende del SRI, por lo que diremos que el tiempo es \textbf{relativo}.

@@ -1,0 +1,342 @@
+\subsection{Formas bilineales, productos escalares y formas cuadráticas} % Main chapter title
+\label{cap1-sec1-subsec5} 
+
+A continuación, vamos a estudiar las \textbf{formas bilineales}, el \textbf{producto escalar} y las \textbf{formas cuadráticas}. Cosa que será de especial interés a la hora de definir métricas y aplicaciones lineales más generales.
+\subsubsection{Formas bilineales y producto escalar}
+Comenzamos definiendo las aplicaciones bilineales, pues el producto escalar es una aplicación bilineal.
+\begin{definition}
+    Sea $\mathbb{K}$ un cuerpo y $V$ un $\mathbb{K}$-espacio vectorial, una forma bilineal en $V$ es una aplicación
+    \[f:V\times V\to\mathbb{K}\]
+    verificando:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f(u_1+u_2,v)=f(u_1,v)+f(u_2,v)$
+        \item $f(u,v_1+v_2)=f(u,v_1)+f(u,v_2)$
+        \item $f(\lambda u,v)=\lambda f(u,v)$
+        \item $f(u,\lambda v)=\lambda f(u,v)$
+    \end{enumerate}
+    para cualesquiera $\lambda\in\mathbb{K}$ y $u,v,u_1,u_2,v_1,v_2\in V$.
+\end{definition}
+
+\begin{proposition}
+    Una aplicación $f:V\times V\to\mathbb{K}$ es una forma bilineal si y solo si,
+    \begin{enumerate}[label=(\roman*)]
+        \item $f(\lambda u_1+\mu u_2,v)=\lambda f(u_1,v)+\mu f(u_2,v)$
+        \item $f(u,\lambda v_1+\mu v_2)=\lambda f(u,v_1)+\mu f(u,v_2)$
+    \end{enumerate}
+    para cualesquiera $\lambda,\mu\in\mathbb{K}$ y $u,v,u_1,u_2,v_1,v_2\in V$.
+\end{proposition}
+\begin{proof}
+    Supongamos que $f$ es bilineal, entonces
+    \[f(\lambda u_1+\mu u_2,v)=f( \lambda u_1,v)+f(\mu u_2,v)=\lambda f(u_1,v)+\mu f(u_2,v)\checkmark\]
+    \[f(u,\lambda v_1+\mu v_2)=f(u,\lambda v_1)+f(u,\mu v_1)=\lambda f(u,v_1)+\mu f(u,v_2)\checkmark\]
+    Recíprocamente, suponiendo que se verifican estas condiciones, entonces para $\lambda=1,\mu=1$ se obtienen \textit{(i)} y \textit{(ii)}, y con $\mu=0$, obtenemos \textit{(iii)} y \textit{(iv)}.
+\end{proof}
+% \noindent Veamos ahora una definición formal de qué es un producto escalar
+% \begin{definition}
+%     Sea $\mathbb{K}$ un cuerpo y $V$ un $\mathbb{K}$-espacio vectorial, una forma bilineal en $V$ es una aplicación $f:V\times V\to\mathbb{K}$ que verifica:
+%     \begin{enumerate}[label=(\roman*)]
+%         \item $f(u_1+u_2,v)=f(u_1,v)+f(u_2,v)$
+%         \item $f(u,v_1+v_2)=f(u,v_1)+f(u,v_2)$
+%         \item $f(a\cdot u,v)=a\cdot f(u,v)$
+%         \item $f(u,a\cdot v)=a\cdot f(u,v)$
+%     \end{enumerate}
+%     tal que $\forall a\in \mathbb{K}$, $\forall u,v,u_1,u_2,v_1,v_2\in V$.
+% \end{definition}
+\noindent Veamos algunas propiedades de las aplicaciones bilineales.
+\begin{proposition}[Propiedades]
+    Sea $f:V\times V\to\mathbb{K}$ una forma bilineal, entonces se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f(u,0)=f(0,u)=0$; $\forall u,v\in V$.
+        \item $f(-u,v)=f(u,-v)=-f(u,v)$; $\forall u,v\in V$
+        \item $f\left(\sum\limits_ia^iu_i,\sum\limits_jb^jv_j\right)=f\left(a^iu_i,b^jv_j\right)=a^ib^jf(u_i,v_j)$; $\forall a^i,b^j\in\mathbb{K}$, $\forall u_i,v_j\in V$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    $\hspace{1mm}$
+    \begin{enumerate}[label=(\roman*)]
+        \item Sea $0=v-v$, $\forall v\in V$,
+        \[f(u,0)=f(u,v-v)\overset{\textit{(ii),(iv)}}{=}f(u,v)-f(u,v)=0\]
+        \[f(0,u)=f(v-v,u)\overset{\textit{(i),(iii)}}{=}f(v,u)-f(v,u)=0\]
+        \item Sea $-v=(-1)\cdot v$, $(-1)\in\mathbb{K}$, $\forall u,v\in V$,
+        \[f(-u,v)\overset{\textit{(iii)}}{=}-f(u,v)\]
+        \[f(u,-v)\overset{\textit{(iv)}}{=}-f(u,v)\]
+        \item Sean $\forall v_j,u_i\in V$ y $\forall a_i,b_j\in\mathbb{K}$,
+        \[
+        f\left(a^iu_i,b^jv_j\right)\overset{\textit{(i),(ii)}}{=}f(a^iu_i,b^jv_j)\overset{\textit{(iii),(iv)}}{=}a^ib^jf(u_i,v_j)
+        \]
+    \end{enumerate}
+    donde hemos usado las condiciones de la definición de forma bilineal.
+\end{proof}
+\noindent Veamos ahora una definición del \textbf{producto escalar}.
+\begin{definition}
+    Dado un espacio vectorial real $V$, definimos el producto escalar como una aplicación
+    \[\scalar{\hspace{1mm}}{\hspace{1mm}}:V\times V\to\mathbb{R}\]
+    verificando,
+    \begin{enumerate}[label=(\roman*)]
+        \item $\scalar{u}{v}=\scalar{v}{u}$, $\forall u,v\in V$
+        \item $\scalar{u+v}{w}=\scalar{u}{w}+\scalar{v}{w}$, $\forall u,v,w\in V$
+        \item $\scalar{\lambda u}{v}=\lambda\scalar{u}{v}$, $\forall u,v,\in V$, $\forall\lambda\in\mathbb{R}$
+        \item No degenerada, es decir, $\nexists v\neq 0$, $v\in V$, tal que $\scalar{v}{w}=0$, $\forall w\neq0\in V$
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    El producto escalar es una forma bilineal.
+\end{proposition}
+\begin{proof}
+    Para ver que el producto escalar sea una forma bilineal, debe satisfacer:
+    \[\scalar{u_1+u_2}{v}=\scalar{u_1}{v}+\scalar{u_2}{v}\]
+    \[\scalar{u}{v_1+v_2}=\scalar{u}{v_1}+\scalar{u}{v_2}\]
+    \[\scalar{\lambda\cdot u}{v}=\lambda\cdot\scalar{u}{v}\]
+    \[\scalar{u}{\lambda\cdot v}=\lambda\cdot\scalar{u}{v}\]
+    pero es trivial ver que las dos primeras condiciones se satisfacen por \textit{(ii)}, y las dos últimas, por \textit{(iii)}, que vienen de la definición de producto escalar, luego es una forma bilineal.
+\end{proof}
+\noindent Definimos ahora dos tipos particulares de formas bilineales, las \textbf{simétricas} y las \textbf{antisimétricas}.
+\begin{definition}
+    Una forma bilineal $f:V\times V\to\mathbb{K}$ es simétrica si verifica:
+    \[f(x,y)=f(y,x);\hspace{3mm}\forall x,y\in V\]
+\end{definition}
+\begin{definition}
+    Una forma bilineal $f:V\times V\to\mathbb{K}$ es antisimétrica si verifica:
+    \[f(x,y)=-f(y,x);\hspace{3mm}\forall x,y\in V\]
+\end{definition}
+\begin{proposition}
+    El producto escalar es una forma bilineal simétrica.
+\end{proposition}
+\begin{proof}
+    Por la definición de producto escalar, la condición \textit{(i)} nos dice que es una forma simétrica.
+\end{proof}
+\begin{lemma}
+\label{Lema1.30}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial y sea $f:V\times V\to\mathbb{K}$ una forma bilineal. Si $\mathbb{K}=\mathbb{R}$ ó $\mathbb{K}=\mathbb{C}$, entonces se verifica:
+    \[f\text{ es antisimétrica }\Leftrightarrow f(x,x)=0,\text{ para cada }x\in V\]
+\end{lemma}
+\begin{proof}
+    Si $f$ es antisimétrica, entonces $f(x,x)=-f(x,x)$, luego, sumando $f(x,x)$ a ambos lados, tenemos $2f(x,x)=0$, con $2\in\mathbb{C}$, luego $f(x,x)=0$.\\
+    Si $f(x,x)=0$, $\forall x\in V$, tal que
+    \[0=\cancelto{0}{f(u+v,u+v)}=\cancelto{0}{f(u,u)}+f(u,v)+f(v,u)+\cancelto{0}{f(v,v)}\]
+    luego, $f(u,v)+f(v,u)=0$, y entonces $f(u,v)=-f(v,u)$, luego es antisimétrica.
+\end{proof}
+\noindent Ahora veremos que cualquier forma bilineal puede descomponerse en una forma \textbf{simétrica} y otra \textbf{antisimétrica}, cosa que también pasará con los tensores.
+\begin{proposition}
+    Toda forma bilineal puede descomponerse como suma de una forma bilineal simétrica y una antisimétrica.
+\end{proposition}
+\begin{proof}
+    Sea una forma bilineal $f:V\times V\to\mathbb{K}$, consideramos las aplicaciones $f_S,f_T:V\times V\to\mathbb{K}$ definidas por
+    \[f_S(x,y)=\frac{1}{2}\brackets{f(x,y)+f(y,x)}\]
+    \[f_T(x,y)=\frac{1}{2}\brackets{f(x,y)-f(y,x)}\]
+    Vamos a ver que son formas bilineales:\\
+    Empezamos por $f_S$,
+    \[\begin{array}{rl}
+    f_S(x_1+x_2,y) & = \frac{1}{2}\brackets{f(x_1+x_2,y)+f(y,x_1+x_2)} = \frac{1}{2}\brackets{f(x_1,y)+f(x_2,y)+f(y,x_1)+f(y,x_2)}\\ \\
+    &=\frac{1}{2}\brackets{f(x_1,y)+f(y,x_1)}+\frac{1}{2}\brackets{f(x_2,y)+f(y,x_2)}=f_S(x_1,y)+f_S(x_2,y)\checkmark
+    \end{array}\]
+    \[\begin{array}{rll}
+    f_S(x,y_1+y_2)&=\frac{1}{2}\brackets{f(x,y_1+y_2)+f(y_1+y_2,x)}=\frac{1}{2}\brackets{f(x,y_1)+f(x,y_2)+f(y_1,x)+f(y_2,x)}\\ \\
+    &=\frac{1}{2}\brackets{f(x,y_1)+f(y_1,x)}+\frac{1}{2}\brackets{f(x,y_2)+f(y_2,x)}=f_S(x,y_1)+f_S(x,y_2)\checkmark
+    \end{array}\]
+    \[\begin{array}{rl}
+    f_S(\lambda\cdot x,y)&=\frac{1}{2}\brackets{f(\lambda\cdot x,y)+f(y,\lambda\cdot x)}=\frac{1}{2}\brackets{\lambda\cdot f(x,y)+\lambda f(y,x)}=\\&=\lambda\frac{1}{2}\brackets{f(x,y)+f(y,x)}=\lambda f_S(x,y)\checkmark\end{array}\]
+    \[\begin{array}{rl}f_S(x,\lambda\cdot y)&=\frac{1}{2}\brackets{f( x,\lambda\cdot y)+f(\lambda\cdot y, x)}=\frac{1}{2}\brackets{\lambda\cdot f(x,y)+\lambda f(y,x)}\\&=\lambda\frac{1}{2}\brackets{f(x,y)+f(y,x)}=\lambda f_S(x,y)\checkmark\end{array} \]
+    Veamos que $f_S$ es simétrica:
+    \[f_S(x,y)=\frac{1}{2}\brackets{f(x,y)+f(y,x)}=\frac{1}{2}\brackets{f(y,x)+f(x,y)}=f(y,x)\checkmark\]
+    Seguimos con $f_T$,
+     \[f_T(x_1+x_2,y)=\frac{1}{2}\brackets{f(x_1+x_2,y)-f(y,x_1+x_2)}=\frac{1}{2}\brackets{f(x_1,y)+f(x_2,y)-f(y,x_1)-f(y,x_2)}=\]
+    \[=\frac{1}{2}\brackets{f(x_1,y)-f(y,x_1)}+\frac{1}{2}\brackets{f(x_2,y)-f(y,x_2)}=f_T(x_1,y)+f_T(x_2,y)\checkmark\]
+    \[f_T(x,y_1+y_2)=\frac{1}{2}\brackets{f(x,y_1+y_2)-f(y_1+y_2,x)}=\frac{1}{2}\brackets{f(x,y_1)+f(x,y_2)-f(y_1,x)-f(y_2,x)}=\]
+    \[=\frac{1}{2}\brackets{f(x,y_1)-f(y_1,x)}+\frac{1}{2}\brackets{f(x,y_2)-f(y_2,x)}=f_T(x,y_1)+f_T(x,y_2)\checkmark\]
+    \[\begin{array}{rl}f_T(\lambda\cdot x,y)&=\frac{1}{2}\brackets{f(\lambda\cdot x,y)-f(y,\lambda\cdot x)}=\frac{1}{2}\brackets{\lambda\cdot f(x,y)-\lambda f(y,x)}\\&=\lambda\frac{1}{2}\brackets{f(x,y)-f(y,x)}=\lambda f_T(x,y)\checkmark\end{array}\]
+    \[\begin{array}{rl}f_T(x,\lambda\cdot y)&=\frac{1}{2}\brackets{f( x,\lambda\cdot y)-f(\lambda\cdot y, x)}=\frac{1}{2}\brackets{\lambda\cdot f(x,y)-\lambda f(y,x)}\\&=\lambda\frac{1}{2}\brackets{f(x,y)-f(y,x)}=\lambda f_T(x,y)\checkmark\end{array}\]
+    Veamos que $f_T$ es antisimétrica:
+    \[f_T(x,y)=\frac{1}{2}\brackets{f(x,y)-f(y,x)}=\frac{1}{2}\brackets{-f(y,x)+f(x,y)}=-\frac{1}{2}\brackets{f(y,x)-f(x,y)}=-f(y,x)\checkmark\]
+    Para cada par de vectores $x,y\in V$ tenemos:
+    \[f_S(x,y)+f_T(x,y)=\frac{1}{2}\brackets{f(x,y)+\cancel{f(y,x)}}+\frac{1}{2}\brackets{f(x,y)-\cancel{f(y,x)}}=f(x,y)\]
+\end{proof}
+\subsubsection{Formas cuadráticas}
+En este apartado vamos a ver qué son las \textbf{formas cuadráticas}.
+\begin{definition}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial y sea $f:V\times V\to\mathbb{K}$ una forma bilineal en $V$. Se llama \textbf{forma cuadrática} asociada a $f$, a la aplicación,
+    \[\begin{matrix}
+        \Phi: & V & \to &\mathbb{K}\\
+         & \Phi(x) & \mapsto & f(x,x)
+    \end{matrix}\]
+    $\forall x\in V$.
+\end{definition}
+\noindent Veamos algunas propiedades.
+\begin{proposition}[Propiedades]
+    Sea $\Phi:V\to\mathbb{K}$ la forma cuadrática asociada a la función bilineal $f$, para cualesquiera $\lambda\in\mathbb{K}$ y $x,y\in V$ se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Phi(0)=0$
+        \item $\Phi(\lambda x)=\lambda^2\Phi(x)$
+        \item $\Phi(x,y)=\Phi(x)+\Phi(y)+f(x,y)+f(y,x)$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Phi(0)=f(0,0)=0\qedh$
+        \item $\Phi(\lambda x)=f(\lambda x,\lambda x)=\lambda (x,\lambda x)=\lambda^2f(x,x)=\lambda^2\Phi(x)\qedh$
+        \item $\Phi(x+y)=f(x+y,x+y)=f(x,x)+f(y,y)+f(x,y)+f(y,x)=\Phi(x)+\Phi(y)+f(x,y)+f(y,x)$
+    \end{enumerate}
+\end{proof}
+\begin{note}
+    Distintas formas bilineales pueden dar lugar a la misma forma cuadrática.
+\end{note}
+\noindent Veamos que una forma cuadrática puede descomponerse como \textbf{suma} de una forma bilineal simétrica y otra antisimétrica.
+\begin{proposition}
+    Si $f$ es una forma bilineal simétrica y $\Phi$ es la forma cuadrática asociada a $f$, entonces para cada forma bilineal antisimétrica $g$ se tiene,
+    \[\Phi(x)=f(x,x)=f(x,x)+g(x,x)=(f+g)(x,x)\]
+\end{proposition}
+\begin{proof}
+    Si $g$ es antisimétrica, entonces $g(x,x)=-g(x,x)\Rightarrow g(x,x)=0$, luego,
+    \[\Phi(x)=f(x,x)=f(x,x)+0=f(x,x)+g(x,x)\]
+    al ser $f$ y $g$ aplicaciones bilineales, entonces
+    \[(f+g)(x,x)=f(x,x)+g(x,x)\]
+    luego,
+    \[\Phi(x)=f(x,x)=(f+g)(x,x)\]
+\end{proof}
+\noindent Por tanto, $\Phi$ también será la forma cuadrática asociada a $f+g$. Luego, podemos decir que la forma cuadrática asociada a una forma bilineal solo depende de la parte simétrica de ésta.\\
+Vemos entonces que de entre todas las formas bilineales que dan lugar a la misma forma cuadrática (existen infinitas), solo existe una forma que es simétrica.
+\begin{proposition}
+    Dada una forma cuadrática $\Phi$ en $V$, existe una única forma bilineal simétrica $f_P$, cuya forma cuadrática asociada es $\Phi$. Llamada forma polar de $\Phi$.
+\end{proposition}
+\begin{proof}
+\begin{tabular}{c|}
+     $\Rightarrow$ \\ \hline
+\end{tabular} 
+    Para cada forma bilineal $f$ cuya forma cuadrática asociada sea $\Phi$, se tiene por la propiedad \textit{(iii)}, $f(x,y)+f(y,x)=\Phi(x+y)-\Phi(x)-\Phi(y)$. \\
+    Si imponemos que $f$ sea simétrica, entonces $2f(x,y)=\Phi(x+y)-\Phi(x)-\Phi(y)$, con lo cual, $f$ está unívocamente determinada por:
+    \[f(x,y)=\frac{1}{2}\brackets{\Phi(x+y)-\Phi(x)-\Phi(y)}\]
+    y por tanto, es única.\\
+\begin{tabular}{c|}
+     $\Leftarrow$ \\ \hline
+\end{tabular} 
+Sea la forma bilineal $f$, definida por $f(x,y)=\frac{1}{2}\brackets{\Phi(x+y)-\Phi(x)-\Phi(y)}$, vemos que es simétrica:
+\[f(x,y)=\frac{1}{2}\brackets{f(x+y,x+y)-f(x,x)-f(y,y)}=\]\[=\frac{1}{2}\brackets{\cancel{f(x,x)}+\cancel{f(y,y)}+f(x,y)+f(y,x)-\cancel{f(x,x)}-\cancel{f(y,y)}}=\]\[=\frac{1}{2}\brackets{f(x,y)+f(y,x)}\]
+luego,
+\[2f(x,y)=f(x,y)+f(y,x)\Rightarrow \cancel{2}f(x,y)-\cancel{f(x,y)}=f(y,x)\Rightarrow f(x,y)=f(y,x)\]
+luego, $f$ es antisimétrica. 
+Hemos demostrado que existe una única forma bilineal simétrica, cuya forma cuadrática asociada es $\Phi$.
+\end{proof}
+\begin{corollary}
+    Sea $\Phi$ una forma cuadrática en $V$ asociada a la forma bilineal $g$. La forma polar $f_P$ de $\Phi$ se puede obtener como:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f_P(x,y)=\frac{1}{2}\brackets{\Phi(x+y)-\Phi(x)-\Phi(y)}$
+        \item $f_P(x,y)=\frac{1}{4}\brackets{\Phi(x+y)-\Phi(x-y)}$
+        \item $f_P(x,y)=\frac{1}{2}\brackets{g(x,y)+g(y,x)}$
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+    \item Ya lo hicimos antes. $\qedh$
+    \item Sabemos que $\Phi(x+y)=\Phi(x)+\Phi(y)+2f_P(x,y)$ y que $\Phi(x-y)=f(x-y,x-y)=f(x,x)+f(y,y)-f(x,y)-f(y,x)=\Phi(x)+\Phi(y)-2f_P(c,y)$, luego, restando ambas expresiones:
+    \[\Phi(x+y)-\Phi(x-y)=4f_P(x,y)\Rightarrow f_P(x,y)=\frac{1}{4}\brackets{\Phi(x+y)-\Phi(x-y)}\qedh\]
+    \item Si $\Phi$ es la forma cuadrática asociada a $g$, entonces
+    \[\Phi(x+y)=\cancel{\Phi(x)}+\cancel{\Phi(y)}+g(x,y)+g(y,x)=\cancel{\Phi(x)}+\cancel{\Phi(y)}+2f_P(x,y)\]
+    luego,
+    \[f_P(x,y)=\frac{1}{2}\brackets{g(x,y)+g(y,x)}\hspace{3mm}\qedhere\]
+\end{enumerate}
+\end{proof}
+\subsubsection*{Matriz asociada a una forma cuadrática}
+Dada una forma cuadrática $\Phi$ en $V$ y dada una base $B$ de $V$, llamaremos matriz asociada a $\Phi$ respecto de la base $B$ a la matriz asociada respecto de la base $B$ de la forma polar de $\Phi$. En particular, la matriz asociada a una forma cuadrática es siempre una matriz simétrica. Llamaremos rango de $\Phi$ al rango $rg(\Phi)$ de su matriz asociada, que coincide con el rango de su forma polar. Luego,
+\[\Phi(x)=X^t\cdot A\cdot X=\sum\limits_{i,j=1}^na_{ij}x_ix_j\overset{a_{ij}=a_{ji}}{\Rightarrow}\Phi(x_1,\dots,x_n)=\sum\limits_{i=1}^na_{ii}x_i^2+2\sum\limits_{i<j}a_{ij}x_ix_j\]
+Luego,
+\[\begin{array}{rl}\text{Para }n=2:&\Phi(x,y)=a_{11}x^2+a_{22}y^2+2a_{12}xy\\
+\text{Para }n=3:&\Phi(x,y)=a_{11}x^2+a_{22}y^2+a_{33}z^2+2a_{12}xy+2a_{13}xz+2a_{23}yz
+\end{array}\]
+\subsubsection*{Conjugación respecto de una forma cuadrática}
+Veremos ahora los vectores conjugados a una forma cuadrática, junto algunas propiedades que veremos que también usaremos en la definición de producto escalar.
+\begin{definition}
+    Sea $\Phi:V\to\mathbb{K}$ una forma cuadrática, y sea $f_P:V\times V\to\mathbb{K}$ su forma polar. Dos vectores $x,y\in V$ se dice que son conjugados respecto de $\Phi$ si $f_P(x,y)=0$. Se dice que el vector $x$ es autoconjugado si es conjugado consigo mismo, es decir, $\Phi(x)=0$.\\
+    Dado un conjunto $S\subseteq V$, consideremos el conjunto de los vectores de $V$ conjugados con todos los vectores de $S$:
+    \[S^C=\curlybraces{x\in V\left|\right.f_P(x,y)=0,\hspace{3mm}\forall x,y\in V}\]
+\end{definition}
+\begin{proposition}
+    Para cada subconjunto no vacío $S$ de $V$, el conjunto $S^C$ es un subespacio vectorial de $V$. Además, $S^C=(L(S))^C$.
+\end{proposition}
+\begin{proof}
+    Sean $a,b\in\mathbb{K}$ y $u,v\in S^C$ arbitrarios, entonces para cada $y\in S$ se tiene,
+    \[f_P(a\cdot u+b\cdot v,y)=a\cdot f_P(u,y)+b\cdot f_P(v,y)=0\]
+    Luego, $a\cdot u+b\cdot v\in S^C$, y en consecuencia, $S^C$ es subespacio vectorial de $V$.$\qedh$\\ \\
+    Por otra parte, puesto que $S\subseteq L(S)$, se tiene que $(L(S))^C\subseteq S^C$. Para la otra inclusión, consideramos $x\in S^C$ y sea $y\in L(S)$ arbitrario. Entonces $y$ se escribe como combinación lineal de vectores de $S$,
+    \[y=a_1s_1+\dots a_ks_k;\hspace{4mm}a_1,\dots,a_k\in\mathbb{K};\hspace{2mm}s_1,\dots,s_k\in S\]
+    Así pues,
+    \[f_P(x,y)=f_P(x,a_1s_1+\dots a_ks_k)=a_1f_P(x,s_1)+\dots a_kf_P(x,s_k)=0\]
+    ya que $x\in S^C$ y los $s_i\in S$. Por tanto, $x\in(L(S))^C$ y así, $S^C\subseteq(L(S))^C$. Luego, hemos demostrado que $S^C=(L(S))^C$ \qedhere
+\end{proof}
+\begin{definition}
+    Se llama núcleo de la forma cuadrática $\Phi$ al subespacio $V$ a
+    \[N(\Phi)=V^C=\curlybraces{x\in V\left|\right.f_P(x,y)=0;\hspace{2mm}\forall y\in V}\]
+    Se dice que $\Phi$ es no degenerada si $N(\Phi)=0$, es decir, si el único vector que es conjugado a todos los vectores de $V$ es el vector 0.
+\end{definition}
+\subsubsection{Signatura de una forma cuadrática real}
+
+\begin{theorem}
+    Sea $V$ un $\mathbb{R}$-espacio vectorial de dimensión finita y sea $\Phi:V\to\mathbb{R}$ una forma cuadrática. Existe una base de $V$ para la cual, la matriz asociada a $\Phi$ es diagonal.
+\end{theorem}
+\begin{theorem}[Ley de inercia de Sylvester]
+    Sea $V$ un $\mathbb{R}$-espacio vectorial de dimensión finita y sea $\Phi:V\to\mathbb{R}$ una forma cuadrática. Si $D_1$ y $D_2$ son matrices diagonales asociadas a $\Phi$ respecto de distintas bases $B_1$ y $B_2$, entonces el número de elementos positivos y elementos negativos en $D_1$ y $D_2$, es el mismo.
+\end{theorem}
+\begin{proof}
+    Como el núcleo de elementos positivos más el de negativos es en cualquier caso igual al rango de $\Phi$, por lo que, bastará probar que el número de positivos será igual para todas las bases de $V$ que proporcionen una forma diagonal.\\
+    Sean pues $B_1$ y $B_2$ bases de $V$ para las cuales la matriz de $\Phi$ es diagonal y de forma que tienen en la diagonal, y de forma que tienen en la diagonal $p$ y $t$ elementos positivos respectivamente, y veamos que $p=t$. Escribiendo,
+    \[B_1=\curlybraces{u_1,u_2,\dots,u_p,u_{p+1},\dots,u_n}\]
+    \[B_2=\curlybraces{v_1,v_",\dots,v_t,v_{t+1},\dots,v_n}\]
+    las matrices asociadas a $\Phi$ respecto de $B_1$ y $B_2$ serán,
+    \[\begin{pmatrix}
+        \Phi(u_1) & 0 & \dots & 0\\
+        0 & \Phi(u_2) & \dots & 0\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & \dots & \Phi(u_n)
+    \end{pmatrix}\hspace{5mm}\text{y}\hspace{5mm}\begin{pmatrix}
+        \Phi(v_1) & 0 &\dots & 0\\
+        0 & \Phi(v_2) & \dots & 0\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & \doteq & \Phi(v_n)
+    \end{pmatrix}\]
+    Por hipótesis, tenemos que
+    \[\Phi(u_1)>0,\Phi(u_2)>0,\dots,\Phi(u_p)>0,\Phi(u_{p+1})\leq0,\dots,\Phi(u_n)\leq0\]
+    \[\Phi(v_1)>0,\Phi(v_2)>0,\dots,\Phi(v_t)>0,\Phi(v_{t+1})\leq0,\dots,\Phi(v_n)\leq0\]
+    Considerando los subespacios de $V$ siguientes,
+    \[U=L(u_1,\dots,u_p),\hspace{7mm}W=L(v_{t+1},\dots,v_n)\]
+    Para cada $0\neq x\in U$, se verifica $\Phi(x)>0$, y para cada $y\in W$, se verifica $\Phi(y)\leq0$. Por tanto, es evidente que $U\cup W=\curlybraces{0}$ y por tanto, $dim(U+W)=dimU+dimW=p+n-t$. Como $U+W\leq V$, entonces $p+\cancel{n}-t\leq \cancel{n}\Rightarrow p\leq t$. Por simetría, llegamos también a que $t\leq p$, por tanto, $p=t$, luego, hay el mismo número de elementos negativos y positivos. 
+\end{proof}
+
+     \noindent Llamaremos \textbf{signatura} de la forma cuadrática real $\Phi$ al par $sg(\Phi)=(p,1)$, donde $p$ es el número de elementos positivos y $q$, el de negativos en una forma diagonal de $\Phi$.\\
+    Notemos que $p$ es igual al número de autovalores positivos de la matriz de $\Phi$, y $q$ es igual al número de autovalores negativos.\\
+    Por otro lado, el rango de $\Phi$ es igual al número de filas no nulas de su forma diagonal, y por tanto, como ya hemos mencionado, $rg(\Phi)=p+q$.
+
+\begin{theorem}
+    Sea $\Phi:V\to\mathbb{R}$ una forma cuadrática real, y llamemos $n=dim V$, entonces,
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Phi$ es definida positiva si y solo si $sg(\Phi)=(n,0)$
+        \item $\Phi$ es definida negativa si y solo si $sg(\Phi)=(0,n)$
+        \item $\Phi$ es semidefinida positiva si y solo si $sg(\Phi)=(r,0)$ con $r<n$
+        \item $\Phi$ es semidefinida negativa si y solo si $sg(\Phi)=(0,r)$ con $r<n$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item Supongamos que $\Phi$ es definida positiva, es decir, $\Phi(x)>0;\forall0\neq x\in V$ y sea $B=\curlybraces{e_1,e_2,\dots,e_n}$ una base de $V$ para la cual la matriz asociada a $\Phi$ es diagonal,
+        \[\begin{pmatrix}
+            d_1 & 0 & \dots & 0\\
+            0 & d_1 & \dots & 0\\
+            \vdots & \vdots & \ddots & \vdots\\
+            0 & 0 & \dots & d_n
+        \end{pmatrix}\]
+        y notemos que, por la propia definición de matriz asociada a una forma cuadrática, se tiene $d_i=\Phi(e_i)$. Así pues, siendo $\Phi$ definida positiva, se obtiene $d_1>0,\dots,d_n>0$ y por tanto, $sg(\Phi)=(n,0)\checkmark$\\
+        Supongamos ahora que $sg(\Phi)=(n,0)$. Entonces con la misma notación de antes, se tiene $d_1>0,\dots,d_n>0$ y, en consecuencia, si un vector cualquiera no nulo $x=(x_1,\dots,x_n)_B$ de $V$, se verifica $\Phi(x)=d_1x_1^2+\dots +d_nx_n^2>0$ por ser cada $d_i>0\qedh$
+        \item Supongamos que $\Phi$ es definida negativa, es decir, $\Phi(x)<0;\forall0\neq x\in V$ y sea $B=\curlybraces{e_1,e_2,\dots,e_n}$ una base de $V$ para la cual la matriz asociada a $\Phi$ es diagonal,
+        \[\begin{pmatrix}
+            d_1 & 0 & \dots & 0\\
+            0 & d_1 & \dots & 0\\
+            \vdots & \vdots & \ddots & \vdots\\
+            0 & 0 & \dots & d_n
+        \end{pmatrix}\]
+        y notemos que, por la propia definición de matriz asociada a una forma cuadrática, se tiene $d_i=\Phi(e_i)$. Así pues, siendo $\Phi$ definida negativa, se obtiene $d_1<0,\dots,d_n<0$ y por tanto, $sg(\Phi)=(0,n)\checkmark$\\
+        Supongamos ahora que $sg(\Phi)=(0,n)$. Entonces con la misma notación de antes, se tiene $d_1<0,\dots,d_n<0$ y, en consecuencia, si un vector cualquiera no nulo $x=(x_1,\dots,x_n)_B$ de $V$, se verifica $\Phi(x)=d_1x_1^2+\dots +d_nx_n^2<0$ por ser cada $d_i<0\qedh$
+        \item Por el teorema de Sylvester, sabemos que existen $r$ valores propios positivos y $n-r$ valores propios que son cero (ya que  no es definida positiva y no hay valores propios negativos). Esto da lugar a una signatura de $(r,0)$ con $r<n$, ya que si $r$ fuera igual a $n$, sería definida positiva, lo cual contradice nuestra suposición inicial de que es solamente semidefinida positiva.$\checkmark$\\ 
+        Inversamente, si $sg(\Phi)=(r,0)$ con $r<n$, entonces la matriz asociada $A$ a la forma cuadrática $\Phi$ tiene $r$ valores propios positivos y $n-r$ ceros. Esto significa que para cualquier vector $v$, $\Phi(v)=v^TAv$ será una suma de términos no negativos, dado que los valores propios negativos corresponden a términos negativos en esta suma y no hay ninguno. Por lo tanto, $\Phi(v)\geq0$ para todo $v$, lo que significa que es semidefinida positiva.$\qedh$
+        \item Supongamos que $\Phi$ es semidefinida negativa. Esto significa que para todo vector $v\in V$, $\Phi(v)\geq0$. Dado que $\Phi$ no es definida negativa, no todos los valores propios pueden ser negativos (de lo contrario, $\Phi(v)<0$ para todo $v\neq0$). Entonces, algunos de los valores propios deben ser cero. La signatura $sg(\Phi)$ cuenta el número de valores propios negativos y positivos de la matriz simétrica asociada a $\Phi$. Si $\Phi$ es semidefinida negativa, entonces no tiene valores propios positivos, lo que implica que $sg(\Phi)=(0,r)$ con $r$ siendo el número de valores propios negativos, y $r<n$ porque si $r$ fuera igual a $n$, sería definida negativa.$\checkmark$\\ \\
+         Ahora supongamos que $sg(\Phi)=(0,r)$ con r<n. Esto indica que hay $r$ valores propios negativos y $n-r$ ceros (puesto que no hay valores propios positivos). Por lo tanto, para cualquier vector $v$, la forma cuadrática $\Phi(v)=v^TAv$ será una suma de términos no positivos, debido a que los valores propios positivos resultarían en términos positivos en esta suma, y no hay ninguno. Esto significa que $\Phi(v)\leq0$ para todo $v\in V$, y por lo tanto $\Phi$ es semidefinida negativa.
+    \end{enumerate}
+\end{proof}

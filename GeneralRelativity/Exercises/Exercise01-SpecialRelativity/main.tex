@@ -1,0 +1,522 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr} % Headers and footers
+ % All pages have headers and footers
+% Estilo de encabezado personalizado
+\fancyhf{} % Limpia todos los campos de encabezado y pie de página
+\renewcommand{\headrulewidth}{0pt} % Elimina la línea horizontal en el encabezado
+\fancyhead[RO,LE]{\thepage} % Números de página en el encabezado, en posición derecha en páginas impares y en posición izquierda en páginas pares
+
+% Configuración para las páginas iniciales de capítulos
+\fancyhead[R]{Rubén Carrión Castro}
+\fancyhead[L]{Entregable I}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\vvector}[4]{\begin{pmatrix}#1\\ #2\\ #3\\#4\end{pmatrix}}
+\newcommand{\covector}[4]{\begin{pmatrix}#1 & #2 & #3 & #4\end{pmatrix}}
+\newcommand{\abss}[1]
+{\begin{vmatrix}#1\end{vmatrix}^2}
+\newcommand{\upmunu}[2]{#1^{\mu}#2^{\nu}}
+\newcommand{\upnumu}[2]{#1^{\nu}#2^{\mu}}
+\newcommand{\downmunu}[2]{#1_{\mu}#2_{\nu}}
+\newcommand{\downnumu}[2]{#1_{\nu}#2_{\mu}}
+\newcommand{\prima}[1]{#1'}
+
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Entregable I. Relatividad General}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Octubre 2024}
+\begin{document}
+\maketitle
+\setcounter{page}{1}
+\pagestyle{fancy}
+\begin{enumerate}
+    \item \textbf{Considera la acción más general para el potencial electromagnético }$A_\mu(x)$ \textbf{en el espacio de Minkowski, que es cuadrática en las primeras derivadas e invariante bajo el grupo de Lorentz:}
+    \begin{equation}
+        S=\int d^4x\brackets{-\frac{1}{2}\downmunu{\partial}{A}\upmunu{\partial}{A}+\alpha\downmunu{\partial}{A}\upnumu{\partial}{A}+\beta\partial_{\mu}A^{\mu}\partial_{\nu}A^{\nu}+\gamma\epsilon^{\mu\nu\rho\lambda}\downmunu{\partial}{A}\partial_{\rho}A_{\lambda}}
+    \end{equation}
+    \textbf{donde }$\epsilon^{\mu\nu\rho\lambda}$ \textbf{es el tensor de Levi-Civita. El factor }$-\frac{1}{2}$\textbf{ delante del primer término se ha elegido para obtener la normalización canónica.}
+\begin{enumerate}
+    \item \textbf{Demuestra que esta acción es efectivamente invariante bajo transformaciones de Lorentz.}
+    \item \textbf{Determina el valor de los parámetros }$\alpha,~\beta$\textbf{ y }$\gamma$\textbf{ para que la acción sea invariante bajo transformaciones gauge }$A_{\mu}\to A'_{\mu}=A_{\mu}+\partial_{\mu}\Lambda$\textbf{. A partir de ahora llamaremos }$\Tilde{S}$\textbf{ a la acción con los parámetros fijos.}
+    \item \textbf{Calcula las ecuaciones del movimiento de la acción }$\Tilde{S}.$
+    \item \textbf{Relaciona la acción }$\Tilde{S}$\textbf{ y sus ecuaciones de movimiento con la acción y la ecuación de Maxwell en su formulación habitual (es decir, en términos del tensor de intensidad de campo }$F_{\mu\nu}$\textbf{). ¿Cuál es la acción más general que se puede escribir, que es cuadrática en }$F_{\mu\nu}$\textbf{ e invariante gauge?}
+    \item \textbf{Demuestra que las ecuaciones de Maxwell transforman de manera covariante baje el grupo de Lorentz.}
+    \item \textbf{Explica por qué el término }$\epsilon^{\mu\nu\rho\lambda}\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}$\textbf{ no contribuye a las ecuaciones de movimiento.} 
+\end{enumerate}
+
+\end{enumerate}
+\newpage
+\subsubsection*{Apartado (a)}
+Las transformaciones de Lorentz para la acción vienen dadas por
+\begin{equation}
+    \prima{S}=\int d^4\prima{x}\prima{\mathcal{L}}(\prima{x})=\int d^4x\mathcal{L}(x)=S
+\end{equation}
+Por lo que debemos ver primero si el diferencial de volumen es invariante,
+\begin{equation}
+d^4\prima{x}=d\prima{x}^{0}d\prima{x}^{1}d\prima{x}^{2}d\prima{x}^{3}
+\end{equation}
+
+Sabiendo que las transformaciones de Lorentz actúan como,
+\begin{equation}
+\vvector{\prima{x}^0}{\prima{x}^1}{\prima{x}^2}{\prima{x}^3}=\begin{pmatrix}
+    \gamma & -\gamma\frac{v^1}{c} & -\gamma\frac{v^2}{c} & -\gamma\frac{v^3}{c}\\
+    -\gamma\frac{v^1}{c} & 1+(\gamma-1)\frac{(v^1)^2}{\vec{v}^2} & (\gamma-1)\frac{v^1v^2}{\vec{v}^2} & (\gamma+1)\frac{v^1v^3}{\vec{v}^2}\\
+    -\gamma\frac{v^2}{c} & (\gamma+1)\frac{v^2v^1}{\vec{v}^2} & 1+(\gamma+1)\frac{(v^2)^2}{\vec{v}^2} & (\gamma+1)\frac{v^2v^3}{\vec{v}^2}\\
+    -\gamma\frac{v^3}{c} & (\gamma+1)\frac{v^3v^1}{\vec{v}^2} & (\gamma+1)\frac{v^3v^2}{\vec{v}^2} & 1+(\gamma+1)\frac{(v^3)^2}{\vec{v}^2}
+\end{pmatrix}\vvector{x^0}{x^1}{x^2}{x^3}
+\end{equation}
+Luego,
+\begin{equation}
+    \left\lbrace\begin{array}{rcl}
+        \prima{x}^0 & = & \Lambda^0_{\alpha}x^{\alpha} \\
+        \prima{x}^1 & = & \Lambda^1_{\beta}x^{\beta}\\
+        \prima{x}^2 & = & \Lambda^2_{\gamma}x^{\gamma}\\
+        \prima{x}^3 & = & \Lambda^3_{\delta}x^{\delta}
+    \end{array}\right.
+\end{equation}
+Entonces el diferencial transforma como,
+\begin{equation}
+    d\prima{x}^{\mu}=d(\Lambda^{\mu}_{\nu}x^{\nu})=\Lambda^{\mu}_{\nu}dx^{\nu}
+\end{equation}
+pues $\Lambda^{\mu}_{\nu}$ no debe ser diferenciable, ya que la velocidad relativa debe ser constante para tener sistemas de referencia inerciales.\\ Por tanto,
+\begin{equation}
+    \begin{array}{rcl}
+d^4\prima{x}&= & d\prima{x}^{0}d\prima{x}^{1}d\prima{x}^{2}d\prima{x}^{3}=\Lambda^{0}_{\alpha}dx^{\alpha}\Lambda^{1}_{\beta}dx^{\beta}\Lambda^{2}_{\gamma}dx^{\gamma}\Lambda^{3}_{\delta}dx^{\delta}= \Lambda_{\alpha}^0\Lambda_{\beta}^1\Lambda_{\gamma}^2\Lambda_{\delta}^3dx^{\alpha}dx^{\beta}dx^{\gamma}dx^{\delta}
+    \end{array}
+\end{equation}
+Si observamos los diferenciales $dx^{\alpha}dx^{\beta}dx^{\gamma}dx^{\delta}$, vemos que podemos reescribirlo en función de Levi-Civita, pues el producto de los diferenciales es una forma antisimétrica y el uso de Levi-Civita permite captar esta antisimetrización de forma explícita,
+\begin{equation}
+    dx^{\alpha}dx^{\beta}dx^{\gamma}dx^{\delta}=\epsilon^{\alpha\beta\gamma\delta}dx^{\alpha}dx^{\beta}dx^{\gamma}dx^{\delta}=\epsilon^{\alpha\beta\gamma\delta}d^4x
+\end{equation}
+Así tenemos
+\begin{equation}
+    d^4x'=\Lambda_{\alpha}^0\Lambda_{\beta}^1\Lambda_{\gamma}^2\Lambda_{\delta}^3\epsilon^{\alpha\beta\gamma\delta}d^4x
+\end{equation}
+Sabemos que el determinante de una matriz, usando índices fijos, se define como,
+\begin{equation}
+    \det(A) = A^{0}_{\ \nu_0} A^{1}_{\ \nu_1} A^{2}_{\ \nu_2} A^{3}_{\ \nu_3} \epsilon^{\nu_0 \nu_1 \nu_2 \nu_3}
+\end{equation}
+Por tanto, tenemos que
+\begin{equation}
+    d^4x'=\det(\Lambda)dx^4=dx^4~~\checkmark
+\end{equation}
+donde vamos a tomar el valor absoluto del determinante para asegurarnos de que el volumen sea siempre positivo,
+\begin{equation}
+    d^4x'=|\det(\Lambda)|dx^4=dx^4~~\checkmark
+\end{equation}
+Sabemos que $\rm{det}(\Lambda)=\pm1$, pero nos quedamos con el subgrupo de transformaciones \\con $\det(\Lambda)=+1$.\\ 
+Ahora debemos comprobar que la densidad Lagrangiana es invariante Lorentz, pero primero vamos a ver como transforman sus componentes,
+\begin{equation}
+    \left\lbrace\begin{array}{rcl}
+        \prima{\partial}_{\mu} & = & \Lambda_\mu^{\alpha}\partial_{\alpha}\\
+        \prima{A}_{\mu} & = & \Lambda_{\mu}^{\alpha}A_{\alpha}\\ \prima{\epsilon}^{\mu\nu\rho\lambda}&=&\Lambda^{\mu}_{\alpha}\Lambda^{\nu}_{\beta}\Lambda^{\rho}_{\gamma}\Lambda^{\lambda}_{\delta}\prima{\epsilon}^{\alpha\beta\gamma\delta}\\
+        \Lambda_{\mu}^{\alpha}\Lambda^{\mu}_{\beta}&=&\delta^{\alpha}_{\beta}
+    \end{array}\right.
+\end{equation}
+así,
+\begin{equation}
+    \begin{array}{rccccccccl}
+        \prima{\mathcal{L}} & = & -\frac{1}{2}\downmunu{\prima{\partial}}{\prima{A}}\upmunu{\prima{\partial}}{\prima{A}}&+&\alpha\downmunu{\prima{\partial}}{\prima{A}}\upnumu{\prima{\partial}}{\prima{A}}&+&\beta\prima{\partial}_{\mu}\prima{A}^{\mu}\prima{\partial}_{\nu}\prima{A}^{\nu}&+&\gamma\prima{\epsilon}^{\mu\nu\rho\lambda}\downmunu{\prima{\partial}}{\prima{A}}\prima{\partial}_{\rho}\prima{A}_{\lambda} \\
+         & & \downarrow & & \downarrow & & \downarrow & & \downarrow\\
+         & &(1) & & (2) & & (3) & & (4)
+    \end{array}
+\end{equation}
+Veamos componente a componente que es invariante,
+\begin{equation}
+    \begin{array}{rcl}
+        (1) & = & -\frac{1}{2}\downmunu{\prima{\partial}}{\prima{A}}\upmunu{\prima{\partial}}{\prima{A}}=-\frac{1}{2}\Lambda_{\mu}^{\alpha}\partial_{\alpha}\Lambda_{\nu}^{\beta}A_{\beta}\Lambda^{\mu}_{\alpha}\partial^{\alpha}\Lambda^{\nu}_{\beta}A^{\beta}=-\frac{1}{2}\cancelto{1}{\Lambda_{\mu}^{\alpha}\Lambda^{\mu}_{\alpha}}\cancelto{1}{\Lambda_{\nu}^{\beta}\Lambda_{\beta}^{\nu}}\partial_{\alpha}A_{\beta}\partial^{\alpha}A^{\beta}= \\ 
+         & = & -\frac{1}{2}\partial_{\alpha}A_{\beta}\partial^{\alpha}A^{\beta}~~\checkmark\\ \\
+         (2)&=&\alpha\downmunu{\prima{\partial}}{\prima{A}}\upnumu{\prima{\partial}}{\prima{A}}=\alpha\Lambda_{\mu}^{\alpha}\partial_{\alpha}\Lambda_{\nu}^{\beta}A_{\beta}\Lambda^{\nu}_{\beta}\partial^{\beta}\Lambda^{\mu}_{\alpha}A^{\alpha}=\alpha\cancelto{1}{\Lambda_{\mu}^{\alpha}\Lambda^{\mu}_{\alpha}}\cancelto{1}{\Lambda_{\nu}^{\beta}\Lambda_{\beta}^{\nu}}\partial_{\alpha}A_{\beta}\partial^{\beta}A^{\alpha}=\\
+         & = & \alpha\partial_{\alpha}A_{\beta}\partial^{\beta}A^{\alpha}~~\checkmark\\ \\
+         (3)&=&\beta\prima{\partial}_{\mu}\prima{A}^{\mu}\prima{\partial}_{\nu}\prima{A}^{\nu}=\beta\Lambda_{\mu}^{\alpha}\partial_{\alpha}\Lambda^{\mu}_{\alpha}A^{\alpha}\Lambda_{\nu}^{\beta}\partial_{\beta}\Lambda^{\nu}_{\beta}A^{\beta}=\beta\cancelto{1}{\Lambda_{\mu}^{\alpha}\Lambda_{\alpha}^{\mu}}\cancelto{1}{\Lambda_{\nu}^{\beta}\Lambda_{\beta}^{\nu}}\partial_{\alpha}A^{\alpha}\partial_{\beta}A^{\beta}=\\
+         &=&\beta\partial_{\alpha}A^{\alpha}\partial_{\beta}A^{\beta}~~\checkmark\\ \\
+         (4)&=&\gamma\prima{\epsilon}^{\mu\nu\rho\lambda}\downmunu{\prima{\partial}}{\prima{A}}\prima{\partial}_{\rho}\prima{A}_{\lambda}=\gamma\Lambda^{\mu}_{\alpha}\Lambda^{\nu}_{\beta}\Lambda^{\rho}_{\gamma}\Lambda^{\lambda}_{\delta}\epsilon^{\alpha\beta\gamma\delta}\Lambda_{\mu}^{\alpha}\partial_{\alpha}\Lambda_{\nu}^{\beta}A_{\beta}\Lambda_{\rho}^{\gamma}\partial_{\gamma}\Lambda_{\lambda}^{\delta}A_{\delta}=\\
+         &=&\gamma\cancelto{1}{\Lambda_{\alpha}^{\mu}\Lambda_{\mu}^{\alpha}}\cancelto{1}{\Lambda_{\beta}^{\nu}\Lambda_{\nu}^{\beta}}\cancelto{1}{\Lambda_{\gamma}^{\rho}\Lambda_{\rho}^{\gamma}}\cancelto{1}{\Lambda_{\delta}^{\lambda}\Lambda_{\lambda}^{\delta}}\epsilon^{\alpha\beta\gamma\delta}\partial_{\alpha}A_{\beta}\partial_{\gamma}A_{\delta}=\gamma\epsilon^{\alpha\beta\gamma\delta}\partial_{\alpha}A_{\beta}\partial_{\gamma}A_{\delta}~~\checkmark   
+    \end{array}
+\end{equation}
+Por tanto, vemos que
+\begin{equation}
+    \prima{\mathcal{L}}=-\frac{1}{2}\partial_{\alpha}A_{\beta}\partial^{\alpha}A^{\beta}+\alpha\partial_{\alpha}A_{\beta}\partial^{\beta}A^{\alpha}+\beta\partial_{\alpha}A^{\alpha}\partial_{\beta}A^{\beta}+\gamma\epsilon^{\alpha\beta\gamma\delta}\partial_{\alpha}A_{\beta}\partial_{\gamma}A_{\delta}=\mathcal{L}~~\checkmark
+\end{equation}
+Por tanto la acción queda
+
+\begin{equation}
+    \prima{S}=\int d^4\prima{x}\prima{\mathcal{L}}=\int d^4x\mathcal{L}=\int d^4x\brackets{-\frac{1}{2}\partial_{\alpha}A_{\beta}\partial^{\alpha}A^{\beta}+\alpha\partial_{\alpha}A_{\beta}\partial^{\beta}A^{\alpha}+\beta\partial_{\alpha}A^{\alpha}\partial_{\beta}A^{\beta}+\gamma\epsilon^{\alpha\beta\gamma\delta}\partial_{\alpha}A_{\beta}\partial_{\gamma}A_{\delta}}=S~~\checkmark
+\end{equation}
+Luego, esta acción es un invariante de Lorentz.
+\subsubsection*{Apartado (b)}
+Por la notación que hemos usado antes, a la transformación gauge de $A_\mu$ la vamos a determinar como $A'_{\mu}\equiv  \Tilde{A}_{\mu}$. Por tanto, $\Tilde{A}_{\mu}=A_{\mu}+\partial_{\mu}\Lambda$. Además vemos que
+\begin{equation}
+    \Tilde{A}^{\mu}=\eta^{\nu\mu}\Tilde{A}_{\nu}=\eta^{\nu\mu}\brackets{A_{\nu}+\partial_{\nu}\Lambda}=\eta^{\nu\mu}A_{\nu}+\eta^{\nu\mu}\partial_{\nu}\Lambda=A^{\mu}+\partial^{\mu}\Lambda
+\end{equation}\\ \\
+Al igual que en el apartado anterior, vamos a centrarnos en la densidad Lagrangiana para determinar estas constantes, tenemos que
+\begin{equation}
+\begin{array}{rccccccccl}
+        \Tilde{\mathcal{L}} & = & -\frac{1}{2}\downmunu{\Tilde{\partial}}{\Tilde{A}}\upmunu{\Tilde{\partial}}{\Tilde{A}}&+&\alpha\downmunu{\Tilde{\partial}}{\Tilde{A}}\upnumu{\Tilde{\partial}}{\Tilde{A}}&+&\beta\Tilde{\partial}_{\mu}\Tilde{A}^{\mu}\Tilde{\partial}_{\nu}\Tilde{A}^{\nu}&+&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\downmunu{\Tilde{\partial}}{\Tilde{A}}\Tilde{\partial}_{\rho}\Tilde{A}_{\lambda} \\
+         & & \downarrow & & \downarrow & & \downarrow & & \downarrow\\
+         & &(1) & & (2) & & (3) & & (4)
+    \end{array}
+    \end{equation}
+% Como $\eta^{\mu\nu}=\rm{diag}(1,-1,-1,-1)$ o $\eta^{\mu\nu}=\rm{diag}(-1,1,1,1)$, depende del convenio, entonces,
+% \begin{equation}
+%     \eta^{\mu\alpha}\eta^{\nu\beta}=\left\lbrace\begin{array}{ll}
+%        1  & \text{si }\mu=\nu\text{ y }\alpha=\beta \\
+%        0  & \text{si no}
+%     \end{array}\right.
+% \end{equation}
+Por tanto,
+\begin{equation}
+    \begin{array}{rcl}
+      (1)&=& \downmunu{\Tilde{\partial}}{\Tilde{A}}\upmunu{\Tilde{\partial}}{\Tilde{A}}=\partial_{\mu}\brackets{A_{\nu}+\partial_{\nu}\Lambda}\partial^{\mu}\brackets{A^{\nu}+\partial^{\nu}\Lambda}=\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}+\partial_{\mu}A_{\nu}\partial^{\mu}\partial^{\nu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}A^{\nu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}\partial^{\nu}\Lambda \\ \\
+        (2) & =&\alpha\downmunu{\Tilde{\partial}}{\Tilde{A}}\upnumu{\Tilde{\partial}}{\Tilde{A}}=\partial_{\mu}\brackets{A_{\nu}+\partial_{\nu}\Lambda}\partial^{\nu}\brackets{A^{\mu}+\partial^{\mu}\Lambda}=\partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu}+\partial_{\mu}A_{\nu}\partial^{\nu}\partial^{\mu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}A^{\mu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}\partial^{\mu}\Lambda\\ \\
+    (3) &=& \beta\Tilde{\partial}_{\mu}\Tilde{A}^{\mu}\Tilde{\partial}_{\nu}\Tilde{A}^{\nu}=\partial_{\mu}\brackets{A^{\mu}+\partial^{\partial}\Lambda}\partial_{\nu}\brackets{A^{\nu}+\partial^{\nu}\Lambda}=\partial_{\mu}A^{\mu}\partial_{\nu}A^{\nu}+\partial_{\mu}A^{\mu}\partial_{\nu}\partial^{\nu}\Lambda+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}A^{\nu}+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}\partial^{\nu}\Lambda\\ \\
+    (4)&=&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\downmunu{\Tilde{\partial}}{\Tilde{A}}\Tilde{\partial}_{\rho}\Tilde{A}_{\lambda}=\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\partial_{\mu}\brackets{A_{\nu}+\partial_{\nu}\Lambda}\partial_{\rho}\brackets{A_{\lambda}+\partial_{\lambda}\Lambda}=\\
+    &=&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\brackets{\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}+\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda}
+    \end{array}
+\end{equation}
+Vemos que sumando todos los primeros términos de cada sumando de la densidad Lagrangiana tilde, tenemos la densidad Lagrangiana original, es decir,
+\begin{equation}
+    \begin{array}{rcl}
+        \Tilde{\mathcal{L}} & = & \mathcal{L}-\frac{1}{2}\brackets{\partial_{\mu}A_{\nu}\partial^{\mu}\partial^{\nu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}A^{\nu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}\partial^{\nu}\Lambda}+\\
+         & + & \alpha\brackets{\partial_{\mu}A_{\nu}\partial^{\nu}\partial^{\mu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}A^{\mu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}\partial^{\mu}\Lambda}+\\
+         &+&\beta\brackets{\partial_{\mu}A^{\mu}\partial_{\nu}\partial^{\nu}\Lambda+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}A^{\nu}+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}\partial^{\nu}\Lambda}\\
+         &+&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\brackets{\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda}
+    \end{array}
+\end{equation}
+Como $\Tilde{\mathcal{L}}$ debe ser invariante, debe cumplirse que $\Tilde{\mathcal{L}}=\mathcal{L}$ es decir,
+\begin{equation}
+    \begin{array}{rcl}
+        0 & = & -\frac{1}{2}\brackets{\partial_{\mu}A_{\nu}\partial^{\mu}\partial^{\nu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}A^{\nu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\mu}\partial^{\nu}\Lambda}+\\
+         & + & \alpha\brackets{\partial_{\mu}A_{\nu}\partial^{\nu}\partial^{\mu}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}A^{\mu}+\partial_{\mu}\partial_{\nu}\Lambda\partial^{\nu}\partial^{\mu}\Lambda}+\\
+         &+&\beta\brackets{\partial_{\mu}A^{\mu}\partial_{\nu}\partial^{\nu}\Lambda+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}A^{\nu}+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}\partial^{\nu}\Lambda}+\\
+         &+&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\brackets{\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda}=\\ \\
+         &=&\partial_{\mu}A_{\nu}\brackets{\alpha\partial^{\nu}\partial^{\mu}\Lambda-\frac{1}{2}\partial^{\mu}\partial^{\nu}\Lambda}+\partial_{\mu}\partial_{\nu}\Lambda\brackets{\alpha\partial^{\nu}A^{\mu}-\frac{1}{2}\partial^{\mu}A^{\nu}}+\partial_{\mu}\partial_{\nu}\Lambda\brackets{\alpha\partial^{\nu}\partial^{\mu}\Lambda-\frac{1}{2}\partial^{\mu}\partial^{\nu}\Lambda}+\\
+         &+&\beta\brackets{\partial_{\mu}A^{\mu}\partial_{\nu}\partial^{\nu}\Lambda+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}A^{\nu}+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}\partial^{\nu}\Lambda}+\\
+         &+&\gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\brackets{\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}+\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda}
+    \end{array}
+\end{equation}
+Sabemos que ele tensor de Levi-Civita es antisimétrico y que a multiplicar un tensor simétrico por uno antisimétrico, estos se cancelan, por tanto, el último sumando se anulará si, o bien uno por uno son simétricos o la suma total da un tensor simétrico, vamos a verlo:\\
+-Sabemos que el tensor potencial electromagnético (o cuadripotencial electromagnético) viene dado por
+\begin{equation}
+    A^{\mu}=\vvector{\phi}{A^1}{A^2}{A^3}
+\end{equation}
+donde usando la métrica tenemos
+\begin{equation}
+    A_{\mu}=\eta^{\mu}_{\nu}A_{\nu}=\vvector{\phi}{-A_1}{-A_2}{-A_3}
+\end{equation}
+donde hemos usado la métrica $\eta^{\mu}_{\nu}=\rm{diag}(1,-1,-1,-1)$.
+
+Sabemos que para que un vector sea simétrico, al permutar sus índices, este debe permanecer invariante, por tanto, para un tensor de rango 4 debe cumplirse que
+\begin{equation}
+T_{\mu\nu\rho\lambda}=T_{\nu\mu\rho\lambda}=T_{\mu\rho\nu\lambda}=T_{\mu\nu\lambda\rho}=T_{\lambda\mu\nu\rho}=T_{\rho\lambda\nu\mu}
+\end{equation}
+Vemos que el primer sumando lo podemos escribir como
+\begin{equation}
+\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda=\covector{\frac{\partial A_0}{\partial x^{\mu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}{\frac{\partial A_1}{\partial x^{\mu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}{\frac{\partial A_2}{\partial x^{\mu}}\frac{\partial^2 \Lambda}{\partial x^{\rho}\partial^{\lambda}}}{\frac{\partial A_3}{\partial x^{\mu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial^{\lambda}}}
+\end{equation}
+Luego, si permutamos sus índices es claro ver que no se altera el tensor, por tanto este tensor es simétrico.\\
+Vemos el siguiente
+\begin{equation}
+    \partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}=\covector{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial A_0}{\partial x^{\rho}}}{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial A_1}{\partial x^{\rho}}}{\frac{\partial^2 \Lambda}{\partial x^{\mu}\partial^{\nu}}\frac{\partial A_2}{\partial x^{\rho}}}{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial^{\nu}}\frac{\partial A_3}{\partial x^{\rho}}}
+\end{equation}
+En este caso ocurre exactamente lo mismo que en el anterior, por tanto, este tensor también es simétrico.\\
+Por último queda,
+\begin{equation}
+    \partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda=\covector{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}{\frac{\partial^2\Lambda}{\partial x^{\mu}\partial x^{\nu}}\frac{\partial^2\Lambda}{\partial x^{\rho}\partial x^{\lambda}}}
+\end{equation}
+Aquí es incluso más directo ver que se trata de un tensor simétrico. Por tanto, tenemos que
+
+\begin{equation}
+    \gamma\Tilde{\epsilon}^{\mu\nu\rho\lambda}\brackets{\cancelto{0}{\partial_{\mu}A_{\nu}\partial_{\rho}\partial_{\lambda}\Lambda}+\cancelto{0}{\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}A_{\lambda}}+\cancelto{0}{\partial_{\mu}\partial_{\nu}\Lambda\partial_{\rho}\partial_{\lambda}\Lambda}}=0
+\end{equation}
+y por tanto, el parámetro $\gamma$ es un parámetro libre.\\ \\
+Seguimos con los demás parámetros,
+\begin{equation}
+    \begin{array}{rcl}
+        0 &=&\partial_{\mu}A_{\nu}\brackets{\alpha\partial^{\nu}\partial^{\mu}\Lambda-\frac{1}{2}\partial^{\mu}\partial^{\nu}\Lambda}+\partial_{\mu}\partial_{\nu}\Lambda\brackets{\alpha\partial^{\nu}A^{\mu}-\frac{1}{2}\partial^{\mu}A^{\nu}}+\partial_{\mu}\partial_{\nu}\Lambda\brackets{\alpha\partial^{\nu}\partial^{\mu}\Lambda-\frac{1}{2}\partial^{\mu}\partial^{\nu}\Lambda}+\\
+         &+&\beta\brackets{\partial_{\mu}A^{\mu}\partial_{\nu}\partial^{\nu}\Lambda+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}A^{\nu}+\partial_{\mu}\partial^{\mu}\Lambda\partial_{\nu}\partial^{\nu}\Lambda}
+    \end{array}
+\end{equation}
+Podemos ver que no hay términos cruzados en ninguna parte de la expresión que no sea el corchete que multiplica $\beta$, por tanto, debemos concluir que $\beta=0$. Además, como las derivadas cruzadas conmutan por el Teorema de Schwarz, y por tanto, para que el término que queda se anule, $\alpha=1/2$.\\ \\
+En conclusión, tenemos que $\alpha=1/2$, $\beta=0$ y $\gamma$ es un parámetro libre.
+
+\subsubsection*{Apartado (c)}
+
+La acción $\Tilde{S}$ queda invariante, pues la densidad Lagrangiana tilde lo es, pero ahora sí sabemos el valor de las constantes, así tenemos,
+
+\begin{equation}
+    \Tilde{S}=\int d^4x \brackets{-\frac{1}{2}\downmunu{\partial}{A}\upmunu{\partial}{A}+\frac{1}{2}\downmunu{\partial}{A}\upnumu{\partial}{A}+\gamma\epsilon^{\mu\nu\rho\lambda}\downmunu{\partial}{A}\partial_{\rho}A_{\lambda}}
+\end{equation}
+
+Las ecuaciones del movimiento vienen dadas por las ecuaciones de Euler-Lagrange, que son
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial x^{\mu}}-\frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial \dot{x}^{\mu}}\right)=0
+\end{equation}
+donde $x^{\mu}$ en nuestro caso será $A^{\phi}$, $\dot{x}^{\mu}$ será $\partial^{\sigma}A^{\phi}$ y $\frac{d}{dt}=\partial^{\sigma}$, pues el tensor potencial electromagnético es un campo escalar. Calculamos las derivadas,
+\begin{equation}
+\begin{array}{rl}
+    \mathcal{L}&=-\frac{1}{2}\downmunu{\partial}{A}\upmunu{\partial}{A}+\frac{1}{2}\downmunu{\partial}{A}\upnumu{\partial}{A}+\gamma\epsilon^{\mu\nu\rho\lambda}\downmunu{\partial}{A}\partial_{\rho}A_{\lambda}=\\
+    &=-\frac{1}{2}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\alpha}A^{\beta}\partial^{\mu}A^{\nu}+\frac{1}{2}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\alpha}A^{\beta}\partial^{\nu}A^{\mu}+\gamma\epsilon^{\mu\nu\rho\lambda}\eta^{\mu\alpha}\eta^{\nu\beta}\eta^{\rho\gamma}\eta^{\lambda\delta}\partial^{\alpha}A^{\beta}\partial^{\gamma}A^{\delta}
+    \end{array}
+\end{equation}
+\begin{equation}
+\begin{array}{rcl}
+    \frac{\partial\mathcal{L}}{\partial A^{\phi}} & = & 0 \\ \\
+    \frac{\partial\mathcal{L}}{\partial(\partial^{\sigma}A^{\phi})} & = & -\frac{1}{2}\delta_{\alpha}^{\sigma}\delta_{\beta}^{\phi}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\mu}A^{\nu}-\frac{1}{2}\delta_{\mu}^{\sigma}\delta_{\nu}^{\phi}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\alpha}A^{\beta}+\frac{1}{2}\delta_{\alpha}^{\sigma}\delta_{\beta}^{\phi}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\nu}A^{\mu}+\frac{1}{2}\delta_{\nu}^{\phi}\delta_{\mu}^{\sigma}\eta_{\mu\alpha}\eta_{\nu\beta}\partial^{\alpha}A^{\beta}+\\
+    &+&\gamma\epsilon^{\mu\nu\rho\lambda}\eta^{\mu\alpha}\eta^{\nu\beta}\eta^{\rho\gamma}\eta^{\lambda\delta}\brackets{\delta_{\alpha}^{\sigma}\delta_{\nu}^{\phi}\partial^{\rho}A^{\lambda}+\delta_{\rho}^{\sigma}\delta_{\lambda}^{\phi}\partial^{\mu}A^{\nu}}
+\end{array}
+\end{equation}
+Vemos que el término del tensor de Levi-Civita se anula, puesto que Levi-Civita se anula si dos o más índices son iguales y las deltas se anulan si los índices no son iguales, por lo que se anula sí o sí. Así tenemos,
+\begin{equation}
+    \begin{array}{rcl}
+    \frac{\partial\mathcal{L}}{\partial(\partial^{\sigma}A^{\phi})} & = & -\frac{1}{2}\eta_{\mu\sigma}\eta_{\nu\phi}\partial^{\mu}A^{\nu}-\frac{1}{2}\eta_{\sigma\alpha}\eta_{\phi\beta}\partial^{\alpha}A^{\beta}+\frac{1}{2}\eta_{\mu\sigma}\eta_{\nu\phi}\partial^{\nu}A^{\mu}+\frac{1}{2}\eta_{\sigma\alpha}\eta_{\phi\beta}\partial^{\alpha}A^{\beta}=\\
+    &=&-\frac{1}{2}\partial_{\sigma}A_{\phi}-\cancel{\frac{1}{2}\partial_{\sigma}A_{\phi}}+\frac{1}{2}\partial_{\phi}A_{\sigma}+\cancel{\frac{1}{2}\partial_{\phi}A_{\sigma}}=-\frac{1}{2}(\partial_{\sigma}A_{\phi}-\partial_{\phi}A_{\sigma})=-\frac{1}{2}F_{\sigma\phi}
+    \end{array}
+\end{equation}
+donde $F_{\sigma\phi}$ representa el tensor electromagnético.\\ \\
+Luego, tenemos que la ecuación del movimiento es,
+\begin{equation}
+    -\partial^{\sigma}\left(\frac{\partial\mathcal{L}}{\partial(\partial^{\sigma}A^{\phi})}\right)=\partial^{\sigma}\left(\frac{1}{2}F_{\sigma\phi}\right)=0\Longrightarrow F_{\sigma\phi}=\rm{cte}
+\end{equation}
+por tanto, decimos que $F_{\sigma\phi}$ es una constante del movimiento.
+
+\subsubsection*{Apartado (d)}
+
+Como usamos índices libres, vamos a usar $F_{\sigma\phi}\equiv F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$. La formulación habitual de las ecuaciones de Maxwell es en el vacío. Es decir, tenemos
+\begin{equation}
+    \begin{array}{lr}
+        (1)~~\vec{\nabla}\cdot\vec{E}=0 & (2)~~\vec{\nabla}\times\vec{B}-\frac{\partial\vec{E}}{\partial t}=0 \\ \\
+        (3)~~\vec{\nabla}\cdot\vec{B}=0 & (4)~~\vec{\nabla}\times\vec{E}+\frac{\partial\vec{B}}{\partial t}=0
+    \end{array}
+\end{equation}
+Definimos el tensor electromagnético $F^{\mu\nu}$ como
+\begin{equation}
+    \left\lbrace\begin{array}{l}
+         F^{0i}=E^{i}\\
+         F^{ij}=\epsilon^{ijk}B_k
+    \end{array}\right.\Longrightarrow F^{\mu\nu}=\begin{pmatrix}
+        0 & E^x & E^y & E^z\\
+        -E^x & 0 & B_z & -B_y\\
+        -E^y & -B_z & 0 & B_x\\
+        -E^z & B_y & -B_x & 0
+    \end{pmatrix}
+\end{equation}
+
+Por tanto, $F_{\mu\nu}=\eta_{\mu\alpha}\eta_{\nu\beta}F^{\alpha\beta}$, por tanto
+\begin{equation}
+    F_{\mu\nu}=\left\lbrace\begin{array}{l}
+         F_{0i}=E_i\\
+         F_{ij}=-\epsilon_{ijk}B^k
+    \end{array}\right.\Longrightarrow F_{\mu\nu}=\begin{pmatrix}
+        0 & -E_x & -E_y & -E_z\\
+        E_x & 0 & B^z & -B^y\\
+        E_y & -B^z & 0 & B^x\\
+          E_z & B^y & -B^x & 0
+    \end{pmatrix}
+\end{equation}
+Las ecuaciones del movimiento que tenemos es solo una, que es $\partial^{\mu}F_{\mu\nu}=0$
+\\
+Por tanto, tenemos que
+\begin{equation}
+    \begin{array}{rl}
+        \text{-Si }\nu=0\longrightarrow & \partial^{\mu}F_{\mu0}\overset{\curlybraces{F_{00}=0}}{=}\partial^{i}F_{i0}=-\partial^{i}F^{0i}=-\partial^{i}E_{i}=-\vec{\nabla}\cdot\vec{E}=0 \Rightarrow \vec{\nabla}\cdot\vec{E}=0~~\checkmark\\
+        \text{-Si }\nu=i\longrightarrow & \partial^{\mu}F_{\mu i}=\partial^0F_{0i}+\partial^{j}F_{ji}=\partial^0E_i-\partial^j\epsilon_{jik}B^k=\frac{\partial \vec{E}}{\partial t}+\epsilon_{ijk}\partial^jB^k=\\
+        &=\frac{\partial\vec{E}}{\partial t}-\vec{\nabla}\times\vec{B}=0\Rightarrow-\frac{\partial\vec{E}}{\partial t}+\vec{\nabla}\times\vec{B}=0~~\checkmark
+    \end{array}
+\end{equation}
+Como solo hemos obtenido una ecuación del movimiento, hemos podido obtener solo dos ecuaciones de Maxwell, que son la (1) y la (2). Para obtener las otras dos, deberemos utilizar una densidad Lagrangiana más general.\\ \\
+Vamos a ver ahora cuál es la expresión más general para la acción, que como hemos hecho en los apartados anteriores, vamos a trabajar con el densidad Lagrangiana, consideraremos $\gamma=0$, pues es arbitrario (en el último apartado razonamos por qué este término no influye en el densidad Lagrangiana):
+
+\begin{equation}
+    \begin{array}{rcl}
+          \mathcal{L}&=&-\frac{1}{2}\downmunu{\partial}{A}\upmunu{\partial}{A}+\frac{1}{2}\downmunu{\partial}{A}\upnumu{\partial}{A}=-\frac{1}{2}(\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu})
+    \end{array}
+\end{equation}
+Sabemos que $F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$, por tanto, como tenemos índices tanto abajo como arriba, podemos ver si se puede relacionar la densidad Lagrangiana con el producto $F_{\mu\nu}F^{\mu\nu}$, vamos a desarrollar este producto primero,
+\begin{equation}
+    \begin{array}{rcl}
+        F_{\mu\nu}F^{\mu\nu} & =&(\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu})(\partial^{\mu}A^{\nu}-\partial^{\nu}A^{\mu})= \\
+         & =& \partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu}+\partial_{\nu}A_{\mu}\partial^{\nu}A^{\mu}
+    \end{array}
+\end{equation}
+Vemos que el término $\partial_{\mu}A_{\nu}\partial^{\nu}A^{\mu}$ es antisimétrico respecto de $\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}$, porque tiene intercambiado dos índices y tiene un signo menos. Igual para los otros dos términos, y entonces, podemos reescribirlo como
+\begin{equation}
+    F_{\mu\nu}F^{\mu\nu}=\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}+\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu}=2(\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu})
+\end{equation}
+
+Comparando con la densidad Lagrangiana, vemos que
+
+\begin{equation}
+    \mathcal{L}=-\frac{1}{2}(\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu})\frac{2}{2}=-\frac{1}{4}2(\partial_{\mu}A_{\nu}\partial^{\mu}A^{\nu}-\partial_{\nu}A_{\mu}\partial^{\mu}A^{\nu})=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+\end{equation}
+
+
+Por tanto, tenemos que la densidad Lagrangiana en términos del tensor electromagnético queda
+\begin{equation}
+    \mathcal{L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+\end{equation}
+Entonces, la acción será
+\begin{equation}
+    \Tilde{S}=-\frac{1}{4}\int d^4x F_{\mu\nu}F^{\mu\nu}
+\end{equation}
+Además, si se quiere generalizar todavía más esta expresión, debemos añadirle el término de corrientes $J_{\mu}A^{\mu}$, quedando así la densidad Lagrangiana más general posible como,
+\begin{equation}
+    \mathcal{L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}+J_{\mu}A^{\mu}
+\end{equation}
+Entonces, la acción más general posible será
+\begin{equation}
+    \Tilde{S}=-\frac{1}{4}\int d^4x \left[F_{\mu\nu}F^{\mu\nu}+J_{\mu}A^{\mu}\right]
+\end{equation}
+
+\subsubsection*{Apartado (e)}    
+Vamos a considerar las ecuaciones de Maxwell de forma covariante en general que son
+\begin{equation}
+    \begin{array}{lc}
+        (1)& \partial_{\mu}F^{\mu\nu}=-J^{\nu}\\ \\
+        (2)& \epsilon^{\alpha\beta\gamma\delta}\partial_{\beta}F_{\gamma\delta}=0
+    \end{array}
+\end{equation}
+Comenzamos con la primera,
+\begin{equation}
+    \begin{array}{rcll}
+      (1)  &\partial'_{\mu}F'^{\mu\nu} & = & (\Lambda_{\mu}^{\alpha}\partial_{\alpha})(\Lambda_{\beta}^{\mu}\Lambda_{\gamma}^{\nu}F^{\beta\gamma})=\partial_{\alpha}F^{\beta\gamma}\delta_{\beta}^{\alpha}\Lambda_{\gamma}^{\nu}=\partial_{\alpha}F^{\alpha\gamma}\Lambda_{\gamma}^{\nu}=-J^{\gamma}\Lambda_{\gamma}^{\nu}=-J'^{\nu}~~\checkmark
+    \end{array}
+\end{equation}
+Vemos que la primera ecuación es covariante bajo el grupo de Lorentz. Vamos con la segunda,
+
+\begin{equation}
+    \begin{array}{rcll}
+        (2) & 0 &=\epsilon'^{\alpha\beta\gamma\delta}\partial'_{\beta}F'_{\gamma\delta}=(\epsilon^{\mu\nu\rho\lambda}\Lambda^{\alpha}_{\mu}\lambda^{\beta}_{\nu}\Lambda^{\gamma}_{\rho}\Lambda^{\delta}_{\lambda})(\Lambda_{\beta}^{\pi}\partial_{\pi})(\Lambda_{\gamma}^{\eta}\Lambda_{\delta}^{\Gamma}F_{\eta\Gamma})=\\
+        &  &= \epsilon^{\mu\nu\gamma\delta}\partial_{\pi}F_{\eta\Gamma}\Lambda_{\mu}^{\alpha}\delta_{\nu}^{\pi}\delta_{\rho}^{\eta}\delta_{\lambda}^{\Gamma}=\Lambda_{\mu}^{\alpha}(\cancelto{0}{\epsilon^{\mu\nu\gamma\lambda}\partial_{\nu}F_{\rho\lambda}})=0~~\checkmark
+    \end{array}
+\end{equation}
+Por lo que la segunda ecuación también es covariante bajo el grupo de Lorentz.
+
+\subsubsection*{Apartado (f)}
+
+Generalmente, los términos que no contribuyen a una densidad Lagrangiana son derivadas totales,
+\begin{equation}
+\mathcal{L}'=\mathcal{L}+\frac{dF(q_1,\dots,q_l;t)}{dt}\equiv\mathcal{L}+\partial_{\mu}(F(x^{\nu}))  
+\end{equation}
+Por lo que debemos ver que este término es una derivada total, $\epsilon^{\mu\nu\rho\lambda}\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}$, es decir, debemos ver que
+\begin{equation}
+    \epsilon^{\mu\nu\rho\lambda}\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}=\partial_{\mu}(\epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\rho}A_{\lambda})
+\end{equation}
+Por tanto, vamos a desarrollar el segundo término,
+
+\begin{equation}
+    \partial_{\mu}(\epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\rho}A_{\lambda})=\epsilon^{\mu\nu\rho\lambda}\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}+\epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\mu}\partial_{\rho}A_{\lambda}
+\end{equation}
+
+Vemos que el primer término es el término que tenemos, por lo que debemos ver que el segundo término sea cero, pero como las derivadas conmutan, podremos escribir la siguiente igualdad,
+
+\begin{equation}
+    \epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\mu}\partial_{\rho}A_{\lambda}=\epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\rho}\partial_{\mu}A_{\lambda}
+\end{equation}
+Por lo que tendríamos un tensor simétrico multiplicando a Levi-Civita, el cuál es antisimétrico y por tanto, este producto da cero, pues tensor simétrico por tensor antisimétrico es nulo el resultado. Así tenemos que
+
+\begin{equation}
+    \epsilon^{\mu\nu\rho\lambda}\partial_{\mu}A_{\nu}\partial_{\rho}A_{\lambda}=\partial_{\mu}(\epsilon^{\mu\nu\rho\lambda}A_{\nu}\partial_{\rho}A_{\lambda})
+\end{equation}
+siendo este término una derivada total, por lo que no aporta nada a la densidad Lagrangiana.
+
+\end{document}

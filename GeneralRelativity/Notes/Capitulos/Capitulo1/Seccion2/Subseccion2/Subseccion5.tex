@@ -1,0 +1,25 @@
+\subsection{Invariantes} % Main chapter title
+\label{cap1-sec2-subsec5} 
+
+Dado que los tensores suelen describirse en términos respecto de ciertas bases, cuando estos términos no dependen de la base empleada, los tensores se llamarán \textbf{invariantes}. O en otras palabras, los tensores que no se transforman frente a un cambio de base, serán los que llamaremos \textbf{invariantes}.\\ \\
+Vamos a intentar ilustrar este concepto definiendo un tensor invariante de tipo (1,1), denominado \textit{traza}, que es un invariante conocido de las matrices. Si tenemos un tensor $A=A_j^i\ptensor{e_i}{f^j}$ que definimos como
+\[\text{traza de }A=\rm{tr}A=A^i_i\]
+siendo la suma de los elementos de la diagonal principal de la matriz $(A^i_j)$. No es a priori evidente que hayamos definido algo que depende únicamente de $A$, ya que los $A_j^i$ dependen no solo de $A$ sino también de la base $\curlybraces{e_i}$. Para mostrar que $\rm{tr} A$ es un número determinado enteramente por $A$ mismo y no por los $e_i$ también, debemos demostrar la invariancia; es decir, si $A$ se expresa en términos de otra base ${\tilde{e}_i}$, entonces la fórmula correspondiente en los nuevos componentes da el mismo número que antes. Así, escribimos $A=\tilde{A}^i_j\ptensor{\tilde{e}_i}{\tilde{f}^j}=A^i_j\ptensor{e_i}{f^j}$ y veremos que $A^i_j=\tilde{A}^i_j$. Usando la misma notación de cambios de base que hemos visto en el apartado anterior, tenemos la ley de transformación siguiente,
+\[\tilde{A}^n_m=A^i_ja_m^jb_i^n\]
+de lo cual se obtiene
+\[\tilde{A}^i_i=A^p_ja^j_ib^i_p=A^p_j\delta^j_p=A^i_i\]
+Queda demostrado. Luego, tenemos la proposición,
+\begin{proposition}
+    La traza de un tensor de tipo (1,1) es un invariante.
+\end{proposition}
+Para ver que no todas las expresiones en términos de las componentes de un tensor necesariamente serán un invariante, veamos el siguiente ejemplo. 
+\begin{example}
+    Supongamos $d=2$ y $A=\ptensor{e_1}{e_1}+\ptensor{e_1}{e_2}$, un tensor de tipo (0,2). La expresión de $A_{ii}$ en este caso será $A_{11}+A_{22}$=1+0=1. Ahora consideramos una nueva base dada por $e_1=\tilde{e}_1+\tilde{e}_2$ y $e_2=\tilde{e}_2$, entonces
+    \[\begin{array}{rrl}
+        A & = & (\tilde{e}_1+\tilde{e}_2)\otimes(\tilde{e}_1+\tilde{e}_2)+(\tilde{e}_1+\tilde{e}_2)\otimes\tilde{e}_2 \\
+         & = & \tilde{e}_1\otimes\tilde{e}_1+2\tilde{e}_1\otimes\tilde{e}_2+\tilde{e}_2\otimes\tilde{e}_1+2\tilde{e}_2\otimes\tilde{e}_2
+    \end{array}\]
+    de la cuál se obtiene que $\tilde{A}_{ii}=\tilde{A}_{11}+\tilde{A}_{22}=1+2=3$. Por tanto es diferente a la base primera, luego no es un invariante.
+\end{example}
+\subsubsection*{Nota Final}
+    Finalmente diremos que un tensor es todo aquel objeto matemático que satisfaga los cambios de base, o en otras palabras: \textit{Un tensor es todo objeto matemático que transforma como un tensor}.

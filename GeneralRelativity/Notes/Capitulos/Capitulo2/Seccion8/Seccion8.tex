@@ -1,0 +1,69 @@
+%SECCION 5
+\section{Cinemática relativista} % Main chapter title
+\label{cap2-sec8} 
+Para tratar la cinemática de forma relativista, debemos formalizar los conceptos de la cinemática clásica en formulación covariante.
+\subsection{Vector cuadrivelocidad}
+Representa la velocidad espacio-temporal de una partícula puntual y se obtiene derivando respecto al tiempo propio de la partícula su cuadrivector, tal que
+\begin{equation}
+    u^{\mu}=\frac{dx^{\mu}}{d\tau}=\dot{x}^{\mu}
+\end{equation}
+Si estamos en el sistema de referencia comóvil de la partícula, entonces la cuadrivelocidad será $u^{\mu}=(c,0,0,0)$, pues en este sistema de referencia, la partícula se encuentra en reposo espacial relativo; no existe el reposo relativo temporal.\\ \\
+Si estamos en un SRI cualquiera donde la partícula se mueve a velocidad $\vec{v}=\frac{d\vec{x}}{dt}$, entonces la cuadrivelocidad será $u^{\mu}=\gamma(c,\vec{v})$, pues debemos reemplazar el $dt$ por $d\tau$, recordando que $dt=\gamma d\tau$.\\ \\
+Además, sabemos que el producto escalar es un invariante, por lo que usando el sistema de referencia comóvil de la partícula, obtenemos que $u^{\mu}u_{\mu}=-c^2$.
+\subsection{Vector cuadrimomento}
+Representa el momento espacio-temporal de una partícula, y se obtiene multiplicando la masa en reposo de la partícula por su cuadrivelocidad. Así,
+\[p^{\mu}=m_0u^{\mu}\Rightarrow\left\lbrace\begin{array}{l}
+      p^0=m_0\gamma c\Rightarrow E=cp^0=m_0\gamma c^2 \\
+     p^i=m_0\gamma v^i\Rightarrow \vec{p}=m_0\gamma\vec{v}
+\end{array}\right.\]
+Por tanto, el cuadrimomento es
+\begin{equation}
+    p^{\mu}=(E/c,p^1,p^2,p^3)
+\end{equation}
+Podemos calcular también el producto escalar de cuadrimomentos, tal que $p^{\mu}p_{\mu}=-m^2c^2$.
+\subsection{Vector cuadriaceleración}
+Representa la aceleración espacio-temporal de una partícula puntual. Se calcula derivando respecto al tiempo propio el vector cuadrivelocidad de la partícula, o derivando dos veces el cuadrivector de la partícula respecto al tiempo propio, tal que
+\[b^{\mu}=\frac{d^2x^{\mu}}{d\tau^2}=\frac{du^{\mu}}{d\tau}=\dot{u}^{\mu}=\Ddot{x}^{\mu}\]
+La cuadriaceleración de una partícula puntual que se mueve a velocidad $v$ y aceleración $a$ en un SRI cualquiera es,
+\begin{equation}
+    b^{\mu}=\left(\gamma^4\frac{\vec{v}\cdot\vec{a}}{d\tau^2},\gamma^4\frac{(\vec{v}\cdot\vec{a})\vec{v}}{c^2}+\gamma^2\vec{a}\right)
+\end{equation}
+donde $\vec{a}=\frac{d\vec{v}}{dt}$ y $\frac{d\gamma}{dt}=\gamma^3\frac{\vec{v}\cdot\vec{a}}{c^2}$.\\ \\
+Las propiedades de la cuadriaceleración son:
+\begin{enumerate}
+    \item $u^{\mu}b_{\mu}=0$
+    \item $b^{\mu}b_{\mu}=\gamma^4\left(\gamma^2\frac{\vec{a}\cdot\vec{v}}{c^2}+\vec{a}\cdot\vec{a}\right)\geq0$. Por tanto, esto implica que $b^{\mu}$ es de género espacio.
+\end{enumerate}
+\subsection{Derivación}
+Al igual que tenemos un gradiente tridimensional, podemos construir un gradiente cuadridimensional, tal que
+\begin{equation}
+    \partial_{\mu}f=f_{,\mu}=\frac{\partial f}{\partial x^{\mu}}=\left(\frac{1}{c}\frac{\partial f}{\partial t},\nabla f\right)
+\end{equation}
+siendo un vector covariante, por lo que podemos construir su versión contravariante, tal que
+\begin{equation}
+    \partial^{\mu}f=\eta^{\mu\nu}\partial_{\nu}f=\left(-1\frac{1}{c}\frac{\partial f}{\partial t},\nabla f\right)
+\end{equation}
+\subsection{Operador D'Alembertiano}
+Se define como el Laplaciano cuadridimensional, tal que
+\begin{equation}
+    \square f=\eta^{\mu\nu}\partial_{\mu}\partial_{\nu}f=-c^2\partial_t^2f+\nabla^2f
+\end{equation}
+Es invariante bajo transformaciones de Lorentz, pues si tenemos dos SRI $S'$ y $S$, los operadores D'Alembertianos de cada SRI cumplirán que $\square'=\square$.
+\subsection{Tensor de Levi-Civita}
+Es un tensor totalmente antisimétrico. se define como,
+\begin{equation}
+    \mathscr{E}^{\mu\nu\rho\sigma}=\left\lbrace\begin{array}{ll}
+        +1 &\text{si }\mu\neq\nu\neq\rho\neq\sigma \text{y la perturbación es par} \\
+        -1 & \text{si }\mu\neq\nu\neq\rho\neq\sigma \text{y la perturbación es imppar}\\
+        0 & \text{en otro caso}
+    \end{array}\right.
+\end{equation}
+Este tensor cumple que,
+\begin{enumerate}
+    \item $\mathscr{E}_{0123}=-\mathscr{E}^{0123}$.
+    \item $\mathscr{E}^{\mu\nu\rho\sigma}\mathscr{E}_{\mu\nu\rho\sigma}=-4!$.
+    \item $\mathscr{E}^{\mu\nu\rho\sigma}\mathscr{E}_{\mu\nu\rho\gamma}=-3!\delta_{\gamma}^{\sigma}$.
+    \item $\mathscr{E}^{\mu\nu\rho\sigma}\mathscr{E}_{\alpha\beta\rho\sigma}=-2!\delta_{\mu}^{[\alpha}\delta_{\beta]}^{\nu}$.
+    \item $\mathscr{E}^{\mu\nu\sigma\rho}\mathscr{E}_{\alpha\beta\gamma\rho}=-1!\delta_{[\alpha}^{\mu}\delta_{\beta}^{\nu}\delta_{\gamma]}^{\sigma}$.
+    \item $\mathscr{E}^{\mu\nu\sigma\rho}\mathscr{E}_{\alpha\beta\gamma\delta}=\delta_{[\alpha}^{\mu}\delta_{\beta}^{\nu}\delta_{\gamma}^{\sigma}\delta_{\delta]}^{\rho}$.
+\end{enumerate}

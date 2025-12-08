@@ -1,0 +1,131 @@
+\subsection{Leyes de transformación} % Main chapter title
+\label{cap1-sec2-subsec4} 
+Las leyes de transformación, también se conocen como \textit{cambios de bases} o \textit{cambios de variables}. Vamos a ver cómo son estos cambios de base en los tensores, pero primero veremos los casos particulares de \textbf{vectores}, \textbf{formas} y \textbf{tensores de tipo (1,1)}.
+
+\subsubsection*{Cambio de base de vectores }
+Queremos construir una matriz que nos permita cambiar las coordenadas de un vector en una base por las coordenadas del mismo vector en otra base, donde tomamos la función identidad. \\
+
+\noindent Sea un espacio vectorial $V$ con bases $B=\curlybraces{v_1,\dots,v_n}$ y $\tilde{B}=\curlybraces{\tilde{v}_1,\dots \tilde{v}_n}$. Consideramos un vector $w\in V$, que podemos escribir en ambas bases como,
+\[w=x^1v_1+\dots x^nv_n\]
+\[w=\tilde{x}^1\tilde{v}_1+\dots \tilde{x}_n\tilde{v}^n\]
+Como el vector es el mismo, podemos igualar ambas expresiones,
+\[x^1v_1+\dots x^nv_n=\tilde{x}^1\tilde{v}_1+\dots \tilde{x}^n\tilde{v}_n\]
+o bien,
+\[x^iv_i=\tilde{x}^{i}\tilde{v}_i\]
+Expresando los elementos de la base $B$ en función de los de la base $B'$ tenemos,
+
+\[\left\lbrace\begin{matrix}
+    v_1=a^{1}_1\tilde{v}_1+\dots a^{n}_1\tilde{v}_{n}\\
+    v_2=a^{1}_2\tilde{v}_1+\dots a^{n}_2\tilde{v}_{n}\\
+    \vdots \\
+    v_n=a^{1}_n\tilde{v}_1+\dots a^{n}_n\tilde{v}_{n}
+\end{matrix}\right.\]
+o bien,
+\[v_i=a_i^j\tilde{v}_j\]
+donde hemos agrupado las constantes en los diferentes $a^{j}_i$.\\
+Sustituyendo,
+
+\[\begin{array}{rrl}
+  x^1v_1+\dots x^nv_n  & = & x^1a^{1}_1\tilde{v}_1+\dots+x^1a^{n}_1\tilde{v}_n+\dots+x^na^{1}_n\tilde{v}_1+\dots+x^na^{n}_n\tilde{v}_n=\\
+     & = & (x^1a^{1}_1+\dots+x^na^{1}_n)\tilde{v}_1 +\dots (x^1a^{n}_1+\dots+x^na^{n}_n)\tilde{v}_n=\\
+     & = & \tilde{x}^1\tilde{v}_1+\dots \tilde{x}^n\tilde{v}_n
+\end{array}\]
+Luego, lo que acompaña a cada vector deberá ser igual, es decir,
+\[\left\lbrace\begin{matrix}
+    \tilde{x}^1=x^1a^{1}_1+\dots+x^na^{1}_n\\
+    \vdots \\
+    \tilde{x}^n=x^1a^{n}_1+\dots+x^na^{n}_n
+\end{matrix}\right.\]
+o escrito en forma matricial como,
+\[\begin{pmatrix}
+    \tilde{x}^1\\
+    \vdots \\
+    \tilde{x}^n
+\end{pmatrix}=\begin{pmatrix}
+    a^{1}_1 & \dots & a^{n}_1\\
+    \vdots & \ddots & \vdots \\
+    a^{1}_n & \dots & a^{n}_n
+\end{pmatrix}\begin{pmatrix}
+    x^1\\
+    \vdots \\
+    x^n
+\end{pmatrix}\]
+donde la matriz
+ \[a^{j}_i=\begin{pmatrix}
+    a^{1}_1 & \dots & a^{n}_1\\
+    \vdots & \ddots & \vdots \\
+    a^{n}_1 & \dots & a^{n}_n
+\end{pmatrix}\]
+es la denominada \textbf{matriz de cambio de base de B en B'}, pues estamos transformando las coordenadas del vector $w$ en la base $B$, que son $w=(x^1,\dots,x^n)$, en las coordenadas en la base $B'$, que son $w=(\tilde{x}^1,\dots \tilde{x}^n)$.\\ \\
+\noindent Este caso lo hemos hecho detallando los pasos a seguir. Los siguientes cambios de base lo haremos con notación de Einstein.
+\subsubsection*{Cambio de base de formas}
+Vamos a usar ahora notación de Einstein para simplificar la notación.\\
+Sea $V^*$ el espacio dual de u espacio vectorial $V$, con bases duales $B^*=\curlybraces{f^1,\dots,f^n}$ y\\ $\tilde{B}^{*}=\curlybraces{\tilde{f}^{1},\dots,\tilde{f}^{n}}$. Consideremos un elemento $g\in V^*$, que podemos escribir en amabas bases como,
+\[g=x_if^i\]
+\[g=\tilde{x}_i\tilde{f}^{i}\]
+que podemos igualar,
+\[x_if^i=\tilde{x}_i\tilde{f}^{i}\]
+Expresando los elementos de la base $B^*$ en función de los de la base $B^{*'}$ tenemos,
+\[\left\lbrace\begin{matrix}
+    f^i=b_{j}^i\tilde{f}^{j}
+\end{matrix}\right.\]
+Sustituyendo,
+\[x_if^i=x_ib_{j}^i\tilde{f}^{j}=\tilde{x}_i\tilde{f}^{i}\]
+\noindent Luego, lo que acompaña a cada vector deberá ser igual, es decir,
+\[\left\lbrace
+\tilde{x}_i=\sum\limits_ja_{i}^jx_j\equiv b_{i}^jx_j
+\right.\]
+\noindent o escrito en forma matricial como,
+\[\begin{pmatrix}
+    \tilde{x}_1\\
+    \vdots \\
+    \tilde{x}_n
+\end{pmatrix}=\begin{pmatrix}
+    b_{1}^1 & \dots & b_{n}^1\\
+    \vdots & \ddots & \vdots \\
+    b_{1}^n & \dots & b_{n}^n
+\end{pmatrix}=\begin{pmatrix}
+    x_1\\
+    \vdots \\
+    x_n
+\end{pmatrix}\]
+donde la matriz
+ \[b_{j}^i=\begin{pmatrix}
+    b_{1}^1 & \dots & b_{n}^1\\
+    \vdots & \ddots & \vdots \\
+    b_{1}^n & \dots & b_{n}^n
+\end{pmatrix}\]
+es la denominada \textbf{matriz de cambio de base de} $\mathbf{B^*}$\textbf{ en }$\mathbf{B'}$, pues estamos transformando las coordenadas de la aplicación lineal $g$ en la base $B^*$, que son $\curlybraces{x_i}$, en las coordenadas en la base $B^{*'}$, que son $\curlybraces{\tilde{x}_i}$.
+\begin{remark}
+   \noindent Sabemos que por la condición de base dual tenemos,
+    \[f^i(v_j)=\delta_i^j,\hspace{5mm}\tilde{f}^i(\tilde{v}_j)=\delta^j_i\]
+   \noindent Luego, 
+    \[\begin{array}{rl}
+         \delta^j_i & =f^i(v_j)=f^i(a_j^k\tilde{v}_k)=a_j^kf^i(\tilde{v}_k)=a_j^k(b_l^i\tilde{f}^l)(\tilde{v}_k)  \\
+         & =a_j^kb_l^i\tilde{f}^l(\tilde{v}_k)=a_j^kb_l^i\delta_k^l=a_j^kb_k^i
+    \end{array}\]
+   \noindent Por tanto, tenemos que $a_j^kb_k^i=\delta_i^j$, luego, podemos decir que una es la inversa de la otra.
+\end{remark}
+
+\subsubsection*{Cambio de base en tensores de tipo (1,1)\label{CambioBasesTensores(1,1)}}
+Tomando los espacios vectoriales y bases anteriores. Sea $\Omega^{1,1}(V)$ un espacio vectorial con bases $B^{1,1}=\curlybraces{\ptensor{v_{i}}{f^{j}}}$ y $\tilde{B}^{1,1}=\curlybraces{\ptensor{\tilde{v}_{l}}{\tilde{f}^{k}}}$. Tomando un elemento $w\in\Omega^{1,1}(V)$ que lo escribimos en función de ambas bases,
+\[w=w^i_jv_{i}\otimes f^{j}\]
+\[w=\tilde{w}_l^k\ptensor{\tilde{v}_{l}}{\tilde{f}^{k}}\]
+
+\noindent Vamos a partir de las matrices anteriores, tal que
+
+\[w^i_j\ptensor{v_i}{f^j}=w^i_j(a_i^r\tilde{v}_r)\otimes (b_l^i\tilde{f}^l)=w^i_j(a_i^rb_l^j)\ptensor{\tilde{v}_r}{\tilde{f}^l}\]
+
+\noindent Luego, si anulamos el $w^i_j$, tenemos
+
+\[\ptensor{v_i}{f^j}=(a_i^rb_l^j)\ptensor{\tilde{v_r}}{\tilde{f^l}}\equiv w_j^i=(a_i^rb_l^j)\tilde{w}_l^r\]
+
+\noindent donde $a^{r}_i$ y $b_{l}^j$ son matrices de cambio de base, tanto de vectores como de formas y $A\equiv a^{r}_ib_{k}^j$ será \textbf{la matriz de cambio de base de los tensores de tipo (1,1)}.
+
+\subsubsection*{Cambio de base en tensores de tipo (r,s)}
+
+Tomando los espacios y bases anteriores. Sea $\Omega^{r,s}(V)$ un espacio vectorial, con bases $B^{r,s}=\curlybraces{v_{i_1}\otimes\dots\otimes v_{i_r}\otimes f^{j_1}\otimes\dots\otimes f^{j_s}}$ y $\Tilde{B}^{r,s}=\curlybraces{\tilde{v}_{l_1}\otimes\dots\otimes \tilde{v}_{l_r}\otimes \tilde{f}^{k_1}\otimes\dots\otimes \tilde{f}^{k_s}}$. Repitiendo todo lo anterior, podemos ponerlo en forma general, tal que
+
+\[\Tilde{\Omega}^{j_1,\dots,j_s}_{i_1,\dots,i_k}=\Omega^{l_1,\dots,l_s}_{r_1,\dots,r_k}a^{j_1}_{l_1}a^{j_2}_{l_2}\dots a^{j_s}_{l_s}b^{r_1}_{i_1}b^{r_2}_{i_2}\dots b^{r_k}_{i_k}\]
+
+\noindent donde $M\equiv a^{j_1}_{l_1}a^{j_2}_{l_2}\dots a^{j_s}_{l_s}b^{r_1}_{i_1}b^{r_2}_{i_2}\dots b^{r_k}_{i_k}$ es la \textbf{matriz de cambio de base de los tensores de tipo (r,s)}.

@@ -1,0 +1,174 @@
+%SECCION 3
+\section{Variedad diferenciable} % Main chapter title
+\label{cap3-sec4} 
+%------------------------------------------------------------------------------
+Una variedad diferenciable es un conjunto de puntos de dimensión $n$ que localmente se parecen a $\mathbb{R}^n$.
+\subsection{Definiciones}
+\begin{definition}
+    Un espacio topológico es un conjunto de puntos y sus entornos.
+\end{definition}
+\begin{definition}
+    Un espacio topológico es de tipo Haussdorff si todo par de puntos poseen entornos abiertos disjuntos.
+\end{definition}
+Esto nos da una noción de 'separación' entre puntos.
+\begin{definition}
+    Un homeomorfismo (cartas coordenadas) es un aplicación entre dos espacios topológicos, tal que ella y su inversa son biyecciones continuas, es decir, mapean abiertos en abiertos.
+\end{definition}
+\begin{definition}
+    Una variedad topológica es un espacio topológico de tipo Haussdorff, tal que cada punto tiene un entorno abierto hoeomorfo a un abierto de $\mathbb{R}^n$. La denotaremos por $\mathscr{M}$.
+\end{definition}
+\begin{definition}
+    Una carta (o sistema de coordenadas) es una dupla $(U,\phi)$, que viene dada por un abierto $U\subset\mathscr{M}$ y un homeomorfismo 
+    \[\phi:u\to\phi(u)\in\mathbb{R}^n\]
+    que mapea un entorno abierto $u\in U$ a $\mathbb{R}^n$.
+\end{definition}
+\begin{definition}
+    Un atlas $\mathscr{C}^{\infty}$ es un conjunto de cartas $(U_{\alpha},\phi_{\alpha})$ que cumplen:
+    \begin{itemize}
+        \item Cubren todo $\mathscr{M}$, es decir, $\mathscr{M}=\bigcup_{\alpha}U_{\alpha}$.
+        \item Las cartas deben ser compatibles, es decir, si consideramos dos abiertos $U_{\alpha}$, $U_{\beta}$ tal que $U_{\alpha}\cap U_{\beta}\neq\emptyset$, entonces la función de transición entre ambas cartas viene dada por
+        \[F=\phi_{\alpha}\circ\phi_{\beta}^{-1}=\phi_{\alpha}\left(\phi_{\beta}^{-1}\right)\]
+        tal que
+        \[F:\phi_{\beta}\left(U_{\alpha}\cap\phi_{\beta}\right)\to\phi_{\alpha}\left(U_{\alpha}\cup U_{\beta}\right)\]
+        siendo $F$ una función $\mathscr{C}^{\infty}$ entre abiertos de $\mathbb{R}^n$.
+    \end{itemize}
+\end{definition}
+Además, $\mathscr{M}$ tiene dimensión $n$, es decir, $p\in\mathscr{M}$ es una colección de $n$ números reales.
+\begin{definition}
+    Una variedad diferenciable es $\mathscr{C}^{\infty}$ (suave) si es una variedad topológica con un atlas $\mathscr{C}^{\infty}$.
+\end{definition}
+Veamos de forma visual cómo actúan todas estas cosas,
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Capitulos/Capitulo3/Seccion3/IMG_0127[1].JPG}
+    \captionof{figure}{Esquema visual de cómo actúan los homeomorfismos sobre variedades.}
+    \label{fig3.1}
+\end{Figura}
+\begin{note}
+    Las aplicaciones $\phi_{\alpha}$ pueden no ser $\mathscr{C}^{\infty}$ (solo continuas), pero $F=\phi_{\alpha}\circ\phi_{\beta}^{-1}$ sí debe ser $\mathscr{C}^{\infty}$.
+\end{note}
+Denotaremos por $x^{\mu}$ a las coordenadas de un punto $p\in\mathscr{M}$ definidas por $\phi_{\alpha}(p)$, es decir, $x^{\mu}\equiv\phi^{\mu}(p)$.
+\begin{definition}
+    Una variedad es orientable si y solo si admite un atlas, tal que para cada par de abiertos $U_{\alpha}$ y $U_{\beta}$ no disjuntos, el Jacobiano entre coordenadas sea positivo,
+    \[\det\left(\frac{\partial x_{\alpha}}{\partial x_{\beta}}\right)>0\]
+\end{definition}
+Si la variedad tiene una frontera $\partial\mathscr{M}$, entonces sustituimos el mapeo a $\mathbb{R}^n$ por el mapeo a $\frac{1}{2}\mathbb{R}^n$, siendo
+\[\frac{1}{2}\mathbb{R}^n=\curlybraces{x\in\mathbb{R}^n|x'\leq0}\]
+de $(n-1)$-dimensión.
+\subsection{Transformaciones de coordenadas}
+Definimos las transformaciones de coordenadas como
+\[x'=\phi'\circ\phi^{-1}(x)\]
+donde $\phi$ puede ser un escalar, un vector, un campo vectorial, una uno-forma o un tensor. Veamos cada uno de ellos:
+\subsubsection{Escalares}
+Sea una función cualquiera $f:\mathscr{M}\to\mathbb{R}$, esta induce a $\Tilde{f}:\mathbb{R}^n\to\mathbb{R}$ mediante la regla
+\[\Tilde{f}(x)=(f\circ\phi^{-1})(x)=f(\phi^{-1}(x))\]
+Diremos que $f$ es suave o $\mathscr{C}^{\infty}$, si $\Tilde{f}=f\circ\phi^{-1}$ lo es.
+\begin{proposition}
+    Si tenemos $(U,\phi)$ y $(U',\phi')$, tal que $U$ y $U'$ son disjuntos, entonces se tiene que
+    \[\Tilde{f}(x')=\Tilde{f}(x)\]
+    en $p\in U\cap U'$. Esta es la regla de transformación de los escalares.
+\end{proposition}
+En adelante vamos a referirnos a $\Tilde{f}$ como $f$ y llamaremos $F_{\mathscr{M}}$ al conjunto de funciones $\mathscr{C}^{\infty}$ sobre $\mathscr{M}$.
+\subsubsection{Vectores}
+Como las variedades $\mathscr{M}$ no son espacios vectoriales, no podemos definir vectores aquí. Entonces, lo que hacemos es definir el espacio tangente $T_p$ en un punto $p\in\mathscr{M}$, definiéndose punto a punto. Consideramos para ello el conjunto de curvas $\gamma(t)$ que pasan por $p$, es decir,
+\[\gamma(t):\mathbb{R}\to\mathscr{M}\]
+tal que $\gamma(t=t_0)=p$.\\ \\
+Consideramos una función $f$ arbitraria de $F_{\mathscr{M}}$ y calculamos,
+\[\frac{d}{dt}\left.\left(f\circ\gamma(t)\right)\right|_{t=t_0}=\frac{d}{dt}\left.\left(\overbrace{\underbrace{(f\circ\phi^{-1})}_{f(x)}}^{\mathbb{R}^n\to\mathbb{R}}\circ\overbrace{(\underbrace{\phi\circ\gamma(t)}_{\gamma^{\mu}(t)})}^{\mathbb{R}\to\mathbb{R}^n}\right)\right|_{t=t_0}=\]
+\[=\frac{d}{dt}\left.\left(f(x)\circ\gamma^{\mu}(t)\right)\right|_{t=t_0}=\frac{d\gamma^{\mu}}{dt}\left.\frac{\partial f}{\partial x^{\mu}}\right|_{t=t_0}\equiv \vec{v}_{\gamma}(f)|_{t=t_0}\]
+donde $\vec{v}_{\gamma}(f)|_{t=t_0}$ se define como un vector que vive en el espacio tangente (espacio vectorial)0 de un punto $p\in\mathscr{M}$.\\ \\
+Podemos interpretar $\dot{\gamma}_{\mu}$ como las coordenadas del vector $\vec{v}_{\gamma}$, es decir,
+\[v_{\gamma}^{\mu}=\dot{\gamma}^{\mu}\]
+y además, $\partial_{\mu}$ se interpreta como una base coordenada de vectores, es decir, $\partial_{\mu}\equiv\vec{e}_{\mu}$, ya que $f$ es arbitraria.
+\\ \\
+La notación que usaremos para los vectores, $\vec{v}:F_{\mathscr{M}}\to\mathbb{R}$, será $\vec{v}=v^{\mu}\vec{e}_{\mu}$ en $T_p$; diremos que son vectores contravariantes.\\ \\
+La transformación de vectores se realizará usando dos bases coordenadas $\curlybraces{\vec{e}_{\mu}}$ y $\curlybraces{\vec{e}'_{\mu}}$ asociadas a las coordenadas $x^{\mu}$ y $x^{'\mu}$, por lo que aplicando el Jacobiano tendremos
+\begin{equation}
+    \vec{e}'_{\mu}=\frac{\partial x^{\mu}}{\partial x^{'\nu}}=\vec{e}_{\nu}\Longrightarrow v^{'\mu}=\frac{\partial x^{'\mu}}{\partial x^{\nu}}v^{\nu}
+\end{equation}
+siendo esta la transformación de vectores. Además, los vectores de $T_p$ satisfacen:
+\begin{enumerate}
+    \item $\vec{v}(\alpha f+\beta g)=\alpha\vec{v}(f)+\beta\vec{v}(g);\hspace{2mm}\forall f,g\in F_{\mathscr{M}},\forall\alpha,\beta\in\mathbb{R}$.
+    \item La regla de Leibtniz:
+    \[\vec{v}(fg)=g\vec{v}(f)+f\vec{v}(g);\hspace{2mm}\forall f,g\in F_{\mathbb{M}}\]
+\end{enumerate}
+\subsubsection{Campo vectorial en la variedad}
+Un campo vectorial en $\mathscr{M}$ es una asignación de un vector $v\in T_p$ en cada punto $p\in\mathscr{M}$, tal que sus componentes en cualquier base coordenada sean suaves $(\mathscr{C}^{\infty})$.\\ \\
+El conmutador, o corchete de Lie, se define como
+\[\brackets{\vec{v},\vec{w}}=\vec{v}\circ\vec{w}-\vec{w}\circ\vec{v}=v^{\mu}(\partial_{\mu}w^{\nu})\partial_{\nu}-w^{\mu}(\partial_{\mu}v^{\nu})\partial_{\nu}\]
+donde $\brackets{\vec{v},\vec{w}}=\vec{u}$, tal que $u^{\mu}=v^{\nu}\partial_{\nu}w^{\mu}-w^{\nu}\partial_{\nu}v^{\mu}$.\\ \\
+Sus propiedades son:
+\begin{enumerate}
+    \item Antisimetría:
+    \[\brackets{\vec{v},\vec{w}}=-\brackets{\vec{w},\vec{v}}\]
+    \item Identidad de Jacobi:
+    \[\brackets{\vec{u},\brackets{\vec{v},\vec{w}}}+\brackets{\vec{v},\brackets{\vec{w},\vec{u}}}+\brackets{\vec{w},\brackets{\vec{u},\vec{v}}}=0\]
+    \item Para una base coordenada, $\brackets{\vec{e}_{\mu},\vec{e}_{\nu}}=0$.
+    \item Para una base no coordenada, $\brackets{\vec{e}_{\mu},\vec{e}_{\nu}}\neq0$
+\end{enumerate}
+\begin{proposition}
+    Sea $\curlybraces{\vec{e}_{\mu}}$ un base coordenada, entonces su transformación
+    \[\vec{e}'_{\mu}=\frac{\partial x^{\nu}}{\partial x^{'\mu}}\vec{e}_{\nu}\]
+    también es una base coordenada.
+\end{proposition}
+Denotaremos las bases coordenadas con índices latinos, es decir, usaremos $\vec{e}_{a}$, con $\vec{v}=v^a\vec{e}_a$, y nos referiremos a $v^a$ y $\vec{v}$ indistintamente.
+\subsubsection{Uno-formas}
+Las uno-formas son aplicaciones lineales reales en $T_p$, tal que
+\[\vec{f}:T_p\to\mathbb{R}\]
+donde el producto escalar $<\vec{f},\vec{v}>\in\mathbb{R}$ con $\vec{v}\in T_p$.\\ \\
+Dada una base coordenada $\curlybraces{\vec{e}_a}$ en $T_p$, existe un único conjunto de uno-formas $\curlybraces{\vec{e}^a}$ que cumplen $<\vec{e}^a,\vec{e}_b>=\delta_b^a$, donde $\delta_b^a$ es la delta de Kronecker. Diremos que $\curlybraces{\vec{e}^a}$ es una base dual de $T_p^*$, que el espacio dual tangente a $p\in\mathscr{M}$, también llamado \textbf{espacio cotangente}.\\ \\
+Dados $\vec{v}=v^a\vec{e}_a$ y $\vec{f}=f_a\vec{e}^a$, entonces $<\vec{f},\vec{v}>=f_av^a$, por tanto, el producto escalar de vectores con uno-formas se puede interpretar como una contracción de índices.\\ \\
+Además, diremos que $f_a$ son las componentes de un vector covariante.\\ \\
+Dada una función $f:\mathscr{M}\to p$, podemos construir una uno-forma de la siguiente manera:\\ 
+-Dado un $\vec{v}$,
+\[\vec{v}(f)=v^{\mu}\partial_{\mu}f=v^{\mu}\delta_{\mu}^{\nu}\partial_{\nu}f=v^{\mu}\partial_{\nu}f<\vec{e}^{\nu},\vec{e}_{\mu}>=<\partial_{\nu}f\vec{e}^{\nu},v^{\mu}\vec{e}_{\mu}>=d\vec{f},\vec{v}<>\]
+por tanto,
+
+\[d\vec{f}=\partial_{\mu}f\vec{e}^{\mu}=\partial_{\mu}fdx^{\mu}\]
+De tal forma que $<dx^{\mu},\partial_{\nu}>=\delta_{\nu}^{\mu}$. Por tanto, las uno-formas transforman como
+\begin{equation}
+\vec{e}^{'\mu}=\frac{\partial x^{'\mu}}{\partial x^{\nu}}\vec{e}^{\nu}\Longrightarrow f'_{\mu}=\frac{\partial x^{\nu}}{\partial x^{'\mu}}f_{\nu}
+\end{equation}
+\subsubsection{Tensores}
+Un tensor es una aplicación multilineal real de tipo $(r,s)$, denotada como $T_{\mu_1\mu_2\dots\mu_r}^{\nu_1\nu_2\dots\nu_s}$ que actúa como,
+\[T(\vec{v}_1,\vec{v}_2,\dots,\vec{f}_1,\vec{f}_2,\dots)=T_{\mu_1\mu_2\dots}^{\nu_1\nu_2\dots}v_1^{\mu_1}v_2^{\mu_2}\dots f_{1\nu_1}f_{2\nu_2}\dots\]
+Los tensores transforman bien bajo transformaciones de coordenadas.\\ \\
+Dos tensores del mismo rango se pueden sumar (multiplicación por escalares).
+\begin{definition}
+    Definimos la parte simétrica de un tensor de rango 2 como
+    \[T_{(\mu\nu)}=\frac{1}{2}(T_{\mu\nu}+T_{\nu\mu})\]
+\end{definition}
+\begin{definition}
+    Definimos la parte antisimétrica de un tensor de rango 2 como
+    \[T_{[\mu\nu]}=\frac{1}{2}(T_{\mu\nu}-T_{\nu\mu})\]
+\end{definition}
+Podemos cambiar el carácter tensorial, realizando una multiplicación tensorial o haciendo una contracción de índices.
+\begin{example}
+    Dados $R_{\mu\nu}$ y $T_{\mu\nu}$, podemos construir $R\otimes T\to R_{\mu\nu}T_{\sigma\rho}\equiv G_{\mu\nu\sigma\rho}$, siendo el producto tensorial
+\end{example}
+\begin{example}
+    Dados $T_{\mu\nu}$ y $v^{\mu}$, podemos definir $T_{\mu\nu}v^{\nu}=h_{\mu}$, siendo una contracción de índices.
+\end{example}
+\textbf{Tensor métrico}\\ \\
+Definimos el tensor métrico como la distancia cuadrática infinitesimal al desplazarnos en una dirección. Será por tanto un tensor de rango $(0,2)$, pues es cuadrática, y además asumimos que es un tensor simétrico.\\ \\
+En una base coordenada, las componentes del tensor métrico son
+\[g_{\mu\nu}=g(\vec{e}_{\mu},\vec{e}_{\nu})\]
+También lo escribiremos como
+\[ds^2=g_{\mu\nu}dx^{\mu}dx^{\nu}\]
+donde $ds^2$ es el elemento de línea.\\ \\
+Definimos la norma de un vector como
+\[|\vec{v}|=\sqrt{|g_{\mu\nu}v^{\mu}v^{\nu}|}\]
+Definimos el ángulo entre dos vectores $\vec{v}$ y $\vec{w}$ como
+\[\cos\theta=\frac{g_{\mu\nu}v^{\mu}w^{\nu}}{\sqrt{|g_{\mu\nu}v^{\mu}v^{\nu}|}\sqrt{|g_{\mu\nu}w^{\mu}v^{\nu}|}}\]
+con $|\vec{v}|\neq0$ y $|\vec{w}|\neq0$.\\ \\
+Diremos que $g_{\mu\nu}$ es una métrica \textbf{degenerada} en un punto $p$ si es una matriz singular en cualquier base coordenada $\curlybraces{\vec{e}_{\mu}}$, es decir, que su determinante es igual a cero. En caso contrario, existirá un tensor de rango $(2,0)$ que cumple que $g^{\mu\nu}g_{\nu\rho}=\delta_{\rho}^{\mu}$. Es decir, $g^{\mu\nu}$ es la \textbf{inversa} de $g_{\mu\nu}$.\\ \\
+La métrica (y su inversa) nos permiten 'subir' y 'bajar' índices, por tanto podremos transformar vectores en uno-formas, $v_{\mu}=g_{\mu\nu}v^{\nu}$, y viceversa, $f^{\mu}=g^{\mu\nu}f_{\nu}$.\\ \\
+\textbf{Signatura}\\ \\
+La signatura de la métrica se obtiene diagonalizando la matriz $g_{\mu\nu}$. Si la signatura es del tipo $(++++)$, diremos que es una métrica riemanniana; si es del tipo $(-+++)$, diremos que es lorentziana. \\ \\
+Las métricas físicas son lorentzianas e introducen una estructura casual, tal que
+\begin{itemize}
+    \item Si $v^{\mu}v^{\nu}g_{\mu\nu}>0$, entonces $v^{\mu}$ es un vector tipo espacial.
+    \item Si $v^{\mu}v^{\nu}g_{\mu\nu}<0$, entonces $v^{\mu}$ es un vector tipo temporal.
+    \item Si $v^{\mu}v^{\nu}g_{\mu\nu}=0$, entonces $v^{\mu}$ es un vector tipo luz o nulo.
+\end{itemize}
+También existe la métrica lorentziana $(+---)$ que se usa en física de partículas relativista, donde la estructura casual se invierte, es decir, el vector espacial pasa a temporal y viceversa.

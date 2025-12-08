@@ -1,0 +1,24 @@
+\section{Energía de una onda gravitacional. Formalismo de Bondi} % Main chapter title
+\label{cap5-sec4}
+Este formalismo se desarrolla para explicar cómo es la energía de una onda gravitacional. Esta energía se denomina \textit{potencia radiada} en ondas gravitacionales.\\ \\
+Debemos calcular el tensor de energía-impulso $T_{\mu\nu}$ para ondas gravitacionales. Vamos a construir el tensor en el límite de campo débil, es decir,
+\[g_{\mu\nu}=\eta_{\mu\nu}+h^{(1)}_{\mu\nu}+h^{(2)}_{\mu\nu}+\dots\]
+Podemos expandir el tensor de Einstein $G_{\mu\nu}=0$, tal que
+\[\cancelto{0}{G_{\mu\nu}^{(0)}}+G_{\mu\nu}^{(1)}+G_{\mu\nu}^{(2)}+\dots=0\]
+donde $G_{\mu\nu}^{(1)}$ es lineal en $h_{\mu\nu}^{(1)}$, por tanto $G_{\mu\nu}^{(1)}=0$. Y $G_{\mu\nu}^{(2)}$ es lineal en $h_{\mu\nu}^{(2)}$ y cuadrático en $h_{\mu\nu}^{(1)}$, por lo que $G_{\mu\nu}^{(2)}=G_{\mu\nu}^{(2,1)}+G_{\mu\nu}^{(2,2)}$, donde $G_{\mu\nu}^{(2,2)}$ es la parte lineal en $h_{\mu\nu}^{(2)}$ y $G_{\mu\nu}^{(2,1)}$ es la parte cuadrática en $h_{\mu\nu}^{(1)}$, por lo que identificamos $G_{\mu\nu}^{(2,1)}=8\pi Gt_{\mu\nu}$, siendo $t_{\mu\nu}$ cuadrático en $h_{\mu\nu}^{(1)}$ y sus derivadas, es decir, será el tensor de energía-impulso para $h_{\mu\nu}^{(1)}$.\\ \\
+El problema de este tensor es que $t_{\mu\nu}$ no es invariante bajo transformaciones del tipo $g_{\mu\nu}\to g_{\mu\nu}+\mathscr{L}_{\vec{\xi}}g_{\mu\nu}$. Es decir, el tensor no está definido unívocamente, por lo que la energía (potencia radiada) dependerá del sistema de coordenadas elegido. Pero si redefinimos la energía como
+\begin{equation}
+    E=\int_{\Sigma}t_{00}d^3x
+\end{equation}
+siendo $\Sigma$ una hipersuperficie espacial, tenemos ahora sí definida la energía de forma unívoca.\\ \\
+Si llevamos la energía radiada al infinito, tenemos
+\begin{equation}
+    \delta E=\int_St_{0\mu}n^{\mu}dtd\Omega
+\end{equation}
+donde $n^{\mu}n^{\nu}g_{\mu\nu}=+1$. Por tanto, obtenemos
+\begin{equation}
+    \delta E=\int\mathscr{P}dt
+\end{equation}
+donde $\mathscr{P}$ es la potencia radiada. Esta potencia puede calcularse y se obtiene,
+\[\mathscr{P}=\frac{G}{45}\sum_{i,j=1}^{3}\frac{d^3}{dt^3}\left(q_{ij}-\frac{1}{3}\delta_{ij}q\right)^2\]
+donde $q=\sum\limits_{i,j=1}^{3}q_{ij}\delta^{ij}$.

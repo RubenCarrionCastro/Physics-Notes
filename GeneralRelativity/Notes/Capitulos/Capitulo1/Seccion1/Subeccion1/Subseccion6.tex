@@ -1,0 +1,40 @@
+\subsection{Aplicaciones multilineales} % Main chapter title
+\label{cap1-sec1-subsec6} 
+Veamos ahora las aplicaciones multilineales, que serán una extensión de las bilineales.
+\begin{definition}
+    Sea $(V,+,\cdot)$ un $\mathbb{K}$-espacio vectorial, diremos que una aplicación\\ $f:V\times\overset{n)}{\dots}\times V\longrightarrow\mathbb{K}$ es multilineal si:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f(x_1,x_2,\dots,x_i+y_i,\dots,x_n)=f(x_1,\dots,x_i,\dots,x_n)+f(x_1,\dots,y_i,\dots,x_n)$
+        \item $f(x_1,x_2,\dots,\lambda\cdot x_i,\dots,x_n)=\lambda\cdot f(x_1,\dots,x_i,\dots,x_n)$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Sea $f:V\times\overset{n)}{\dots}\times V\longrightarrow\mathbb{K}$ una aplicación multilineal. Se dice que $f$ es alternada o antisimétrica si $f(x_{\sigma(1)},x_{\sigma(2)},\dots,x_{\sigma(n)})=sgn(\sigma)\cdot f(x_1,\dots,x_n); \sigma\in S_n$.
+\end{definition}
+
+
+   \noindent Una aplicación multilineal alternada se llama una $n$-forma lineal.
+
+
+\begin{proposition}
+    Sea $(V,+,\cdot)$ un $\mathbb{K}$-espacio finito dimensional. 
+    Sea $f:V\times\overset{m)}{\dots}\times V\longrightarrow\mathbb{K}$ una aplicación multilineal, entonces $f$ está determinada por la imagen de una base.
+\end{proposition}
+
+\begin{proof}
+    Sea $\curlybraces{e_1,\dots,e_n}$ base de $V$, $\forall x_1,\dots, x_m\in V$
+    \[\begin{matrix}
+        x_1=a^{11}e_1+a^{21}e_2+\dots+a^{n1}e_n, & a^{i1}\in\mathbb{K}\\
+        x_2=a^{12}e_1+a^{22}e_2+\dots+a^{n2}e_n, & a^{i2}\in\mathbb{K}\\
+        \vdots & \\
+        x_m=a^{1m}e_1+a^{2m}e_2+\dots+a^{nm}e_n, & a^{im}\in\mathbb{K}
+    \end{matrix}\]
+    \[f(x_1,\dots,x_m)=f\left(\sum\limits_{i_1=1}^na^{i_1}e_{i_1}, x_2,\dots, x_m\right)=a^{i_11}f\left(e_{i_1},a^{i_22}e_{i_2},\dots,x_m\right)=\] 
+
+    \[=a^{i_11}\cdot a^{i_21}\cdot f(e_{i_11},e_{i_22},\dots,x_m)=\]
+    
+    \[=a^{i_11}a^{i_22}\dots a^{i_mm}\cdot f(e_{i_11},e_{i_22},\dots,e_{i_mm})\]
+
+    entonces tenemos $n^m$ combinaciones $\Rightarrow$ $n!$ combinaciones $\neq0$
+\end{proof}

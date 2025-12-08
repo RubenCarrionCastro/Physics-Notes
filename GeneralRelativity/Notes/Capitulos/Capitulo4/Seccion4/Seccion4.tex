@@ -1,0 +1,85 @@
+%SECCION 1
+\section{Campos materiales} % Main chapter title
+\label{cap4-sec4} 
+
+Los campos materiales son campos escalares o vectoriales o fluidos perfectos (lo detallaremos más adelante). Estos campos deben satisfacer los siguientes postulados:
+\begin{enumerate}
+    \item \textbf{Causalidad local}: las ecuaciones del movimiento de los campos materiales permiten el intercambio de señales entre dos puntos de la variedad, $p,q\in\mathscr{M}$, tales que las curvas que unen estos puntos tienen vectores tangentes que no se hacen espaciales.
+    \begin{Figura}
+        \centering
+        \includegraphics[width=0.3\textwidth]{Capitulos/Capitulo4/Seccion4/cono.png}
+        \captionof{figure}{Cono de luz.}
+        \label{fig4.2}
+    \end{Figura}
+    \item \textbf{Conservación de la energía y momento}: las ecuaciones de los campos materiales se obtienen a partir del tensor energía-impulso, $T_{\mu\nu}$, que se construye a partir de $g_{\mu\nu}$, los campos y sus derivadas. Además, $\nabla^{\mu}T_{\mu\nu}=0$, es decir, se conserva.
+\end{enumerate}
+\subsection{Fluido perfecto}
+Es un fluido que no conduce calor, ni es viscoso.\\ \\
+Para un observador comóvil (en caída libre con el fluido), verá un fluido isotrópico. Si $u^{\mu}$ es la cuadrivelocidad del observador, entonces la cantidad $T_{\mu\nu}u^{\mu}u^{\nu}=\rho$, define la densidad de energía del fluido. Para cada dirección espacial, $x^{\mu}_i$ con $i=1,2,3$, las cantidades $T_{\mu\nu}u^{\mu}x_i^{\nu}$ representan el flujo de energía en la dirección $x_i^{\mu}$; pero esta cantidad no es nula, pues tenemos un fluido perfecto.\\ \\
+Además, $T_{\mu\nu}x_i^{\mu}x_j^{\nu}$ representa el flujo de momento en la dirección '$i$' a través de la superficie ortogonal a '$j$', representando las fuerzas tangenciales o de cizalladura, de presión y viscosas del fluido. Pero para un fluido perfecto no hay flujos de momento paralelos a la superficie perpendicular a $x_j^{\mu}$, es decir, solo tendremos flujo de momento en las direcciones $i=j$. Además, como el fluido es isotrópico,
+\begin{equation}
+T_{\mu\nu}x_1^{\mu}x_1^{\nu}=T_{\mu\nu}x_2^{\mu}x_2^{\nu}=T_{\mu\nu}x_3^{\mu}x_3^{\nu}=P
+\end{equation}
+es decir, representa la presión. En resumen, el tensor de energía-impulso puede escribirse como,
+\begin{equation}
+    T_{\mu\nu}=(\rho+P)u_{\mu}u_{\nu}+Pg_{\mu\nu}
+\end{equation}
+donde $u^{\mu}$ representa el campo de velocidades del fluido.\\ \\
+Además, la presión puede reescribirse como,
+\begin{equation}
+    P=\frac{1}{3}\left(u^{\mu}u^{\nu}+g^{\mu\nu}\right)T_{\mu\nu};\hspace{4mm}\rho=T_{\mu\nu}u^{\mu}u^{\nu}
+\end{equation}
+\begin{proof}
+    (...)
+\end{proof}
+Los fluidos perfectos tendrán una Ley de Conservación asociada, $\nabla^{\mu}T_{\mu\nu}=0$, que podremos reescribir como
+\begin{equation}
+    u^{\mu}\nabla_{\mu}\rho+(\rho+P)\nabla_{\mu}u^{\mu}=0
+\end{equation}
+obteniendo así la ecuación de continuidad,
+\begin{equation}
+    \nabla_{\mu}(u^{\mu}\rho)+P\nabla_{\mu}u^{\mu}=0
+\end{equation}
+que asegura la conservación de la energía.\\ \\
+Por otro lado, tenemos
+\[(u^{\mu}u^{\nu}+g^{\mu\nu})\nabla^{\rho}T_{\rho\nu}=0\Longrightarrow(\rho+P)u^{\nu}\nabla_{\nabla}u^{\mu}+(g^{\mu\nu}+u^{\mu}u^{\nu})\nabla_{\nu}P=0\]
+que equivale a la Segunda Ley de Newton.\\ \\
+Solo consideraremos fluidos barotrópicos, es decir, $P=P(\rho)$. Considerando $P=0$, las ecuaciones del movimiento quedan,
+\[\begin{array}{cc}
+    \nabla_{\mu}(\rho u^{\mu})=0; & \overbrace{u^{\mu}\nabla_{\mu}u^{\nu}=0}^{\text{ecuación geodésica}} \\
+    ||  &  \\
+    \nabla_{\mu}(T^{\mu}_{\nu}u^{\nu})=0  &
+\end{array}\]
+Por tanto, las ecuaciones de Einstein quedan,
+\begin{equation}
+    G_{\mu\nu}=8\pi G(\rho u_{\mu}u_{\nu})
+\end{equation}
+\subsection{Campo escalar}
+Sea $\phi$ un campo escalar de masa $m$, su tensor de energía-impulso es,
+\begin{equation}
+    T_{\mu\nu}=\nabla_{\mu}\phi\nabla_{\nu}\phi-\frac{1}{2}g_{\mu\nu}\left(\nabla^{\rho}\phi\nabla_{\rho}\phi+m^2\phi^2\right)
+\end{equation}
+Usando la conservación del tensor de energía-impulso, $\nabla^{\mu}T_{\mu\nu}=0$, obtenemos la ecuación de Clebsh-Gordan,
+\begin{equation}
+    \nabla_{\mu}\nabla^{\mu}\phi-m^2\phi=0
+\end{equation}
+\begin{proof}
+    (...)
+\end{proof}
+\subsection{Campo electromagnético}
+Supondremos que no hay fuentes. Así, el tensor electromagnético es
+\begin{equation}
+    F_{\mu\nu}=2\nabla_{[\mu}A_{\nu]}
+\end{equation}
+y el tensor de energía-impulso es,
+\begin{equation}
+    T_{\mu\nu}=F_{\mu\rho}F^{\rho}_{\nu}-\frac{1}{4}g_{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}
+\end{equation}
+Usando la conservación del tensor de energía-impulso tenemos,
+\begin{equation}
+    \nabla^{\mu}F_{\mu\nu}=0
+\end{equation}
+\begin{proof}
+    (...)
+\end{proof}
+

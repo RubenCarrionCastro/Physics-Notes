@@ -1,0 +1,48 @@
+%SECCION 1
+\section{Ondas gravitacionales} % Main chapter title
+\label{cap5-sec2} 
+
+Vamos a trabajar en el límite del campo débil, es decir, trabajamos con la métrica $g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$ y $g^{\mu\nu}=\eta^{\mu\nu}-h^{\mu\nu}$, donde $\eta_{\mu\nu}
+$ es la métrica de Minkowski y $|h_{\mu\nu}|<<1$ es una perturbación, tal que $h^{\mu\nu}=\eta^{\mu\rho}\eta^{\nu\sigma}h_{\rho\sigma}$. Los símbolos de Christoffel serán,
+\[\hspace{0mm}^{(1)}\Gamma_{\nu\rho}^{\mu}=\frac{1}{2}\eta^{\mu\sigma}\left(h_{\sigma\nu,\rho}+h_{\sigma\rho,\nu}-h_{\nu\rho,\sigma}\right)+\cancelto{0}{...}\]
+El tensor de Ricci a orden 1 en $h_{\mu\nu}$ será,
+\[\hspace{0mm}^{(1)}R_{\mu\nu}=\partial_{\sigma}\hspace{0mm}^{(1)}\Gamma_{\mu\nu}^{\sigma}-\partial_{\mu}\hspace{0mm}^{(1)}\Gamma_{\sigma\nu}^{\sigma}+\cancelto{0}{...}=\partial^{\sigma}\partial_{(\nu}h_{\mu)\sigma}-\frac{1}{2}\partial^{\sigma}\partial_{\sigma}h_{\mu\nu}-\partial_{\mu}\partial_{\nu}h\]
+donde $h=h_{\mu\nu}\eta^{\mu\nu}$.\\ \\
+El tensor de Einstein será
+\[\hspace{0mm}^{(1)}G_{\mu\nu}=\hspace{0mm}^{(1)}R_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}\hspace{0mm}^{(1)}R\]
+donde $\hspace{0mm}^{(1)}R=\hspace{0mm}^{(1)}R_{\mu\nu}\eta^{\mu\nu}=\partial^{\rho}\partial^{\sigma}h_{\rho\sigma}-\partial^{\rho}\partial_{\rho}h$.\\ \\
+Definimos,
+\[\overline{h}_{\mu\nu}=h_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}h\Rightarrow\overline{h}=-h\]
+donde $\overline{h}=\overline{h}_{\mu\nu}\eta^{\mu\nu}$.\\ \\
+En términos de $\overline{h}_{\mu\nu}$, tenemos
+\[\hspace{0mm}^{(1)}G_{\mu\nu}=\partial^{\sigma}\partial_{(\nu}\overline{h}_{\mu)\sigma}-\frac{1}{2}\partial^{\sigma}\partial_{\sigma}\overline{h}_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}\partial^{\sigma}\partial^{\rho}\overline{h}_{\sigma\rho}\]
+Recordemos que una métrica cualquiera $g_{\mu\nu}$ está definida salvo difeomorfismos. Es decir, tenemos libertad para trabajar con $g_{\mu\nu}$ o con $g_{\mu\nu}+\nabla_{\mu}\xi_{\nu}+\nabla_{\nu}\xi_{\mu}$.\\ \\
+Si tomamos $|\xi_{\mu}|<<1$, pero es comparable con $h_{\mu\nu}$ ($|\xi_{\mu}|\sim|h_{\mu\nu}|$, entonces $\eta_{\mu\nu}+h_{\mu\nu}$ y $\eta_{\mu\nu}+h_{\mu\nu}+\underbrace{\partial_{\mu}\xi_{\nu}+\partial_{\nu}\xi_{\mu}}_{\mathscr{L}_{\vec{\xi}}\eta_{\mu\nu}}$ representan la misma métrica.\\ \\
+Con esta libertad podemos simplificar nuestro problema, pues dado $h_{\mu\nu}$, podemos transformarlo como
+\[\left.\begin{matrix}
+    h'_{\mu\nu}=h_{\mu\nu}+\partial_{\nu}\xi_{\mu}+\partial_{\mu}\xi_{\nu}\\
+    h'=h+2\partial_{\mu}\xi^{\mu}
+\end{matrix}\right\rbrace\Rightarrow\overline{h}'_{\mu\nu}=\overline{h}_{\mu\nu}+\partial_{\mu}\xi_{\nu}+\partial_{\nu}\xi_{\mu}-\eta_{\mu\nu}\partial_{\rho}\xi^{\rho}\]
+Entonces podemos transformar $\partial^{\mu}\overline{h}_{\mu\nu}$ como
+\[\partial^{\mu}\overline{h}'_{\mu\nu}=\partial^{\mu}\overline{h}_{\mu\nu}+\partial^{\mu}\partial_{\mu}\xi_{\nu}+\cancel{\partial_{\nu}\partial^{\mu}\xi_{\mu}}-\cancel{\eta_{\mu\nu}\partial^{\mu}\partial_{\rho}\xi^{\rho}}\]
+Y si se cumpla que $\partial^{\mu}\partial_{\mu}\xi_{\nu}=-\partial^{\mu}\overline{h}_{\mu\nu}$, entonces tenemos que $\partial^{\mu}\overline{h}'_{\mu\nu}=0$, que es una función de onda que podemos resolver. Podemos hallar $\xi^{\mu}$ usando funciones de Green. Además, la nueva perturbación $\overline{h}'_{\mu\nu}$ cumplirá el gauge de Lorentz, que es precisamente, $\partial^{\mu}\overline{h}'_{\mu\nu}=0$. Así, el tensor de Einstein se reduce a
+\[\hspace{0mm}^{(1)}G'_{\mu\nu}=-\frac{1}{2}\partial^{\sigma}\partial_{\sigma}\overline{h}'_{\mu\nu}\]
+En el vacío sabemos que $\hspace{0mm}^{(1)}G'_{\mu\nu}=0$, por tanto en vacío se cumple que $\partial^{\sigma}\partial_{\sigma}\overline{h}'_{\mu\nu}=0$, siendo una función de ondas electromagnéticas. Por tanto, vemos que las ondas gravitacionales se propagan a la velocidad de la luz, $c$.\\ \\
+Podemos incluso simplificar más los cálculos suponiendo ahora que
+\[\xi^{\mu}=\overline{\xi}^{\mu}+\Tilde{\xi}^{\mu}\]
+donde $\partial^{\sigma}\partial_{\sigma}\Tilde{\xi}^{\mu}=-\partial^{\mu}\overline{h}_{\mu\nu}$ y $\partial^{\sigma}\partial_{\sigma}\overline{\xi}_{\nu}=0$. Por lo que todavía tenemos libertad para simplificar $\overline{h}'_{\mu\nu}$. Notemos que
+\[\left.\begin{array}{cl}
+    \overline{h}'_{\mu\nu} & =\overline{H}'_{\mu\nu}e^{ik_{\mu}x^{\mu}} \Rightarrow \overline{\xi}_{\mu}=A_{\mu}e^{ik_{\mu}x^{\mu}} \\
+    \downarrow & \\
+    \partial^{\mu}\overline{h}'_{\mu\nu} & =0
+\end{array}\right\rbrace\Longrightarrow\overline{H}'_{\mu\nu}k^{\nu}=0\]
+Como $\overline{h}'_{\mu\nu}$ es simétrico, entonces $\overline{H}'_{\mu\nu}$ es simétrico.\\ \\
+Ahora vamos a tomar una nueva perturbación,
+\[\overline{h}''_{\mu\nu}=\overline{h}'_{\mu\nu}+\partial_{\mu}\overline{\xi}_{\nu}+\partial_{\nu}\overline{\xi}_{\mu}-\eta_{\mu\nu}\partial_{\sigma}\overline{\xi}^{\sigma}\]
+tal que
+\[\overline{H}''_{\mu\nu}=\overline{H}'_{\mu\nu}+iA_{\mu}k_{\nu}+iA_{\nu}k_{\mu}-i\eta_{\mu\nu}A_{\sigma}k^{\sigma}\]
+donde vamos a imponer que $\overline{H}_{\mu}^{''\mu}=0$ y $\overline{H}''_{0i}=0$ con $i=1,2,3$. Así tenemos cuatro ecuaciones con cuatro incógnitas, que son las $A_{\mu}$. Notemos que $\partial^{\mu}\overline{h}''_{\mu0}=0$, por tanto $\partial_0\overline{h}''_{00}=0$ y entonces $\overline{H}''_{00}=0$. Además, como $\overline{H}^{''\mu}_{\mu}=0$, entonces $\overline{h}^{''\mu}_{\mu}=0$ y por tanto, $\overline{h}''_{\mu\nu}=h''_{\mu\nu}-\frac{1}{2}\eta_{\mu\nu}\cancelto{0}{h''}=h''_{\mu\nu}$. Este gauge se conoce como \textit{radiativo} o \textit{TT-gauge} (traceless and transverse), pues la traza es nula.\\ \\
+Recapitulando tenemos que $h_{ij}=h_{ji}$, con $i,j=1,2,3$, satisface que $(-\partial_t^2+\nabla^2)h_{ij}=0$, por lo que \[h_{ij}=H_{ij}e^{ik_{\mu}x^{\mu}}\]
+donde $H_{ij}$ tiene 6 parámetros porque es simétrico y $k_{\mu}=(\omega,k_i)$ con $\omega^2=|\vec{k}|^2c^2$, siendo $\omega$ la velocidad angular y $\vec{k}$ el vector número de onda. Por tanto, tenemos el sistema de ecuaciones siguiente,
+\[A_{ij}k^j=0; \hspace{6mm}A_i^i=0\]
+donde $A_{ij}k^j=0$ son 3 ecuaciones y $A_i^i=0$ es una ecuación, pero como $H_{ij}$ tiene 6 parámetros, tendremos 6 parámetros - 4 ecuaciones, es decir, tenemos 2 grados de libertad, que se representan como 2 polarizaciones posibles de la onda gravitacional.

@@ -1,0 +1,242 @@
+\subsection{Aplicaciones lineales} % Main chapter title
+\label{cap1-sec1-subsec2} 
+
+Veamos ahora las aplicaciones lineales.
+\begin{definition}
+    Sean $V$ y $V'$ dos espacios vectoriales sobre el mismo cuerpo $\mathbb{K}$.
+    Se dice que en una aplicación $f:V\longrightarrow V'$ es una aplicación lineal, o también llamado homomorfismo de espacios vectoriales, si se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f(x+y)=f(x)+f(y),\forall x,y\in V$
+        \item $f(\lambda\cdot x)=\lambda\cdot f(x),\forall\lambda\in\mathbb{K},\forall x\in V$
+    \end{enumerate}
+    Diremos además que $f$ es un isomorfismo lineal si es biyectiva, que $f$ es un endomorfismo si $V=V'$ y que es un automorfismo si es un endomorfismo biyectivo. 
+\end{definition}
+
+\noindent Las aplicaciones lineales tienen asociados dos conjuntos cuyas características son de interés, a saber, el núcleo y la imagen.
+
+\begin{definition}
+    Sea $f:V\longrightarrow W$ definimos el núcleo o kernel de la aplicación $f$ como
+    \[Kerf=\curlybraces{v\in V:f(v)=0}\]
+    y la imagen como
+    \[Imf=\curlybraces{w\in W:\exists v\in V/f(v)=w}.\]
+\end{definition}
+
+\noindent Veamos algunas propiedades básicas de ambos conjuntos.
+
+\begin{proposition}
+Sea $f:V\to V'$ una aplicación lineal, se tienen las siguientes propiedades:
+\begin{enumerate}[label=(\roman*)]
+    \item \label{prop1:item1} $\rm{Im}f$ es un subespacio de $V'$ y que $\rm{Ker}f$ es un subespacio de $V$.
+    \item \label{prop1:item2}Si $W$ es un subespacio vectorial de $V$, entonces $f(W):=\curlybraces{f(w): w\in W}$ es un subespacio de $V'$.
+    \item \label{prop1:item3}Si $W'$ es un subespacio de $V'$, entonces $f^{-1}(W'):=\curlybraces{v\in V: f(v)\in W'}$ es también un subespacio de $V$.
+\end{enumerate}  
+\end{proposition}
+%\newpage
+\begin{proof}
+\begin{enumerate}[label=\ref{prop1:item1}]
+    \item Por definición, como los elementos de la $\rm{Im}f$ son pertenecientes a $V'$, entonces la $\rm{Im}f$ es subespacio de $V'$. De igual forma ocurre con el $\rm{Ker}f$, pues sus elementos pertenecen a $V$ y por tanto, este es subespacio de $V$.
+\end{enumerate}
+\begin{enumerate}[label=\ref{prop1:item2}]
+    \item Como $W$ es subespacio de $V$, tenemos que $w\in V$ también, por tanto, los $f(w)$ pertenecerán a $V'$, cosa que implica que $f(W)$ es subespacio de $V'$, pues los $f(w)$ de $f(W)$ pertenecen a $V'$.
+\end{enumerate}
+\begin{enumerate}[label=\ref{prop1:item3}]
+    \item Por analogía a $\ref{prop1:item2}$ vemos que $f^{-1}(W)$ es subespacio de $V$.
+\end{enumerate}
+\end{proof}
+\noindent Ahora veamos algunas propiedades esenciales de las aplicaciones lineaales.
+\begin{proposition}
+    Sea $f:V\longrightarrow V'$ una aplicación lineal,
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{pro1:item1} entonces $f$ es inyectiva si y solo si $Kerf=\curlybraces{0}$.
+        \item \label{pro1:item2} si $G$ es un conjunto generador de $V$, $<G>=V$, entonces $f(G)$ es conjunto generador
+        de $Imf$, $<f(G)>=Imf$.
+        \item \label{pro1:item3} si $S\subset V$ es un conjunto de vectores linealmente independientes, si $f$ es inyectiva, entonces $f(S)$ es linealmente independiente.
+        \item \label{pro1:item4} $f$ es inyectiva $\Leftrightarrow$ conserva la independencia lineal.
+   
+        \item \label{pro1:item5} si $f$ es biyectiva y $B$ es una base de $V$, entonces $f(B)$ es base de $V'$.
+
+        \item \label{pro1:item6} $f$ es sobreyectiva $\Leftrightarrow$ $Imf=V'$
+    \end{enumerate}
+\end{proposition}
+
+
+
+\begin{proof}
+\ref{pro1:item1} \begin{tabular}{c|}
+                 $\Rightarrow$ \\ \hline
+            \end{tabular}
+            Suponiendo que $f$ es inyectiva, sabemos que su Kernel es,
+            \[\rm{Ker}f=\curlybraces{v\in V:f(v)=0}\]
+            pero como la inyectividad nos implica que la imagen debe provenir de un único vector de entrada, entonces este vector será $v=0$, y por tanto, $ker f=\curlybraces{0}$. $\checkmark$
+\\     
+            \begin{tabular}{c|}
+                 $\Leftarrow$  \\ \hline
+            \end{tabular}
+            Suponiendo que $ker f=\curlybraces{0}$, esto nos quiere decir que únicamente el vector $v=0$ satisface $f(v)=0$, luego como un vector tiene una única imagen, decimos que $f$ es inyectiva. \qedh
+\\ \\
+\ref{pro1:item2}  Veamos que el conjunto $f(G)$ es sistema generador de la imagen, es decir,   \[<f(G)>=Imf\Leftrightarrow\forall y\in Imf,\exists\lambda^1,\dots,\lambda^n\in\mathbb{K},y_1,\dots,y_n\in f(G)\text{ tales que }y=\lambda^1y_1+\dots+\lambda^ny_n.\] Sabemos que $G$ es conjunto generador, luego sea $y\in Imf$. Entonces por definición se tiene que existe $x\in V$ tal que $f(x)=y$. Como $<G>=V$, existen $\lambda^1,\dots,\lambda^n\in\mathbb{K}$, $v_1,\dots,v_n\in G$ tales que \[ x= \sum_{i=1}^n \lambda^i v_i.\] Tenemos entonces que:  \[y=f(x)=f(\lambda^1v_1+\dots+\lambda^nv_n)=\lambda^1f(v_1)+\dots+\lambda^nf(v_n).\] Por lo tanto, $y$ es combinación lineal de elementos de $f(G)$, es decir, $<f(G)>=\mathrm{Im}f$. \qedh
+\\ \\
+\ref{pro1:item3}
+            Sea $S$ un conjunto linealmente independiente en $V$. 
+            Supongamos que $f$ es inyectiva, vamos a probar que $f(S)$ es linealmente independiente, es decir,
+            \[\lambda^1y_1+\dots+\lambda^ny_n=0\Rightarrow\lambda^1=\lambda^2=\dots=\lambda^n=0\hspace{4mm} \forall y_1,\dots,y_n\in f(S),\hspace{2mm}
+                \forall\lambda^1,\dots,\lambda^n\in\mathbb{K}\]
+            Supongamos $\lambda^1y_1+\dots+\lambda^ny_n=0$.  Como $y_j\in f(S),\exists x_j\in S/f(x_j)=y_j$.
+             \[\left.\begin{array}{r}
+                \lambda_1f(x_1)+\dots+\lambda_nf(x_n)=0\\
+                f(\lambda_1x_1+\dots+\lambda_nx_n)=0
+            \end{array}\right\rbrace f(0)=0\Rightarrow\lambda_1x_1+\dots+\lambda_nx_n=0\Rightarrow f\text{ inyectiva}\Rightarrow\lambda_1=\dots=\lambda_n=0\]
+                \\ \\
+                \ref{pro1:item4} \begin{tabular}{c|}
+                 $\Longrightarrow$ \\ \hline
+            \end{tabular} 
+            Trivial por (iii) $\checkmark$\\
+            \begin{tabular}{c|}
+                 $\Longleftarrow$ \\ \hline
+            \end{tabular} 
+            Por reducción al absurdo:\\
+            Supongamos que existen $v_1,v_2\in V$ distintos, tales que $f(v_1)=f(v_2)\Leftrightarrow f(v_1)-f(v_2)=0\Leftrightarrow f(v_1-v_2)=0$. 
+            Luego, $v=v_1-v_2\neq0$ verifica que $f(v)=0$, $\curlybraces{v}$ es un conjunto linealmente independiente, $f(\curlybraces{v})$ tendría que ser un conjunto l.i. por hipótesis, pero $f(\curlybraces{v})=\curlybraces{0}$ que no es un conjunto l.i. cosa absurda. \qedh
+            \\ \\
+            \ref{pro1:item5}  Sea una aplicación lineal biyectiva $f:V\to V'$
+            y una base de $V$, $B=\curlybraces{v_1,\dots,v_n}$. Entones, si aplicamos
+\[f(B)=\curlybraces{f(v_1),\dots,f(v_n)}=\curlybraces{v_1',\dots,v_n'}\]
+            y entonces, estos $v_i'\in V'$ van a formar una base de $V'$, pues al ser $f$ biyectiva, los vectores serán linealmente independientes, pues los de $B$ lo son; y además, como tienen la misma dimensión que $V'$, pasan de ser conjunto generador a base. $\qedh$
+            \\ \\
+            \ref{pro1:item6} \begin{tabular}{c|}
+                 $\Rightarrow$  \\ \hline
+            \end{tabular}
+            Suponiendo que $f$ es sobreyectiva, tendremos que para cada $y\in V'$, existe al menos un $x\in V$, tal que $f(x)=y$. Por consiguiente, cada elemento de $V'$ es la imagen de un elemento de $V$, es decir, $Imf=V'$. $\checkmark$\\
+            \begin{tabular}{c|}
+                 $\Leftarrow$  \\ \hline
+            \end{tabular}
+            Suponiendo que $imf=V'$, tenemos que todos los elementos de $V'$ son imagen de los elementos de $V$, siendo esta la propia definición de sobreyectividad, luego $f$ es sobreyectiva.
+\end{proof}
+\noindent Una vez visto estas propiedades, de $\ref{pro1:item5}$ podemos obtener un resultado interesante, que es la siguiente proposición.
+\begin{proposition}
+Sea $B=\curlybraces{v_1,\dots,v_n}$ una base de $V$, y sea $f:V\rightarrow V'$ una aplicación lineal. Se tiene entonces que $\curlybraces{f(v_1),\dots,f(v_n)}$ es un sistema generador de la imagen.
+\end{proposition}
+\begin{proof}
+    Supongamos que $B$ es una base y que conocemos $f(v_j),\forall v_j\in B$. 
+    Sea $v\in V$, escrito en coordenadas de la base como $v=\lambda^1v_1+\dots+\lambda^nv_n$, con $v_i\in B$, 
+ y $\lambda^i\in\mathbb{K}$, entonces  $f(x)=f(\lambda^1v_1+\dots+\lambda^nv_n)=\lambda^1f(v_1)+\dots\lambda^nf(v_n)$, luego hemos puesto $f(x)$ en coordenadas de $\curlybraces{f(v_1,\dots,f(v_n)}$.
+\end{proof}
+
+\noindent Ahora vamos a ver un resultado bastante importante, el cuál nos permitirá representar aplicaciones lineales en matrices, denominadas \textbf{matrices asociadas a la aplicación $f$}. Además, este resultado es importante para Física, pues los físicos no solemos trabajar con aplicaciones, sino que trabajamos con sus matrices asociadas, pues se puede decir que "tienen" la misma información que las aplicaciones.
+
+\begin{proposition}  
+\label{prop1.4}
+    Sean $(V,+,\cdot)$ y $(V',+,\cdot)$ $\mathbb{K}$-espacios vectoriales de dimensión finita con $dimV=n$ y $dimV'=m$. 
+    Sea $f:V\longrightarrow V'$ una aplicación lineal, entonces dadas $\left\lbrace\begin{matrix}
+        B=\curlybraces{v_1,\dots,v_n}\text{ base de }V\\
+        B'=\curlybraces{v_1',\dots,v_n'}\text{ base de }V'
+    \end{matrix}\right.$\\
+    $f$ se representa en esas bases como una matriz en $\mathcal{M}_{m\times n}(\mathbb{K})$.
+\end{proposition}
+
+\begin{proof}
+    Como $f$ es lineal, me basta con conocer $f(B)$, para ello, tenemos que conocer $f(v_1),f(v_2),\dots,f(v_n)$, teniendo:
+    \[\begin{matrix}
+        f(v_1) & = & a_{1}^1v_1'+a_{1}^2v_2'+\dots+a_{1}^mv_m', & a_{1}^i\in\mathbb{K}\\
+        f(v_2) & = & a_{2}^1v_1'+a_{2}^2v_2'+\dots+a_{2}^mv_m', & a_{2}^i\in\mathbb{K}\\
+        \vdots & & \vdots & \vdots\\
+        f(v_n) & = & a_{n}^1v_1'+a_{n}^2v_2'+\dots+a_{n}^mv_m', & a_{n}^i\in\mathbb{K}
+    \end{matrix}\]
+    Sea $v\in V:v=\lambda^1v_1+\dots+\lambda^nv_n,\hspace{2mm}\lambda^i\in\mathbb{K}$, si le aplicamos $f$ tenemos,
+    \[\begin{array}{rll}
+        f(v) & = &\lambda^1f(v_1)+\dots+\lambda^nf(v_n) \\
+         & = & \lambda^1(a_{1}^1v_1'+\dots+a_{1}^mv_m')+\lambda^2(a_{2}^1v_1'+\dots+a_{2}^mv_m')+\dots+\lambda^n(a_{n}^1v_1'+\dots+a_{n}^mv_m')\\
+         & = & (a_{1}^1\lambda^1+a_{2}^1\lambda^2+\dots+a_{n}^1\lambda^n)v_1'+(a_{1}^2\lambda^1+\dots+a_{n}^2\lambda^n)v_2'+\dots+(a_{1}^m\lambda^1+\dots+a_{n}^m\lambda^n)v_m'
+    \end{array}
+        \]
+   Luego,  $f(v)=\mu^1v_1'+\mu^2v_2'+\dots+\mu^mv_m'$, siendo $\mu^i=(a_{1}^i\lambda^1+\dots+a_{n}^i\lambda^n)$, luego, para construir la matriz $A$, ponemos las coordenadas de $v_1$ en la primera columna, las de $v_2$ en la segunda y así sucesivamente, tal que:
+    \[\begin{pmatrix}
+        \mu^1\\
+        \mu^2\\
+        \vdots\\
+        \mu^m
+    \end{pmatrix}=\begin{pmatrix}
+        a_{1}^1 & a_{1}^1 & \dots & a_{1}^m\\
+        a_{2}^1 & a_{2}^2 & \dots & a_{2}^m\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{n}^1 & a_{n}^2 & \dots & a_{n}^m
+    \end{pmatrix}\begin{pmatrix}
+        \lambda^1\\
+        \lambda^2\\
+        \vdots\\
+        \lambda^n
+    \end{pmatrix}\Rightarrow \mu=A\cdot\lambda\]
+\end{proof}
+
+\noindent Vamos a introducir ahora el concepto de \textbf{rango} de una aplicación lineal, que puede extenderse al rango de su matriz asociada.
+
+\begin{definition}
+    Se llama rango de una aplicación lineal (matriz) a la dimensión de su imagen y se denota por $rg()$.
+\end{definition}
+
+\noindent Como un mismo espacio vectorial puede estar generado por varias bases, es lógico pensar que debe haber una relación entre estas bases o al menos una forma de cambiar de una base a otra, lo que se conoce como \textbf{cambio de base}. Esto es posible y una forma sencilla de hacerlo es mediante las matrices asociadas.
+
+\begin{proposition}
+    -Sean $V$ y $V'$ dos espacios vectoriales en $\mathbb{K}$, sea $f:V\longrightarrow V'$ lineal.\\
+    -Sea $B_1=\curlybraces{v_1,\dots,v_n}$ base de $V$, $B_1'=\curlybraces{v_1',\dots,v_m'}$ base de $V'$.\\
+    -Sea $A\in\mathcal{M}_{m\times n}(\mathbb{K})$ la matriz que representa a $f$ en $B_1,B_1'$.\\
+    -Sea $B_2=\curlybraces{u_1,\dots,u_n}$ base de $V$, $B_2'=\curlybraces{u_1',\dots,u_m'}$ base de $V'$.\\
+    -Sea $\tilde{A}\in\mathcal{M}_{m\times n}(\mathbb{K})$ la matriz que representa a $f$ en $B_2,B_2'$.\\
+    -Sea $P$ la matriz de cambio de base de $B_1$ en $B_2$.\\
+    -Sea $Q$ la matriz de cambio de base de $B_1'$ en $B_2'$.\\
+    Entonces $\tilde{A}=Q^{-1}\cdot A\cdot P$.
+\end{proposition}
+\begin{proof}
+    Sea $f:V\to V'$ una aplicación lineal con $n=dim V$ y $m=dim V'$. Si $A$ y $\tilde{A}$ son las matrices asociadas a $f$ respecto de distintas bases, entonces
+    \[rg(A)=dim(Imf)=rg(\tilde{A})\]
+    Luego $A$ y $\Tilde{A}$ tienen igual rango, y por tanto, son matrices equivalentes. Concretemos más esta situación:\\
+    Sean $B_1$ y $B_2$ bases de $V$ con cambio de base de $B_1$ a $B_2$ dado por $X_1=PX_2$ y sean $B_1'$ y $B_2'$ bases de $V'$, con cambio de $B_1'$ a $B_2'$ dado por $Y_1=QY_2$.\\
+    Consideremos la matriz asociada a $f$ respecto de $B_1$ y $B_1'$, $A\in\mathcal{M}_{m\times n}(\mathcal{K})$, tal que $A=\mathcal{M}_{B_1,B_1'}(f)$ y la ecuación matricial
+    \[Y_1=AX_1\]
+    De igual forma, sea $\tilde{A}\in\mathcal{M}_{m\times n}(\mathbb{K})$ la matriz asociada a $f$ respecto de $B_2$ y $B_2'$, tal que $\tilde{A}=\mathcal{M}_{B_2,B_2'}(\mathbb{K})$ y la ecuación matricial de $f$ respecto de estas bases,
+    \[Y_2=\tilde{A}X_2\]
+    Gráficamente,
+    \[\begin{matrix}
+    & V & \to & V' & \\
+            & & A & &\\
+            & B_1 & \longrightarrow & B_1' & \\
+            P & \uparrow & & \uparrow & Q\\
+             & & \tilde{A} & & \\
+             & B_2 & \longrightarrow & B_2' &
+        \end{matrix}\]
+        Entonces,
+        \[Y_2=\left\lbrace \begin{array}{l}
+        \tilde{A}X_2\\    Q^{-1}Y_1=Q^{-1}AX_1=Q^{-1}APX_2\end{array}\right.\]
+        y en consecuente,
+        \[\tilde{A}=Q^{-1}AP\]
+        O bien,
+        \[X_2=\left\lbrace\begin{array}{l}
+            \tilde{A}^{-1}Y_2\\
+            P^{-1}X_1=P^{-1}A^{-1}Y_1=P^{-1}A^{-1}QY_2
+        \end{array}\right.\]
+        y en consecuente,
+        \[\tilde{A}^{-1}=P^{-1}A^{-1}Q\]
+\end{proof}
+
+Ahora vamos a enunciar el \textbf{Primer Teorema de Isomorfía}, del que obtendremos un Corolario muy importante a la hora de trabajar con aplicaciones lineales. Este teorema no se va a demostrar (si se quiere ver la prueba consultar  \cite[Chapter 6, Theorem 6.5, Page 77]{IntroducciónTeoríaDeGrupos}).
+
+\begin{theorem}[Primer teorema de isomorfismo de Noether]
+    Sea $f:V\longrightarrow V'$ una aplicación lineal, entonces:
+    \begin{enumerate}[label=(\roman*)]
+        \item Existe una aplicación lineal sobreyectiva $\pi:V\longrightarrow V/Kerf$
+        \item Existe un isomorfismo $\bar{f}:V/Kerf\longrightarrow Imf$
+        \item Existe una aplicación lineal inyectiva $i:Imf\longrightarrow V'$, tales que $f=i\circ\bar{f}\circ\pi$, tal que
+        \[\begin{matrix}
+            & & f & \\
+            & V & \longrightarrow & V' & \\
+            \pi & \downarrow & & \uparrow & i\\
+             & & \bar{f} & & \\
+             & V/Kerf & \longrightarrow & Imf &
+        \end{matrix}\]
+    \end{enumerate}
+   
+\end{theorem}
+\begin{corollary}
+     Si además $V$ es finitamente generado,
+    \[dimV=dim(Kerf)+dim(Imf)\]
+\end{corollary}

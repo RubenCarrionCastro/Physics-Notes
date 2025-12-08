@@ -1,0 +1,110 @@
+\section{Introducción a la lógica} % Main chapter title
+\label{Ap-A-sec1} 
+\subsection{Introducción a la lógica}
+La lógica se originó en la Antigua Grecia, gracias a pensadores como Aristóteles, el cuál es reconocido como el padre fundador de la lógica, sus principales trabajos acerca de esto están agrupados en su obra Órganon. Euclides también contribuyó en este campo, pues estableció el método axiomático.\\ \\
+Personajes más actuales también han contribuido en esta rama de pensamiento, tales como Guiseppe Peano (1858-1932), el cuál enunció sus principios acerca de la lógica en su obra Formulaire de mathematiques, además, sus axiomas permiten definir el conjunto de los números naturales. George Boole (1815-1864) aplicó el cálculo matemático a la lógica, fundando el álgebra lógica. Augustus De Morgan (1806-1918) es el autor de la mayor contribución como reformador de la lógica. Georg F. Cantor (1845-1918) es considerado el creador de la teoría de los números irracionales y de los conjuntos.
+\subsection{¿Qué es la lógica?}
+La lógica es una ciencia formal que estudia la estructura o formas del pensamiento humano para establecer leyes y principios válidos para obtener criterios de verdad. La unidad básica de la lógica es la \textbf{proposición}, la cuál es una oración asertiva, que puede tomar un valor verdadero o falso. Existen proposiciones simples o atómicas, las cuales son aquellas donde no hay operadores lógicos.
+\begin{example}
+p = la raíz cuadrada de 4 es 2 (V), esta proposición es verdadera.\\ 
+q = todos los carros tienen dos ruedas (F), esta proposición es falsa.
+\end{example}
+\subsection{Operadores Lógicos}
+La rama de la lógica que emplea operadores lógicos es la lógica proposicional. También se identifica con la lógica matemática, pues utiliza símbolos especiales que la acercan al lenguaje matemático. Estos símbolos son los siguientes:\\ \\
+\textbf{-Operador de negación $\neg$: }este operador niega una proposición y puede aparecer junto a una sola proposición o junto a varias.\\ \\
+$\neg p \rightarrow$ no $p$ $\rightarrow$ La negación de $p$\\ \\
+\textbf{-Operador de disyunción $\vee$:}\\ \\
+$p \vee q$ $\rightarrow$ $p$ ó $q$\\ \\
+\textbf{-Operador conjunción $\wedge$:}\\ \\
+$p \wedge q$ $\rightarrow$ $p$ y $q$
+\subsubsection{Disyunción}
+Para que la disyunción sea verdadera mínimo uno de los dos términos debe ser verdadero, si ninguno es verdadero, la disyunción es falsa.
+\begin{example}
+$p \vee q$: x es un número par o múltiplo de 6. La proposición depende de x para ser verdadera o falsa.
+\end{example}
+Existe un tipo de disyunción que es la disyunción exclusiva $\veebar$. Este tipo de disyunción se hace verdadera exclusivamente cuando una de las dos proposiciones es verdadera y la otra falsa, si ambas son verdaderas o falsas, la disyunción es falsa.
+\begin{example}
+$p \veebar q$: x es un número par o x es un número impar. Si una de las dos es verdadera y la otra es falsa, entonces la disyunción es cierta, pero ambas proposiciones no pueden ser ciertas a la vez.
+\end{example}
+\subsubsection{Conjunción}
+Para que la conjunción sea verdadera ambas proposiciones deben ser verdaderas, de lo contrario, es falsa.
+\begin{example}
+$p \veebar q$: x es par y x es impar; esto siempre es falso.
+\end{example}
+\subsection{Tablas de verdad}
+Las tablas de verdad son un recurso para poder analizar cualquier fórmula lógica y hallar sus valores de verdad, nos dice si una fórmula es satisfacible o si un razonamiento es válido o no.\\ \\
+En las tablas de verdad se emplea el \textbf{Verdadero (V)} y\textbf{ Falso (F)}, matemáticamente estos términos se pueden sustituir el verdadero por el \textbf{1} y el falso
+por el \textbf{0}.
+\begin{table}[h]
+    \centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+$p$ & $q$ & $\neg$ $p$ & $p$ $\wedge$ $q$ & $p$ $\vee$ q \\ \hline
+V & V & F & V & V \\ \hline
+V & F & F & V & F \\ \hline
+F & V & V & V & F \\ \hline
+F & F & V & F & F \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Implicadores}
+La implicación lógica "p, por tanto q" es una afirmación que conlleva a otra, sin que la segunda deba ser comunicada explícitamente. En lógica se simboliza formalmente como:
+\[p \rightarrow q\]
+Se lee como "p implica q", "si p, entonces q" o "p, por tanto q".
+Matemáticamente se escribe:
+\[p \Rightarrow q\]
+Por tanto: $p \rightarrow q \equiv p \Rightarrow q$\\ \\
+Para que la implicación sea falsa, $p$ debe ser verdadera y $q$ falsa, cualquier otra combinación es verdadera, esto equivale a la negación de $p$ ó $q$:
+\[p \Rightarrow q \equiv \neg p \vee q\]
+\subsubsection{Doble implicación}
+La doble implicación o bicondicional es un operador que funciona sobre dos proposiciones, siendo verdadera cuando ambas proposiciones son falsas o verdaderas, de lo contrario es falso. Se lee "p si solo si q". En lógica se simboliza formalmente como:
+\[p \longleftrightarrow q\]
+Matemáticamente se representa:
+\[p \Longleftrightarrow q\]
+Por tanto: \[p \Longleftrightarrow q \equiv p \Longleftrightarrow q\]
+La doble implicación de $p$ y $q$ equivale a la implicación de $p$ en $q$ y a la implicación de $q$ en $p$, es decir:
+\[p \Longleftrightarrow q \equiv (p \Rightarrow q) \wedge (q \Rightarrow p)\]
+\subsection{Inferencias}
+La inferencia es el proceso por el cual se derivan conclusiones a partir de premisas. Una premisa es cada una de las proposiciones anteriores a la conclusión del argumento.\\ \\
+Las inferencias se representan de la siguiente forma:
+\[p \Rightarrow q;\hspace{4mm}
+\begin{array}{c}
+p \\ \hline q
+\end{array} \equiv (p \Rightarrow q) \wedge q) \Rightarrow q\]
+\subsection{Leyes de la lógica}
+\textbf{-Asociativa: }Esta ley dicta que las proposiciones se pueden asociar de diferentes formas y el resultado final va a ser equivalente. Esta ley se cumple con los conectores de conjunción y disyunción.
+\[(p\vee q)\vee r\equiv p\vee(q\vee r)\]
+\[(p\wedge q)\wedge r\equiv p\wedge(q\wedge r)\]
+\begin{center}
+\textbf{ATENCIÓN:} $(p\vee q)\wedge r\not\equiv p\vee(q\wedge r)$
+\end{center}
+\textbf{-Conmutativa:} Esta ley dicta que el orden de los factores no altera el resultado, en lógica, solo es aplicable a las operaciones con conectivos lógicos que implican conjunción y disyunción.
+\[p\vee q\equiv q\vee p\]
+\[p\wedge q\equiv q\wedge p\]
+\textbf{-Distributiva: }Es la ley en la cuál se demuestra que en una fórmula que tenga conectores de conjunción y disyunción logremos poder reformular la estructura de los mismos, manteniendo el mismo resultado.
+\[p\vee(q\wedge r)\equiv(p\wedge q)\vee(p\wedge r)\]
+\textbf{-Negación:} Al negar dos veces una proposición, esta proposición se queda sin negación, al igual que pasaría al multiplicar dos números negativos que dan uno positivo. Al negar una conjunción, ambas proposiciones se niegan y la conjunción pasa a ser una disyunción, e igual ocurre al negar la disyunción, ambos miembros se niegan y pasa a conjunción.
+\[\neg(\neg p)\equiv p\]
+\[\neg(p\vee q)\equiv (\neg p)\wedge(\neg q)\]
+\[\neg(p\wedge q)\equiv(\neg p)\vee(\neg q)\]
+\begin{center}
+    \textbf{ATENCIÓN:} $\neg(p\Rightarrow p)\not\equiv(\neg p)\Rightarrow(\neg q)$
+\end{center}
+\[\neg(p\Rightarrow q)\equiv p\wedge (\neg q)\]
+\subsection{Otros operadores}
+Además de los operadores lógicos que hemos visto anteriormente, existen otros operadores, principalmente usados en matemáticas, pertenecientes a lógica. Estos operadores son los siguientes:\\ \\
+\textbf{-Para todo:} es considerado un cuantificador universal. Un cuantificador es una expresión que indica la cantidad de veces que un predicado se satisface
+dentro de una determinada clase. Este cuantificador se coloca delante de una variable. Su representación formal es: $\forall$\\ \\
+\begin{example}
+Para todo número real, su cuadrado es no negativo: $\forall x\in\mathbb{R},x^{2}\geq0$
+\end{example}
+\textbf{-Existe: }se considera como un cuantificador existencial, se sitúa ante puesto a una variable para decir que 'existe al menos' un elemento del conjunto al que hace referencia la variable y cumple la proposición. Se usa el siguiente símbolo: $\exists$
+\begin{example}
+Existe un número real, cuyo cuadrado es $2$: $\exists x\in\mathbb{R},x^{2}=2$
+\end{example}
+-Hay un caso especial el cuál es "Existe un único", el cuál se usa para aclarar que solo hay un elemento que cumpla la proposición y se simboliza como: $\exists!$
+\subsubsection*{La negación:}
+Como norma general, para comprobar que alguna afirmación es falsa, hay que buscar un contraejemplo. Para negar el cuantificador universal o el "para todo" ($\forall$) hay que buscar algún caso particular con el que se verifique que la proposición no se cumple, usando el cuantificador existencial o el "existe". Realizamos lo siguiente:
+\[\neg(\forall x,P(x))\equiv\exists x,\neg P(x)\]
+Siendo P(x) un polinomio. Para negar el cuantificador existencial o el "existe", debemos emplear el cuantificador universal "para todo", pues hay que encontrar un caso general que niegue la proposición. Realizamos lo siguiente:
+\[\neg(\exists x,P(x))\equiv\forall x,\neg P(x)\]
+Siendo P(x) un polinomio.

@@ -1,0 +1,186 @@
+\section{Conceptos básicos.} % Main chapter title
+\label{cap6-sec1}
+(...)\\ \\
+A escalas de más de 1000 Mpc, el universo es isotrópico y homogéneo.
+\[\vec{v}=H_0\vec{d}\]
+donde $H_0$ es la constante de Hubble.\\ \\
+El fondo cósmico de microondas nos indica que la potencia primordial es un invariante de escala.\\ \\
+Sabemos que a grandes escalas, el espacio-tiempo es homogéneo e isótropo. Definamos estos conceptos:
+\begin{itemize}
+    \item \textbf{Isotropía:} una variedad diferenciable $\mathscr{M}$ (espacio-tiempo) es isótropa alrededor de un punto $p\in\mathscr{M}$, si dados $x^{\mu},y^{\mu}\in T_p\mathscr{M}$, existe una isometría tal que el push-forward de $x^{\mu}$ es paralelo a $y^{\mu}$ (sin transformar). Es decir, existen rotaciones que mapean $x^{\mu}$ a $y^{\mu}$, tal que dejan la métrica invariante en $p\in\mathscr{M}$. La isotropía se puede definir punto a punto.
+    \item \textbf{Homogeneidad:} dados $p,q\in\mathscr{M}$ cualesquiera, existe una isometría que transforma $p$ en $q$.
+\end{itemize}
+Un espacio-tiempo homogéneo no tiene por qué ser isótropo y un espacio-tiempo isótropo alrededor de un punto de la variedad no tiene por qué ser homogéneo. Pero si tenemos un espacio-tiempo isótropo en todos los $p\in\mathscr{M}$, entonces sí es homogéneo. Además, si es isótropo alrededor de un punto $p\in\mathscr{M}$ y homogéneo, entonces será isótropo en todo $p\in\mathscr{M}$.\\ \\
+En adelante, aplicaremos homogeneidad e isotropía en hipersuperficies espaciales (no aplica en la dirección temporal, pues esta sí tiene una dirección 'privilegiada').\\ \\
+Nuestro espacio-tiempo tiene la topología $\mathbb{R}\times\Sigma$, donde $\Sigma$ son secciones espaciales homogéneas e isótropas. En este caso,
+\[ds^2=-dt^2+a^2(t)\gamma_{ij}(\vec{x})dx^idx^j\]
+donde $a(t)$ es el factor de escala, $\gamma_{ij}(\vec{x})$ es la métrica en las secciones espaciales que son máximamente simétricas, es decir, donde $\mathscr{R}_{ijkl}=K\brackets{\gamma_{ik}\gamma_{jl}-\gamma_{il}\gamma_{jk}}$, donde $K$ podría depender de $t$, pero en todos los textos se asume que $K=cte$ para evitar que la topología del espacio-tiempo cambie. El tensor de Ricci sobre las secciones espaciales $\Sigma$ será,
+\[\mathscr{R}_{jk}=\mathscr{R}_{ijkl}\gamma^{ik}=2K\gamma_{jl}\]
+Asumiendo que $\gamma_{ij}(\vec{x})dx^idx^j=A(r)dr^2+r^2d\Omega^2$, siendo isótropa respecto a $r=0$, y que $\mathscr{R}_{ijkl}\gamma^{il}=2K\gamma_{jl}$, entonces
+\[A(r)=\frac{1}{1-Kr^2}\]
+Por tanto, la métrica más general posible que sea homogénea e isótropa será la métrica de \textbf{Friedmann-Lemaître-Roberson-Walker}, tal que
+\[ds^2=-dt^2+a(t)^2\left(\frac{1}{1-Kr^2}dr^2+r^2d\Omega^2\right)\]
+Notemos que si $K\to\alpha K$, podemos reabsorber $\alpha$ con un cambio de coordenadas del tipo $r\to\alpha^{-1}r$ y un reescalado del factor de escala, $a(t)\to\alpha a(t)$; tendremos una métrica invariante. Por ello, solo nos interesarán los casos para $K=-1,0,+1$.
+\begin{enumerate}
+    \item \textbf{Para K=0}\\ \\
+    Las secciones espaciales $\Sigma$ son planas, pues la métrica queda
+    \[ds^2=-dt^2+a(t)^2\underbrace{\left(dr^2+r^2d\Omega^2\right)}_{\text{Minkowski en }\mathbb{S}^2}=-dt^2+a(t)^2\left(dx^2+dy^2+dz^2\right)\]
+    Podemos identificar $\Sigma$ con $\mathbb{R}^3$, si la topología es abierta, o con un 3-toro $\mathbb{T}^3$, si la topología es compacta.
+    \item \textbf{Para K=+1}\\ \\
+    La métrica queda,
+    \[ds^2=-dt^2+a(t)^2\left(\frac{1}{1+r^2}dr^2+r^2d\Omega^2\right)\overset{\curlybraces{r=\sin\Psi}}{=}-dt^2+a(t)^2\left(d\Psi^2+\sin^2\Psi d\Omega^2\right)\]
+    luego, $\Sigma$ tiene topología de $\mathbb{S}^3$, es decir, es una 3-esfera de radio unidad, siendo cerrada y sin frontera.
+    \item \textbf{Para K=-1}\\ \\
+    La métrica queda,
+    \[ds^2=-dt^2+a(t)^2\left(\frac{1}{1-r^2}dr^2+r^2d\Omega^2\right)\overset{\curlybraces{r=\sinh\varphi}}{=}-dt^2+a(t)^2\left(d\varphi^2+\sinh^2\varphi d\Omega^2\right)\]
+    luego, $\Sigma$ tiene topología de un hiperboloide 3-dimensional de radio unidad; siendo abierto y con frontera.
+\end{enumerate}
+La coordenada $t$ que usamos en la métrica es el \textit{tiempo comóvil}; asociado a observadores comóviles con $u^{\mu}=\delta_t^{\mu}$.\\ \\
+Sabemos que en la métrica de Schwarzchild en $r=0$ tenemos una singularidad física, cuyo radio viene dado por $1-\frac{2GM}{r}=0$, luego $r_s=2GM$; pero en la métrica de R-N, tendremos dos radios, pues vienen dados por $1-\frac{2GM}{r}-\frac{4\pi GQ^2}{r^2}=0$, luego $r_{\pm}\neq0$. Para comprobarlo hacemos,
+\[\mathscr{R}_{\mu\nu}\mathscr{R}^{\mu\nu}=4\left(\frac{4\pi GQ^2}{r^4}\right)^2=(8\pi G)^2T_{\mu\nu}T^{\mu\nu}=(8\pi G)^2\brackets{(g^{tt}T_{tt})^2+(g^{rr}T_{rr})^2+(g^{\theta\theta}T_{\theta\theta})^2+(g^{\varphi\varphi}T_{\varphi\varphi})^2}\]
+\subsection{Observadores comóviles}
+Tomamos $u^{\mu}=\delta_t^{\mu}$, así, los símbolos de Christoffel quedan,
+\[\Gamma_{ij}^0=a\dot{a}\gamma_{ij};\hspace{3mm}\Gamma_{0j}^i=\frac{\dot{a}}{a}\delta_j^i;\hspace{3mm}\Gamma_{\theta\theta}^r=r(1-Kr^2)=\frac{\Gamma_{\varphi\varphi}^r}{\sin^2\theta};\hspace{3mm}\Gamma_{r\theta}^{\theta}=\Gamma_{r\varphi}^{\varphi}=\frac{1}{4};\hspace{3mm}\Gamma_{\varphi\varphi}^{\theta}=-\sin\theta\cos\theta=-\frac{\Gamma_{\theta\varphi}^{\varphi}}{\sin^2\theta}\]
+El tensor de Ricci queda,
+\[\mathscr{R}_{tt}=-3\frac{\ddot{a}}{a};\hspace{3mm}\mathscr{R}_{rr}=\frac{a\ddot{a}+2\dot{a}^2-2K}{1-Kr^2};\hspace{3mm}\mathscr{R}_{\theta\theta}=r^2(a\ddot{a}+2\dot{a}^2+2K)=\frac{\mathscr{R_{\varphi\varphi}}}{\sin^2\theta}\]
+El escalar de Ricci queda,
+\[\mathscr{R}=\mathscr{R}_{\mu\nu}g^{\mu\nu}=\frac{6}{a^2}(a\ddot{a}+\dot{a}^2+K)=\]
+donde $a=a(t)$, $\dot{a}=\frac{da(t)}{dt}$ y $\ddot{a}=\frac{d^2a(t)}{dt^2}$.\\ \\
+Si $T_{\mu\nu}=0$, tendremos varios casos,
+\begin{itemize}
+    \item Si $K=0$, entonces $\dot{a}=0$, luego $a(t)=cte$.
+    \item Si $K=-1$, entonces $\dot{a}=+1$.
+    \item Si $K=+1$, entonces $\dot{a}^2=-1$, pero este caso lo excluimos, pues no tiene sentido trabajar con métricas imaginarias. 
+\end{itemize}
+\subsection{Contenido de materia}
+Consideramos fluido perfecto, tal que $T_{\mu\nu}=(\rho+P)u_{\mu}u_{\nu}+Pg_{\mu\nu}$, con $u^{\mu}=\delta_t^{\mu}$. Usando la conservación de $T_{\mu\nu}$ obtenemos que $H=\dot{a}/a$, denominado \textit{parámetro de Hubble}. Tal que, si añadimos la ecuación de estado y $\nabla_{\mu}T^{\mu\nu}=0$, tenemos que
+\[\dot{\rho}+3H(\rho+P)=0\] 
+y 
+\[P=\omega\rho\]
+donde consideramos $\omega=cte$, así podemos integrar y obtenemos,
+\[\rho(t)=\rho_0+\left(\frac{a_0}{a(t)}\right)^{-3(1+\omega)}\]
+con $a_0=a(t_0)$ y $\rho_0=\rho(t_0)$. Veamos la evolución del universo según el 'tiempo' $\omega$:
+\begin{itemize}
+    \item Si $\omega=0$, entonces $\rho\sim a^{-3}$, que modela un universo de materia fría que no interacciona; $\rho$ está dominada por la masa en reposo.
+    \item Si $\omega=1/3$, entonces tenemos una etapa del universo dominada por partículas relativistas (fotones), donde $T_{\mu\nu}g^{\mu\nu}=0=3P-\rho$, luego $P=\rho/3$, teniendo una etapa caliente del universo. En este caso, $\rho\propto a^{-4}$, es decir, los fotones se diluyen con un factor $a^{-1}$ adicional, debido al desplazamiento al rojo de su frecuencia.
+    \item Si $\omega=-1$, tenemos una constante cosmológica $\Lambda$ que conocemos, donde $\rho=cte$ y $P=-\rho$; la densidad de energía no se diluye con $a$. Acaba dominando la expansión.
+\end{itemize}
+Las ecuaciones de Einstein nos dirán como $a(t)$ depende con $t$, tal que
+\[G_{\mu\nu}=8\pi GT_{\mu\nu};\hspace{4mm}\mathscr{R}_{\mu\nu}=8\pi G\left(T_{\mu\nu}-\frac{1}{2}g_{\mu\nu}T^{\mu\nu}\right)\]
+donde
+\[\begin{array}{rcl}
+    (0,0) & \to & -3\frac{\ddot{a}}{a}=4\pi G(\rho+3P) \\
+    (i,i) & \to & \frac{\ddot{a}}{a}+2\frac{(\dot{a})^2}{a^2}+2\frac{K}{a^2}=4\pi G(\rho-P)
+\end{array}\]
+Estas ecuaciones se combinan tal que
+\begin{equation}
+    \frac{\ddot{a}}{a}=-\frac{4\pi G}{3}(\rho+3P)
+\end{equation}
+conocida como la \textbf{ecuación de Raychaudhuri} y también,
+\begin{equation}
+    \left(\frac{\dot{a}}{a}\right)^2=\frac{8\pi G}{3}\rho-\frac{K}{a^2}
+\end{equation}
+conocida como la \textbf{ecuación de Friedmann}, que puede reescribirse como
+\begin{equation}
+    \Omega-1=\frac{K}{a^2H^2}
+\end{equation}
+con $\Omega=\frac{\rho}{\rho_{crit}}$, siendo $\rho_{crit}=\frac{3H^2}{8\pi G}$ denominada como densidad de energía crítica.\\ \\
+Midiendo $\Omega$ se puede determinar $K$, tal que
+\begin{itemize}
+    \item Si $\rho<\rho_{crit}$, entonces $\Omega<1$, por tanto $K=-1$, teniendo así un \textbf{universo abierto}.
+    \item Si $\rho>\rho_{crit}$, entonces $\Omega>1$, por tanto $K=+1$, teniendo así un \textbf{universo cerrado}.
+    \item Si $\rho\approx\rho_{crit}$, entonces $\Omega\approx1$, por tanto $K\approx0$, teniendo así un \textbf{universo plano}.
+\end{itemize}
+Nuestras observaciones indican que $\Omega\approx1$, por tanto nuestro universo, en la actualidad, es plano. También sabemos que $\dot{a}>0$, por lo que el universo se expande.\\ \\
+Para $\omega=0,1/3$ con $\dot{a}<0$, tenemos un universo que desacelera. Pero gracias a supernovas se sabe que $\dot{a}>0$, por lo que en la actualidad $P<-\rho/3$, luego la expansión se acelera. En el pasado remoto, $\rho$ dominaba sobre $K/a^2$, pues $\rho\sim a^{-3}$ y $\rho\sim a^{-4}$ (en concreto $\omega\to0$ implica $\rho\sim a^{-4}$). Luego,
+\[\left(\frac{\dot{a}}{a}\right)\approx\frac{8\pi G}{3}\rho_{rad}=\frac{8\pi G}{3}\rho_0\left(\frac{a_0}{a}\right)^4\Longrightarrow(\dot{a})^2=\frac{8\pi G}{3}\rho_0a^4a^{-2}\]
+en el límite de $a\to0$, $\dot{a}\to\infty$.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\linewidth]{linea1.png}
+    \captionof{figure}{Representación de $a$ frente a $t$.}
+    \label{fig6.1}
+\end{Figura}
+En la Figura \ref{fig6.1}, vemos que $a$ cuando $a\to0$, llegamos a una singularidad de $\rho\to\infty$, por tanto esta singularidad será la \textbf{singularidad del Big Bang}.\\ \\
+Para $K\leq0$ tenemos que
+\[\dot{a}^2=\frac{8\pi G}{3}\rho a^2+|k|>0\]
+El universo nunca rebota ni recolapsa.\\ \\
+Recordando que $P=\omega\rho$, entonces $\rho=\rho_0\left(\frac{a_0}{a}\right)^{3(1+\omega)}$. Volvamos a estudiar los distintos casos,
+\\ \\
+Para $\omega=0,1/3$, tenemos que $\rho a^2\underset{a\to\infty}{\longrightarrow}0$. Entonces, para $K=0$ tenemos $\dot{a}^2\underset{a\to \infty}{\longrightarrow}0$, es decir, el universo se expande indefinidamente, pero cada vez más rápido, de forma acelerada.
+\\ \\
+Para $K=-1$, tenemos que $\dot{a}^2=\frac{8\pi G}{3}a^2\rho-K$. En algún instante $t_{rec}$, tendremos que $\left.\frac{8\pi G}{3}a^2\rho\right|_{t=t_{rec}}=K$, por tanto tendremos que $\dot{a}=0$.\\ \\
+-Si $\dot{a}<0$ inicialmente, entonces al final de la evolución tendremos que $a\to0$.\\ \\
+-Si $\dot{a}>0$ inicialmente, entonces tendremos $\dot{a}=0$ en $t=t_{rec}$ y para $t>t_{rec}$ tendremos $\dot{a}<0$, por lo que el universo comenzará a desacelerar, volviendo a contraerse y teniendo así un final del universo conocido como \textit{Big Crunch}.
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\linewidth]{linea2.png}
+    \captionof{figure}{Evolución de $a$ para distintos casos de $K$.}
+    \label{fig6.2}
+\end{Figura}
+El factor de escala como función de $t$ será,
+\begin{itemize}
+    \item Para $\omega=0$ tendremos,
+    \[a(t)=\left\lbrace\begin{array}{rcl}
+        \frac{c}{2}(1-\cos\phi(t));\hspace{3mm}t=\frac{c}{2}(\phi(t)-\sin\phi(t)) & \text{si} & K=+1 \\
+        \left(\frac{9}{4}c\right)^{1/3}t^{2/3} & \text{si} & K=0\\
+        \frac{c}{2}(\cosh\phi(t)-1); \hspace{3mm}t=\frac{c}{2}(\sinh\phi(t)-\phi(t)) & \text{si} & K=-1
+    \end{array}\right.\]
+    con $c=\frac{8\pi G}{3}\rho a^2=cte$.
+    \item Para $\omega=1/3$ tendremos,
+    \[a(t)=\left\lbrace\begin{array}{rcl}
+        \sqrt{\Tilde{c}}\left[1-\left(1-\frac{t}{\sqrt{\Tilde{c}}}\right)^2\right]^{1/2} & \text{si} & K=+1 \\
+        (4\Tilde{c})^{1/4}t^{1/2} & \text{si} & K=0\\
+        \sqrt{\Tilde{c}}\left[\left(1+\frac{t}{\sqrt{\Tilde{c}}}\right)^2-1\right]^{1/2} & \text{si} & K=-1
+    \end{array}\right.\]
+    con $\Tilde{c}=\frac{8\pi G}{3}\rho a^4=cte$.
+    \item Para $\omega=1$, si tenemos una constante cosmológica $\Lambda<0$, por tanto $\rho=-|\Lambda|$ y $P=|\Lambda|$. Solo podemos tener $K=-1$, por lo que
+    \[a(t)=\sqrt{\frac{3}{|\Lambda|}}\sin\left(\sqrt{\frac{|\Lambda|}{3}}t\right)\]
+    pero si tenemos una constante cosmológica $\Lambda>0$, entonces sí podemos tener todos los valores de $K$, por tanto queda
+    \[a(t)=\left\lbrace\begin{array}{rcl}
+        \sqrt{\frac{3}{\Lambda}}\cosh\left(\sqrt{\frac{\Lambda}{3}}t\right) & \text{si} & K=+1 \\
+        \sqrt{\frac{3}{\Lambda}}\exp\left(\sqrt{\frac{\Lambda}{3}}t\right) & \text{si} & K=0\\
+        \sqrt{\frac{3}{\Lambda}}\sinh\left(\sqrt{\frac{\Lambda}{3}}t\right) & \text{si} & K=-1
+    \end{array}\right.\]
+\end{itemize}
+\subsection{Tensores de Killing}
+Los tensores de Killing solo se asocian con las geodésicas $(K=0)$. Se denotan por $K_{\mu\nu}$ y se cumple que $\nabla_{(\rho}K_{\mu\nu)}=0$.\\ \\
+Para una geodésica $T^{\mu}\nabla_{\mu}T^{\nu}=0$, tenemos que $K^2=T^{\mu}T^{\nu}K_{\mu\nu}$ es conservada sobre la geodésica. Para nuestra geometría tenemos el tensor de Killing siguiente,
+\[K_{\mu\nu}=a^2(t)(u_{\mu}u_{\nu}+g_{\mu\nu})\]
+con $u^{\mu}=\delta_t^{\mu}$. Si $v^{\mu}$ es el vector tangente de una geodésica temporal, entonces $v^{\mu}v^{\nu}g_{\mu\nu}=-1$ y $v^{\mu}\nabla_{\mu}v^{\nu}=0$; si $v^{\mu}=v^t\delta_t^{\mu}+v^i\delta_i^{\mu}$, entonces tenemos que
+\[v^{\mu}v_{\mu}=-(v^t)^2+v^iv^jg_{ij}=-(v^t)^2+v^iv^ja^2\gamma_{ij}=-(v^t)^2+|\vec{v}|^2=-1\Longrightarrow(v^t)^2=1+|\vec{v}|^2\]
+Luego,
+\[K^2=a^2\left(v_{\mu}v^{\mu}+(u_{\mu}v^{\mu})^2\right)=a^2\left(-1+(v^t)^2\right)=a^2+|\vec{v}|^2\]
+por tanto, $|\vec{v}|=\frac{K}{a}$, luego, por la propia expansión del universo, la velocidad de las partículas libres disminuye, debido a que la energía cinética de las partículas se va 'diluyendo'.\\ \\
+Si $v^{\mu}v_{\mu}=0$, es decir, tenemos fotones, entonces $K^2=a^2(u_{\mu}v^{\mu})^2$, por tanto, $u_{\mu}v^{\mu}=\frac{K}{a}=\omega$. Por tanto, los fotones pierden su energía con la expansión del universo. Luego, para un observador comóvil, tendremos que $K=\omega_0a_0=\omega_1a_1$.\\ \\
+Si $a_1>a_0$, entonces $\frac{\omega_0}{\omega_1}=\frac{a_1}{a_0}>1$, por tanto, la expansión del universo produce un desplazamiento al rojo de los fotones. Definimos el desplazamiento al rojo como,
+\[z=\frac{\lambda_0-\lambda_1}{\lambda_1}=\frac{a_0}{a_1}-1\]
+\subsection{Ley de Hubble}
+Solamente se aplica a galaxias próximas a nosotros, con desplazamientos al rojo despreciables, sin considerar la curvatura del espacio-tiempo.\\ \\
+Los fotones siguen geodésicas nulas, tal que
+\[-\dot{t}^2+\frac{a^2(t)\dot{r}^2}{1-Kr^2}=0\Longleftrightarrow\int_{t_1}^{t_0}\frac{1}{a(t)}dt=\int_{r_1}^{r_0}\frac{1}{\sqrt{1-Kr^2}}dr\]
+donde $(t_0,r_0)$ y $(t_1,r_1)$ son tiempos/posiciones de emisión y recepción.\\ \\
+Tomamos galaxias no muy lejanas, tal que
+\[a(t_1)=a_0+\dot{a}_0(t_0)(t_1-t_0)+\frac{1}{2}\ddot{a}(t_0)(t_1-t_0)^2+\dots\]
+recordando que $z+1=\frac{a_0}{a_1}$ tenemos que
+\[\frac{1}{1+z}=1+H_0(t_1-t_0)-q_0H_0^2(t_1-t_0)^2+\dots\]
+donde $H_0=\frac{\dot{a}_0}{a_0}$ y $q_0=-\frac{a_0\ddot{a}_0}{\dot{a}_0^2}$ parámetro de desaceleración.\\ \\
+Si $H_0(t_1-t_0)$ es pequeño, entonces
+\[t_0-t_1=H_0^{-1}\left[z-\left(1+\frac{q_0}{2}\right)z^2+\dots\right]\]
+Además,
+\[r_0-r_1=a_0^{-1}\left[(t_0-t_1)+\frac{1}{2}H_0(t_0-t_1)^2+\dots\right]=\frac{1}{a_0H_0}\left[z-\frac{1}{2}\left(1+q_0\right)z^2+\dots\right]\]
+No conocemos $r_0-r_1$, pero sabemos $L(W)$, que es la luminosidad absoluta, y $F(W/m^2)$, que es el flujo de fotones que nos llega. Por tanto,
+\begin{itemize}
+    \item en el espacio plano podemos definir $4\pi d_L^2=\frac{L}{F}$, donde $d_L$ es la distancia lumínica.
+    \item en el espacio de Robinson-Walker no podemos definirlo. Los fotones emitidos y recibidos tienen $\hbar\omega_0$ y $\hbar\omega_1$. Si fueron emitidos durante un tiempo $\delta t_1$, los recibimos en $\delta t_0=\frac{a_0}{a_1}\delta t_1$. Por tanto, la potencia recibida será,
+    \[\mathscr{P}_0=\frac{\hbar\omega_0}{\delta t_0}=\frac{\hbar\omega_1}{\delta t_1}\frac{a_1^2}{a_0^2}\]
+    entonces,
+    \[F=\frac{\mathscr{P}_0}{A}=\frac{\hbar\omega_1}{\delta t_1}\frac{a_1^2}{a_0^2}\frac{1}{4\pi r^2a_0^2}=L\frac{a_1^2}{a_0^2}\frac{1}{4\pi r^2a_0^2}    \]
+    Por tanto, la distancia lumínica desl espacio curvo será,
+    \[d_L=a_0r(1+z)\]
+    Usando $r=r_0-r_1$, obtenemos la \textbf{Ley de Hubble}, tal que
+    \begin{equation}
+        d_L=H_0^{-1}\left[z+\frac{1}{2}\left(1-q_0\right)z^2+\dots\right]
+    \end{equation}
+\end{itemize}
+El telescopio Planck nos ha dado que la constante de Hubble del fondo cósmico es $H_0=68$ km/s/Mpc, mientras que el telescopio Webb-Hubble, nos da que la constante de Hubble para galaxias cercanas es $H_0=73$ km/s/Mpc, cuya diferencia es entre $4\sigma-6\sigma$. Se tienen diversas hipótesis para explicar esto, pero ninguna ha sido demostrada. Una de estas hipótesis es que la constante de Hubble no es realmente una constante, sino que depende de la densidad de energía del universo, pero esta densidad varía según las zonas del universo, pues no es homogéneo en todas las escalas, y entonces, nuestra zona del universo estaría más 'vacía' que la zona del fondo cósmico, por eso esta diferencia.

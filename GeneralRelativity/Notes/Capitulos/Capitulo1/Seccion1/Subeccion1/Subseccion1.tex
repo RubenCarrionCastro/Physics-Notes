@@ -1,0 +1,49 @@
+\subsection{Espacios vectoriales} % Main chapter title
+\label{cap1-sec1-subsec1} 
+
+Comenzamos revisionando la noción de espacio vectorial.
+\begin{definition}
+Consideremos $V$ un conjunto y $\mathbb{K}$ un cuerpo. Supongamos que tenemos definidas una operación interna $+:V\times V\to V$ y una operación externa $\cdot:V\times\mathbb{K}\to V$. Diremos que $(V,\mathbb{K},+,\cdot)$ (o simplemente $(V,\mathbb{K})$) tiene \textbf{estructura de espacio vectorial} si se satisfacen las siguientes propiedades:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{def1:item1} $(V,+)$ es un grupo abeliano, es decir:
+        \begin{enumerate}[label=\ref{def1:item1}-\arabic*)]
+            \item Se cumple que $+:V\times V\to V$ es una operación cerrada, es decir, $\forall v,w\in V$ se tiene que $v+w\in V$.
+            \item Propiedad asociativa:
+            \[\forall u,v,w\in V,\hspace{3mm}u+(v+w)=(u+v)+w\]
+            \item Existe el elemento neutro:
+            \[\forall v\in V,\exists0\in V;\hspace{3mm}v+0=0+v=v\]
+            \item Existe elemento simétrico:
+            \[\forall v\in V,\exists-v\in V;\hspace{3mm}v+(-v)=(-v)+v=0\]
+            \item Propiedad conmutativa:
+            \[\forall v,w\in V;\hspace{3mm}v+w=w+v\]
+        \end{enumerate}
+         
+        \item \label{def1:item2} \textit{Doble propiedad distributiva}:
+        \begin{enumerate}[label=\ref{def1:item2}-\arabic*)]
+            \item $\forall\lambda,\mu\in\mathbb{K}$, $\forall v\in V;\hspace{3mm} (\lambda+\mu)\cdot v=(\lambda\cdot v)+(\mu\cdot v)$
+            \item $\forall\lambda\in\mathbb{K}$, $\forall v,w\in V;\hspace{3mm} \lambda\cdot(v+w)=(\lambda\cdot v)+(\lambda\cdot w)$
+        \end{enumerate}
+        \item \textit{Propiedad pseudo-asociativa}: 
+        \[\forall\lambda,\mu\in\mathbb{K},\forall v\in V;\hspace{3mm}\lambda\cdot(\mu\cdot v)=(\lambda\cdot\mu)\cdot v\]
+        \item Se verifica que:
+        \[\forall v\in V;\hspace{3mm}1\cdot v=v\cdot 1=v,\text{ donde }1\in\mathbb{K}\text{ es el elemento unitario de }\mathbb{K}\]
+    \end{enumerate}
+\end{definition}
+\noindent Los elementos del espacio vectorial suelen denominarse \textbf{vectores} mientras que a los del cuerpo $\mathbb{K}$, los llamaremos \textbf{escalares}. La operación externa recibe el nombre de \textbf{producto por escalares}.
+\\
+\noindent El siguiente concepto que necesitaremos sobre un espacio vectorial es la noción de dimensión. Para poder definir dicha noción, requerimos dos conceptos adicionales: la noción de sistema generador y de lineal dependencia/independencia. El primero nos permite establecer cuando un conjunto de vectores genera todo el espacio vectorial. Esto quiere decir, que todo vector $v\in V$ puede expresarse como \textbf{combinación lineal} de los vectores de mi sistema generador, los cuáles pueden ser \textbf{linealmente dependientes o independientes} entre ellos mismos, recalcando el caso particular de que sean independientes. Veamos una definición más formal.
+
+\begin{definition}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial y sean $v_1,v_2,\dots,v_n\in V$:
+    \begin{itemize}
+    \item Se dice que $\curlybraces{v_1,v_2,\dots,v_n}$ es un conjunto generador si $<\curlybraces{v_1,v_2\dots,v_n}>=V$.
+    \item Se dice que $v_1,v_2,\dots,v_n$ son linealmente independientes si\\ $\lambda^1\cdot v_1+\lambda^2\cdot v_2+\dots \lambda^n\cdot v_n=0$ con $\lambda^i\in\mathbb{K}$, si y solo si $\lambda^1=\lambda^2=\dots=\lambda^n=0$.
+    \item Se dice que $\curlybraces{v_1,v_2,\dots,v_n}$ es una base si es a la vez conjunto generador y los vectores son linealmente independientes.
+    \end{itemize}
+\end{definition}
+
+\noindent Una vez obtenido el concepto de base, podemos ir ya al concepto de dimensión del espacio vectorial.
+
+\begin{definition}
+    Se llama dimensión de un espacio vectorial al cardinal de cualquiera de sus bases, es decir, $dimG=\# B_G$.
+\end{definition}

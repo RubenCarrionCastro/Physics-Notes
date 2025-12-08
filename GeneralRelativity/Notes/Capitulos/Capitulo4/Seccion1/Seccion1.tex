@@ -1,0 +1,138 @@
+%SECCION 1
+\section{Principio de Equivalencia} % Main chapter title
+\label{cap4-sec1} 
+%------------------------------------------------------------------------------
+\subsection{Principio de Equivalencia débil}
+Este Principio, formulado por Galileo, indica la \textit{universalidad de la caída libre}, es decir, dos objetos con masa distinta caen a la misma vez (demostrado experimentalmente por el astronauta David Scott durante la misión Apollo 15 en la Luna en 1971). Este hecho indica que la velocidad de los objetos en caída libre es independiente de su masa, curiosa coincidencia de la mecánica newtoniana, pues
+\[\text{\textit{"Las masas inerciales y las masas gravitatorias son indistinguibles"}.}\]
+En la mecánica newtoniana aparecen dos tipos de masas, en distintos contextos y de distintos tipos. La primera es la \textit{masa inercial}, $m_i$, que aparece en la segunda Ley de Newton como constante de proporcionalidad entre la fuerza $\vec{F}$ ejercida en un cuerpo y su aceleración $\vec{a}$,
+\begin{equation}
+   \vec{F}=m_i\vec{a} 
+   \label{ec4.1}
+\end{equation}
+La masa inercial es por tanto una medida para la resistencia de un cuerpo a cambios de velocidad. Por otra parte, la \textit{masa gravitacional}, $m_g$, es una medida de cómo interacciona un cuerpo gravitacionalmente con los demás del universo. El potencial gravitatorio causado por un cuerpo sobre otro viene dado por
+\begin{equation}
+    \Phi=\frac{G_Nm_gM_g}{r}
+    \label{ec4.2}
+\end{equation}
+donde $G_N$ es la constante de Newton y $r$ la distancia entre las dos masas $m_g$ y $M_g$. De forma que,
+\begin{equation}
+    \vec{F}=-m_g\vec{\nabla}\Phi
+    \label{ec4.3}
+\end{equation}
+\\ \\
+Estas dos masas son indistinguibles, pues si no lo fueran, dos cuerpos con distinta masa acelerarían de distinta manera bajo la acción de un campo gravitatorio.
+\begin{note}
+    No se conocen objetos con masa negativa o gravitacionalmente nulas. Todos los objetos se ven afectados por el campo gravitatorio y además, lo hacen de la misma forma.
+\end{note}
+Como consecuencia de este Principio, igualando 
+(\ref{ec4.1}) y (\ref{ec4.3}), vemos que $\vec{a}$ y $-\vec{\nabla}\Phi$ son también indistinguibles en una región local, es decir, lo suficientemente pequeña. Consecuencia que Einstein percibió, por lo que decidió reformular el Principio de Equivalencia de Galileo.
+\subsection{Principio de Equivalencia de Einstein}
+\begin{center}
+\textit{''Es imposible detectar la presencia de un campo gravitatorio en una región lo suficientemente pequeña mediante las leyes de la relatividad especial''.}
+\end{center}
+Esto quiere decir que en regiones locales es imposible detectar campos gravitatorios usando cualquier ley física, entendiendo esto no como una aceleración, sino como la interacción gravitacional que caracteriza el campo.\\ \\
+Para probar esto, decide idear un experimento, llamado \textbf{efecto Doppler gravitacional}, que consiste en el sistema de un emisor y un receptor fijos, de forma que a un tiempo $t_0$ el emisor emite una onda electromagnética con una longitud de onda $\lambda_1$ y cuando ésta llega al receptor en $t=t_0+z/c$, la longitud de onda cambia a $\lambda_2$. Ver Figura \ref{fig4.1} 
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Capitulos//Capitulo4//Seccion1/EfDoppler.png}
+    \captionof{figure}{Esquema del efecto Doppler gravitacional}
+    \label{fig4.1}
+\end{Figura}
+Así, usando el efecto Doppler relativista,
+\begin{equation}
+    \nu_1=\nu_2\sqrt{\frac{1+\Delta V/c}{1-\Delta V/c}}\overset{\Delta V<< c}{\approx}\nu_2\left(1+\frac{\Delta V}{c}\right)
+\end{equation}
+y usando que $\lambda_i\nu_i=c$,
+\begin{equation}
+    \frac{\Delta \lambda}{\lambda_1}=\frac{\Delta V}{c}=\frac{a\Delta V}{c}=\frac{a\cdot z}{c^2}
+\end{equation}
+Por tanto, como $a$ y $g$ son indistinguibles, tenemos
+\[\frac{\Delta\lambda}{\lambda}=g\frac{z}{c^2}=\frac{1}{c^2}\int\partial_z\Phi dz=\frac{\Delta\Phi}{c^2}\]
+Esto nos permite concluir que la variación en la longitud de onda $\Delta\lambda$ de una señal electromagnética al propagarse en un campo gravitacional está directamente relacionada con la diferencia de potencial gravitatorio $\Delta\Phi$. En otras palabras, el efecto Doppler gravitacional es una manifestación experimental de cómo la gravedad afecta la propagación de la luz, lo que puede interpretarse como una consecuencia de la dilatación temporal gravitacional.\\ \\
+Por tanto, este resultado demuestra que un observador en reposo dentro de un campo gravitatorio no puede distinguir si el desplazamiento en la longitud de onda se debe a una aceleración (como en un sistema inercial no gravitatorio) o a la interacción gravitacional de un campo, validando así el principio de equivalencia propuesto por Einstein. Este principio establece que los efectos de un campo gravitacional local son indistinguibles de los efectos de un sistema acelerado, lo que constituye la base de la teoría de la relatividad general.\\ \\
+Además, este experimento mental se demostró empíricamente por Pound y Rebka en 1980.\\ \\
+Esta consecuencia permite volver a redefinir el Principio de Equivalencia.
+\subsection{Principio de Equivalencia fuerte}
+\begin{center}
+    \textit{''Es imposible detectar la presencia de un campo gravitatorio en una región lo suficientemente pequeña mediante las leyes de la física, incluyendo la gravedad''.}
+\end{center}
+Esto implica que los sistemas de referencia en caída libre (SRCL) son equivalentes a los sistemas de referencia inerciales (SRI) de la Relatividad Especial (son sistemas de referencia que se mueven libremente en un campo gravitacional). Estos sistemas de referencia solo se pueden definir localmente, pues estos sistemas se definen en los Espacios Tangentes, y como vimos en Geometría Diferenciable, estos se definen localmente sobre cada punto de la Variedad Diferenciable. Por tanto, no podemos conectar dos SRCL de forma universal, pero podemos conectarlos mediante una curva $\gamma_p(t)$, usando el Transporte Paralelo. El resultado de hacer el transporte paralelo a lo largo de una curva dependerá de la propia curva $\gamma_p(t)$, exceptuando espacios planos (de curvatura cero), por lo que podremos usarlo.\\ \\
+Esto es una manifestación de la curvatura $R_{abc}^d$ y su relación con la gravedad. Es decir, adoptamos una descripción geométrica de la gravedad.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

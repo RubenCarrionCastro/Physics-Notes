@@ -1,0 +1,42 @@
+%SECCION 5
+\section{Campos relativistas} % Main chapter title
+\label{cap2-sec11}
+Un campo escalar relativista será,
+\[\begin{array}{rlcl}
+     \phi(x):&\mathbb{R}^4&\to&\mathbb{R}  \\
+     & x^{\mu} & \mapsto & \lambda
+\end{array}\]
+Su acción es una función de la forma,
+\[S=\int_{\mathscr{M}}d^4x\mathcal{L}(\phi,\partial_{\mu}\phi)\]
+donde $\mathcal{L}$ es la densidad lagrangiana. Aplicamos el principio variacional se acción estacionaria bajo variaciones del campo que se anulan en la frontera $\partial\mathscr{M}$ de la variedad $\mathscr{M}$. Luego, tenemos la condición de que $\delta\phi|_{\partial\mathscr{M}}=0$, tal que
+\[\delta S=\int_{\mathscr{M}}d^4x\left(\frac{\partial\mathcal{L}}{\partial\phi}\delta\phi+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta(\partial_{\mu}\phi)\right)\]
+Imponemos que las variaciones sean del tipo $\delta(\partial_{\mu}\phi)=\partial_{\mu}(\delta\phi)$, pues solo estamos variando el campo y no las coordenadas, así la acción se transforma en,
+\[\delta S=\int_{\mathscr{M}}d^4x\left(\frac{\partial\mathcal{L}}{\partial\phi}\delta\phi+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\mu}(\delta\phi)\right)=\int_{\mathscr{M}}d^4x\left[\left(\frac{\partial\mathcal{L}}{\partial\phi}-\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\right)\right)\delta\phi+\underbrace{\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta\phi\right)}_{\int_{\partial\mathscr{M}}(...)\delta\phi=0}\right]=0\]
+Por tanto, vemos que se cumplen las ecuaciones  de Euler-Lagrange para un campo escalar relativista,
+\[\frac{\partial\mathcal{L}}{\partial\phi}-\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\right)=0\]
+\begin{example}
+    Si tenemos un campo escalar sin masa cuya densidad lagrangiana es $\mathcal{L}=\partial_{\mu}\phi\partial^{\mu}\phi=\eta^{\mu\nu}\partial_{\mu}\phi\partial_{\nu}\phi$, tenemos que
+    \[\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}=\frac{\partial}{\partial(\partial_{\mu}\phi)}\left(\partial_{\rho}\phi\partial_{\sigma}\phi\eta^{\rho\sigma}\right)=\delta_{\rho}^{\mu}\partial_{\sigma}\phi\eta^{\rho\sigma}+\delta_{\sigma}^{\mu}\partial_{\rho}\phi\eta^{\rho\sigma}=2\partial^{\mu}\phi\]
+    \[\frac{\partial\mathcal{L}}{\partial\phi}=0\]
+    Luego, aplicando la ecuación de Euler-Lagrange, tenemos 
+    \[-\partial_{\mu}(\partial^{\mu}\phi)=0\]
+    es decir, tenemos $\square\phi=0$.
+\end{example}
+\subsection{Cantidades conservadas}
+Consideremos variaciones de la forma $x^{'\mu}=x^{\mu}+\delta x^{\mu}$, que induce $\phi'(x')=\phi(x)$. Entonces,
+\[\phi'(x')=\phi'(x)+\delta x^{\mu}\partial_{\mu}\phi'(x)=\phi(x)\]
+\[\phi'(x)-\phi(x)=-\delta x^{\mu}\partial_{\mu}\phi'(x)=-\delta x^{\mu}\partial_{\mu}\phi(x)\]
+Si hacemos una transformación de coordenadas, vemos que
+\[d^4x'=d^4x(1+\partial_{\mu}\delta x^{\mu})\]
+y que
+\[\mathcal{L}'=\mathcal{L}+\delta x^{\mu}\partial_{\mu}\mathcal{L}+\frac{\partial\mathcal{L}}{\partial\phi}(\cancelto{-\delta x^{\mu}\partial_{\mu}\phi}{\phi'(x)-\phi(x)})+\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}(\cancelto{-(\delta x^{\nu}\partial_{\nu})(\partial_{\mu}\phi)}{\partial_{\mu}\phi'-\partial_{\mu}\phi})\]
+Si introducimos todo en la acción, tenemos
+\[\begin{array}{rl}
+    \delta S &=\int d^4x\left[\mathcal{L}(\partial_{\mu}\delta x^{\mu})+\delta x^{\mu}\partial_{\mu}\mathcal{L}-\frac{\partial\mathcal{L}}{\partial\phi}(\delta x^{\mu}\partial_{\mu}\phi)-\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}(\delta x^{\nu}\partial_{\nu})(\partial_{\mu}\phi)\right]=  \\
+     & =\int d^4x\left[\mathcal{L}(\partial_{\mu}\delta x^{\mu})+\delta x^{\mu}\partial_{\mu}\mathcal{L}-\partial_{\mu}\left(\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\right)(\delta x^{\mu}\partial_{\mu}\phi)-\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}(\delta x^{\nu}\partial_{\nu})(\partial_{\mu}\phi)\right]= \\
+     & =\int d^4x\partial_{\mu}\left[\left(\delta_{\nu}^{\mu}\mathcal{L}-\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\nu}\phi\right)\delta x^{\nu}\right]     
+\end{array}\]
+Si $\delta x^{\mu}$ es una traslación constante, $\delta x^{\mu}=\delta\alpha^{\mu}$, entonces tenemos que
+\[T_{\nu}^{\mu}=\delta_{\nu}^{\mu}\mathcal{L}-\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\partial_{\nu}\phi\]
+es conservado y se denomina \textit{tensor de energía-impulso}, que tiene el contenido energético del campo de forma local.\\ \\
+Además, como $\delta S=0$, entonces tendremos que $\partial_{\mu}T_{\nu}^{\mu}=0$, por lo que es una ley de conservación. Este tensor es simétrico y toda densidad lagrangiana, con suficiente simetría, tiene asociado un tensor de energía-impulso que cumple que $\partial_{\mu}T_{\nu}^{\mu}=0$.

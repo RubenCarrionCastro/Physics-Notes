@@ -1,0 +1,169 @@
+\chapter{Variedades}
+\label{ApendiceC}
+\lhead{Ap\'endice C. \emph{Variedades}}
+\section{Definición de Variedad}
+Una variedad, aproximadamente, es un espacio topológico en el cuál algunos entornos de cada punto admiten un sistema de coordenadas, siendo en funciones coordenadas reales en los puntos del entorno, que determina la posición de los puntos y la topología de ese entorno; esto es, el espacio es localmente cartesiano. Además, el paso de un sistema de coordenadas a otro es suave en la región superpuesta, por tanto, el significado de curva, función o mapa 'diferenciable' es consistente cuando se refiere a cualquier sistema. Una definición detallada se dará más adelante.\\ \\
+Los modelos matemáticos que se usan para describir sistemas físicos, usan las variedades como objeto básico de estudio, sobre el cual se puede definir una \textit{estructura} adicional para obtener cualquier sistema en cuestión. El concepto generaliza e incluye los casos especiales de línea cartesiana, plano, espacio, y las superficies que se estudian en cálculo avanzado. La teoría de estos espacios se generaliza con las variedades, incluyendo las ideas de funciones diferenciables, curvas suaves, vectores tangentes, y campos vectoriales. Sin embargo, las nociones de distancia entre puntos y líneas rectas (o caminos más cortos) no son parte de la idea de una variedad, pero surgen como consecuencias de estructuras adicionales, las cuales pueden ser o no ser asumidas y en cualquier caso, no es único.\\ \\
+Una variedad tiene dimensión tal que, al igual que en los modelos físicos, su valor será igual al número de grados de libertad. Nos limitaremos a estudiar las variedades de dimensión finita.\\ \\
+Algunas definiciones preliminares podrán facilitar la definición de variedad:
+\begin{definition}[\textbf{Carta}]
+    Sea $(X,\mathcal{T})$ un espacio topológico, siendo $\mathcal{T}$ una topología sobre el conjunto $X$, decimos que una \textbf{\textit{carta}} en $p\in X$ es una función $\mu:\hspace{1mm}O\to\mathbb{R}^d$, donde $O$ es un conjunto abierto que contiene $p$ y $\mu$ es un homeomorfismo sobre un conjunto abierto de $\mathbb{R}^d$.
+\end{definition}
+-La \textit{dimensión} de una carta $\mu:\hspace{1mm}O\to\mathbb{R}^d$ es $d$.\\
+-Las \textit{funciones de coordenadas} de una carta son las funciones de valor real sobre $O$, dadas por las entradas de valores de $\mu$; esto es, son las funciones $x^i=u^i\circ \mu:\hspace{1mm}O\to\mathbb{R}$, donde $u^i:\hspace{1mm}\mathbb{R}^d\to\mathbb{R}$ son las coordenadas estándar sobre $\mathbb{R}^d$.\\
+-Los $u^i$ están definidos por $u^i(a^1,\dots,a^d)=a^i$. Los superíndices no son potencias, claro está, pero son simplemente la indexación tensorial habitual de coordenadas. Si se necesitan potencias, usaremos paréntesis extra, $(x)^2$ en lugar de $x^2$ para el cuadrado de $x$, pero normalmente el contexto tendrá información suficiente para saber la distinción y quitar el uso de estos paréntesis. Por tanto, para cada $q\in O$, tenemos que $\mu q=(x^1q,\dots,x^dq)$, y entonces, podremos escribir también $\mu=(x^1,\dots,x^d)$. En otra terminología, podemos denominar $\mu$ como un \textit{mapa coordenado}, $O$ como un \textit{entorno coordenado}, y la colección $(x^1,\dots,x^d)$ como \textit{coordenadas} o \textit{sistema coordenado sobre }$p$.\\ \\
+Restringiremos los símbolos '$u^i$'a este uso como coordenadas estándar de $\mathbb{R}^d$. Para $\mathbb{R}^2$ y $\mathbb{R}^3$ también usaremos $x$, $y$, $z$ como coordenadas, como es habitual, exceptuando que las usaremos como funciones.
+\begin{definition}
+    -Una función de valor real $\funct{f}{V}{\mathbb{R}}$ es $\mathscr{C}^{\infty}$ (continua a orden $\infty$) si $V$ es un conjunto abierto en $\mathbb{R}^d$ y $f$ tiene derivadas parciales continuas para todos los órdenes y tipos (cruzadas o no).\\
+    -Una función $\funct{\varphi}{V}{\mathbb{R}^e}$ es un \textbf{\textit{mapa}} $\mathscr{C}^{\infty}$ si las componentes de $\funct{u^i\circ\varphi}{V}{\mathbb{R}}$ son $\mathscr{C}^{\infty}$, $i=1,\dots e$.
+\end{definition}
+De forma más general, $\varphi$ es $\mathscr{C}^k$, siendo $k$ un entero no negativo, si todas las derivadas parciales, hasta e incluyendo estas de orden $k$, existen y son continuas. $\mathscr{C}^0$ implica simplemente continuidad. Un mapa $\varphi$ es \textit{analítico} si $u^i\circ\varphi$ es real-analítico, esto es, puede ser expresado en un entorno para cada punto por medio de una serie de potencias convergente en coordenadas cartesianas, teniendo su origen en el punto. Los mapas analíticos son $\mathscr{C}^{\infty}$, pero no al revés.
+\begin{example}
+    Sea $z=x+iv$, una variable compleja, definimos $u(x,y)$ como $u+iv=e^{-1/z^4}$, $u(0,0)=0$. Entonces, vemos que $u$ no es $\mathscr{C}^{\infty}$, y de hecho, no es continuo en el $(0,0)$, pero las derivadas parciales de $u$ existen en todos los órdenes y en todos los puntos, incluyendo el $(0,0)$. De este modo, los requisitos para continuidad en la definición de $\mathscr{C}^{\infty}$ no son triviales. Para funciones de una variable, es cierto que las funciones diferenciables son continuas.
+\end{example}
+Dos cartas $\funct{\mu}{U}{\mathbb{R}^d}$ y $\funct{\tau}{V}{\mathbb{R}^e}$ en un espacio topológico $(X,\mathcal{T})$ son $\mathscr{C}^{\infty}$-\textit{relacionadas} si $d=e$ y cualquier $U\cap V=\emptyset$ o $\mu\circ\tau^{-1}$ y $\tau\circ\mu^{-1}$ son mapas $\mathscr{C}^{\infty}$. El dominio de $\mu\circ\tau^{-1}$ es $\tau(U\cap V)$, un conjunto abierto es $\mathbb{R}^d$. Ver Figura \ref{Fig1-ApB}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Apendices/Imagenes/Fig1-ApB.png}
+    \label{Fig1-ApB}
+    \captionof{figure}{Interpretación de ambas cartas. (donde $R^d\equiv\mathbb{R}^d$) [\ref{BFig1-ApB}]}
+\end{Figura}
+Otros grados de relación se definen reemplazando '$\mathscr{C}^{\infty}$' por '$\mathscr{C}^k$' o por 'analítico'. Dos cartas de la misma dimensión siempre son $\mathscr{C}^0$-relacionadas porque los mapas de coordenadas son continuos.
+\begin{definition}
+    Una \textit{\textbf{variedad topológica}} $\mathscr{C}^0$ es un espacio separable de Hausdorff tal que haya una carta de dimensión $d$ en cada punto.     
+\end{definition}
+La \textit{dimensión} de la variedad es la misma que la de las cartas. De esta forma, existe una colección de cartas $\curlybraces{\funct{\mu_{\alpha}}{U_{\alpha}}{\mathbb{R}^{\alpha}}\mid\alpha\in I}$, tal que $\curlybraces{U_{\alpha}\mid \alpha\in I}$ es una cubierta del espacio. Dicha colección se denomina un \textit{atlas}. Un atlas $\mathscr{C}^{\infty}$ es aquel para el cual cada par de cartas es $\mathscr{C}^{\infty}$-relacionada. Una carta es \textit{admisible} para un atlas $\mathscr{C}^{\infty}$ si es $\mathscr{C}^{\infty}$-relacionado para cada carta en el atlas. En particular, los miembros de un atlas $\mathscr{C}^{\infty}$ son admisibles.
+\begin{definition}
+    Una \textbf{\textit{variedad}} $\mathscr{C}^{\infty}$ es una variedad topológica junto con todas las cartas admisibles con algún atlas $\mathscr{C}^{\infty}$.
+\end{definition}
+Nos referiremos a las 'variedades $\mathscr{C}^{\infty}$' como 'variedades'. La razón de incluir todas las cartas admisibles en vez de simplemente aquellas que están en algún atlas dado es para transmitir la idea que ningún sistema de coordenadas particular es preferible sobre otro y también para resolver el problema lógico de decir qué \textit{es} una variedad. El origen de este problema lógico es el hecho de que dos atlas diferentes pueden tener la misma colección de cartas admisibles, en cuyo caso, nos gustaría decir que tenemos una sola variedad, no dos variedades diferentes para cada atlas. Por otro lado, casi invariablemente ocurre que una variedad es especificada dando solo un atlas, no toda la colección de cartas admisibles.
+\begin{definition}
+    Las variedades $\mathscr{C}^{\infty}$ y las variedades analíticas reales se definen reemplazando '$\mathbb{C}^{\infty}$' por '$\mathscr{C}^k$' y 'analítica', respectivamente a lo largo de la cadena de definiciones anterior.
+\end{definition}
+Debe quedar claro que una variedad $\mathscr{C}^{\infty}$ se convierte en una variedad $\mathscr{C}^k$ simplemente ampliando la colección de cartas admisibles para incluir todas las relacionadas con $\mathscr{C}^k$, y, de forma similar, una variedad analítica real se convierte en una variedad $\mathscr{C}^{\infty}$. En cambio, una variedad $\mathscr{C}^1$ se convierte en una variedad analítica real (y por lo tanto $\mathscr{C}^{\infty}$), de muchas formas, descartando una colección adecuada de cartas admisibles de $\mathscr{C}^1$ para dejar solo las cartas que están mutuamente relacionados analíticamente, pero este resultado no es del todo obvio, siendo un teorema muy difícil de Whitney. Se sabe que una variedad $\mathscr{C}^0$ puede no llegar a convertirse en una variedad $\mathscr{C}^1$, y es aún más difícil de demostrar.
+\begin{remark}
+    En la definición de sistema de coordenadas requerimos que el entorno coordenado y el rango en $\mathbb{R}^d$ sean conjuntos abiertos. Esto es contrario al uso popular, o al menos más específico que el uso de coordenadas curvilíneas en cálculo avanzado.
+\end{remark}
+ Por ejemplo, las coordenadas esféricas se utilizan incluso a lo largo de puntos del eje $z$ donde ni siquiera son 1 a 1. Las razones de la restricción a conjuntos abiertos son que fuerzan uniformidad en la estructura local que simplifica el análisis en variedades (no hay 'puntos de frontera') e, incluso si la uniformidad local fuera forzada en otros aspectos, esto evita el problema de explicar qué entendemos por diferenciabilidad en puntos de frontera del entorno coordenado; esto es, las derivadas laterales no necesitan ser mencionadas. Por otro lado, en aplicaciones, con frecuencia surgen problemas de valores de frontera, cuya configuración es una \textit{variedad con borde}. Estos espacios son más generales que las variedades y la generalidad extra surge de permitir una \textit{variedad de borde} en una dimensión inferior. Los puntos de la variedad de borde tienen un entorno coordenado en la variedad de borde que está unido a un entorno coordenado del interior de manera muy similar a como una cara de un cubo está unida al interior.
+ \section{Ejemplos de Variedades}
+ \subsection{Espacio Cartesiano}
+ Definimos una estructura de variedad en $\mathbb{R}^d$, de la manera más obvia, tomando como un atlas la única carta $\mathbb{I}:\mathbb{R}^d\to\mathbb{R}^d$, el mapa identidad. Las funciones coordenadas de esta carta son por lo tanto las coordenadas estándar (cartesianas) $u^i$. Cuando hablamos de $\mathbb{R}^d$ como una variedad, nuestra intención es esta estructura estándar, a menos que se indique lo contrario.\\ \\
+ Un mapa coordenado admisible $\mathscr{C}^{\infty}$ sobre $\mathbb{R}^4$ es un mapa $\mathscr{C}^{\infty}$ 1 a 1 $\mu: U\to\mathbb{R}^d$, donde $U$ es un conjunto abierto y el determinante del jacobiano es $|\partial x^i/\partial u^i|\neq0$, donde $x^i=u^i\circ\mu$ son las funciones coordenadas. Que el determinante del jacobiano no sea nulo solo es otra forma de requerir que el mapa $\mu^{-1}$ sea $\mathscr{C}^{\infty}$.\\ \\
+ Si $f^i$, $i=1,2,\dots,d$, son funciones reales $\mathscr{C}^{\infty}$ en algún conjunto abierto de $\mathbb{R}^d$ y para algún $p\in\mathbb{R}^d$ tenemos $|\partial f^i/\partial u^i|\neq0$, entonces el teorema de la \textit{función inversa} establece que hay un entorno $U$ de $p$ y un entorno $V$ de $(f^1p,f^2p,\dots,f^dp)$ tal que el mapa $\mu=(f^1,f^2,\dots,f^d)$ lleva $U$ a $V$, es 1 a 1, y tiene una inversa $\mathscr{C}^{\infty}$. Esto proporciona un medio eficaz de obtener coordenadas admisibles. En particular, coordenadas polares, coordenadas cilíndricas, coordenadas esféricas, y cualquier otras coordenadas curvilíneas personalizadas son coordenadas admisibles para $\mathbb{R}^2 $ y $\mathbb{R}^3$ siempre que estén adecuadamente restringidas para ser 1 a 1 y tener un determinante jacobiano distinto de cero.
+ \subsection{Subvariedad Abierta}
+ Si $M$ es una variedad y $N$ es cualquier conjunto abierto de $M$, entonces $N$ hereda una estructura de variedad restringiendo la topología y mapas coordenados de $M$ a $N$. Llamamos a $N$ una \textit{subvariedad abierta} de $M$. En particular, cualquier subconjunto de $\mathbb{R}^d$ es una variedad de dimensión $d$.
+ \subsection{Producto de Variedades}
+Si $M$ y $N$ son variedades de dimensión $d$ y $e$ respectivamente, entonces a $M\times N$ se le da una estructura de variedad tomando el producto topológico como su topología (básicamente, los entornos son productos de los entornos de $M$ y $N$) y como atlas se toma el producto de cartas de los atlas de $M$ y $N$. Si $\mu: U\to\mathbb{R}^d$ es una carta sobre $M$, y $\varphi: V\to\mathbb{R}^e$ es una carta sobre $N$, su producto es $(\mu,\varphi): U\times V\to\mathbb{R}^{d+e}$, que se define por $(\mu,\varphi)(m,n)=(\mu m,\varphi,n)$. Si $x^i$ son las funciones coordenadas de $\mu$ e $y^i$ son las funciones coordenadas de $\varphi$, entonces las coordenadas de $(m,n)$ en el producto de cartas son $(x^1m,\dots,x^dm,y^1n,\dots,y^en)$. Así, si $p: M\times N\to M$ y $q: M\times N\to N$ son las proyecciones, $p(m,n)=m$, $q(m,n)=n$, las funciones coordenadas sobre $U\times V$ son $z^1=x^1\circ p,\dots,z^d=x^d\circ p,z^{d+1}=y^1\circ q,\dots,z^{d+e}=y^e\circ q$.\\ \\
+Esta operación de producto puede ser iterada evidentemente, y podemos tomar diferentes copias de la misma variedad como elementos. Así, incluso podemos descomponer una variedad $\mathbb{R}^d=\mathbb{R}\overset{d-veces}{\times}\mathbb{R}$ ($d$-elementos). Es fácil ver que un círculo $S^1$ (la curva) es una variedad unidimensional. Dibujando $S^1$ como una parte de $\mathbb{R}^2$, vemos que un cilindro (la superficie) es la variedad $S^1\times\mathbb{R}$ y puede dibujarse en $\mathbb{R}^3=\mathbb{R}^2\times\mathbb{R}$.\\ \\
+Podemos considerar $S^1\times S^1$ como una unión, $\curlybraces{\curlybraces{p}\times S^1|p\in S^1}$, de círculos $\curlybraces{p}\times S^1$, para cada $p\in S^1$. Ahora, si dibujamos el primer elemento como si estuviera en el plano $XY$ de $\mathbb{R}^3$, satisfaciendo las ecuaciones $x^2+y^2=1$, $z=0$, y para cada $p$ en el primer elemento, representamos $\curlybraces{p}\times S^1$ como un círculo más pequeño con centro en $p$ y diámetros perpendiculares al primer círculo en $p$, entonces la unión $S^1\times S^1$ es la superficie de revolución del círculo pequeño sobre el eje $Z$, un toroide (Ver Figura \ref{Fig2-ApB}).
+\begin{multicols}{2}
+\begin{Figura}
+    \centering
+    \includegraphics[width=1\textwidth]{toroide.png}
+    \captionof{figure}{Representación de un toroide. [\ref{BFig2-ApB}]}
+    \label{Fig2-ApB}
+\end{Figura}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.7\linewidth]{toroide2.png}
+    \captionof{figure}{Portada de \cite{TensorAnalysisOnManifolds}}
+    \label{fig:enter-label}
+\end{Figura}
+\end{multicols}
+No es difícil ver que la topología inducida de $\mathbb{R}^3$ en el toroide es el producto topológico.\\ \\
+El toroide es la variedad subyacente que modela el conjunto de posiciones (el \textit{espacio de configuraciones}) de un péndulo doble. Estamos pensando en un sistema mecánico que consiste en dos varillas, la primera que es libre de rotar en un plano sobre un eje fijo, y la segunda que rota sobre un eje en el plano que se fija relativo a la primera varilla, usualmente, pero no necesariamente es el plano de la primera varilla. Los ángulos que estas varillas hacen con un eje de coordenadas en sus planos pueden ser identificados con los ángulos $u,v$ que se encuentran en la parametrización del toroide dado a continuación, dando una correspondencia 1 a 1 entre las posiciones del péndulo doble y del toroide. La articulación debe estar fija de modo que cada varilla es libre de hacer un giro completo sobre su eje, o solo una parte del toroide en este modelo. De hecho, si se bloquea la segunda varilla sobre el eje de la primera, de forma que $v$ se restringe a $0<\epsilon<v<2\pi$, entonces el modelo es de un cilindro en vez de un toroide.\\ \\
+Añadiendo más varillas obtenemos sistemas físicos para los cuáles, el modelo es el producto de las copias de $S^1$. Si la articulación está fija de forma que la varilla es libre de moverse en el espacio en vez de en un plano, entonces serán necesarios algunos elementos de $S^2$. Finalmente, si un extremo de la primera varilla no está fijo del todo, pero permite moverse libremente en el espacio (o en un plano), entonces se necesitarán un elemento de $\mathbb{R}^3$ (o de $\mathbb{R}^2$).\\ \\
+De forma más general, si un sistema físico está compuesto por dos sistemas, para los cuales se pueden asumir todas sus posiciones independientemente del otro, entonces el sistema compuesto tiene como sus variedades de posición el producto de las variedades de posición de las dos componentes del sistema. Esto es así a pesar de que hay alguna ligadura dinámica (por ejemplo, gravitacional o elástica) entre las componentes.
+\\ \\
+Para ver más ejemplos ver la referencia \cite[Chapter 1, pages 26-35]{TensorAnalysisOnManifolds}
+\section{Mapas diferenciables}
+Si $F:M\to N$, donde $M$ y $N$ son variedades $\mathscr{C}^{\infty}$, entonces llamamos a $F$ un mapa $\mathscr{C}^{\infty}$ si la expresión de coordenadas para $F$ consiste en mapas $\mathscr{C}^{\infty}$ en espacios cartesianos. Ahora elaboramos esta afirmación en una definición completa, en particular dejando claro qué significa 'expresión de coordenadas'.
+\begin{definition}
+    Sea $\mu_1:U\to\mathbb{R}^d$ y $\mu_2:V\to\mathbb{R}^e$ cartas $\mathscr{C}^{\infty}$ sobre $M$ y $N$ variedades $\mathscr{C}^{\infty}$, de forma que $U$ y $V$ son subconjuntos abiertos de $M$ y $N$ respectivamente. Asumimos que $F:M\to N$ es un mapa continuo, tal que $W=F^{-1}V$ es un subconjunto abierto de $M$, ver Figura \ref{Fig3-ApB}.
+    \begin{Figura}
+        \centering
+        \includegraphics[width=0.8\textwidth]{coordinateexpression.png}
+        \captionof{figure}{Representación de los subconjuntos. [\ref{BFig3-ApB}]}
+        \label{Fig3-ApB}
+    \end{Figura}
+Sea $W_1=\mu_1 W$, tal que $W_1$ es un conjunto abierto en $\mathbb{R}^d$. La \textit{expresión de coordenadas }$\mu_1-\mu_2$ \textit{para }$F$ es el mapa $\mu_2\circ F\circ\mu_1^{-1}:W_1\to\mathbb{R}^e$. El mapa $F$ es $\mathscr{C}^{\infty}$ si todas las expresiones de coordenadas, para todas las cartas admisibles $\mu_1,\mu_2$, son mapas cartesianos $\mathscr{C}^{\infty}$.
+\end{definition}
+\begin{proposition}
+    Un mapa $F:M\to N$ es $\mathscr{C}^{\infty}$ si las expresiones de coordenadas $\mu_{\alpha}-\mu_{\beta}$ de $F$ son $\mathscr{C}^{\infty}$ para aquellos $\mu_{\alpha}$ en algún atlas de $M$ y aquellos $\mu_{\beta}$ en algún atlas de $N$.
+\end{proposition}
+\begin{proof}
+    Sean $\curlybraces{\mu_{\alpha}:U_{\alpha}\to\mathbb{R}^d|\alpha\in I}$ y $\curlybraces{\mu_{\beta}:V_{\beta}\to\mathbb{R}^e|\beta\in J}$ los atlas de $M$ y $N$, respectivamente, tal que para cada $\alpha\in I$, $\beta\in J$, $\mu_{\beta}\circ F\circ\mu_{\alpha}^{-1}$ es un mapa $\mathscr{C}^{\infty}$. Supongamos que $\mu_1$, $\mu_2$ son cualquier otras cartas como en la definición, así $\mu_2\circ F\circ\mu_1^{-1}:W_1\to\mathbb{R}^e$. Debemos demostrar que esto es $\mathscr{C}^{\infty}$, pero como ser $\mathscr{C}^{\infty}$ es una propiedad local, basta con demostrarlo en un entorno de cada punto de $W_1$. Si $m_1\in W_1$, entonces hay un $\alpha\in I$ y un $\beta\in J$ tal que $\mu_1^{-1}m_1=m\in U_{\alpha}$ y $n=Fm\in V_{\beta}$. Por hipótesis, $\mu_{\beta}\circ F\circ\mu_{\alpha}^{-1}$ es un mapa cartesiano $\mathscr{C}^{\infty}$. Pero $\mu_1$ y $\mu_2$ están relacionadas de forma $\mathscr{C}^{\infty}$ con $\mu_{\alpha}$ y $\mu_{\beta}$, respectivamente. Por lo tanto, $\mu_{\beta}\circ\mu_{\alpha}^{-1}$ está definida y es $\mathscr{C}^{\infty}$ en algún entorno de $m_1$, y $\mu_2\circ\mu_1^{-1}$ está definida y es $\mathscr{C}^{\infty}$ en algún entorno de $n_{\beta}=\mu_{\beta} n$.\\
+    La composición de mapas cartesianos $\mathscr{C}^{\infty}$ es $\mathscr{C}^{\infty}$, por tanto $\mu_2\circ \mu_{\beta}^{-1}\circ\mu_{\beta}\circ F\circ\mu_{\alpha}^{-1}\circ\mu_{\alpha}\circ\mu_1^{-1}$ es un mapa  $\mathscr{C}^{\infty}$. Sin embargo, está definido en algún entorno de $m_1$ y coincide con la restricción de $\mu_2\circ F\circ\mu_1^{-1}$ en ese entorno, por tanto $\mu_2\circ F\circ\mu_1^{-1}$ es $\mathscr{C}^{\infty}$ en un entorno de $m_1$.
+\end{proof}
+En la práctica, para verificar que los mapas son $\mathscr{C}^{\infty}$ se debe hacer mostrando que las componentes individuales de las expresiones de coordenadas tienen derivadas parciales continuas en todos los órdenes. Estas componentes son funciones $u^i\circ\mu_2\circ F\circ\mu_1^{-1}=f^i$, $i=1,2,\dots,e$, que son funciones reales con $d$ variables reales definidas en un subconjunto abierto de $W_1$ o $\mathbb{R}^d$.\\ \\
+Si tomamos $y^i=u^i\circ\mu_2$ las funciones de coordenadas de $\mu_2$ y $x^j=u^j\circ\mu_1$, las de $\mu_1$, entonces tenemos que $y^i\circ F\circ\mu_1^{-1}=f^i$, o $y^i\circ F=f^i\circ \mu_1$. Aplicando esto a $m\in W$, tenemos
+\[y^iFm=f^i\mu_1m=f^i(x^1m,x^2m,\dots,x^dm)\]
+Suele escribirse esto como una ecuación entre funciones de la forma
+\begin{equation}
+    y^i=f^i(x^1,x^2,\dots,x^d)
+\end{equation}
+pero como esto no nos indica el papel del mapa $F$ por sí mismo, preferimos usar la versión más precisa, que es
+\begin{equation}
+    y^i\circ F=f^i(x^1,x^2,\dots,x^d)
+\end{equation}
+Estas ecuaciones también se llaman \textit{expresión de coordenadas de $F$}.
+\\ \\
+En particular, podemos considerar el caso $N=\mathbb{R}$ de funciones reales evaluadas sobre $M$. Es interesante que las funciones $\mathscr{C}^{\infty}$ necesitan ser definidas directamente solo en este caso, y la definición general de un mapa $\mathscr{C}^{\infty}$ se sigue con la siguiente proposición.
+\begin{proposition}
+    Si $F:M\to N$, entonces $F$ es $\mathscr{C}^{\infty}$ si para cada función real $\mathscr{C}^{\infty}$ $y:V\to\mathbb{R}$, donde $V$ es una subvariedad abierta de $N$, $y\circ F$ es una función real $\mathscr{C}^{\infty}$ sobre la subvariedad abierta $F^{-1}V$ de $M$.
+\end{proposition}
+\begin{proof}
+    Esto se deduce de manera trivial al tomar, sucesivamente, como $y$ las funciones coordenadas $y^i$ definidas en $V\subset N$.
+\end{proof}
+Un \textbf{difeomorfismo} de $M$ sobre $N$ es una función $\mathscr{C}^{\infty}$ biyectiva, $F:M\to N$, tal que el mapa inverso $F^{-1}:N\to M$ también es $\mathscr{C}^{\infty}$. Dos variedades son \textbf{difeomorfas} si existe un difeomorfismo entre ellas. Esta es la noción natural de isomorfismo, o equivalencia, para variedades. Es una relación de equivalencia. Dos variedades difeomorfas son iguales en todas las propiedades que conciernen únicamente a su estructura como variedades. En particular, son topológicamente iguales, es decir, \textbf{homeomorfas}.\\ \\
+Una variedad topológica puede tener dos atlas $\mathscr{C}^{\infty}$ diferentes que estén $\mathscr{C}^{\infty}$-relacionados, pero las dos variedades $\mathscr{C}^{\infty}$ determinadas por estos atlas pueden seguir siendo difeomorfas. El problema es que el mapa identidad no es un difeomorfismo. De hecho, dos estructuras de variedad $\mathscr{C}^{\infty}$ en una variedad de dimensión $\leq4$ son invariablemente difeomorfas. Por otro lado, cualquier variedad compacta de dimensión $\geq7$ admite varias estructuras de variedad $\mathscr{C}^{\infty}$ no difeomorfas; esto es, puede haber un homeomorfismo entre dos variedades, pero no un difeomorfismo.\\ \\
+Para un simple ejemplo de diferentes estructuras $\mathscr{C}^{\infty}$ que son difeomorfas, consideramos $\mathbb{R}$ con la estructura estándar $\curlybraces{u:\mathbb{R}\to\mathbb{R}}$ como atlas (con una carta), y $M=\mathbb{R}$ con la estructura $\curlybraces{u^3:\mathbb{R}\to\mathbb{R}}$ como atlas (de nuevo, una carta). Ya que una carta admisible siempre es un difeomorfismo en su dominio de subvariedad abierta, el difeomorfismo de $M$ sobre $\mathbb{R}$ es un mapa coordenado de $M$, $u^3:M\to\mathbb{R}$. El difeomorfismo inverso es $u^{1/3}:\mathbb{R}\to M$. El mapa identidad $u:\mathbb{R}\to M$ es $\mathscr{C}^{\infty}$, ya que la expresión de coordenadas es $u^3\circ u\circ u=u^3:\mathbb{R}\to\mathbb{R}$. El mapa identidad $u:M\to\mathbb{R}$ no es $\mathscr{C}^{\infty}$, ya que la expresión de coordenadas es $u\circ u\circ u^{1/3}=u^{1/3}:\mathbb{R}\to\mathbb{R}$, que no es $\mathscr{C}^{\infty}$. Por tanto, el mapa identidad no es un difeomorfismo.\\ \\
+Existen ejemplos de estructuras de variedad $\mathscr{C}^{\infty}$ no difeomorfas de dimensión $\geq7$. No son fácil de describir.
+\section{Subvariedades}
+Una variedad $M$ está \textbf{incrustada} en una variedad $N$ si existe un mapa $\mathscr{C}^{\infty}$ biyectivo, $F:M\to N$, tal que para cada punto $m\in M$, existe un entorno $U$ de $m$ y una carta de $N$ en $Fm$, $\mu:V\to\mathbb{R}^e$, $\mu=(y^1,\dots,y^e)$, tal que $x^i=y^i\circ F|_U$, $i=1,2,\dots,d$, son coordenadas en $U$ para $M$. El mapa $F$ se denomina entonces una \textbf{incrustación} de $M$ en $N$.\\ \\
+Si el requerimiento de que $F$ sea biyectiva se omite, pero el requerimiento de obtener coordenadas para $M$ de las de $N$ por composición con $F$ todavía se sostiene, entonces $M$ se denomina \textbf{inmersa} en $N$ y $F$ se denomina una \textbf{inmersión}. Otra forma de indicar esto es requerir que cada punto $m$ de $M$ esté contenido en una subvariedad abierta $U$ de $M$, la cuál es incrustada en $N$ usando $F$. Por tanto, una inmersión es una incrustación local. Ver Figura \ref{Fig4-ApB}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Apendices/incursion.png}
+    \captionof{figure}{Esquemas de una incrustación de $\mathbb{R}^2$ en $\mathbb{R}^3$ (A) y una inmersión (B). [\ref{BFig4-ApB}]}
+    \label{Fig4-ApB}
+\end{Figura}
+\begin{definition}
+    Una \textbf{subvariedad} de $N$ es un subconjunto $FM$, donde $F:M\to N$ es una incrustación, dotada de estructura de variedad para la cuál $F:M\to FM$ es un difeomorfismo.
+\end{definition}
+La dimensión de una subvariedad obviamente no es mayor que la dimensión de la variedad que la contiene. Si fuera igual a la dimensión de la variedad que la contiene, entonces la subvariedad no es más que una subvariedad abierta, que definimos previamente.\\ \\
+La topología de una subvariedad no tiene por qué ser la topología inducida de la variedad más grande. Por supuesto, el mapa de inclusión es $\mathscr{C}^{\infty}$, en particular continuo, de modo que los conjuntos abiertos de la topología inducida son conjuntos abiertos en la topología de la subvariedad. Sin embargo, la topología de la subvariedad puede tener muchos más conjuntos abiertos.\\ \\
+Una subvariedad debe estar metida en la variedad que la contiene de una forma especial. Por ejemplo, cosas como cúspides y esquinas están descartados, incluso si pueden aparecer en la imagen de un mapa inyectivo $\mathscr{C}^{\infty}$, que no es una incrustación. Para describir cuidadosamente la naturaleza especial de una subvariedad, definimos una \textit{porción de coordenadas} de dimensión $d$ en una variedad $N$ de dimensión $e$, siendo un conjunto de puntos  en un entorno coordenado $U$ con coordenadas $y^1,\dots,y^e$ de la forma $\curlybraces{m|m\in U,y^{d+1}m=c^{d+1},\dots y^em=c^e}$, donde $c^i$ son constantes que determinan la porción. En otras palabras, una porción de coordenadas es la imagen bajo la inversa de un mapa coordenado de la parte $d$-dimensional del plano $\mathbb{R}^e$ que yace dentro del rango de coordenadas.
+\begin{proposition}
+    Si $M$ es una subvariedad de $N$, entonces para cada $m\in M$ existen coordenadas $y^1,\dots,y^e$ para $N$ en un entorno de $m$ en $N$, tal que la porción de coordenadas correspondientes a las constantes $c^{d+1}=y^{d+1}m,c^{d+2}=y^{d+2}m,\dots,c^e=y^em$ es un entorno de $m$ en $M$, y la restricción de $y^1,\dots,y^d$ a esa porción son coordenadas para $M$.\label{prop1ApC}
+\end{proposition}
+\begin{proof}
+    Sea $F:P\to N$ una incrustación tal que $FP=M$. Tomamos las coordenadas $z^1,z^2,\dots,z^e$ para $N$ en un entorno de $m$ en $N$ tal que $x^1=z^1\circ F|_{U},\dots,x^d=z^d\circ F|_U$ son coordenadas en $p=F^{-1}m$ en un entorno coordenado $U\subset P$. Ya que $F$ es $\mathscr{C}^{\infty}$, podemos escribir
+    \[z^i\circ F=f^i(x^1,\dots,x^d);\hspace{3mm}i=1,\dots,e\]
+    donde las $f^i$ son funciones $\mathscr{C}^{\infty}$ sobre un conjunto abierto en $\mathbb{R}^d$. Es claro que $f^i(x^1,\dots,x^d)=x^i$ para $i=1,\dots,d$, pero los demás $f^i$, $i>d$, no es tan simple.\\
+    Definimos
+    \[\begin{array}{cc}
+        y^i=z^i, & i\leq d, \\
+        y^i=z^i-f^i(z^1,\dots,z^d), & i>d
+    \end{array}\]
+    Por tanto, es claro que
+    \[\begin{array}{cc}
+        z^i=y^i, & i\leq d, \\
+        z^i=y^i+f^i(y^1,\dots,y^d), & i>d
+    \end{array}\]
+    así que los mapas $\mu_1=(z^1,\dots,z^e)$ y $\mu_2=(y^1,\dots,y^e)$ están $\mathscr{C}^{\infty}$ relacionados en ambos sentidos. El dominio de los $y^i$ se incluye en el de los $z^i$, por lo que podemos afirmar que $\mu_2$ es una carta admisible sin comprobar relaciones adicionales con otras coordenadas. Además, $FU$ es la porción de coordenadas $y^{d+1}=0,\dots,y^e=0$, y las restricciones de $y^1,\dots,y^d$ para $FU$ corresponden a $x^i$ bajo $F$, por lo que hay coordenadas para $M$ sobre $F$.
+\end{proof}
+\begin{remark}
+    No se afirma que obtengamos \textit{todos} los puntos de $M$ que yacen en $N$-entorno de $m$ como miembros de una sola porción de coordenadas. De hecho, esto no es posible en algunos casos.
+\end{remark}
+Lo contrario a la Proposición \ref{prop1ApC} es obvio usando la definición; esto es, si un subconjunto tiene estructura de variedad que está localmente determinada por una porción de coordenadas, donde coordenadas no constantes que proporcionan las coordenadas en la porción para la estructura de variedad del subconjunto, entonces el subconjunto es una subvariedad.\\ \\
+Whitney demostró que cualquier variedad es difeomorfa a una subvariedad de $\mathbb{R}^e$; si $d$ es la dimensión de la variedad, entonces necesitamos tomar un $e$ no mayor a $2d+1$.
+\begin{theorem}[Teorema de Whitney]
+    Cualquier variedad suave de dimensión $d$ puede ser inmersa en $\mathbb{R}^{2d}$ e incorporada en $\mathbb{R}^{2d+1}$
+\end{theorem}
+\begin{proof}
+    Ver la demostración en \cite[Chapter 6, page 134]{IntroductionToSmoothManifolds}
+\end{proof}
+Por tanto, la teoría de variedades puede considerarse el estudio de subconjuntos especiales de espacios cartesianos, si se desea.
+\section{Curvas diferenciables}
+En algunos contextos una curva es casi lo mismo que una subvariedad unidimensional, pero vamos a preferir tratar solo las curvas que tengan una parametrización específica. Técnicamente, entonces, cambiando la parametrización de una curva tendremos una curva diferente, pero normalmente ignoraremos la distinción y hablaremos de una curva como si fuera un conjunto de puntos. Generalmente nuestras curvas tendrán un punto inicial y final pero también consideraremos curvas con finales abiertos.\\ \\

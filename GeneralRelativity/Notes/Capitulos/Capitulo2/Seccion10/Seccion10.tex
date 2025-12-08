@@ -1,0 +1,70 @@
+%SECCION 5
+\section{Dinámica relativista} % Main chapter title
+\label{cap2-sec10}
+Sabemos que la dinámica viene descrita por el Lagrangiano y que las ecuaciones del movimiento se hallan minimizando la acción. La acción se define en términos del Lagrangiano como,
+\begin{equation}
+    S=\int_{\tau_1}^{\tau_2}d\tau\mathscr{L}(\tau,x^{\mu},\dot{x}^{\mu})
+\end{equation}
+donde usamos el tiempo propio $\tau$.\\ \\
+Dada una trayectoria $x^{\mu}(\tau)$, consideramos variaciones de la trayectoria, de la forma $x^{\mu}(\tau)+\delta x^{\mu}(\tau)$, tal que $\left.\delta x^{\mu}\right|_{\tau_1,\tau_2}=0$.
+\subsection{Principio variacional de acción estacionaria}
+Las trayectorias físicas son aquellas que dejan invariante la acción estacionaria (minimizan o maximizan la acción). Esto se traduce en,
+\[\delta S=\int_{\tau_1}^{\tau_2}\left(\frac{\partial\mathscr{L}}{\partial x^{\mu}}\delta x^{\mu}+\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta\dot{x}^{\mu}\right)d\tau=\int_{\tau_2}^{\tau_1}\left[\left(\frac{\partial\mathscr{L}}{\partial x^{\mu}}-\frac{d}{d\tau}\left(\frac{\partial\mathscr{L}}{\partial x^{\mu}}\right)\right)\delta x^{\mu}+\frac{d}{d\tau}\left(\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}\right)\right]d\tau=0\]
+donde $\left.\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}\right|_{\tau_1,\tau_2}=0$, pues $\delta x^{\mu}|_{\tau_1,\tau_2}=0$. Usando que $\delta S=0$, obtenemos las ecuaciones de Euler-Lagrange, tal que
+\[\frac{\partial\mathscr{L}}{\partial x^{\mu}}-\frac{d}{d\tau}\left(\frac{\partial\mathscr{L}}{\partial \dot{x}^{\mu}}\right)=0\]
+\subsection{Cantidades Conservadas}
+\begin{theorem}{Teorema de Noether}
+    Si tomamos variaciones de las trayectorias que no se anulan en los extremos y resulta que $\delta S=0$, entonces para esta variación existe una simetría, es decir, existe una cantidad conservada.
+\end{theorem}
+Por tanto, a esta variación le podemos asociar una ley de conservación, tal que
+\[\frac{d}{\tau}\left(\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}\right)=0\Longrightarrow\delta Q_{\delta x}\equiv \frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}=cte\]
+\subsection{Partícula libre relativista}
+Construimos la acción usando el elemento de línea, tal que
+\[S=-mc\int_{s_1}^{s_2}\sqrt{-ds^2}=-mc^2\int_{\tau_1}^{\tau_2}\sqrt{\dot{t}^2-\dot{\vec{x}}^2/c^2}d\tau=-mc^2\int_{t_1}^{t_2}\sqrt{1-\frac{\vec{v}^2}{c^2}}dt=-mc^2\int_{t_1}^{t_2}\frac{dt}{\gamma}\]
+Por tanto, el Lagrangiano relativista de una partícula libre será
+\begin{equation}
+    \mathscr{L}(\tau,x^{\mu},\dot{x}^{\mu})=\sqrt{\dot{t}^2-\frac{\dot{x}^i\dot{x}_i}{c^2}}
+\end{equation}
+Aplicamos las ecuaciones de Euler-Lagrange, tal que
+\[\text{Eje 0:}\hspace{5mm}\frac{\partial\mathscr{L}}{\partial x^0}-\frac{d}{d\tau}\left(\frac{\partial\mathscr{L}}{\partial\dot{x}^0}\right)=0\Longrightarrow \frac{d}{d\tau}\left(\frac{\dot{t}}{\sqrt{\dot{t}^2-\frac{\dot{x}^i\dot{x}_i}{c^2}}}\right)=0\]
+En resumen,
+\[\frac{d}{d\tau}(mu^{\mu})=0=\frac{d}{d\tau}(m\dot{x}^{\mu})\]
+La acción es invariante de Lorentz (de Poincaré) y a velocidades pequeñas $(|\vec{v}|<<c)$, recuperando el límite no relativista del Lagrangiano,
+\[S=-mc^2\int\sqrt{1-\frac{|\vec{v}|^2}{c^2}}dt\approx-mc^2\int dt+\int dt\left(\frac{1}{2}m|\vec{v}|^2\right)+\cancelto{0}{\mathscr{O}(|\vec{v}|^4/c^4)}\]
+El cuadrimomento de la partícula será $p_{\mu}=mu_{\mu}=m\gamma(-c,\vec{v})$, siendo una cantidad conservada. La simetría asociada es la invariancia bajo traslaciones. Luego, dada una traslación infinitesimal $\delta x^{\mu}=\delta\alpha^{\mu}=cte$, tenemos que
+\[\delta Q=\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}=\frac{\partial\mathscr{L}}{\partial\dot{\alpha}^{\mu}}\delta\alpha^{\mu}=\frac{(mu_{\mu})}{\sqrt{-u^{\mu}u_{\mu}}}\delta\alpha^{\mu}=p_{\mu}\delta\alpha^{\mu}\]
+como $\delta Q=cte$ y $\delta\alpha^{\mu}=cte$, entonces
+\[\frac{d(\delta Q)}{d\tau}=0\Rightarrow\frac{d}{d\tau}(mu_{\mu})=0\Rightarrow \frac{dp_{\mu}}{d\tau}=0\Rightarrow p_{\mu}=cte\]
+siendo la cantidad conservada de las traslaciones.\\ \\
+Por otro lado, si hacemos una transformada de Lorentz, $\delta x^{\mu}=\delta\omega_{\nu}^{\mu}x^{\nu}$, la cantidad conservada será,
+\[\delta Q=\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}\delta x^{\mu}=p_{\mu}\delta\omega_{\nu}^{\mu}x^{\nu}=\frac{1}{2}\delta\omega_{\mu\nu}(x^{\mu}p^{\nu}-x^{\nu}p^{\mu})=\frac{1}{2}M^{\mu\nu}\delta\omega_{\nu\mu}\]
+donde $M^{\mu\nu}=(x^{\mu}p^{\nu}-x^{\nu}p^{\mu})$ representa el momento angular. Además, vemos que $\dot{M}^{\mu\nu}=0$, por lo que $M^{\mu\nu}=cte$, entonces la cantidad conservada de las transformaciones de Lorentz es el momento angular.
+\subsection{Sistema de N-partículas}
+Si tenemos N-partículas, de forma general, tendremos un Lagrangiano tal que
+\[\mathscr{L}(\tau,x_1{\mu},x_2^{\mu},\dots,x_N^{\mu},\dot{x}_1^{\mu},\dot{x}_2^{\mu},\dots,\dot{x}_N^{\mu})=\mathscr{L}(\tau,x_n^{\mu},\dot{x}_n^{\mu})\]
+Análogamente al caso de una partícula, tendremos las ecuaciones de Euler-Lagrange,
+\[\frac{\partial\mathscr{L}}{\partial x^{\mu}_n}-\frac{d}{d\tau}\left(\frac{\partial\mathscr{L}}{\partial \dot{x}^{\mu}_n}\right)=0\]
+que serán N-ecuaciones.\\ \\
+Para las cantidades conservadas, tendremos que
+\begin{equation}
+    \delta Q_{\delta x}=\sum_{n=1}^N\frac{\partial\mathscr{L}}{\partial\dot{x}_n^{\mu}}\delta x_n^{\mu}
+\end{equation}
+Para una transformación infinitesimal $(\delta x_1^{\mu},\dots,x_N^{\mu})$ que deje invariante el Lagrangiano, tendremos que $\delta Q_{\delta x}$ es conservado.\\ \\
+En general tendremos,
+\begin{itemize}
+    \item Para la invariancia bajo traslaciones, se conserva el cuadrimomento.
+    \begin{itemize}
+        \item Si tenemos el Lagrangiano, $\mathscr{L}=\mathscr{L}(\tau,\dot{x}_n^{\mu})$; si hacemos traslaciones $\delta x_n^{\mu}$, el Lagrangiano queda invariante, luego se conserva el momento $p_n^{\mu}=\eta^{\mu\nu}\frac{\partial\mathscr{L}}{\partial\dot{x}^{\mu}}$ de la partícula.
+    \item Si tenemos el Lagrangiano, $\mathscr{L}=\mathscr{L}(\tau,x_n^{\mu},\dot{x}_n^{\mu})$ que sea invariante bajo una traslación global cuya perturbación sea $\delta x_n^{\mu}=\delta\alpha^{\mu}=cte$, entonces el momento total se conserva, 
+    \[P^{\mu}=\sum_{n=1}^Np_n^{\mu}\]
+    pero no se conservan los momentos individuales. Donde $P^0$ representa la energía total del sistema (masas + energía cinética + energía potencial) y $P^i$ representa el momento lineal del sistema.
+    \end{itemize}
+    \item Para la invariancia bajo transformaciones de Lorentz tendremos dos casos,
+    \begin{itemize}
+        \item Si las partículas no interaccionan entre ellas, se conserva el cuadrimomento angular, 
+        \[M^{\mu\nu}_n=x_n^{\mu}p_n^{\nu}-x_n^{\nu}p_n^{\mu}\]
+        \item Si las partículas interaccionan, pero el sistema está aislado, entonces se conserva el cuadrimomento angular total, 
+        \[M^{\mu\nu}=\sum_{n=1}^NM_n^{\mu\nu}\]
+        pero no los individuales.
+    \end{itemize}
+\end{itemize}

@@ -1,0 +1,524 @@
+\subsection{Espacios duales} % Main chapter title
+\label{cap1-sec1-subsec3} 
+
+\noindent Llegamos a un apartado un tanto especial, pues vamos a definir un nuevo espacio, formado por aplicaciones lineales (cosa que puede impresionar), pero veremos que vamos a poder trabajar de forma muy similar que con los espacios vectoriales. Este es el denominado \textbf{espacio dual}.
+
+
+\begin{definition}
+    Al conjunto de todas las formas lineales de un espacio vectorial $V$, se le denomina espacio dual de $V$ y se le designa por $V^*$, es decir,
+    \[V^*=\curlybraces{f:V\to\mathbb{K}:\text{ lineales}}\]
+\end{definition}
+
+\noindent Al igual que con los espacios vectoriales, podemos definir la \textbf{base dual}, de estos espacios duales y, en consecuencia, podemos determinar la dimensión de este espacio.
+
+\begin{definition}
+    Dadas $B=\curlybraces{e_1,e_2,\dots,e_n}$ base de $V$ y $B^*=\curlybraces{f^1,f^2,\dots,f^n}$ base de $V^*$, decimos que $B^*$ es la base dual de $B$ si para cada $i=1,2,\dots,n$ se verifica que
+    \[f^i(e_j)=\delta_{i}^j=\left\lbrace\begin{matrix}
+        1 & \text{si} & i=j\\
+        0 & \text{si} & i\neq j
+    \end{matrix}\right.\]
+\end{definition}
+
+\begin{proposition}
+\label{Prop1.6}
+    Si $V$ tiene dimensión $n$, entonces $V^*$ es un espacio vectorial de dimensión $n$.
+\end{proposition}
+\begin{proof}
+    Sea $B=\curlybraces{e_1,e_2,\dots,e_n}$ base de $V$, tendremos que $dimV=n$. Construimos la base dual como $B^*=\curlybraces{f^1,f^2,\dots,f^n}$, tal que para cada $j$, tenemos
+    \[\begin{matrix}
+        f^j:&V & \to & \mathbb{K}\\
+        &v=\sum\limits_{j=1}^n\lambda^je_j & \mapsto & f^j(v)=\lambda_j
+    \end{matrix}\]
+    Tenemos que verificar que las formas sean linealmente independientes, para ello debe cumplirse que
+    \[\lambda_1f^1+\lambda_2f^2+\dots+\lambda_nf^n=0\Longleftrightarrow\lambda_1=\lambda_2=\dots=\lambda_n=0\]
+    Para ello, lo aplicamos a un $e_i\in B$, tal que
+    \[(\lambda_1f^1+\lambda_2f^2+\dots+\lambda_nf^n)(e_i)=0\]
+    Al ser aplicación lineal,
+    \[\lambda_1f^1(e_i)+\lambda_2f^2(e_i)+\dots+\lambda_nf^n(e_i)=0\]
+    pero sabemos que $f^j(e_i)=\delta_{j}^i=\left\lbrace\begin{matrix}
+        1 & \text{si} & i=j\\
+        0 & \text{si} & i\neq j
+    \end{matrix}\right.$, luego la ecuación anterior se reduce a 
+    \[\lambda_if^i(e_i)=\lambda_i=0\]
+    luego, como hemos cogido un $i$ arbitrario, tendremos que $\lambda_i=0$ para todo $i=1,2,\dots,n$. Por tanto, son linealmente independientes. $\checkmark$\\
+    Ahora vamos comprobar que los elementos de $B^*$ son un conjunto generador que genera el espacio $V^*$. Para ello, tomamos un elemento $g\in V^*$ y se deberá poder escribir como combinación lineal de los elementos de la base de $V^*$. 
+    Sabemos que $g$ debe satisfacer que $g(e_j)=\alpha_j$, pues debe estar determinado por la imagen de la base. Podemos tomar un $v\in V$, que sea $v=\sum\limits_{j=1}^n\lambda^je_j=\lambda^je_j$, así,
+    \[g(v)=g\left(\lambda^je_j\right)=\lambda^jg(e_j)=\lambda^j\alpha_j\]
+    siendo $\alpha_j\in\mathbb{K}$ y usando que $\lambda_j=f^j(v)$, tenemos que 
+    \[g(v)=\alpha_jf^j(v)\]
+    y por tanto,
+    \[g=\alpha_1f^1+\alpha_2f^2+\dots+\alpha_nf^n\]
+    Luego, hemos concluido que $B^*$ es también conjunto generador, y por tanto es base de $V^*$, que posee $n$ elementos, así $dimV=dimV^*=n$. \qedhere
+    \end{proof}
+
+\noindent Este será el caso que nos interese, cuando $V$ y, por tanto, $V^*$ son espacios vectoriales de dimensión finita. Así, para la matriz asociada a una forma lineal $f:V\to\mathbb{K}$ usaremos siempre la base $\curlybraces{1}$ de este espacio y escribiremos $\mathcal{M}_B(f)\equiv\mathcal{M}_{B,\curlybraces{1}}(f)$.\\ \\
+\noindent Veremos ahora varias propiedades de las bases duales.
+
+\begin{proposition}[1ª Propiedad de las bases duales]
+    Si $B^*$ es la base dual de $B$, entonces  para  cada forma lineal $f$, los elementos de su matriz asociada en la base $B$ coinciden con sus coordenadas en la base $B^*$.
+\end{proposition}
+\begin{proof}
+    Llamemos $A=\begin{pmatrix}
+        a_1 & a_2 & \dots & a_n
+    \end{pmatrix}$ a la matriz asociada a $f$ en la base $B$. Entonces $a_i=f(e_i)$, siendo los $e_i$ los elementos de la base $B$. Por otra parte, si $f=\begin{pmatrix}
+        b_1 & b_2 & \dots & b_n
+    \end{pmatrix}_{B^*}$ entonces,
+    \[f=b_1f^1+b_2f^2+\dots+b_nf^n\]
+    luego,
+    \[a_i=f(e_i)=(b_1f^1+b_2f^2+\dots b_nf^n)(e_i)=b_1f^1(e_i)+b_2f^2(e_i)+\dots+b_if^i(e_i)+\dots b_nf^n(e_i)\]
+    Usando la definición de la base dual, que es
+    \[f^j(e_i)=\delta_{j}^i=\left\lbrace\begin{matrix}
+        0 & \text{si} & i\neq j\\
+        1 & \text{si} & i=j
+    \end{matrix}\right.\]
+    nos queda entonces que $a_i=b_i$, luego, los elementos de la matriz asociada de $f$ en $B$ se corresponden con sus coordenadas en $B^*$. \qedhere
+\end{proof}
+
+\noindent Hemos visto que $V^*$ es un espacio vectorial con la misma dimensión que el espacio $V$, por tanto, es lógico pensar que debería existir una relación entre sus bases, cosa que nos da las
+siguientes proposiciones.
+
+\begin{proposition}
+    Para cada base $B$ de un espacio vectorial $V$, existe una base de $V^*$ que es dual de la base $B$.
+\end{proposition}
+\begin{proof}
+    Dada la base $B=\curlybraces{e_1,e_2,\dots,e_n}$ de $V$, y sabiendo que una forma lineal está completamente determinada conociendo las imágenes de los vectores de $B$, por tanto, para cada $i=1,2,\dots,n$ existe una única $f^i$ verificando
+    \[f^i(e_i)=1\hspace{3mm}\text{y}\hspace{3mm}f^j(e_i)=0,\hspace{2mm}\forall i\neq j\]
+    Luego, un conjunto de formas lineales $\curlybraces{f^1,f^2,\dots,f^n}$ verificando las condiciones para ser base dual (lo anterior), siempre existe.\\
+    Debemos comprobar que realmente sea una base de $V^*$. Como conocemos que la dimensión del espacio es $n$, solo necesitamos demostrar que los $f^i$ son linealmente independientes:
+    \[\lambda_1f^1+\lambda_2f^2+\dots+\lambda_nf^n=0\Longleftrightarrow \lambda_1=\lambda_2=\dots=\lambda_n=0\]
+    Evaluamos un $e_i$ arbitrario, tal que
+    \[0=(\lambda_1f^1+\lambda_2f^2+\dots+\lambda_nf^n)(e_i)=\lambda_1f^1(e_i)+\lambda_2f^2(e_i)+\dots+\lambda_if^i(e_i)+\dots+\lambda_nf^n(e_i)=\lambda_i\]
+    Luego, son linealmente independientes y por tanto, son base dual. \qedhere
+\end{proof}
+\begin{note}
+    El siguiente Teorema lo vamos a necesitar para demostrar la Proposición \ref{Prop2}, ver su demostración en \cite[Chapter I, Section 4, Theorem 1, Page 38]{MerinoAlgebraLinealLibro}
+    \end{note}
+    \medskip
+    \begin{theorem}
+    \label{Teor1}
+        Para un matriz cuadrada $A\in\mathcal{M}_n(\mathbb{K})$, las siguientes afirmaciones son equivalentes:
+        \begin{enumerate}
+            \item $A$ es invertible.
+            \item $A$ es regular a derecha (esto es, $BA=0\Rightarrow B=0$).
+            \item $A$ es regular a izquierda (esto es, $AB=0\Rightarrow B=0$).
+            \item $rg(A)=n$.
+            \item La forma de Hermite por filas de $A$ es la identidad.
+            \item La forma de Hermite por columnas de $A$ es la identidad.
+            \item $A$ es un producto de matrices elementales.
+        \end{enumerate}
+    \end{theorem}
+
+\begin{proposition}
+\label{Prop2}
+    Sea $V$ un espacio vectorial de dimensión $n$ y sea $B$ una base de $V$ respecto de la cual todos los vectores y formas lineales vienen dados. Si $B=\curlybraces{e_1,e_2,\dots,e_n}$ es una base cuyos vectores, escritos por columnas, forman la matriz $A$, entonces la base dual de $B$, $B^*=\curlybraces{f^1,f^2,\dots,f^n}$ viene dada por las filas de $A^{-1}$ y viceversa.
+\end{proposition}
+\begin{proof}
+    En primer lugar, como $B$ es base, entonces la matriz $A$ es regular, es decir, tiene inversa\footnote{
+    Cosa que se cumple, pues al ser $A$ la matriz asociada a una $f$ en la base $B$, que tiene dimensión $n$, por tanto $rg(A)=n$. Así, usando el siguiente Teorema vemos que $A$ es regular por el Teorema \ref{Teor1}}. Si $\begin{pmatrix}
+        b_{i_1} & b_{i_2} & \dots & b_{i_n}
+    \end{pmatrix}$ es la matriz asociada a $f^i$ y $e_j=\begin{pmatrix}
+        a_{j_1} & a_{j_2} & \dots & a_{j_n}
+    \end{pmatrix}_{B}$, entonces debe cumplirse que
+    \[f^i(e_j)=\begin{pmatrix}
+        b_{i_1} & b_{i_2} & \dots & b_{i_n}
+    \end{pmatrix}\cdot\begin{pmatrix}
+        a_{j_1}\\
+        a_{j_2}\\
+        \vdots \\
+        a_{j_n}
+    \end{pmatrix}=\delta_{ij}\]
+    Es decir, las matrices asociadas a $f^i$, con $i=1,2,\dots,n$, son las filas de $A^{-1}$, o lo que es lo mismo, sus coordenadas en la base $B^*$. Además, puesto que $A^{-1}$ es regular, sus filas son linealmente independientes. \qedhere
+\end{proof}
+\begin{note}
+    Esta proposición nos sirve para calcular el problema inverso, es decir, dada una base de $V^*$, calcular la base de $V$ de la cual es dual.
+\end{note}
+ 
+\begin{example}[Ejemplo de las proposiciones 1.3 y 1.4]
+$\hspace{1mm}$\\
+\textit{(a)} \textbf{Considerando en }$\mathbb{R}^3$\textbf{ la base }$B=\curlybraces{(1,-1,1),(-1,2,-1),(-1,1,0)}$\textbf{, calcular la base dual de }$B$. \textit{(b)} \textbf{Hacerlo también a la inversa.}
+\begin{enumerate}[label=(\alph*)]
+    \item Tenemos $B=\curlybraces{(1,-1,1),(-1,2,-1),(-1,1,0)}\in\mathbb{R}^3$. ¿$B^*=\curlybraces{f^1,f^2,\dots,f^n}$?\\ \\
+    Como debemos obtener 3 formas lineales (componentes de $B^*$), bastará con obtener las matrices asociadas a la base canónica:
+    \begin{itemize}
+        \item Comenzamos obteniendo la matriz asociada de $f^1$:\\ \\
+        Por definición de base dual, sabemos que $f^i(e_j)=\delta_{ij}$
+        \[\Rightarrow\left\lbrace\begin{matrix}
+            f^1\brackets{(1,-1,1)}=1 & \Rightarrow & \begin{pmatrix}
+                a_{11} & a_{12} & a_{13}
+            \end{pmatrix}\begin{pmatrix}
+                1\\
+                -1\\
+                1
+            \end{pmatrix}=1\\ \\
+            f^2\brackets{(-1,2,-1)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{11} & a_{12} & a_{13}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                2\\
+                -1
+            \end{pmatrix}=0\\ \\
+            f^3\brackets{(-1,1,0)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{11} & a_{12} & a_{13}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                1\\
+                0
+            \end{pmatrix}=0
+        \end{matrix}\right.\]
+        Entonces, tenemos el siguiente sistema de ecuaciones:
+        \[\left.\begin{matrix}
+            a_{11}-a_{12}+a_{13}=1\\
+            -a_{11}+2a_{12}-a_{13}=0\\
+            -a_{11}+a_{12}+0=0
+        \end{matrix}\right\rbrace\]
+        Resolviendo el sistema tenemos, $a_{11}=a_{12}=a_{13}=1$.
+        \item Ahora calculamos la de $f^2$:
+                \[\Rightarrow\left\lbrace\begin{matrix}
+            f^1\brackets{(1,-1,1)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{21} & a_{22} & a_{23}
+            \end{pmatrix}\begin{pmatrix}
+                1\\
+                -1\\
+                1
+            \end{pmatrix}=0\\ \\
+            f^2\brackets{(-1,2,-1)}=1 & \Rightarrow & \begin{pmatrix}
+                a_{21} & a_{22} & a_{23}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                2\\
+                -1
+            \end{pmatrix}=1\\ \\
+            f^3\brackets{(-1,1,0)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{21} & a_{22} & a_{23}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                1\\
+                0
+            \end{pmatrix}=0
+        \end{matrix}\right.\]
+         Entonces, tenemos el siguiente sistema de ecuaciones:
+        \[\left.\begin{matrix}
+            a_{21}-a_{22}+a_{23}=0\\
+            -a_{21}+2a_{22}-a_{23}=1\\
+            -a_{21}+a_{22}+0=0
+        \end{matrix}\right\rbrace\]
+        Resolviendo el sistema tenemos $a_{21}=a_{22}=1$ y $a_{23}=0$.
+        \item Ahora calculamos la de $f^3$:
+                        \[\Rightarrow\left\lbrace\begin{matrix}
+            f^1\brackets{(1,-1,1)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{31} & a_{32} & a_{33}
+            \end{pmatrix}\begin{pmatrix}
+                1\\
+                -1\\
+                1
+            \end{pmatrix}=0\\ \\
+            f^2\brackets{(-1,2,-1)}=0 & \Rightarrow & \begin{pmatrix}
+                a_{31} & a_{32} & a_{33}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                2\\
+                -1
+            \end{pmatrix}=0\\ \\
+            f^3\brackets{(-1,1,0)}=1 & \Rightarrow & \begin{pmatrix}
+                a_{31} & a_{32} & a_{33}
+            \end{pmatrix}\begin{pmatrix}
+                -1\\
+                1\\
+                0
+            \end{pmatrix}=1
+        \end{matrix}\right.\]
+         Entonces, tenemos el siguiente sistema de ecuaciones:
+        \[\left.\begin{matrix}
+            a_{31}-a_{32}+a_{33}=0\\
+            -a_{31}+2a_{32}-a_{33}=0\\
+            -a_{31}+a_{32}+0=1
+        \end{matrix}\right\rbrace\]
+        Resolviendo el sistema tenemos $a_{31}=-1$, $a_{32}=0$ y $a_{33}=1$.
+    \end{itemize}
+    Por tanto la matriz asociada en la base canónica será,
+    \[A=\begin{pmatrix}
+        1 & 1 & 1\\
+        1 & 1 & 0\\
+        -1 & 0 & 1
+    \end{pmatrix}\]
+    donde la primera fila será la matriz asociada a $f^1\sim\begin{pmatrix}
+        1 & 1 & 1
+    \end{pmatrix}$, la segunda fila será la matriz asociada a $f^2\sim\begin{pmatrix}
+        1 & 1 & 0
+    \end{pmatrix}$ y la tercera fila será la matriz asociada a $f^3\sim\begin{pmatrix}
+        -1 & 0 & 1
+    \end{pmatrix}$.\\
+    Entonces tendremos:
+    \[\begin{matrix}
+        f^1,f^2,f^3:\mathbb{R}^3\to\mathbb{R}\\ \\
+        \left.\begin{matrix}
+            f^1(x,y,z)=x+y+z\\
+            f^2(x,y,z)=x+y\\
+            f^3(x,y,z)=-x+z
+        \end{matrix}\right\rbrace (\triangle)
+    \end{matrix}\]
+    \item Partiendo de $(\triangle)$, vamos a llegar a la base $B$.\\
+    Sabemos que $\curlybraces{f^1,f^2,f^3}$ forman una base dual de $\mathbb{R}^3$, pues lo acabamos de obtener, pero como queremos hacerlo como un ejercicio genérico, debemos comprobar que son linealmente independientes, ya que $dim(\mathbb{R}^3)=3$. La forma más sencilla de ver que son l.i. es introducir los vectores en una matriz y calcular su rango.\\
+    Usando la primera propiedad de las bases duales, la matriz asociada a $f^i$ en la base canónica nos proporciona también las coordenadas de $f^i$ en la base dual de la base canónica. Así, las matrices asociadas a $f^1,f^2,f^3$ son:
+    \[f^1\sim\begin{pmatrix}
+        1 & 1 & 1
+    \end{pmatrix},\hspace{5mm}f^2\sim\begin{pmatrix}
+        1 & 1 & 0
+    \end{pmatrix},\hspace{5mm}f^3\sim\begin{pmatrix}
+        -1 & 0 & 1
+    \end{pmatrix}\]
+    Así, ver que son l.i. se reduce al cálculo del determinante,
+    \[\left|A\right|=\begin{vmatrix}
+        1 & 1 & 1\\
+        1 & 1 & 0\\
+        -1 & 0 & 1
+    \end{vmatrix}=1+0+0+1-1-0=1\neq0\]
+    por tanto, son linealmente independiente.\\
+    Para encontrar la base de $\mathbb{R}^3$ de la cual es dual $\curlybraces{f^1,f^2,f^3}$, solo tenemos que calcular la inversa de la matriz cuyo determinante acabamos de calcular:
+    \[A^{-1}=\frac{Adj(A)^t}{\cancelto{1}{\left|A\right|}},\hspace{2mm}Adj(A)=\begin{pmatrix}
+        1 & -1 & 1\\
+        -1 & 2 & -1\\
+        -1 & 1 & 0
+    \end{pmatrix},\hspace{2mm}Adj(A)^t=\begin{pmatrix}
+        1 & -1 & -1\\
+        -1 & 2 & -1\\
+        1 & -1 & 0
+    \end{pmatrix}=A^{-1}\]
+    Por tanto, los vectores de la base de $\mathbb{R}^3$ de la cual es dual $\curlybraces{f^1,f^2,f^3}$, serán las columnas de la matriz $A^{-1}$, tal que
+    \[B=\curlybraces{(1,-1,1),(-1,2,-1),-1,1,0}\]
+\end{enumerate}
+\end{example}
+\noindent Sigamos viendo más propiedades de las bases duales.
+\begin{proposition}[2ª Propiedad de las bases duales]
+    Si $B^*=\curlybraces{f^1,\dots,f^n}$ es la base dual de $B$, entonces dado un vector $x\in V$, si $x=(x_1,x_2,\dots,x_n)_{B}$, se verifica que $x^i=f^i(x)$; $\forall i=1,\dots,n$.
+\end{proposition}
+\begin{proof}
+    Como $x\in V$ y $B=\curlybraces{e_1,e_2,\dots,e_n}$, base de $V$, entonces podremos escribir $x=x^1e_1+x^2e_2+\dots x^ne_n$, luego
+    \[f^i(x)=f^i(x^1e_1+x^2e_2+\dots x^ne_n)=x^1f^i(e_1)+x^2f^i(e_2)+\dots+x^if^i(e_i)+\dots+ x^nf^i(e_n)=x^i\]
+    Por tanto, $x^i=f^i(x)$. \qedhere
+\end{proof}
+
+\begin{theorem}
+    $V$ es isomorfo con $(V^*)^*$, siendo el espacio bidual $(V\cong(V^*)^*)$.
+\end{theorem}
+\begin{proof}
+    Sea \[\begin{matrix}
+        \phi: & V\to(V^*)^*\\
+         & v\mapsto\phi(v)
+    \end{matrix}\]
+    donde $\phi(v)\in(V^*)^*$. Se define como \[\begin{matrix}
+        \phi(v): & V^*\to\mathbb{K}\\
+         & f\mapsto f(v)
+    \end{matrix}\]
+    Veamos que $\phi$ es lineal, $\forall u,v\in V;$
+    \[\begin{matrix}
+        \phi(u): & V^*\to\mathbb{K}\\
+         & f\mapsto f(u)
+    \end{matrix};\hspace{5mm}\begin{matrix}
+        \phi(v): & V^*\to\mathbb{K}\\
+         & f\mapsto f(v)
+    \end{matrix}\]
+    \[\begin{matrix}
+        \phi(u+v): & V^*\to\mathbb{K}\\
+         & f\mapsto f(u+v)
+    \end{matrix};\hspace{5mm}\hspace{5mm}\begin{matrix}
+        \phi(v)+\phi(u): & V^*\to\mathbb{K}\\
+         & f\mapsto f(v)+f(u)
+    \end{matrix}\]
+    Como $f\in V^*$ es lineal, entonces se cumple que $f(u+v)=f(u)+f(v)$ y por tanto, $\phi(u+v)=\phi(u)+\phi(v)$. También,
+    \[\begin{matrix}
+        \forall u\in V &
+        \forall\lambda\in\mathbb{K}
+    \end{matrix};\hspace{3mm}\begin{matrix}
+        \phi(\lambda\cdot u): &V^*\to\mathbb{K}\\
+         & f\mapsto f(\lambda\cdot u)
+    \end{matrix};\hspace{5mm}\begin{matrix}
+        \lambda\cdot\phi(u): & V^*\to\mathbb{K}\\
+         & f\mapsto\lambda\cdot f(u)
+    \end{matrix}\]
+    como $f\in V^*$ es lineal, se cumple que $f(\lambda\cdot u)=\lambda\cdot f(u)$ y por tanto, $\phi(\lambda\cdot u)=\lambda\cdot\phi(u)$. Luego, $\phi$ es lineal.\\ \\
+    Veamos que $Ker\phi=\curlybraces{0}$:\\
+    si $u\in\ker\phi$, entonces $\phi(u)=0$, tal que \[\begin{matrix}
+        \phi(u): & V^*\to\mathbb{K}\\
+         & f\mapsto0
+    \end{matrix}\] 
+    Sea $\curlybraces{e_1,e_2,\dots,e_n}$ base de $V$, sabemos que \[\begin{matrix}
+        \phi_{e_{j}}: & V\to\mathbb{K}\\
+         & v\mapsto\phi_{e_{j}}(x)=x_j
+    \end{matrix}\]
+    tal que $v=x^1e_1+x^2e_2+\dots x^ne_n$, se verifica que $\phi_{e_j}\in V^*$. Por tanto, $\phi(u)(\phi_{e_j})=0$, pues $u\in Ker\phi$ y $\phi(u)$ es la función nula, tal que
+    \[u=x^1e_1+\dots x^ne_n=0e_1+\dots+0e_n=0\]
+    Por tanto, $Ker\phi=\curlybraces{0}$, luego $\phi:V\to(V^*)^*$ es inyectiva y lineal.\\
+    Por la Proposición \ref{Prop1.6}, tenemos que $dimV=dimV^*=n$ y por tanto, $dim(V^*)^*=n=dimV^*$. Luego, $\phi:V\to V^*$ verifica
+    \[dimIm\phi=dimV-dimKer\phi=n-0=n\Rightarrow dimIm\phi=dim(V^*)^*=n\Rightarrow Im\phi=(V^*)^*\]
+    luego, la aplicación es sobreyectiva y por tanto, es biyectiva. Luego, al ser biyectiva y aplicación lineal, son isomorfos. \qedhere
+\end{proof}
+ \subsubsection{Anulador de un subespacio}
+El \textbf{anulador de un subespacio} nos permite, como su propio nombre indica, anular subespacios.
+\begin{definition}
+    Consideremos un espacio vectorial $V$ y sea $S$ un subconjunto de $V$, entonces se define el anulador de $S$ como el conjunto
+    \[an(S)=\curlybraces{f\in V^*\left|\right.f(v)=0,\forall v\in S}\]
+\end{definition}
+\begin{proposition}\label{Prop:1}
+    Sea $V$ un $\mathbb{K}$-espacio vectorial y sea $S$ un subconjunto de $V$, entonces se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $an(S)$ es un subespacio vectorial de $V^*$.
+        \item $an(S)=an(L(S))$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{tabular}{c|}
+         \textit{(i)} \\ \hline
+    \end{tabular} 
+    Dadas dos formas de $an(S)$, digamos $f,g\in an(S)$, queremos probar que $f+g\in an(S)$, y sea $\lambda\in\mathbb{K}$, probar que $\lambda f\in an(S)$. 
+    Para lo primero, hacemos $\forall v\in V$,
+    \[(f+g)(v)=f(v)+g(v)=0+0=0\Rightarrow f+g\in an(S)\]
+    Para lo segundo hacemos,
+    \[(\lambda f)(v)=\lambda f(v)=\lambda\cdot0=0\Rightarrow \lambda f\in an(S)\]
+    Por tanto, es subespacio vectorial de $V^*$. \qedhere\\ 
+    \begin{tabular}{c|}
+         \textit{(ii)}  \\ \hline
+    \end{tabular}
+    $\hspace{4mm}$\begin{tabular}{c|}
+         $\subseteq$  \\ \hline
+    \end{tabular}
+    Sabemos que $S\subseteq L(S)$, entonces si $f\in an(L(S))$ anula a todo vector de $L(S)$, en particular, anula a todo vector de $S$ y así se tiene la inclusión $an(L(S))\subseteq an(S)$.\\
+    \hspace{5mm}\begin{tabular}{c|}
+         $\supseteq$  \\ \hline
+    \end{tabular} 
+    Considerando $g\in an(S)$ y cualquier vector de $L(S)$ de la forma,
+    \[v=a^1s_1+a^2s_2+\dots a^rs_r\]
+    con $s_i\in S$ para cada $i=1,2,\dots,r$. Entonces,
+    \[f(v)=f(a^1s_1+a^2s_2+\dots a^rs_r)=a^1\cancelto{0}{f(s_1)}+a^2\cancelto{0}{f(s_2)}+\dots+a^r\cancelto{0}{f(s_r)}=0\]
+    y por tanto, $f\in an(S)$, luego $an(S)\subseteq an(L(S))$. Luego, $an(S)=an(L(S))$. $\qedh$
+\end{proof}
+\begin{note}
+    Cuando consideramos un subespacio $U\leq V$, su anulador $an(U)$ puede calcularse fácilmente usando la segunda de las propiedades anteriores.
+\end{note}
+\begin{note}
+    En general, si llamamos $n=dimV$ y $U$ es un subespacio de $V$ con una base $\curlybraces{u_1,u_2,\dots,u_r}$, entonces $an(U)=an(\curlybraces{u_1,\dots,u_r})$ (por la Proposición \ref{Prop:1}), lo que permite escribir las $r$-ecuaciones cartesianas de $an(U)$. Además, como $\curlybraces{u_1,\dots,u_r}$ son l.i., entonces $din(an(U))=n-r$, es decir,
+    \[dim(an(U))=dimV-dimU\]
+\end{note}
+\subsubsection{Aplicación lineal traspuesta}
+    Dados dos espacios vectoriales $V$ y $V$' sobre el cuerpo $\mathbb{K}$, es posible considerar los respectivos espacios duales, y si $f:V\to V$' es una aplicación lineal con matriz asociada $A$ respecto de ciertas bases $B$ y $B$', entonces se puede definir una aplicación lineal entre los duales mediante $f$. Para ello, tomemos $\varphi\in(V')^*$, es decir, $\varphi:V'\to\mathbb{K}$, entonces podemos considerar el diagrama:
+    \[\begin{matrix}
+        & f & & \\
+        V & \to & V' &\\
+         & & \downarrow & \varphi\\
+         & & \mathbb{K} &
+    \end{matrix}\]
+    y la composición $\varphi\circ f:V\to\mathbb{K}$ es un elemento de $V^*$. De esta manera, tenemos definida una aplicación a la que llamamos $f^t$, aplicación traspuesta de $f$, tal que $f^t:(V')^*\to V^*$ dada por $f^t(\varphi)=\varphi\circ f$.
+
+\begin{proposition}
+    Sea $f:V\to V'$ una aplicación lineal y sean $B$ y $B^*$ bases de $V$ y $V'$ respectivamente, entonces se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f^t$ es una aplicación lineal.
+        \item Si la matriz asociada a $f$ respecto de las bases $B$ y $B'$ es $A$, entonces la matriz asociada a $f^t$ en las bases $B^*$ y $(B')^*$ es $A^t$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{tabular}{c|}
+        \textit{(i)}  \\ \hline
+    \end{tabular} 
+    Si $\varphi_1,\varphi_2\in(V')^*$ y $a_1,a_2\in\mathbb{K}$, entonces
+    \[f^t(a_1\varphi_1+a_2\varphi_2)=(a_1\varphi_1+a_2\varphi_2)\circ f\]
+    Dado $v\in V$, tenemos
+    \[((a_1\varphi_1+a_2\varphi_2)\circ f)(v)=(a_1\varphi_1+a_2\varphi_2)(f(v))=a_1\varphi_1(f(v))+a_2\varphi_2(f(v))=\]
+    \[=a_1(\varphi_1\circ f)(v)+a_2(\varphi_2\circ f)(v)=(a_1(\varphi_1\circ f)+a_2(\varphi_2\circ f))(v)=(a_1f^t(\varphi_1)+a_2f^t(\varphi_2))(v)\]
+    con lo que
+    \[f^t(a_1\varphi_1+a_2\varphi_2)=a_1f^t(\varphi_1)+a_2f^t(\varphi_2)\]
+    luego, es aplicación lineal. \\ \\
+    \begin{tabular}{c|}
+         \textit{(ii)} \\ \hline
+    \end{tabular} 
+    Calculamos las imágenes de las formas lineales de $(B')^*$ por $f^t$:\\
+    si $\varphi_i$ es el $i$-ésimo elemento de $(B')^*$, su matriz asociada en la base $B'$ es $\begin{pmatrix}
+        0 & 0 & \dots & 1^{(i)} & \dots & 0
+    \end{pmatrix}$, donde el 1 está en el $i$-ésimo lugar.\\
+    Entonces, $f^t(\varphi_i)=\varphi_i\circ f$ tiene como matriz asociada en la base $B$ el producto siguiente,
+    \[\begin{pmatrix}
+        0 & 0 & \dots & 1^{(i)} & \dots & 0
+    \end{pmatrix}\cdot\begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n}\\
+        a_{21} & a_{22} & \dots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{n1} & a_{n2} & \dots & a_{nn}
+    \end{pmatrix}=\begin{pmatrix}
+        a_{i1} & a_{i2} & \dots & a_{in}
+    \end{pmatrix}\]
+    que es la $i$-ésima fila de $A$. Nos da las coordenadas de $f^t(\varphi_i)$ en la base $B^*$; estas coordenadas constituyen a la $i$-ésima columna de la matriz asociada a $f^t$. 
+\end{proof}
+
+\subsubsection{Una aplicación de la teoría del espacio dual: Interpretación de Lagrange}
+La interpretación de Lagrange es una de las tantas aplicaciones que tiene la teoría del espacio dual. 
+\\
+    Sea $a\in\mathbb{R}$, llamamos \textbf{evaluar un polinomio }$q(x)$\textit{ en }$a$, al proceso de sustituir la indeterminada $x$ por el valor real $a$ en el polinomio $p(x)$; al número real obtenido de esta forma lo denotamos por $p(a)$.
+
+\begin{proposition}
+    La aplicación \textit{evaluar en }$a$, que denotamos por $E_a$, es una forma lineal en $\mathbb{P}(\mathbb{R})$.
+\end{proposition}
+\begin{proof}
+    Consideramos dos polinomios,
+    \[p(x)=a_0+a_1x+\dots+a_nx^n\]
+    \[q(x)=b_0+b_1x+\dots+b_nx^n\]
+    y $\lambda_1,\lambda_2\in\mathbb{R}$. Entonces,
+    \[E_a(\lambda_1p(x)+\lambda_2q(x))=E_a((\lambda_1a_0+\lambda_2b_0)+(\lambda_1a_1+\lambda_2b_1)x+\dots+(\lambda_1a_n+\lambda_2b_n)x^n)=\]
+    \[=\lambda_1a_0+\lambda_2b_0+(\lambda_1a_1+\lambda_2b_1)a+\dots+(\lambda_1a_n+\lambda_2b_n)a^n\]
+    y también,
+    \[\lambda_1E_a(p(x))+\lambda_2E_a(q(x))=\lambda_1E_a(a_0+a_1x+\dots+a_nx^n)+\lambda_2E_a(b_0+b_1x+\dots+b_nx^n)= \]
+    \[=\lambda_1(a_0+a_1a+\dots+a_na^n)+\lambda_2(b_0+b_1a+\dots+b_na^n)=\]
+    \[=\lambda_1a_0+\lambda_2b_0+(\lambda_1a_1+\lambda_2b_1)a+\dots+(\lambda_1a_n+\lambda_2b_n)a^n\]
+    Luego, $E_a(\lambda_1p(x)+\lambda_2q(x))=\lambda_1E_a(p(x))+\lambda_2E_a(q(x))$, y por tanto, es una aplicación lineal. \qedhere
+\end{proof}
+\begin{note}
+    La matriz asociada a $E_a$ en la base $\curlybraces{1,x,x^2,\dots,x^n}$ de $\mathbb{P}(\mathbb{R})$, como $E_a(1)=1$, $E_a(x)=a$, $E_a(x^2)=a^2$, $\dots$, $E_a(x^n)=a^n$, y por tanto, la matriz asociada de $E_a$ es $A=\begin{pmatrix}
+        1 & x & x^2 & \dots & x^n
+    \end{pmatrix}_{\mathbb{P}(\mathbb{R})}$. 
+\end{note}
+
+\begin{proposition}
+    Si $a_0,a_1,\dots,a_n\in\mathbb{R}$ con $a_i\overset{i\neq j}{\neq} a_j$, entonces $\curlybraces{E_{a_0},E_{a_1},\dots,E_{a_n}}$ es una base del espacio dual de $\mathbb{P}(\mathbb{R})$.
+\end{proposition}
+\begin{proof}
+    Llamemos $B^*$ a la base dual de la base $B=\curlybraces{1,x,x^2,\dots,x^n}$ de $\mathbb{P}(\mathbb{R})$. Entonces las coordenadas de $E_{a_0},E_{a_1},\dots,E_{a_n}$ en la base $B^*$ son
+    \[(1,a_0,a_0^2,\dots,a_o^n),(1,a_1,a_1^2,\dots,a_1^n),\dots,(1,a_n,a_n^2,\dots,a_n^n)\]
+    respectivamente. Veamos que son linealmente independientes; para ello, vemos que el determinante e la matriz es no nulo:
+    \[\begin{vmatrix}
+        1 & 1 & \dots & 1\\ 
+        a_0 & a_1 & \dots & a_n\\
+        a_0^2 & a_1^2 & \dots & a_n^2\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_0^n & a_1^n & \dots & a_n^n
+    \end{vmatrix}=\prod\limits_{i>j}(a_i-a_j)\]
+    siendo este el Determinante de Vandermonde.\\
+    Como $a_i\neq a_j$ para $i\neq j$, este determinante nunca se anula, luego son linealmente independientes, y por tanto, son una base. \qedhere 
+\end{proof}
+\begin{proposition}
+    Los polinomios 
+    \[p_j(x)=\prod\limits_{i\neq j}\frac{x-a_j}{a_j-a_i};\hspace{3mm}j=0,1,2,\dots,n\]
+    forman la base de $\mathbb{P}(\mathbb{R})$ de la cual es dual la formada por $E_{a_0},E_{a_1},\dots,E_{a_n}$.\label{prop1.22}
+\end{proposition}
+\begin{proof}
+    Si evaluamos el polinomio $p_j(x)=\prod\limits_{i\neq j}\frac{x-a_j}{a_i-a_j}$ en $a_i$ con $i\neq j$, como en el producto aparece el término $(a_i-a_i)=0$, obtenemos $p_j(a_i)=0$. Al evaluar en $a_j$, el numerador y el denominador de $p_j(a_j)$ son idénticos, y se tiene $\frac{a_j-a_i}{a_j-a_i}=1$, luego $p_j(a_j)=1$. Así, $E_{a_i}(p_j)=\delta_{ij}$, que es la condición de base dual. \qedhere
+\end{proof}
+    \noindent Los polinomios descritos en la Proposición \ref{prop1.22}, reciben el nombre de \textit{polinomios de interpolación de Lagrange}.
+
+\begin{theorem}
+    Dados $n+1$-números reales distintos $a_0,a_1,\dots,a_n$, para cualesquiera $b_0,b_1,\dots,b_n\in\mathbb{R}$, existe un único polinomio $p(x)$ de grado menor o igual que $n$, de forma que $p(a_i)=b_i$, para cada $i=0.1.2,\dots,n$. Dicho polinomio viene dado por
+    \[p(x)=\sum\limits_{j=0}^Nb_jp_j(x)\]
+    siendo $p_0(x),p_1(x),\dots,p_n(x)$ los polinomios de interpolación de Lagrange.
+\end{theorem}
+\begin{proof}
+    Si $p(x)=\sum\limits_{i=0}^Nb_ip_i(x)$ con $p_j(x)=\prod\limits_{i\neq j}\frac{x-a_i}{a_j-a_i}$. Vamos a ver que $p(x)$ es único:\\
+    Tomamos un polinomio de grado $n$, $q(x)$, que satisface lo mismo que $p(x)$, tal que $q(a_i)=b_i$. Definimos otro polinomio de grado $n$, tal que
+    \[r(x)=p(x)-q(x),\hspace{3mm}\text{con}\hspace{3mm}\left\lbrace\begin{matrix}
+        r(a_i)=0 & i=0,1,\dots,n\\
+        \text{Como }r(a_i)=0, & (x-a_i)\left|r(x)\right.
+    \end{matrix}\right.\]
+    luego,
+    \[r(x)=(x-a_i)s(x)=\Lambda(x)(x-a_0)(x-a_1)\dots(x-a_n)\]
+pero vemos que el grado de $r(x)$ es mayor o igual que $n+1$, que es una contradicción, salvo que $\Lambda(x)=0$ y por tanto $q(x)=p(x)$, luego, el polinomio es único. Ahora, vamos a demostrar que este polinomio satisface la igualdad:
+    \[p(a_0)=\sum\limits_{i=0}^Nb_ip_i(a_0)=\sum\limits_{i=0}^Nb_i\delta_0^i=b_0\]
+    \[p(a_j)=\sum\limits_{i=0}^Nb_ip_i(a_j)=\sum\limits_{i=0}^Nb_i\delta_j^i=b_j\]
+    Luego, queda demostrado. \qedhere
+\end{proof}

@@ -1,0 +1,301 @@
+
+\label{Ap-A-sec3}
+\section{Estructuras algebraicas básicas}
+\begin{definition}
+    Sea $X$ un conjunto, se llama operación interna:
+    \[\begin{matrix}
+         *: & X\times X & \longrightarrow & X \\
+            & (a,b)     & \rightarrow     & a*b
+    \end{matrix}
+   \]
+   Si no usamos el mismo conjunto, la operación no es interna.
+\end{definition}
+\begin{definition}
+    Se dice que un conjunto $X$, dotado de una operación interna "$*$", es un grupo si $(X,*)$ verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item \textit{Propiedad asociativa}: $\forall x,y,z\in X$; $(x*y)*z=x*y*z=x*(y*z)$
+        \item \textit{Existencia de elemento neutro}: $\exists e\in X$, tal que $\forall x\in X$; $x*e=e*x=x$
+        \item \textit{Existencia de elemento simétrico}: $\forall x\in X$, $\exists x^{-1}\in X$ tal que $x*x^{-1}=x^{-1}*x=e$
+    \end{enumerate}
+    Si se verifica la propiedad \textit{conmutativa}, es decir, $\forall x,y\in X$; $x*y=y*x$, se dice que el grupo es \textbf{abeliano}.
+\end{definition}
+\subsection{Grupo de permutaciones o grupo simétrico de orden n}
+\begin{definition}
+    Se define grupo de permutaciones como
+    \[Sn=\curlybraces{f:\curlybraces{1,2,\dots,n}\longrightarrow\curlybraces{1,2,\dots,n}; f\text{ es biyectiva}}\]
+\end{definition}
+\subsubsection*{Observaciones}
+- Se cumple que $\#S_n=n!$\\
+- Cada permutación se denota como $\sigma(i)$, con $\sigma\in S_n$.\\
+- Para expresar $\sigma$ hacemos un ejemplo:
+\[\sigma=\begin{pmatrix}
+    1 & 2 & 3 & 4 \\
+    1 & 3 & 2 & 4
+\end{pmatrix}\equiv\begin{matrix}
+    1\rightarrow 1\\
+    2\rightarrow 3\\
+    3\rightarrow 2\\
+    4\rightarrow 4
+\end{matrix}\hspace{2mm};\hspace{2mm}\begin{matrix}
+    \sigma(1)=1\\
+    \sigma(2)=3\\
+    \sigma(3)=2\\
+    \sigma(4)=4
+\end{matrix}\]
+\begin{definition}
+    Se dice que $\sigma\in S_n$ es ciclo, si existe $a_1\in\curlybraces{1,2,\dots,n}$ de forma que $\sigma(x)=x$ o $\sigma(x)=\sigma^{n}(a_1)$, $\forall x\in\curlybraces{1,2,\dots,n}$.
+\end{definition}
+Para representar ciclos haremos un ejemplo:
+\begin{example}
+\[\sigma=\begin{pmatrix}
+    2 & 5 & 4 & 3
+\end{pmatrix}\equiv\begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    1 & 5 & 2 & 3 & 4
+\end{pmatrix}\]
+los números que van a sí mismo no se representan, en este caso el 1.
+\end{example}
+Otro ejemplo sería:
+\begin{example}
+\[S_6=\begin{matrix}
+    \begin{pmatrix}
+        1 & 2 & 3 & 4 
+    \end{pmatrix} & \cdot & \begin{pmatrix}
+        4 & 5
+    \end{pmatrix}\\
+    f & & g
+\end{matrix}\equiv\begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 & 6 \\
+    2 & 3 & 4 & 5 & 1 & 6
+\end{pmatrix}\equiv\begin{pmatrix}
+    1 & 2 & 3 & 4 & 5
+\end{pmatrix}\]
+Además, en este ejemplo,
+\[f\circ g(4)=f(g(4))=f(5)=5\]
+porque en $f$ el 5 no está, por tanto se deja igual. También sería,
+\[f\circ g(5)=f(g(5))=f(4)=1\]
+\end{example}
+\begin{definition}
+    Se llama orden del ciclo a la longitud, es decir, el número de elementos que se repiten. En un ciclo de longitud $k$ se verifica $\sigma^{k}(x)=x$, $\forall x\in\curlybraces{1,2,\dots,n}$.
+\end{definition}
+\begin{definition}
+    A un ciclo de orden 2 se le llama trasposición.
+\end{definition}
+\begin{definition}
+    Se dice que dos ciclos son disjuntos si no comparten elementos.
+\end{definition}
+\begin{proposition}
+    Todo par de ciclos disjuntos conmutan.
+\end{proposition}
+\begin{proof}
+    $\newline$
+    Sea \[\sigma\equiv\begin{pmatrix}
+        a_1 & a_2 & \dots & a_m
+    \end{pmatrix}\begin{pmatrix}
+        b_1 & b_2 & \dots & b_p
+    \end{pmatrix};a_i\neq b_j\]
+
+    \[\tilde{\sigma}\equiv\begin{pmatrix}
+        b_1 & b_2 & \dots & b_p
+    \end{pmatrix}\begin{pmatrix}
+        a_1 & a_2 & \dots & a_m
+    \end{pmatrix}\]
+    \[\sigma,\tilde{\sigma}:\curlybraces{1,2,\dots,n}\longrightarrow\curlybraces{1,2,\dots,n}\]
+    \[\forall x:\sigma(x)=\tilde{\sigma}(x)\]
+    - Si $x$ no está en el ciclo, $x\neq a_i,b_j$ $\left.\begin{matrix}
+        \sigma(x)=x\\
+        \tilde{\sigma}(x)=x
+    \end{matrix}\right\rbrace x=x$\\ \\
+    - Si $x$ está en el ciclo,
+    \[x=a_i\hspace{2mm};\hspace{5mm}\left.\begin{matrix}
+        \sigma(x)=\sigma(a_i)=a_{i+1}\\
+        \tilde{\sigma}(x)=a_{i+1}
+    \end{matrix}\right\rbrace\text{ coinciden}\]
+    \[x=b_j\hspace{2mm};\hspace{5mm}\left.\begin{matrix}
+        \sigma(x)=\sigma(b_j)=b_{j+1}\\
+        \tilde{\sigma}(x)=\tilde{\sigma}(b_j)=b_{j+1}
+    \end{matrix}\right\rbrace\text{ coinciden}\]
+    Por tanto, los ciclos disjuntos conmutan
+\end{proof}
+\begin{theorem}
+    Todo $\sigma\in S_n$ se puede descomponer como producto de ciclos disjuntos.
+\end{theorem}
+\begin{proof}
+$\newline$
+    \begin{enumerate}[label=\arabic{enumi}º)]
+        \item Escogemos $\curlybraces{1,2,\dots,n}$, el primero que cambia y que actúan no hemos seleccionado en otro ciclo $a_2$.
+        \item Vamos completando el ciclo, $a_1$, $\sigma(a_1)$, $\sigma^2(a_1)$, $\dots$, $\sigma^4(a_1)$=$a_1$.
+        \item Repetir el proceso.
+    \end{enumerate}
+\end{proof}
+Mostraremos un ejemplo:
+\begin{example}
+\[\sigma\equiv\begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \textcolor{green}{\downarrow} & \textcolor{blue}{\downarrow} & \textcolor{orange}{\downarrow} & \textcolor{green}{\downarrow} & \textcolor{blue}{\downarrow} & \textcolor{red}{\downarrow} & \textcolor{blue}{\downarrow} & \textcolor{green}{\downarrow} & \textcolor{red}{\downarrow} & \textcolor{green}{\downarrow}\\
+    8 & 7 & 3 & 1 & 2 & 9 & 5 & 10 & 6 & 4 
+\end{pmatrix}\]
+\[\textcolor{green}{
+\begin{pmatrix}
+    1 & 8 & 10 & 4 
+\end{pmatrix}}\textcolor{blue}{
+\begin{pmatrix}
+    2 & 7 & 5
+\end{pmatrix}}\textcolor{red}{
+\begin{pmatrix}
+    6 & 9 
+\end{pmatrix}}\]
+\end{example}
+\begin{theorem}
+    Todo ciclo se descompone como producto de trasposiciones.
+\end{theorem}
+\begin{proof}
+    \[\begin{pmatrix}
+        a_1 & a_2 & a_3 & \dots & a_n
+    \end{pmatrix}=\begin{pmatrix}
+        a_1 & a_2
+    \end{pmatrix}\begin{pmatrix}
+        a_2 & a_3
+    \end{pmatrix}\begin{pmatrix}
+        a_3 & a_4
+    \end{pmatrix}\dots\begin{pmatrix}
+        a_{n-1} & a_n
+    \end{pmatrix}\]
+\end{proof}
+\begin{theorem}
+    Sea $\sigma$ una permutación.\\
+    - Si $\sigma$ se descompone como producto de trasposiciones, el número total de trasposiciones siempre es o bien par, o bien impar.\\
+    - Supongamos que $\sigma=Z_1$ $Z_2$ $Z_3$ $\dots$ $Z_n$, donde $Z_j$ es una trasposición.\\
+    - Supongamos que $\sigma=\tilde{Z}_1$ $\tilde{Z}_2$ $\tilde{Z}_3$ $\dots$ $\tilde{Z}_p$.\\
+    - Entonces $n$ y $p$ son pares, o bien impares.\\
+    - Si una descomposición es par, todas son pares, si es impar, todas son impares.
+\end{theorem}
+\begin{definition}
+$\newline$
+    Sea $\sigma\in S_n$, se define su signo $\epsilon(\sigma)=\left\lbrace\begin{matrix}
+        1, & \text{si el número de trasposiciones es par}\\
+        -1, & \text{si el número de trasposiciones es impar}
+    \end{matrix}\right.$
+\end{definition}
+\subsection{Homomorfismos de grupos}
+\begin{definition}
+    Sea $(G,*)$ y $(H,\lozenge)$ dos grupos. Se dice que una aplicación $f:G\longrightarrow H$ es un homomorfismo si $f(x*y)=f(x)\lozenge f(y)$, $\forall x,y\in G$
+\end{definition}
+\begin{definition}
+    A un homomorfismo que sea biyectivo, se llama isomorfismo.
+\end{definition}
+\begin{proposition}
+    Si $f:G\longleftarrow H$ es un isomorfismo, entonces el elemento neutro de $G$ se transforma en el elemento neutro de $H$.
+\end{proposition}
+\begin{proof}
+    $\newline$
+    Sea $e_{G}\in G$ elemento neutro de $G$ y sea $y=f(x)\in H$, tal que $e_{G}*x=x*e_{G}=x$, $f(x)=f(e_G*x)=f(e_G)\lozenge f(x)$.
+    \[\begin{array}{c}
+        y=f(e_G)\lozenge y\\
+        y=e_H\lozenge y
+    \end{array}\Rightarrow\left\lbrace\begin{array}{l}
+        f(e_G)\lozenge y=e_H\lozenge y\\
+        (f(e_G)\lozenge y)\lozenge y^{-1}=(e_H\lozenge y)\lozenge y^{-1}\\
+        f(e_G)\lozenge(y\lozenge y^{-1})=e_H\lozenge(y\lozenge y^{-1})\\
+        f(e_G)\lozenge e_H=e_H\lozenge e_H\\
+        f(e_G)\lozenge e_H=e_H\\
+        f(e_G)=e_H
+    \end{array}\right.\]
+\end{proof}
+\begin{definition}
+    Sea $(G,*)$ un grupo y $H\subset G$. Se dice que $H$ es subgrupo de $G$, $H\leq G$, si $(H,*)$ tiene estructura de grupo. Para que sea subgrupo:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\forall x,y\in H$, $x*y\in H$\\ $*:H\times H\longrightarrow H$
+        \item \textit{Elemento neutro}: $e\in G\Rightarrow e\in H$
+        \item \textit{Elemento simétrico}: $x\in H\Rightarrow x^{-1}\in H$
+    \end{enumerate}
+\end{definition}
+\begin{theorem}[\textbf{Teorema de Cayley}]
+    Todo grupo finito es isomorfismo a un subgrupo de permutaciones $S_n$.
+\end{theorem}
+\begin{proof}
+    $\newline$
+    Sea $(G,*)$ un grupo y $g\in G$, se define la aplicación $t_g:G\longrightarrow G$ como la traslación a la izquierda, $\forall x\in G$, $t_g(x)=gx$.\\
+    La asociatividad de la ley de grupos confirma que $\forall g,h\in G$, $t_{gh}=t_g\circ t_h$.\\
+    Se deduce en particular que $t_g$ es una permutación de biyección recíproca $t_{g^{-1}}$, lo que permite definir una aplicación $f:G\longrightarrow S(G)$; $\forall g\in G$, $f(g)=t_g$, $f$ es un homomorfismo de grupos.\\
+    Por tanto, la imagen de $f$, notada $Imf$, es un subgrupo de $S(G)$.\\ 
+    Considerando $g,h\in G$, si $t_g$ y $t_h$ son iguales $\Rightarrow$ las imágenes del elemento neutro por dos aplicaciones también son iguales y $g=h$. Por tanto, $f$ es inyectiva.\\
+    La aplicación $f$ en $Imf$ que todo elemento $g\in G$ asocia $f(g)$ es entonces también un homomorfismo inyectivo. Además es sobreyectiva por propia construcción, y por tanto, un isomorfismo de grupos.
+\end{proof}
+\subsection{Anillos y cuerpos}
+\begin{definition}
+    Un anillo es un conjunto provisto de dos operaciones internas:
+    \[\begin{matrix}
+        +: & X\times X & \longrightarrow & X\\
+           & (x,y) & \rightarrow & x+y
+    \end{matrix}\hspace{6mm}\begin{matrix}
+        \cdot: & X\times X & \longrightarrow & X\\
+           & (x,y) & \rightarrow & x\cdot y
+    \end{matrix}\]
+    Verificando:
+    \begin{enumerate}
+        \item $(X.+)$ es grupo abeliano.
+        \item \textit{La operación} $\cdot$ \textit{es asociativa}: $(x\cdot y)\cdot z=x\cdot(y\cdot z)$, $\forall x,y,z\in X$
+        \item \textit{Leyes distributivas}: $\forall x,y,z\in X$\\
+        - \textit{Distributiva por la izquierda}: $(x+y)\cdot z=z\cdot z+y\cdot z$\\
+        - \textit{Distributiva por la derecha}: $z\cdot(x+y)=z\cdot x+z\cdot y$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Cuando la segunda operación $(\cdot)$ es conmutativa, se dice que el anillo es conmutativo.
+\end{definition}
+\begin{definition}
+    Sea $X$ un anillo, si existe un elemento $1\in X$, tal que $1\cdot x=x\cdot 1=x$, $\forall x\in X$, siendo el 1 elemento neutro, entonces se dice que el anillo es unitario.
+\end{definition}
+\begin{definition}
+    Si en un anillo unitario, todo elemento distinto del neutro de la suma (cero) tiene inverso, entonces se dice que el anillo es un cuerpo, es decir,
+    \[\forall x\in X,  x\neq0:\exists x^{-1}\in X \text{ tal que }x\cdot x^{-1}=x^{-1}\cdot x=1\]
+\end{definition}
+\begin{proposition}
+    Sea $(X,+,\cdot)$ un anillo, entonces $\forall x,y\in X$ se verifica:
+    \begin{enumerate}[label=(\roman*)]
+        \item $0\cdot x=x\cdot 0=0$
+        \item $x\cdot(-y)=(-x)\cdot y=-(x\cdot y)$
+        \item $(-x)\cdot(-y)=x\cdot y$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    $\newline$
+    (i)
+    \[\begin{array}{l}
+    0\cdot x=0\\
+    0\cdot x=(0+0)\cdot x=0\cdot x+0\cdot x\\
+    0\cdot x+(-(0\cdot x))=(0\cdot x+0\cdot x)+(-(0\cdot x))\\
+    0=0\cdot x+(0\cdot x+(-(0\cdot x)))\\
+    0=0\cdot x+0\\
+    0=0\cdot x \qed
+    \end{array}
+    \]
+    (ii)
+    \[\begin{array}{l}
+    x\cdot(-y)=-(x\cdot y)\\
+    x\cdot y+(-(x\cdot y))=0\\
+    0=x\cdot 0=x\cdot(y+(-y))=x\cdot y+x\cdot(-y)\\
+    x\cdot y+(-(x\cdot y))=x\cdot y+x\cdot(-y)\\
+    \cancel{x\cdot y+(-(x\cdot))}+(-x\cdot y)=\cancel{x\cdot y+(-(x\cdot y))}+ x\cdot(-y)\\
+    -(x\cdot y)=x\cdot(-y)\qed
+    \end{array}\]
+    (iii)
+    \[\begin{array}{l}
+    (-x)\cdot(-y)=x\cdot y\\
+    (-x)\cdot(-y)+x\cdot(-y)=x\cdot y+x\cdot(-y)\\
+    (-y)\cdot(x+(-x))=x\cdot(y+(-y))\\
+    y\cdot(x+(-x)+(-y)\cdot(x+(-x))=x\cdot(y+(-y))+y\cdot(x+(-x))\\
+    x\cdot y + x\cdot(-y) + \cancel{y\cdot(-x)} + \cancel{(-x)\cdot(-y)}=x\cdot y + \cancel{x\cdot(-y)} + \cancel{x\cdot y}+ y\cdot(-x)\\
+    x\cdot y + x\cdot(-y)=x\cdot y+y\cdot(-x)\\
+    x\cdot y+\cancel{x\cdot(-y)}+\cancel{(-x)\cdot(-y)}=\cancel{x\cdot y}+\cancel{y\cdot(-x)}+(-x)\cdot(-y)\\
+    x\cdot y=(-x)\cdot(-y)
+    \end{array}\]
+\end{proof}
+\begin{definition}
+    Sea $X$ un anillo, un subanillo es un subconjunto de $X$, que cumple las propiedades de anillo del conjunto $X$. Sea $Y$ un cuerpo, un subcuerpo es un subconjunto de $Y$, que cumple las propiedades de cuerpo del conjunto $Y$.
+\end{definition}
+\begin{definition}
+    Sean $(X_1,+,\cdot)$, $(X_2,*,\lozenge)$ dos anillos. Se dice que $f:X_1\longrightarrow X_2$ una aplicación, es homomorfismo del anillo si\[f(X+Y)\rightarrow f(x)*f(y);\hspace{5mm}f(x\cdot y)\rightarrow f(x)\lozenge f(y)\]
+    Además, si es biyectiva, es un isomorfismo.
+\end{definition}

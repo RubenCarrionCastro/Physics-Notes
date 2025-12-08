@@ -1,0 +1,35 @@
+%SECCION 2
+\section{Postulado de la Relatividad Especial} % Main chapter title
+\label{cap2-sec2} 
+%------------------------------------------------------------------------------
+El razonamiento de Einstein fue era que, si todos los sistemas inerciales son equivalentes y todos los observadores inerciales ven la misma física, entonces todos estos observadores deben llegar a las mismas leyes de la física, cuando apuntan los resultados de sus experimentos. En otras palabras,
+\[\text{\textit{"Las leyes de la física deben tener la misma forma en todos los sistemas inerciales".}}\]
+Formulado de esta manera, el Principio de Relatividad impone ciertas condiciones sobre la forma de las leyes de la física. Afirma que existen unas transformaciones, llamadas \textit{cambios de coordenadas}, que relacionan las cantidades físicas medidas por un observador con las de otro. Para no salir de los SRI, estos cambios de coordenadas tienen una forma específica y estas transformaciones tienen la estructura matemática de un grupo. La formulación de Einstein del Principio de Relatividad implica por tanto, que las leyes de la física tienen que ser tales que mantienen la misma forma tras hacer un cambio de coordenadas entre dos sistemas inerciales. En otras palabras, las leyes de la física deben ser invariantes y las cantidades físicas que aparecen en estas leyes se tienen que transformar adecuadamente bajo las transformaciones de ese grupo. Así, llegamos a la formulación del Primer Postulado de la Relatividad Especial.\\ \\
+\textbf{Primer Postulado: Principio de Relatividad}\\ \\
+\textit{"Todas las leyes físicas, en ausencia de fuerzas de gravedad, son idénticas en todos los sistemas de referencia inerciales".}\\ \\
+Donde se excluye la gravedad porque si se tiene en cuenta, provocaría que existieran fuerzas de marea que impedirían la definición del SRI.\\ \\
+Por otro lado, Einstein también se dio cuenta de la invariancia de la velocidad de la luz, cosa que recogió también en el Segundo Postulado de la Relatividad Especial.\\ \\
+\textbf{Segundo Postulado}\\ \\
+\textit{"La velocidad de la luz en vacío, $c$, es la misma en todos los sistemas de referencia inerciales, es decir, es una constante universal".}\\ \\
+Esto lleva también a un grado de profundidad muy elevado sobre la naturaleza del propio espacio. Pues Newton postuló que el espacio y el tiempo son absolutos, pero hemos visto en las transformaciones de Lorentz que el tiempo ya no es absoluto, sino que es relativo; por lo que, usando que velocidad=espacio/tiempo; sabiendo que la velocidad de la luz es absoluta, tenemos que velocidad(absoluta)=espacio(¿?)/tiempo(relativo), por lo que no queda otra de que el espacio no sea absoluto, sino que también sea \textbf{relativo}.\\ \\
+La Mecánica Clásica se recupera en el límite de $c\to\infty$, es decir, en el límite de que las interacciones sean instantáneas.
+\subsection{Aspectos a tener en cuenta}
+Definimos un \textbf{evento} como un instante en el tiempo $t$ y una posición en el espacio $\vec{x}$.\\ \\
+Como ya hemos dicho, en el límite $c\to\infty$ se recupera la mecánica clásica, pero además, este límite lleva a que $v/c<<1$, por lo que si introducimos este límite en las transformaciones de Lorentz, recuperamos las transformaciones de Galileo.\\ \\
+La simultaneidad no es absoluta, cosa que puede verse con un experimento mental: imaginemos dos observadores, uno que está en reposo respecto al otro que está en un tren infinitamente largo que se mueve a una velocidad cercana a la de la luz. Ahora imaginemos que caen dos rayos distanciados considerablemente cerca de las vías del tren. Como es lógico, el observador en reposo observa que ambos rayos rayos caen de forma simultánea. Ahora bien, el observador dentro del tren no los verá simultáneos, sino que verá que cae primero el rayo hacia donde se aproxima y después cae el rayo del que se aleja, pues suponiendo que la velocidad de la luz es finita, la onda del primer rayo le llegará antes que la onda del segundo rayo. Esto implica que ambos observadores vean distintos sucesos, cosa que implica que la simultaneidad se rompa y ya no sea absoluta.\\ \\
+Esto quiere decir, que si ponemos $\Delta t=t_2-t_1=0$, entonces $\Delta t'\neq0$, pues
+\[t_2'-t_1'=\Delta t'=\gamma(\cancelto{0}{\Delta t}-(v/c^2)\Delta x)=\gamma(-(v/c^2)\Delta x)\neq0\]
+Esto da lugar a diversas paradojas.
+
+\subsection{Adición de velocidades}
+
+En la Relatividad Galileana, la adición de velocidades es{\cm
+\[\vec{V}'=\vec{v}+\vec{V}\]
+donde $\vec{v}$ es la velocidad relativa a la que se mueve el SRI $S'$ com respecto a $S$, y $\vec{V}$ y $\vec{V}'$ son las velocidades de, por ejemplo, una partícula medidas en $S$ y $S'$, respectivamente.} Pero en Relatividad Especial cambia, pues deberemos usar las transformaciones de Lorentz generalizadas, que son,
+\[t'=\gamma\left(t-\frac{\vec{v}\cdot\vec{x}}{c^2}\right);\hspace{6mm}\vec{x}'=\vec{x}+(\gamma-1)(\hat{v}\cdot\vec{x})\hat{v}-\gamma\vec{v}t\]
+donde $\hat{v}=\vec{v}/|\vec{v}|$. Ahora supongamos que una partícula se mueve con velocidad $\vec{V}=\frac{d\vec{x}}{dt}$ en un SRI $S$, y con velocidad $\vec{V}'=\frac{d\vec{x}'}{dt'}$ en otro SRI $S'$, por tanto, la transformación será,
+\[\vec{V}'=\frac{\vec{V}+(\gamma-1)(\hat{v}\cdot\vec{V})\hat{v}-\gamma\vec{v}}{\gamma\left(1-\frac{\vec{v}\cdot\vec{V}}{c^2}\right)}\]
+Además, si descomponemos las velocidades en la parte paralela y perpendicular al velocidad del SRI, es decir,
+\[\vec{V}=V_{||}\,\hat{v}+\vec{V}_{\perp};\hspace{6mm}\vec{V}'=V'_{||}\,\hat{v}+\vec{V}'_{\perp}\]
+entonces tendremos que
+\[{\cm V'_{||}}=\frac{V_{||}-|\vec{v}|}{\gamma\left(1-\frac{|\vec{v}|V_{||}}{c^2}\right)};\hspace{6mm}\vec{V}'_{\perp}=\frac{\vec{V}_{\perp}}{\gamma\left(1-\frac{|\vec{v}|V_{||}}{c^2}\right)}\]

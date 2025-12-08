@@ -1,0 +1,42 @@
+%SECCION 5
+\section{Elemento de línea finito} % Main chapter title
+\label{cap2-sec5} 
+Definimos el elemento de línea finito usando el concepto de la nota anterior, tal que
+\[\Delta s^2=-c^2\Delta t^2+\Delta x^2+\Delta y^2+\Delta z^2=-c^2\Delta t^2+\Delta \vec{x}^2\]
+Así,
+\begin{itemize}
+    \item si $\Delta s^2<0$, diremos que los eventos están separados temporalmente o que $\Delta s^2$ es de género tiempo.
+    \item si $\Delta s^2>0$, diremos que los eventos están separados espacialmente o que $\Delta s^2$ es de género espacio. 
+    \item si $\Delta s^2=0$, diremos que los eventos están conectados por por una señal luminosa o que $\Delta s^2$ es de género luz o nulo.
+\end{itemize}
+Como $\Delta s^2$ es un invariante de Lorentz, entonces esta clasificación es absoluta.
+\subsection{Elemento de línea infinitesimal}
+Consideramos dos eventos, $(t,\vec{x})$ y $(t+dt,\vec{x}+d\vec{x})$, entonces definimos el elemento de línea infinitesimal como,
+\begin{equation}
+    ds^2=-c^2dt^2+d\vec{x}^2
+\end{equation}
+donde
+\begin{itemize}
+    \item si $d s^2<0$, diremos que los eventos están separados temporalmente o que $d s^2$ es de género tiempo.
+    \item si $ds^2>0$, diremos que los eventos están separados espacialmente o que $ds^2$ es de género espacio. 
+    \item si $d s^2=0$, diremos que los eventos están conectados por por una señal luminosa o que $d s^2$ es de género luz o nulo.
+\end{itemize}
+\subsection{Cono de luz}
+Cuando tenemos que $ds^2=0$, tenemos la situación del cono de luz, y nos permite representarlo en un eje de coordenadas, tal que
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Capitulos/Capitulo2/Seccion5/graf1.png}
+    \captionof{figure}{Cono de luz.}
+    \label{fig2.3}
+\end{Figura}
+donde la distancia espacial entre los dos sucesos será igual a la distancia que recorre la luz en ese tiempo. Dentro del cono, los eventos están conectados temporalmente con $(t,\vec{x})$. Fuera del cono, tenemos los eventos desconectados temporalmente (causal) con $(t,\vec{x})$. En la propia superficie del cono se encuentran las señales luminosas emitidas desde $(t,\vec{x})$.
+\subsection{Sistema de referencia propio}
+Lo definimos como el sistema de referencia comóvil con la partícula, es decir, tiene la misma velocidad y dirección que la partícula, por lo que desde el punto de este sistema de referencia la partícula siempre está en reposo.
+\subsection{Tiempo propio}
+Se define como,
+\[d\tau=\sqrt{-\frac{ds^2}{c^2}}=\sqrt{-\frac{-\cancel{c^2}dt^2+d\vec{x}^2}{\cancel{c^2}}}=\sqrt{dt^2-\frac{d\vec{x}^2}{c^2}}=dt\sqrt{1-\frac{1}{c^2}\frac{d\vec{x}^2}{dt^2}}=dt\sqrt{1-\frac{\vec{v}^2}{c^2}}=\frac{dt}{\gamma}\]
+Luego,
+\begin{equation}
+    d\tau=dt/\gamma
+\end{equation}
+Por tanto, el tiempo propio siempre pasa más lentamente que el tiempo del sistema laboratorio. Además, este tiempo será el tiempo del SR comóvil de la partícula.

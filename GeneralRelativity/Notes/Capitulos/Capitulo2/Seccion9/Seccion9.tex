@@ -1,0 +1,87 @@
+%SECCION 5
+\section{Grupo de Poincaré} % Main chapter title
+\label{cap2-sec9} 
+Este grupo es el grupo de transformaciones que deja invariante el elemento de línea. Tenemos,
+\begin{itemize}
+    \item \textbf{Traslaciones espaciotemporales:} son del tipo $x^{'\mu}=x^{\mu}+\alpha^{\mu}$, donde $\alpha^{\mu}=cte$.\\
+    El operador momento en mecánica cuántica se define como $\hat{P}_{\mu}=-i\partial_{\mu}=-i\frac{\partial}{\partial x^{\mu}}$, pero si definimos el operador $\hat{U}_{\alpha^{\mu}}=\exp[i\alpha^{\mu}\hat{P}_{\mu}]$, que podemos expandirlo en serie de potencias, tal que
+    \[\hat{U}_{\alpha^{\mu}}f(x^{\mu})=\left[1+\alpha^{\mu}(\partial_{\mu})+\frac{1}{2|}\left(\alpha^{\mu}(\partial_{\mu})^2\right)+\dots\right]f(x^{\mu})=f(x^{\mu}+\alpha^{\mu})=f(x^{'\mu})\]
+    por tanto, este operador nos permite hacer que $\hat{U}_{\alpha^{\mu}}x^{\mu}=x^{\mu}+\alpha^{\mu}=x^{'\mu}$.\\ \\
+    Al operador $\hat{P}^{\mu}$ se le denomina \textit{generador de traslaciones}. Podemos calcular el conmutador, tal que $\brackets{\hat{P}_{\mu},\hat{P}_{\nu}}=0$, si y solo si el grupo de traslaciones es un grupo abeliano, por lo que las traslaciones conmutan.
+    \item \textbf{Transformaciones de Lorentz:} están formadas por las rotaciones espaciales y las transformaciones de Lorentz puras, los boosts.\\ \\
+    Sabemos que $\det(\Lambda_{nu}^{\mu})=\pm1$, pero nos vamos a quedar con el subgrupo propio de las transformaciones con $\det(\Lambda_{\nu}^{\mu})=+1$ y dentro de este subgrupo, nos quedamos con el subgrupo ortocrono, es decir, el subgrupo donde se mantiene la dirección temporal, $\Lambda_{0}^{0}\geq1$. Si consideramos una transformación de Lorentz infinitesimal, tendremos que
+    \begin{equation}
+    \Lambda_{\nu}^{\mu}=\delta_{\nu}^{\mu}+\delta\omega^{\mu}_{\nu}
+    \end{equation}
+    Recordamos que $\eta_{\mu\nu}=\eta^{\rho}_{\mu}\Lambda_{\nu}^{\sigma}\eta_{\rho\sigma}$, por lo que sustituyendo tenemos que,
+    \begin{equation}
+        \delta\omega_{\mu\nu}+\delta\omega_{\nu\mu}=0
+    \end{equation}
+    a primer orden. Es decir, $\delta\omega_{\mu\nu}$ es un tensor antisimétrico.\\ \\
+    Al ser un tensor antisimétrico, podemos hacer la siguiente clasificación:
+    \[\delta\omega_{0i}=-\delta\omega_{i0}=\frac{\delta v_i}{c}=\delta\xi_i\]
+    que se hace cargo de los boosts.
+    \[\delta\omega_{ij}=-\delta\omega_{ji}=-\mathscr{E}_{ijk}\delta\theta^k\]
+    que se hace cargo de las rotaciones.\\ \\
+    Decimos que los $\xi_i$ y $\theta^k$ son los vectores de Killing de las traslaciones espaciales y rotaciones, respectivamente.
+\end{itemize}
+Como el grupo de Lorentz tiene 4 traslaciones espaciotemporales, 3 boosts y 3 rotaciones; decimos que este grupo tiene 10 grados de libertad.
+\\ \\
+Veamos cómo cambian los vectores,
+\[x^{'\mu}=x^{\mu}+\delta\ x^{\mu}\]
+con
+\[\delta x^{\mu}=\delta\omega^{\mu}_{\nu}x^{\nu}=-\frac{i}{2}\delta\omega^{\rho\sigma}\hat{L}_{\rho\sigma}x^{\mu}\]
+donde 
+\[\hat{L}_{\mu\nu}=\hat{X}_{\mu}(-i\partial_{\nu})-\hat{X}_{\nu}(-i\partial_{\mu})=\hat{X}_{\mu}\hat{P}_{\nu}-\hat{X}_{\nu}\hat{P}_{\mu}\]
+Definimos el momento angular espacial tal que
+\begin{equation}
+    \hat{L}^i=\frac{1}{2}\mathscr{E}^{ijk}\hat{L}_{jk}
+\end{equation}
+Definimos $\hat{K}_i=\hat{L}_{0i}$ como el generador de los boosts, tal que
+\begin{equation}
+    \delta x^{\mu}=i\left(\delta\vec{\theta}\cdot\vec{L}+\delta\vec{\xi}\cdot\hat{\vec{K}}\right)x^{\mu}
+\end{equation}
+Vemos que
+\[[\hat{L}_i,\hat{L}_j]f(x)=i\mathscr{E}_{ij}^k\hat{L}_k(f(x))\]
+\[[\hat{L}_i,\hat{K}_j]=i\mathscr{E}_{ij}^k\hat{K}_k\]
+Luego, no conmutan, pues no es lo mismo rotar y hacer un boost, que hacer un boost y luego rotar.\\ \\
+Además, si hacemos dos transformaciones de Lorentz en dos direcciones diferentes, tampoco conmutan, pues $[\hat{K}_i,\hat{K}_j]=-i\mathscr{E}_{ij}^k\hat{L}_k$. Esto es lo que se conoce como \textit{Rotación de Weigner}, que se traduce en: 'boost + boost = boost + rotación'.\\ \\
+Para boosts finitos, es decir, velocidad finita, podemos identificar el vector $\vec{\xi}$ con la velocidad, tal que
+\begin{equation}
+    \vec{\xi}=\vec{v}\cdot\arctan\left(\frac{|\vec{v}|}{c}\right)
+\end{equation}
+La versión matricial de $\hat{L}_i$ y $\hat{K}_i$ son,
+\[\begin{array}{ccc}
+    (L_1)^{\mu}_{\nu}=\begin{pmatrix}
+        0 & 0 & 0 & 0\\
+        0 & 0 & 0 & 0\\
+        0 & 0 & 0 & -i\\
+        0 & 0 & i & 0
+    \end{pmatrix}; & (L_2)_{\nu}^{\mu}=\begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & i \\
+        0 & 0 & 0 & 0 \\
+        0 & -i & 0 & 0
+    \end{pmatrix}; & (L_3)_{\nu}^{\mu}=\begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & -i & 0 \\
+        0 & i & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix} \\ \\
+    (K_1)_{\nu}^{\mu}=\begin{pmatrix}
+        0 & i & 0 & 0 \\
+        i & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{pmatrix}; & (K_2)_{\nu}^{\mu}=\begin{pmatrix}
+        0 & 0 & i & 0 \\
+        0 & 0 & 0 & 0 \\
+        i & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 
+    \end{pmatrix}; & (K_3)_{\nu}^{\mu}=\begin{pmatrix}
+        0 & 0 & 0 & i \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        i & 0 & 0 & 0
+    \end{pmatrix}
+\end{array}\]

@@ -1,0 +1,108 @@
+%SECCION 5
+\section{Repaso de álgebra} % Main chapter title
+\label{cap2-sec7} 
+Un vector $\vec{v}\in V$, siendo $V$ un espacio vectorial, podemos escribir $\vec{v} $ en función de una base de $V$, de la forma,
+\[\vec{v}=v^{\mu}\hat{e}_{\mu}=v^0\hat{e}_0+v^1\hat{e}_1+\dots+v^s\hat{e}_s\]
+donde $v^{\mu}$ son las componentes de $\vec{v}$ en la base $\curlybraces{\hat{e}_{\mu}}$, siendo un vector columna.\\ \\
+Los vectores duales son aplicaciones lineales, tal que $\vec{f}:V\to\mathbb{R}$, formando un espacio vectorial dual $V^*$. Además, $\vec{f}=f_{\mu}\hat{e}^{\mu}$, siendo $f_{\mu}$ un vector fila. Es decir, podemos representar $\vec{f}$ en las componentes de la base dual $\curlybraces{\hat{e}^{\mu}}$, que es la única base que cumple que $<\hat{e}^{\mu},\hat{e}_{\nu}>=\delta^{\mu}_{\nu}$.\\ \\
+Dada una base dual, podemos extraer las componentes de $\vec{v}\in V$ usando esta base, es decir,
+\[<\hat{e}^{\mu},\vec{v}>=<\hat{e}^{\mu},v^{\nu}\hat{e}_{\nu}>=v^{\nu}<\hat{e}^{\mu},\hat{e}_{\nu}>=v^{\nu}\delta_{\mu}^{\nu}=v^{\mu}\]
+Podemos hacer lo mismo con los vectores duales dada una base vectorial, tal que
+\[<\hat{e}_{\mu},\vec{f}>=<\hat{e}_{\mu},f_{\nu}\hat{e}^{\nu}>=f_{\nu}<\hat{e}_{\mu},\hat{e}^{\nu}>=f_{\nu}\delta^{\mu}_{\nu}=f_{\mu}\]
+También podemos hacer el producto escalar entre vectores y vectores duales, tal que
+\[<\vec{f},\vec{v}>=<f_{\mu}\hat{e}^{\mu},v^{\nu}\hat{e}_{\nu}>=f_{\mu}v^{\nu}<\hat{e}^{\mu},\hat{e}_{\nu}>=f_{\mu}v^{\nu}\delta_{\nu}^{\mu}=f_{\mu}v^{\mu}\]
+Si aplicamos una transformación pasiva $M_{\mu}^{\nu}$, es decir, dejamos el vector fijo y movemos el sistema de referencia, entonces vamos a decir que $v^{'\mu}=M_{\nu}^{\mu}v^{\nu}$ y que $\hat{e}_{\mu}'=(M^{-1})_{\mu}^{\nu}\hat{e}_{\nu}$, pues
+\[\vec{v}'=v^{'\mu}\hat{e}'_{\mu}=M_{\nu}^{\mu}v^{\nu}(M^{-1})^{\rho}_{\mu}\hat{e}_{\rho}=\delta_{\nu}^{\rho} v^{\nu}\hat{e}_{\rho}=v^{\nu}\hat{e}_{\nu}=\vec{v}\]
+es decir, vemos que el vector no se ve afectado por las transformaciones pasivas, pero sus componentes sí se alteran.\\ \\
+Diremos que la métrica de Minkowski nos permite mapear vectores de $V$ a vectores duales de $V^*$, pues dado un vector $v^{\mu}\hat{e}_{\mu}\in V$, vemos que
+\[\begin{array}{rlcl}
+    \eta_{\mu\nu}: & \hat{e}_{\rho} & \to & \hat{e}^{\rho}=\eta^{\rho\sigma}\hat{e}_{\sigma} \\
+     & v^{\rho} & \mapsto & v_{\rho}=\eta_{\rho\sigma}v^{\sigma}
+\end{array}\]
+es decir, la métrica $\eta_{\mu\nu}:\vec{v}\to\vec{v}^*$ transforma los vectores tal que,
+\[\begin{array}{ccl}
+    v_0=-v^0; & v_i=v^i; & i=1,2,3 \\
+    \hat{e}^0=-\hat{e}_0; & \hat{e}^i=\hat{e}_i &
+\end{array}\]
+También podemos usar $\eta_{\mu\nu}$ para mapear vectores duales a vectores.\\ \\
+La métrica nos da un producto escalar, tal que
+\[<\vec{v}^*,\vec{v}>=<v_{\mu}\hat{e}^{\mu},v^{\nu}\hat{e}_{\nu}>=v_{\mu}v^{\nu}<\hat{e}^{\mu},\hat{e}_{\nu}>=v_{\mu}v^{\nu}\delta_{\nu}^{\mu}=v_{\mu}v^{\mu}=\eta_{\mu\nu}v^{\mu}v^{\nu}\]
+La métrica $\eta_{\mu\nu}$ nos permite subir y bajar índices, es decir, contraer índices. \\ \\
+La métrica transforma como un tensor de rango $(0,2)$, es decir,
+\begin{equation}
+    \eta_{\mu\nu}^{(M)}=(M^{-1})^{\rho}_{\mu}(M^{-1})_{\nu}^{\sigma}\eta_{\rho\sigma}
+\end{equation}
+Denotaremos a $\vec{v}$ y $v^{\mu}$ indistintamente, y diremos que son \textbf{vectores contravariantes}. A los vectores del espacio dual los denotaremos por $\vec{f}$ y $f_{\mu}$ indistintamente, denominados \textbf{vectores covariantes}.\\ \\
+Un tensor de rango $(r,s)$ es una aplicación multilineal, tal que
+\[T_{\nu_1\nu_2\dots\nu_s}^{\mu_1\mu_2\dots\mu_r}:V_1^*\otimes V_2^*\otimes\dots\otimes V_r^*\otimes V_1\otimes V_2\otimes\dots\otimes V_s\to\mathbb{R}\]
+Los tensores transforman como,
+\begin{equation}
+    T_{\nu_1\nu_2\dots\nu_s}^{'\mu_1\mu_2\dots\mu_r}=M^{\mu_1}_{\rho1}M^{\mu_2}_{\rho_2}\dots M^{\mu_r}_{\rho_r}(M^{-1})^{\sigma_1}_{\nu_1}(M^{-1})_{\nu_2}^{\sigma_2}\dots(M^{-1})^{\sigma_s}_{\nu_s}T_{\sigma_1\sigma_2\dots\sigma_s}^{\rho_1\rho_2\dots\rho_r}
+\end{equation}
+Con la métrica $\eta_{\mu\nu}$ podemos calcular la traza de un tensor, tal que para un tensor $T_{\mu\nu}$, su traza será $T=T_{\mu\nu}\eta^{\mu\nu}$, es decir, hemos contraído todos los índices. Pero si tenemos $T_{\mu}^{\nu}$, su traza será $T=T_{\mu}^{\nu}\delta_{\nu}^{\mu}$ y si tenemos $T^{\mu\nu}$, su traza será $T=T^{\mu\nu}\eta_{\mu\nu}$. O bien, podemos transformar los tensores y aplicar la primera definición, tal que $T_{\mu}^{\nu}=T_{\mu\nu}\eta^{\sigma\nu}$ y $T^{\mu\nu}=T_{\rho\sigma}\eta^{\rho\mu}\eta^{\sigma\nu}$.\\ \\
+La métrica está relacionada con el elemento de línea, llegando a tener también la misma clasificación, tal que
+\begin{itemize}
+    \item Si $\eta_{\mu\nu}v^{\mu}v^{\nu}>0$, entonces diremos que $v^{\mu}$ es un vector espacial.
+    \item Si $\eta_{\mu\nu}v^{\mu}v^{\nu}<0$, entonces diremos que $v^{\mu}$ es un vector temporal.
+    \item Si $\eta_{\mu\nu}v^{\mu}v^{\nu}=0$, entonces diremos que $v^{\mu}$ es un vector nulo.
+\end{itemize}
+Además, se cumple que un vector ortogonal a uno de tipo tiempo es espacial y un vector ortogonal a uno de tipo espacio o nulo, no tiene por qué ser temporal, es decir, es de cualquier género.
+\subsection{Tensor simétrico y antisimétrico}
+Un tensor simétrico será aquel que si se le permutan dos índices, permanece invariante, es decir, $T_{\mu\nu}=T_{\nu\mu}$. La parte simétrica de un tensor es
+\begin{equation}
+    T_{(\mu\nu)}=\frac{1}{2}(T_{\mu\nu}+T_{\nu\mu})
+\end{equation}
+Un tensor antisimétrico es aquel que si se le permutan dos índices, cambia de signo, es decir, $T_{\mu\nu}=-T_{\nu\mu}$. La parte antisimétrica de un tensor es
+\[T_{[\mu\nu]}=\frac{1}{2}(T_{\mu\nu}-T_{\nu\mu})\]
+Un tensor cualquiera siempre se puede descomponer en la suma de su parte simétrica y su parte antisimétrica, es decir,
+\[R_{\mu\nu}=R_{(\mu\nu)}+R_{[\mu\nu]}\]
+\subsection{Transformaciones de Lorentz. Versión covariante}
+Recordemos que las transformaciones de Lorentz son,
+\[\begin{array}{rcrc}
+    (i) & dt'=\gamma\left(dt-\frac{v}{c^2}dx\right); & (iii) & dy'=dy \\
+    (ii) & dx'=\gamma\left(dx-vdt\right); & (iv) & dz'=dz
+\end{array}\]
+Por tanto, usando la notación covariante, podemos agruparlas todas en una sola ecuación, tal que
+\begin{equation}
+    dx^{'\mu}=\Lambda_{\nu}^{\mu}dx^{\nu}
+\end{equation}
+donde 
+\[\Lambda_{\nu}^{\mu}=\begin{pmatrix}
+    \gamma & -\gamma\frac{v}{c^2} & 0 & 0\\
+    -\gamma v & \gamma & 0 & 0 \\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+\end{pmatrix}\]
+es la matriz de Lorentz.\\ \\
+Recordando que $ds^2=(ds')^2$, vemos que la métrica de Minkowski y la matriz de Lorentz se pueden relacionar, tal que
+\[\begin{array}{cllc}
+    (ds')^2 & = & \eta_{\mu\nu}dx^{'\mu}dx^{'\nu}&=\eta_{\mu\nu}\Lambda_{\rho}^{\mu}dx^{\rho}\Lambda_{\sigma}^{\nu}dx^{\sigma} \\
+    || & & & || \\
+    ds^2 & = & \eta_{\mu\nu}dx^{\mu}dx^{\nu}&=\eta_{\mu\nu}\Lambda_{\rho}^{\mu}\Lambda_{\sigma}^{\nu}dx^{\rho}dx^{\sigma}
+\end{array}\]
+Por tanto,
+\begin{equation}
+    \eta_{\rho\sigma}=\eta_{\mu\nu}\Lambda_{\rho}^{\mu}\Lambda_{\sigma}^{\nu}
+\end{equation}
+Es decir, la métrica de Minkowski permanece invariante bajo transformaciones de Lorentz.\\ \\
+Además, la inversa de la matriz de Lorentz también está definida, $(\Lambda^{-1})_{\nu}^{\mu}$, que también deja invariante la inversa de la métrica de Minkowski, y cumple que
+\begin{equation}
+    \Lambda_{\nu}^{\mu}(\Lambda^{-1})_{\rho}^{\nu}=\delta_{\rho}^{\mu}
+\end{equation}
+Para pasar de la matriz de Lorentz $\Lambda_{\mu}^{\nu}$ a su inversa $(\Lambda^{-1})_{\nu}^{\mu}$, teniendo un movimiento con velocidad $v$ a lo largo del eje $X$, solo debemos cambiar $v$ por $-v$; igual para rotaciones. Las propiedades de esta matriz son:
+\begin{enumerate}
+    \item La traspuesta de la matriz de Lorentz es $(\Lambda^{-1})_{\nu}^{\mu}=\Lambda_{\mu}^{\nu}$.
+    \item Las componentes de la matriz de Lorentz para boosts de forma general son,
+    \[\Lambda_0^0=\gamma;\hspace{3mm}\Lambda_i^0=-\gamma\frac{v^i}{c};\hspace{3mm}\Lambda_0^i=-\gamma\frac{v^i}{c};\hspace{3mm}\Lambda_j^i=\delta_j^i+(\gamma-1)\frac{v^iv^j}{\vec{v}^2}\]
+    \item Para las rotaciones de ángulo $\theta$ alrededor de un eje $\hat{\omega}^i$, con $\hat{\omega}^{\mu}=(0,\hat{\omega}^i)$ y $\hat{\omega}^{\mu}\hat{\omega}_{\mu}=1$, las componentes de la matriz de Lorentz serán,
+    \[\Lambda_0^0=0;\hspace{3mm}\Lambda_0^i=0=\Lambda_i^0;\hspace{3mm}\Lambda_j^i=\cos\theta\delta_j^i+(1-\cos\theta)\hat{\omega}^i\hat{\omega}_j-\sin\theta\mathscr{E}_{jk}^i\hat{\omega}^k\]
+    donde $\mathscr{E}_{jk}^i$ es el tensor de Levi-Civita espacial, que actúa parecido a la delta de Kronceker, tal que
+    \[\mathscr{E}_{ijk}=\left\lbrace
+    \begin{array}{lcl}
+        +1 & \text{si} & i\neq j\neq k\text{ y la permutación es par} \\
+        -1 & \text{si} & i\neq j\neq k\text{ y la permutación es impar}\\
+        0 & \text{en}&\text{otro caso}
+    \end{array}\right.\]
+    Para la métrica de Minkowski, $\eta_{\mu\nu}=diag[-1,1,1,1]$, tenemos que el tensor de Levi-Civita cumple que
+    \[\mathscr{E}_{ijk}=\mathscr{E}^{ijk}=\mathscr{E}_{jk}^i\]
+\end{enumerate}
