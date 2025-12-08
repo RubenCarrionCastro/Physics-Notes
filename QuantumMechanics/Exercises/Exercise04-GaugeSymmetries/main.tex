@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación III. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Noviembre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item \textbf{Un pion }$\mathbf{(J_{\pi}^P=0^-)}$\textbf{ se desintegra a dos fotones }$º\mathbf{J_{\gamma}^P=1^-}$\textbf{ conservando paridad:}
+    \[\mathbf{\pi^0\to\gamma+\gamma}\]
+    \begin{enumerate}
+        \item \textbf{¿Cuál será el momento angular orbital y el momento angular de espín de los dos fotones? Determina el estado }$\mathbf{\ket{\Psi}\in\mathscr{H}^l\otimes\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}}$\textbf{ que lo describe.}
+        \item \textbf{Encuentra la distribución angular de los fotones. Determina el estado de espín de los fotones que salen en la dirección del eje }$\mathbf{Z}.$
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection*{Apartado (a)}
+Como el pion está solo en los reactivos, debe tener $l_i=0$, pues también consideramos que está en el estado fundamental. Así, tenemos entonces que,
+\[
+\begin{array}{rrclll}
+     & \pi^0 & \to & \gamma+\gamma & &  \\ \\
+    \text{\textbf{Paridad}:} & (-) & \to & (-)(-)(-)^l & \Longrightarrow & (-)^l=(-)\Rightarrow l\equiv \text{impar}
+\end{array}
+\]
+Ahora, aplicamos conservación del momento angular total, es decir, $J_i=J_f$, de forma que
+\[J_i=0=J_f=l_f\otimes s_f=l_f\otimes s_1\otimes s_2\]
+Por tanto, $l_f=0,1,2$ y $s_f=0,1,2=s_1\otimes s_2$. Como los fotones son bosones, deberán tener una función de onda simétrica, pues son partículas indistinguibles, así tenemos que
+\[\Psi_S\to (+)=(-1)^{l_f}(-)^{s_f}\Longrightarrow l_f+s_f\equiv \text{par}\]
+Como $l_f$ es impar, entonces $s_f$ también es impar, pues $(2n+1)+(2m+1)=2(n+m+2)=2k$, donde $k,n,m\in \mathbb{Z}$, es decir, la suma de dos números impares da siempre uno par. \\
+Por tanto, la única opción, al ser $l_f,s_f=0,1,2$, será $l_f=1$ y $s_f=1$. $\checkmark$\\ \\
+Ahora vamos a determinar el estado $\ket{\Psi}\in\mathscr{H}^l\otimes\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}$. Sabemos que $l_f=1$ y $s_f=1$, por tanto, tenemos que
+\[\begin{array}{rl}
+     \ket{l_f,m}&=\sqrt{\frac{1}{3}}\ket{1,-1}+\sqrt{\frac{1}{3}}\ket{1,0}+\sqrt{\frac{1}{3}}\ket{1,1}  \\
+    \ket{s_f,s_{fz}} &= \sqrt{\frac{1}{3}}\ket{1,-1}+\sqrt{\frac{1}{3}}\ket{1,0}+\sqrt{\frac{1}{3}}\ket{1,1}
+\end{array}\]
+donde hemos normalizado los estados.\\
+Por tanto, el estado compuesto será,
+\[\begin{array}{rl}
+    \ket{J,M} &=\ket{l_f,m}\otimes\ket{s_f,s_{fz}}=\ket{l_f,l_{fz};s_f,s_{fz}}=  \\
+   \ket{0,0}&=\sqrt{\frac{1}{3}}\ket{1,-1;1,-1}-\sqrt{\frac{1}{3}}\ket{1,0;1,0}+\sqrt{\frac{1}{3}}\ket{1,1;1,1}
+\end{array}\]
+donde hemos usado los coeficientes de Clebsch-Gordan para un estado $1\otimes1$ con $\curlybraces{J,M}=\curlybraces{0,0}$, y no hay términos cruzados porque son ortogonales.\\ \\
+Como nos piden el estado en la base $\ket{l,m;s_1,s_{z_1};s_2,s_{z_2}}\in\mathscr{H}^l\otimes\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}$, debemos hacer un cambio de base, de forma que $\mathscr{H}^{s_f}=\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}$, tal que
+\[\begin{array}{rl}
+    \ket{s_f,s_{fz}}&=\ket{s_1,s_{z_1}}\otimes\ket{s_2,s_{z_2}}=\ket{s_1,s_{z_1};s_2,s_{z_2}}=\ket{1,s_{z_1};1,s_{z_2}}\\
+    \ket{1,1} & = \sqrt{\frac{1}{2}}\ket{1,1;1,0}-\sqrt{\frac{1}{2}}\ket{1,0;1,1} \\
+    \ket{1,0} & = \sqrt{\frac{1}{2}}\ket{1,1;1,-1}-\sqrt{\frac{1}{2}}\ket{1,-1;1,1} \\
+    \ket{1,-1} & = \sqrt{\frac{1}{2}}\ket{1,0;1,-1}-\sqrt{\frac{1}{2}}\ket{1,-1;1,0}
+\end{array}\]
+Por tanto, el estado final será,
+\[\begin{array}{rl}
+\ket{0,0}&=\sqrt{\frac{1}{6}}[\ket{1,-1;1,1;1,0}-\ket{1,-1;1,0,1,1}-\ket{1,0;1,1;1,-1}+\\
+&+\ket{1,0;1,-1;1,1}+\ket{1,1;1,0;1,-1}-\ket{1,1;1,-1;1,0}]\hspace{3mm}\checkmark
+\end{array}\]
+donde hemos normalizado el estado.
+
+\subsubsection*{Apartado (b)}
+La distribución angular de los fotones viene dada por 
+\[
+\begin{array}{rl}
+I(\theta,\varphi)&=\braket{0,0|\mathscr{P}_{\theta,\varphi}|0,0}=\braket{0,0|\theta,\varphi}\braket{\theta,\varphi|\otimes\mathbb{I}_{s_f}|0,0}=\braket{0,0|\theta,\varphi}\braket{\theta,\varphi|0,0}=\\
+&=\frac{1}{3}\abss{Y_1^1}+\frac{1}{3}\abss{Y_1^0}+\frac{1}{3}\abss{Y_1^{-1}}=\frac{1}{3}\curlybraces{\abss{Y_1^1}+\abss{Y_1^0}+\abss{Y_1^{-1}}}=\\
+&=\frac{1}{3}\curlybraces{\frac{3}{8\pi}\sin^2\theta+\frac{3}{8\pi}\sin^2\theta+\frac{3}{4\pi}\cos^2\theta}=\frac{1}{4\pi}\curlybraces{\cancelto{1}{\sin^2\theta+\cos^2\theta}}=\frac{1}{4\pi}\hspace{3mm}\checkmark
+\end{array}\]
+Ahora vamos a determinar el estado de espín de los fotones que salen en la dirección del eje $Z$, es decir, los que salen paralelos al eje $Z$, que será cuando $\theta=0$, pues al estar trabajando en coordenadas esféricas, la dirección cartesiana del eje $Z$ se consigue haciendo este ángulo cero. Por tanto, debemos proyectar en la parte de momento angular orbital $l$, de forma que, usando $\ket{\Psi}\in\mathscr{H}^{s_f}$, tenemos que
+\[\begin{array}{rl}
+    \braket{\theta=0,\varphi|\Psi} & =\braket{0,\varphi|0,0}=\sqrt{\frac{1}{3}}\ket{1,-1}\cancelto{0}{Y_1^1(\theta=0)}-\sqrt{\frac{1}{3}}\ket{1,0}Y_1^0(\theta=0)+\sqrt{\frac{1}{3}}\ket{1,1}\cancelto{0}{Y_1^{-1}(\theta=0}= \\
+     & \sqrt{\frac{1}{3}}\left(-\sqrt{\frac{3}{4\pi}}\ket{1,0}\right)=-\sqrt{\frac{1}{4\pi}}\ket{1,0}
+\end{array}\]
+que debemos normalizar, tal que
+\[\ket{\Psi}=-\ket{1,0}\in\mathscr{H}^{s_f}\]
+Por tanto, debemos pasar a la base $\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}$, tal que
+\[\ket{\Psi'}=-\sqrt{\frac{1}{2}}\ket{1,1;1,-1}+\sqrt{\frac{1}{2}}\ket{1,-1;1,1}\in\mathscr{H}^{s_1}\otimes\mathscr{H}^{s_2}\hspace{3mm}\checkmark\]
+
+
+
+
+
+
+
+\end{document}

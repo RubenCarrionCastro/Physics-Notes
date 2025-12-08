@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación III. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Noviembre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item \textbf{Considera los estados }$\mathbf{\ket{\Psi_{xz}}}$\textbf{ y }$\mathbf{\ket{\Psi_{yz}}}$\textbf{ con funciones de onda}
+    \[\mathbf{\braket{\overrightarrow{x}|\Psi_{xz}}=n(x-z)e^{-(x^2+y^2+z^2)}}\hspace{4mm}\text{\textbf{y}}\hspace{4mm}\mathbf{\braket{\overrightarrow{x}|\Psi_{yz}}=n(y-z)e^{-(x^2+y^2+z^2)},}\]
+    \textbf{siendo }$\mathbf{n}$\textbf{ un factor de normalización.}
+    \begin{enumerate}
+        \item \textbf{Si una partícula de espín 0 se encuentra en el estado }$\mathbf{\ket{\Psi}=\ket{\Psi_{xz}}}$\textbf{, determina }$\mathbf{\braket{L^2}_{\psi},\braket{L_z}_{\Psi}}$\textbf{ y }$\mathbf{\braket{L_x}_{\Psi}.}$
+        \item \textbf{Si una partícula de espín 1/2 se encuentra en el estado}
+        \[\mathbf{\ket{\Psi}=\frac{1}{2}\left(\sqrt{3}\ket{\Psi_{xz}}\otimes\ket{+}-\ket{\Psi_{zy}}\otimes\ket{-}\right)\in\mathscr{H}^{\text{orb}}\otimes\mathscr{H}^{\text{spin}},}\]
+        \textbf{¿cuál es la probabilidad de obtener }$\mathbf{+\hbar/2}$\textbf{ o }$\mathbf{-\hbar/2}$\textbf{ al medir }$\mathbf{S_z}$\textbf{ en la posición }$\mathbf{x=2,y=1,z=1}$\textbf{?}
+    \end{enumerate}
+\end{enumerate}
+\textbf{\textit{Ayuda:} Los primeros armónicos esféricos son}
+\[\mathbf{Y_0^0=\sqrt{\frac{1}{4\pi}},}\hspace{3mm}\mathbf{Y_1^0=\sqrt{\frac{3}{4\pi}}\cos\theta,}\hspace{3mm}\mathbf{Y_1^{\pm1}=\mp\sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm i\varphi}.}\]
+
+\subsubsection*{Apartado (a)}
+
+Tenemos una partícula de $s=0$ en el estado $\braket{\overrightarrow{x}|\Psi_{xz}}=n(x-z)e^{-(x^2+y^2+z^2)}$.
+\\
+Como vemos que tienen una simetría muy particular, sobre todo las exponenciales, vamos a pasarlos a coordenadas esféricas,
+
+\[\left.\begin{array}{c}
+    x=r\sin\theta\cos\varphi  \\
+    y=r\sin\theta\sin\varphi  \\
+    z=r\cos\theta\\
+\end{array}\hspace{2mm}\begin{array}{c}
+      r\in[0,+\infty)\\
+      \theta\in[-\pi/2,\pi/2)\\
+      \varphi\in[-\pi,\pi]  
+\end{array}\right\rbrace\Longrightarrow \braket{\overrightarrow{x}|\Psi_{xz}}=n\left(r\sin\theta\cos\varphi-r\cos\theta\right)e^{-r^2}
+\]
+Ahora vemos que podemos expresar nuestro estado en término de los armónicos esféricos. Vemos que tenemos $\cos\theta$ y $\sin\theta$, por lo que tendremos una combinación entre los armónicos esféricos $Y_1^0$ e $Y_1^{\pm 1}$, veamos esto,\\
+Primero vamos a pasar el $\cos\varphi$ a exponencial,
+\[\cos\varphi=\frac{e^{i\varphi}+e^{-i\varphi}}{2}\]
+Por tanto,
+\[\begin{array}{rl}
+    \braket{\overrightarrow{x}|\Psi_{xz}} &=nre^{-r^2}\brackets{\sin\theta\cos\varphi-\cos\theta}=nre^{-r^2}\brackets{\sin\theta\frac{e^{i\varphi}+e^{-i\varphi}}{2}-\cos\theta}=  \\ \\
+     & =nre^{-r^2}\brackets{\frac{1}{2}\sqrt{\frac{8\pi}{3}}\sqrt{\frac{3}{8\pi}}\sin\theta e^{i\varphi}+\frac{1}{2}\sqrt{\frac{8\pi}{3}}\sqrt{\frac{3}{8\pi}}\sin\theta e^{-i\varphi}-\sqrt{\frac{4\pi}{3}}\sqrt{\frac{3}{4\pi}}\cos\theta}=\\ \\
+     &=nre^{-r^2}\sqrt{\frac{2\pi}{3}}\brackets{-Y_1^1+Y_1^{-1}-\sqrt{2}Y_1^0}
+\end{array}\]
+Vemos que todos los armónicos tienen $l=1$, por tanto, el momento angular orbital de nuestra partícula será 1. Hacemos $f(r)=Nre^{-r^2}$, donde $N=n\cdot\sqrt{\frac{2\pi}{3}}C=n\cdot K$, donde $K=\sqrt{\frac{2\pi}{3}}C$ es la constante de normalización de la parte armónica. Así,
+\[\braket{\overrightarrow{x}|\Psi_{xz}}=\brackets{-Y_1^1+Y_1^{-1}-\sqrt{2}Y_1^0}K=f(r)g(\theta,\varphi)=\Psi(r,\theta,\varphi)\]
+Por tanto, tenemos que el estado es separable. Lo normalizamos, donde
+\[g(\theta,\varphi)=\brackets{-Y_1^1+Y_1^{-1}-\sqrt{2}Y_1^0}K;\hspace{7mm}f(r)=Nre^{-r^2}\]
+aplicando la condición de normalización en cada parte, tenemos
+\[\begin{array}{rl}
+    1&=\int dr |f(r)|^2=\int_0^{\infty}dr N^2r^2e^{-2r^2}=\left\lbrace
+    \begin{array}{c}
+        t=2r^2\\
+        dt=2rdr\\
+        r^2=t/2
+    \end{array}\right\rbrace=N^2\int_0^{\infty}\frac{t}{2}e^{-t}\frac{1}{2\sqrt{t/2}}dt=\\ \\
+    &=N^2\frac{\sqrt{2}}{4}\int_0^{\infty}t^{-1/2}e^{-t}dt=N^2\frac{1}{2\sqrt{2}}\int_0^{\infty}t^{1/2-1}e^{-t}dt=\curlybraces{\Gamma(z)=\int_0^{\infty}t^{z-1}e^{-t}dt}=\frac{N^2}{2^{3/2}}\Gamma(1/2)=N^2\frac{\sqrt{\pi}}{2^{3/2}}
+\end{array}\]
+Por tanto, la constante de normalización de la parte radial es,
+\[N=\sqrt{\frac{2^{3/2}}{\sqrt{\pi}}}\]
+Ahora vamos con la parte angular,
+\[\begin{array}{rl}
+    1 &=\int_{\Omega}d\Omega |g(\theta,\varphi|^2 =K^2|\brackets{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}|^2=  \\ \\
+     & =K^2(1+1+2)=4K^2
+\end{array}\]
+esto es así debido a la ortogonalidad entre los armónicos esféricos. Por tanto, la constante de normalización queda,
+\[K=\frac{1}{2}\]
+Determinamos $\braket{L^2}_{\Psi}$, como $l=1$, entonces $L^2\ket{\Psi}=\hbar^2l(l+1)\ket{l\hspace{2mm}m}=\hbar^2l(l+1)Y_{l}^{m}(\theta,\varphi)$
+\[\begin{array}{rl}
+    \braket{L^2}_{\Psi} & = \braket{\Psi|L^2|\Psi}=\braket{g(\theta,\varphi)|L^2|g(\theta,\varphi)}=\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|L^2|(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}=\\ \\
+     & = \frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|2\hbar^2(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}=\frac{1}{4}2\hbar^2(1+1+2)=2\hbar^2\hspace{2mm}\checkmark
+\end{array}\]
+Determinamos $\braket{L_z}_{\Psi}$, tal que $L_z\ket{\Psi}=\hbar m\ket{l\hspace{2mm}m}=\hbar mY_{l}^{m}(\theta,\varphi)$, 
+\[\begin{array}{rl}
+    \braket{L_z}_{\Psi} & =\braket{\Psi|L_z|\Psi}=\braket{g(\theta,\varphi)|L_z|g(\theta,\varphi)}=\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|L_z|(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}= \\ \\
+     & =\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|(-\hbar Y_1^{-1}-\hbar Y_1^1-\sqrt{2}\cdot 0 \cdot Y_1^0)}=\frac{1}{4}\hbar(-1+1)=0\hspace{2mm}\checkmark
+\end{array}\]
+Determinamos $\braket{L_x}_{\Psi}$, tal que $L_x=\frac{1}{2}(L_++L_-)$, tal que $L_{\pm}\ket{l\hspace{2mm}m}=\hbar\sqrt{l(l+1)-m(m\pm 1)}Y_{l}^{m\pm 1}$, así,
+\[\braket{L_x}_{\Psi} =\braket{\Psi|L_x|\Psi}=\braket{\Psi|\left(\frac{1}{2}(L_{+}+L_{-})\right)|\Psi}=\frac{1}{2}\brackets{\braket{\Psi|L_{+}|\Psi}+\braket{\Psi|L_{-}|\Psi}}\]
+Vamos a hacerlos uno por uno,
+\[\begin{array}{rl}
+  \braket{\Psi|L_{+}|\Psi} &=\frac{1}{4}\braket{g(\theta,\varphi)|L_{+}|g(\theta,\varphi)}=\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|L_{+}|(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}=  \\ \\
+     & =\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|(\hbar\sqrt{2}Y_1^{0}-\hbar\sqrt{2}\sqrt{2}Y_1^1)}=\frac{1}{4}(2\hbar-2\hbar)=\\ \\     
+ \braket{\Psi|L_{-}|\Psi} &=\frac{1}{4}\braket{g(\theta,\varphi)|L_{-}|g(\theta,\varphi)}=\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|L_{-}|(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)}=  \\ \\
+     & =\frac{1}{4}\braket{(Y_1^{-1}-Y_1^1-\sqrt{2}Y_1^0)|(-\hbar\sqrt{2}Y_1^0-\hbar\sqrt{2}\sqrt{2}Y_1^{-1})}=\frac{1}{4}\hbar(2-2)=0
+\end{array}\]
+Por tanto,
+\[\braket{L_x}_{\Psi}=\frac{1}{2}\brackets{\braket{\Psi|L_{+}|\Psi}+\braket{\Psi|L_{-}|\Psi}}=0\hspace{2mm}\checkmark\]
+
+\subsubsection*{Apartado (b)}
+
+Tenemos una partícula de espín $s=1/2$ en el estado
+
+\[\ket{\Psi}=\frac{1}{2}\brackets{\sqrt{3}\ket{\Psi_{xz}}\otimes\ket{+}-\ket{\Psi_{zy}}\otimes\ket{-}}\in\mathscr{H}^{\text{orb}}\otimes\mathscr{H}^{\text{spin}}\]
+
+Nos piden hallar en la posición $(2,1,1)$ las probabilidades de obtener $+\hbar/2$ y $-\hbar/2$ al medir $S_z$, es decir, $\mathscr{P}(+\hbar/2)$ y $\mathscr{P}(-\hbar/2)$ en $(2,1,1)$. Vemos que el estado $\ket{\Psi}$ no es separable, pues tenemos una suma de productos tensoriales y por tanto, la posición que nos dicen será relevante. Así, primero medimos los estados de los que está compuesto $\ket{\Psi}$ en la posición dada,
+\[\braket{(2,1,1)|\Psi_{xz}}=n_1(2-1)e^{-(4+1+1)}=n_1e^{-6}\]
+\[\braket{(2,1,1)|\Psi_{yz}}=n_2(1-1)e^{-6}=0\]
+
+Por tanto, las constantes de normalización quedan como $n_1=e^{-6}$ y $n_2=0$. Ahora normalizamos el estado en la posición que nos han dado, $\ket{\Psi(2,1,1)}=A\frac{\sqrt{3}}{2}\ket{\Psi_{xz}}\otimes\ket{+}$,
+
+\[1=|\braket{\Psi|\Psi}|^2=\frac{3}{4}A^2\Longrightarrow A=\frac{2}{\sqrt{3}}\]
+
+Así queda que,
+\[\mathscr{P}(+\hbar/2)=|\braket{+|\Psi(2,1,1)}|^2=\frac{3}{4}\frac{4}{3}=1\hspace{2mm}\checkmark\]
+\[\mathscr{P}(-\hbar/2)=|\braket{-|\Psi(2,1,1)}|^2=0\hspace{2mm}\checkmark\]
+
+
+
+
+
+
+\end{document}

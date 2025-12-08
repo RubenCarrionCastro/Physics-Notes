@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación VI. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Diciembre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{Un oscilador armónico 1-dimensional de frecuencia angular }$\mathbf{\omega}$\textbf{ y carga \textit{q} es perturbado durante el intervalo de tiempo }$\mathbf{0<t<\pi/\omega=T}$\textbf{ por un campo eléctrico con }$\mathbf{V(x)=-q\mathscr{E}x}$\textbf{.}
+\begin{enumerate}
+    \item \textbf{Si a las }$\mathbf{t=0}$\textbf{ el oscilador se encontraba con igual probabilidad en el estado }$\mathbf{\ket{0}}$\textbf{ o en el estado }$\mathbf{\ket{1}}$\textbf{, calcula a primer orden en la perturbación la probabilidad de que a las }$\mathbf{t=T}$\textbf{ se encuentre en el estado }$\mathbf{\ket{1}.}$
+    \item \textbf{Si a las }$\mathbf{t=0}$\textbf{ el oscilador se encontraba en el estado fundamental y a las }$\mathbf{t=T}$\textbf{ se mide el observable }$\mathbf{O=\ket{0}\bra{1}+\ket    {1}\bra{0}}$\textbf{, determina a orden }$\mathbf{\mathscr{O}(\mathscr{E}^2)}$\textbf{ los posibles valores de esta medida y su probabilidad.}
+\end{enumerate}
+\end{enumerate}
+Sabemos que la energía de un oscilador armónico no perturbado es,
+\[E_n=\left(n+\frac{1}{2}\right)\hbar\omega\]
+Tenemos un oscilador armónico  perturbado en un intervalo de tiempo, de frecuencia $\omega$ y carga $q$, por tanto, el Hamiltoniano en el intervalo $0<t<T$, queda
+\[H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2-1\mathscr{E}x=H_0+V(x)\]
+donde $\mathscr{E}$ es el campo eléctrico, $H_0=p^2/(2m)+(1/2)m\omega^2$ es el Hamiltoniano no perturbado y $V(x)=-q\mathscr{E}x$ es la perturbación.
+Como la perturbación se da en un intervalo de tiempo, tenemos que
+\[V(x,t)=\left\lbrace\begin{matrix}
+    0 & \text{si} & t<0\\
+    V(x) & \text{si} & 0<t<T
+    0 & \text{si} & t>T
+\end{matrix}\right.\]
+\subsubsection*{Apartado (a)}
+Nos dicen que para $t=0$, el oscilador se encuentra con igual probabilidad en el estado $\ket{0}$ o en el estado $\ket{1}$, esto es, que los estados $\ket{0}$ Y $\ket{1}$ son equiprobables para el estado inicial, por lo que el estado inicial será una combinación lineal de ambos estados, tal que
+\[\ket{\Psi(t=0)}=\frac{1}{\sqrt{2}}\brackets{\ket{0}+\ket{1}}\]
+Sabemos que a primer orden la probabilidad de transición viene dada por,
+\[\omega(i\to f,t)=\abss{\braket{f|U_I(t)}|i}=\abss{\braket{f|i}-\frac{i}{\hbar}\int_0^tdt'e^{\frac{i}{\hbar}\Delta E\cdot t'}\braket{f|V(x)|i}}\]
+donde $\frac{\Delta E}{\hbar}=\omega$.\\
+Luego, tomando $\ket{i}=\ket{\Psi(0)}=\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$ y $\ket{f}=\ket{Psi(T)}=\ket{1}$, podemos calcular,
+\[\braket{f|i}=\bra{1}\brackets{\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})}=\frac{1}{\sqrt{2}}\left(\cancelto{0}{\braket{1|0}}+\cancelto{1}{\braket{1|1}}\right)=\frac{1}{\sqrt{2}}\]
+y también calculamos,
+\[\braket{f|V(x)|i}=\bra{1}V(x)\brackets{\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})}=\frac{1}{\sqrt{2}}\brackets{\braket{1|V(x)|0}+\braket{1|V(x)|1}}=\frac{-q\mathscr{E}}{\sqrt{2}}\brackets{\braket{1|V(x)|0}+\braket{1|V(x)|1}}\]
+Usando el formalismo de operadores construcción y destrucción, tenemos que $x=\sqrt{\frac{\hbar}{2m\omega}}(a+a^{\dagger})$. Por tanto, debemos calcular,
+\[\braket{1|x|0}=\sqrt{\frac{\hbar}{2m\omega}}\braket{1|(a+a^{\dagger}|0}=\sqrt{\frac{\hbar}{2m\omega}}\brackets{\braket{1|a|0}+\braket{1|a^{\dagger}|0}}=\sqrt{\frac{\hbar}{2m\omega}}\brackets{\cancelto{0}{\braket{1|a|0}}+\cancelto{1}{\braket{1|1}}}=\sqrt{\frac{\hbar}{2m\omega}}\]
+\[\braket{1|x|1}=\sqrt{\frac{\hbar}{2m\omega}}\braket{1|(a+a^{\dagger}|1}=\sqrt{\frac{\hbar}{2m\omega}}\brackets{\braket{1|a|1}+\braket{1|a^{\dagger}|1}}=\sqrt{\frac{\hbar}{2m\omega}}\brackets{\cancelto{0}{\braket{1|0}}+\cancelto{0}{\braket{1|2}}}=0\]
+Por tanto tenemos,
+\[\braket{1|V(x)|\Psi(0)}=\frac{-q\mathscr{E}}{\sqrt{2}}\sqrt{\frac{\hbar}{2m\omega}}\]
+Por tanto,
+\[\braket{f|U_I(t)|i}=\frac{1}{\sqrt{2}}\brackets{1+\frac{i}{\hbar}q\mathscr{E}\sqrt{\frac{\hbar}{2m\omega}}\int_0^tdt'e^{i\omega t'}}=\frac{1}{\sqrt{2}}\brackets{1+\frac{1}{\Delta E}q\mathscr{E}\sqrt{\frac{\hbar}{2m\omega}}(e^{i\omega t}-1)}\]
+Para $\Delta E$ usamos $\Delta E=E_1-E_0$, pues solo contribuye esta energía, así, $\Delta E=\hbar \omega$.\\
+Para $t=T=\pi/\omega$ tenemos,
+\[\braket{f|U_I(T)|i}=\frac{1}{\sqrt{2}}\brackets{1+\frac{1}{\hbar\omega}q\mathscr{E}\sqrt{\frac{\hbar}{2m\omega}}(\cancelto{-1}{e^{i\pi}}-1)}=\frac{1}{\sqrt{2}}\brackets{1-q\mathscr{E}\sqrt{\frac{2}{2m\omega^3\hbar}}}\]
+Así, la probabilidad de transición es,
+\[\omega(\Psi(0)\to\ket{1},T=\frac{\pi}{\omega})=\frac{1}{2}\abss{1-q\mathscr{E}\sqrt{\frac{2}{2m\omega^3\hbar}}}\checkmark\]
+\subsubsection*{Apartado (b)}
+Como nos piden los posibles valores de la medida de $O$ a orden $\mathscr{O}(\mathscr{E}^2)$. debemos calcular los autovalores de $O$. Para ello, vemos cómo actúa $O$ sobre $\ket{0}$ y $\ket{1}$:
+\[O\ket{0}=\ket{0}\cancelto{0}{\braket{1|0}}+\ket{1}\cancelto{1}{\braket{1|1}}=\ket{1}\]
+\[0\ket{1}=\ket{0}\cancelto{1}{\braket{1|1}}+\ket{1}\cancelto{0}{\braket{0|1}}=\ket{0}\]
+Por tanto, el observable $O$ se puede escribir en forma matricial, en la base $\curlybraces{\ket{0},\ket{1}}$, como
+\[O=\begin{pmatrix}
+    \braket{0|O|0} & \braket{0|O|1}\\
+    \braket{1|O|0} & \braket{1|O|1}
+\end{pmatrix}=\begin{pmatrix}
+    \cancelto{0}{\braket{0|1}} & \cancelto{1}{\braket{0|0}}\\
+    \cancelto{1}{\braket{1|1}} & \cancelto{0}{\braket{1|0}}
+\end{pmatrix}=\begin{pmatrix}
+    0 & 1\\
+    1 & 0
+\end{pmatrix}\]
+Resolvemos el polinomio característico $\begin{vmatrix}
+    \lambda\cdot O-\mathbb{I}
+\end{vmatrix}=0$ y obtenemos los autovalores,
+\[\begin{vmatrix}
+    -\lambda & 1\\
+    1 & -\lambda
+\end{vmatrix}=\lambda^2-1=0\Longrightarrow\lambda=\pm1\]
+Luego, las posibles medidas del observable $O$ son $o_+=+1$ y $o_-=-1$. $\checkmark$ \\ \\
+Ahora calculamos los autovectores, pues nos van a servir para calcular la probabilidad de medir cada autovalor:
+\[\begin{array}{lrcl}
+    o_+=+1 & & & \\ \\
+     \begin{pmatrix}
+         -1 & 1\\
+         1 & -1
+     \end{pmatrix}\begin{pmatrix}
+         x\\
+         y
+     \end{pmatrix}=\begin{pmatrix}
+         0\\
+         0
+     \end{pmatrix}\Longrightarrow \begin{array}{c}
+     x-y=0;\\
+     x=y=\gamma;
+     \end{array} & \begin{pmatrix}
+         x\\
+         y
+     \end{pmatrix}=\begin{pmatrix}
+         \gamma\\
+         \gamma
+     \end{pmatrix}=\gamma\begin{pmatrix}
+         1\\
+         1
+     \end{pmatrix}; & \ket{o_+}=\ket{0}+\ket{1}\Longrightarrow\ket{o_+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}) &
+\end{array}\]
+\[\begin{array}{lrcl}
+    o_-=-1 & & & \\ \\
+     \begin{pmatrix}
+         1 & 1\\
+         1 & 1
+     \end{pmatrix}\begin{pmatrix}
+         x\\
+         y
+     \end{pmatrix}=\begin{pmatrix}
+         0\\
+         0
+     \end{pmatrix}\Longrightarrow \begin{array}{c}
+     x+y=0;\\
+     x=-y=\gamma;
+     \end{array} & \begin{pmatrix}
+         x\\
+         y
+     \end{pmatrix}=\begin{pmatrix}
+         \gamma\\
+         -\gamma
+     \end{pmatrix}=\gamma\begin{pmatrix}
+         1\\
+         -1
+     \end{pmatrix}; & \ket{o_-}=\ket{0}-\ket{1}\Longrightarrow\ket{o_-}=\frac{1}{\sqrt{2}}(\ket{0}-0\ket{1}) &
+\end{array}\]
+Por tanto, tenemos los autovectres
+\[\ket{o_+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\]
+\[\ket{o_-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})\]
+Nos piden que hagamos los cálculos a orden $O(\mathscr{E}^2)$, por lo que deberemos calcular $\ket{\Psi(T)}$ a este orden:
+\[\begin{array}{rl}
+    \ket{\Psi(T)} &=\ket{0}+c_1\ket{1}+\dots=\ket{0}-\left(\frac{i}{\hbar}\int_0^Tdte^{\frac{i}{\hbar}\Delta E\cdot t}\braket{1|V|0}\right)\ket{1}+\dots=  \\
+     & = \ket{0}-\cancel{\frac{i}{\hbar}}\cancel{\frac{\hbar}{i}}\frac{\left(e^{i\omega\pi}-1\right)}{\Delta E}(-q\mathscr{E})\sqrt{\frac{\hbar}{2m\omega}}\ket{1}+\dots=\ket{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}\ket{1}+\dots
+\end{array}\]
+Debemos normalizar el estado,
+\[N^2=\braket{\Psi(T)|\Psi(T)}=\brackets{\bra{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}\bra{1}}\brackets{\ket{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}\ket{1}}=1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}\]
+Por tanto el estado final normalizado a orden $\mathscr{O}(\mathscr{E}^2)$ queda,
+\[\ket{\Psi(T)}=\frac{1}{\sqrt{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{\ket{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}\ket{1}}\]
+Suponemos que el sistema está en el estado $\ket{\Psi(T)}$, por tanto la probabilidad de hallar $o_+=+1$ será la proyección al cuadrado del autovector $\ket{o_+}$ con $\ket{\Psi(T)}$, y la de $o_-=-1$, será la proyección al cuadrado del autovector $\ket{o_-}$ con $\ket{\Psi(T)}$. Así,
+\[\mathscr{P}(\lambda=o_+)=\abss{\braket{o_+|\Psi(T)}};\hspace{5mm}\mathscr{P}(\lambda=o_-)=\abss{\braket{o_-|\Psi(T)}}\]
+Luego,
+\[
+    \braket{o_+|\Psi(T)}=\frac{1}{\sqrt{2}\sqrt{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{\bra{0}+\bra{1}}\brackets{\ket{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt   \frac{\hbar}{2m\omega}\ket{1}}=\frac{1}{\sqrt{2}\sqrt{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{1-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}
+\]
+\[
+    \braket{o_-|\Psi(T)}=\frac{1}{\sqrt{2}\sqrt{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{\bra{0}-\bra{1}}\brackets{\ket{0}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt   \frac{\hbar}{2m\omega}\ket{1}}=\frac{1}{\sqrt{2}\sqrt{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{1+\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}
+\]
+Por tanto las probabilidades son,
+\[\mathscr{P}(o_+)=\frac{1}{2\brackets{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{1-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}^2\]
+\[\mathscr{P}(o_-)=\frac{1}{2\brackets{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}\brackets{1+\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}^2\]
+que simplificando quedan,
+\[\mathscr{P}(o_+)=\frac{1}{2}\frac{\cancel{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}{\cancel{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}-\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}=\frac{1}{2}\brackets{1-\frac{4q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}\]
+\[\mathscr{P}(o_+)=\frac{1}{2}\frac{\cancel{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}{\cancel{1+\frac{4q^2\mathscr{E}^2}{(h\omega)^2}\frac{\hbar}{2m\omega}}}+\frac{2q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}=\frac{1}{2}\brackets{1+\frac{4q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}\]
+Así, las probabilidades son,
+\[\mathscr{P}(o_+)=\frac{1}{2}\brackets{1-\frac{4q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}};\hspace{4mm}\mathscr{P}(o_-)=\frac{1}{2}\brackets{1+\frac{4q\mathscr{E}}{\hbar\omega}\sqrt{\frac{\hbar}{2m\omega}}}\checkmark\]
+
+\end{document}

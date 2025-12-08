@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación VII. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Diciembre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \textbf{La amplitud de dispersión de una partícula con momento $p=200$ MeV/c es}
+\[f(p,\theta,\varphi)=\frac{\hbar}{2p}\brackets{\left(1+3\frac{\sqrt{3}}{2}\cos\theta\right)+i\left(1+\frac{9}{2}\cos\theta\right)}\]
+\begin{enumerate}
+    \item \textbf{Calcula la sección eficaz total en mb (milibarns).}\\
+    \textbf{[$\hbar c\approx200$ MeV fm, $1$ fm $=10^{-13}$ cm, $1$ mb$=10^{-27}$ cm$^2$]}
+    \item \textbf{¿Se cumple el teorema óptico?}
+    \item \textbf{Halla todos los desfajes}
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection*{Apartado (a)}
+Sabemos que la sección eficaz total viene de integrar la sección eficaz diferencial, que es
+\[\frac{d\sigma}{d\Omega}=\abss{f(p,\theta,\varphi)}=\abss{f(p,\theta,\varphi)=\frac{\hbar}{2p}\brackets{\left(1+3\frac{\sqrt{3}}{2}\cos\theta\right)+i\left(1+\frac{9}{2}\cos\theta\right)}}=\]
+\[=\frac{\hbar^2}{4p^2}\brackets{\left(1+3\frac{\sqrt{3}}{2}\cos\theta\right)^2+\left(1+\frac{9}{2}\cos\theta\right)^2}=\frac{\hbar^2}{4p^2}\brackets{1+\frac{27}{4}\cos^2\theta+3\sqrt{3}\cos\theta+1+\frac{81}{4}\cos^2\theta+9\cos\theta}\]
+\[=\frac{\hbar^2}{4p^2}\brackets{2+(9+3\sqrt{3})\cos\theta+27\cos^2\theta}\]
+
+Por tanto, la sección eficaz total viene dada por,
+\[\sigma=\int \frac{d\sigma}{d\Omega}d\Omega=\int_{-1}^{1}d(\cos\theta)\int_0^{2\pi}d\varphi\abss{f(p,\theta,\varphi)}=\frac{\cancel{2}\pi\hbar^2}{\cancel{4}p^2}\int_{-1}^{1}\brackets{2+(9+3\sqrt{3})\cos\theta+27\cos^2\theta}d(\cos\theta)=\]
+\[=\frac{\hbar^2\pi}{2p^2}\brackets{2\int_{-1}^{1}d(\cos\theta)+(9+3\sqrt{3})\int_{-1}^{1}\cos\theta d(\cos\theta)+27\int_{-1}^1\cos^2\theta d(\cos\theta)}=\]
+Vamos a hacer el cambio de variable $x=\cos\theta$.
+\[=\frac{\hbar^2\pi}{2p^2}\brackets{2\int_{-1}^{1}dx+(9+3\sqrt{3})\int_{-1}^{1}x\cdot dx+27\int_{-1}^1x^2 dx}=\]
+\[=\frac{\hbar^2\pi}{2p^2}\brackets{2\left. x\right|_{-1}^{1}+\frac{9+3\sqrt{3}}{2}\left. x^2\right|_{-1}^{1}+\frac{27}{3}\left.x^3\right|_{-1}^{1}}=\]
+\[=\frac{\hbar^2\pi}{2p^2}\brackets{4+18}=\frac{22\hbar^2\pi}{2p^2}=\frac{11\pi(\hbar c)^2}{(pc)^2}\overset{\curlybraces{\begin{matrix}
+    \hbar c\approx 200\text{ MeV fm}\\
+    p=200 \text{ MeV/c }\\
+    \Rightarrow pc=200\text{ MeV}
+\end{matrix}}}{=}11\pi \text{ fm}^2\]
+Sabiendo que $1$ fm$=10^{-13}$ cm y que $1$ mb$=10^{-27}$ cm$^2$, tenemos que 1 fm$^2=10^{-2}$ b$=10$ mb. Por tanto, la sección eficaz total queda,
+\[\sigma=11\pi\text{ fm}^2=11\pi\cdot10\text{ mb}=345,57\text{ mb}\]
+\subsubsection*{Apartado (b)}
+EL Teorema Óptico establece que,
+\[Im[f(p,\theta=0,\varphi)]=\frac{p}{4\pi\hbar}\sigma\]
+Por tanto, comprobamos si esto se cumple:
+\[Im[f(p,\theta=0\varphi)]=\frac{\hbar}{2p}\left(1+\frac{9}{2}\cos(0)\right)=\frac{11\hbar}{4p}\]
+Por otra parte,
+\[\frac{p}{4\pi\hbar}\sigma=\frac{\cancel{p}}{4\cancel{\pi}\cancel{\hbar}}\frac{11\cancel{\pi}\hbar^{\cancel{2}}}{p^{\cancel{2}}}=\frac{11\hbar}{4p}\]
+Por tanto, vemos que ambas cantidades son iguales, por lo que se cumple el Teorema Óptico.
+\subsubsection*{Apartado (c)}
+Sabemos que la amplitud de dispersión la podemos reescribir como,
+\[f(p,\theta,\varphi)=\frac{\hbar}{2ip}\sum_{l=0}^{\infty}(2l+1)\left(e^{2i\delta_l}-1\right)\mathscr{P}_l(\cos\theta)\]
+donde $P_l(\cos\theta)$ son los polinomios de Legendre, tal que
+\[\begin{matrix}
+    \mathscr{P}_0(\cos\theta)=1\\
+    \mathscr{P}_1(\cos\theta)=\cos\theta\\
+    \mathscr{P}_2(\cos\theta)=\frac{1}{2}\left(3\cos^2\theta-1\right)\\
+    \vdots
+\end{matrix}\]
+Por comparación con nuestra amplitud de dispersión que es,
+\[f(p,\theta,\varphi)=\frac{\hbar}{2p}\brackets{\left(1+3\frac{\sqrt{3}}{2}\cos\theta\right)+i\left(1+\frac{9}{2}\cos\theta\right)}\]
+vemos que los términos distintos de cero son $l=0,1$.
+Luego, tenemos
+\[f(p,\theta,\varphi)=-\frac{i\hbar}{2p}\brackets{\left(\cos(2\delta_0)+i\sin(2\delta_0)-1\right)+3\left(\cos(2\delta_1)+i\sin(2\delta_1)-1\right)\cos\theta}=\]
+\[=\frac{\hbar}{2p}\brackets{\left(\sin(2\delta_0)+3\sin(2\delta_1)\cos\theta\right)+i\left(1-\cos(2\delta_0)+(3-3\cos(2\delta_1))\cos\theta\right)}\]
+Por tanto, podemos igualar las partes reales e imaginarias (obviando la constante $\hbar/(2p)$, que es la misma),
+\[1+\frac{3\sqrt{3}}{2}\cos\theta=\sin(2\delta_0)+3\sin(2\delta_1)\cos\theta\]
+y
+\[1+\frac{9}{2}\cos\theta=1-\cos(2\delta_0)+(3-3\cos(2\delta_1))\cos\theta\]
+Vamos a comparar la igualdad de la parte real,
+\[\begin{array}{rl}
+    0: & 1=\sin(2\delta_0)\Rightarrow2\delta_0=\arcsin(1)=\frac{(2n+1)\pi}{2};n\in\mathbb{Z}\Rightarrow\delta_0=\frac{(2n+1)\pi}{4};n\in\mathbb{Z} \\ \\
+    \cos\theta: & 3\sqrt{3}/2=3\sin(2\delta_1)\Rightarrow2\delta_1=\arcsin(\sqrt{3}/2)=2n\pi\pm\frac{2\pi}{3};n\in\mathbb{Z}\Rightarrow\delta_1=n\pi\pm\frac{\pi}{3};n\in\mathbb{Z}
+\end{array}\]
+Podemos comprobar los valores en la parte imaginaria, tal que
+\[1-\cancelto{1}{\cos\left(\frac{(2n+1)\pi}{2}\right)}+(3-3\cancelto{-1/2}{\cos\left(2n\pi\pm\frac{2\pi}{3}\right)}\cos\theta=1+\frac{9}{2}\cos\theta\]
+Por tanto, los posibles desfajes son,
+\[\delta_0=\frac{(2n+1)\pi}{4};\hspace{6mm}\delta_1=n\pi\pm\frac{\pi}{3}\]
+con $n\in\mathbb{Z}$.
+\\ \\
+Vamos a quedarnos con $n=0$ y la parte positiva (pues queremos el ángulo antihorario), luego, los desfajes son,
+\[\delta_0=\pi/4;\hspace{6mm}\delta_1=\pi/3\]
+
+
+
+    
+\end{document}

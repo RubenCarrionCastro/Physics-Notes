@@ -1,0 +1,796 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\voverrightarrowtor}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\cooverrightarrowtor}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación V. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Noviembre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item \textbf{Considera dos partículas idénticas de espín 1/2 y masa $m$ en una dimensión, sometidas a un potencial cuyo espectro para una partícula es }$\mathbf{E_n=\left(n+\frac{1}{2}\right)\hbar\omega}$\textbf{ con funciones de onda propias }$\mathbf{\Psi_n(x)}$\textbf{ para $n=0,1,2,\dots$}
+    \begin{enumerate}
+        \item \textbf{Halla la energía, la función de onda orbital }$\mathbf{\Psi^{orb}(x_1,x_2)}$\textbf{ y el espín del estado fundamental del sistema.}
+        \item \textbf{Halla la energía y todos los estados }$\mathbf{\ket{\Psi}\in\mathscr{H}^{orb}\otimes\mathscr{H}^{spin}}$\textbf{ del primer y segundo estado excitado.}
+        \item \textbf{Supongamos que se añade una tercera partícula del mismo tipo. ¿Cuál sería entonces el estado fundamental del sistema y su degeneración?}
+    \end{enumerate}
+\end{enumerate}
+\subsubsection*{Apartado (a)}
+Como tenemos dos partículas idénticas de espín 1/2, el espacio de Hilbert que las describe será,
+\[\left.\begin{array}{rl}
+    1^a & \mathscr{H}_1^{orb}\otimes\mathscr{H}_1^{s=1/2} \\
+    2^a & \mathscr{H}_2^{orb}\otimes\mathscr{H}_2^{s=1/2} 
+\end{array}\right\rbrace\begin{array}{rl}
+    \mathscr{H} &=\mathscr{H}_1\otimes\mathscr{H}_2 =\mathscr{H}_1^{orb}\otimes\mathscr{H}_1^{spin}\otimes\mathscr{H}_2^{orb}\otimes\mathscr{H}_2^{spin} \\
+     & =\mathscr{H}_1^{orb}\otimes\mathscr{H}_2^{orb}\otimes\mathscr{H}_1^{spin}\otimes\mathscr{H}_2^{spin}=\mathscr{H}^{orb}\otimes\mathscr{H}^{spin}
+\end{array}\]
+Por tanto, tendremos el estado
+\[\ket{\Psi}=\ket{\begin{matrix}
+    \phi_n & \phi_m
+\end{matrix}}\otimes\ket{\begin{matrix}
+    + & -
+\end{matrix}}\]
+donde $\ket{\phi_n}$ y $\ket{\phi_m}$ son los estados orbitales de energía bien definida de cada una de las partículas.\\ \\
+El espectro de energía de los estados, suponiendo que la interacción entre ellas es despreciable, será
+\[H=H_1+H_2+\cancelto{\approx0}{H_{int}}=H_1+H_2\]
+tal que
+\[H\ket{\Psi_0}=(H_1+H_2)\ket{\Psi}=H_1\ket{\Psi}+H_2\ket{\Psi}=E_n\ket{\Psi}+E_m\ket{\Psi}=(E_n+E_m)\ket{\Psi}\]
+Tomamos como estado fundamental $\ket{\begin{matrix}
+    0 & 0
+\end{matrix}}$ y comprobamos que sea posible, pues al tener fermiones, la función de onda total debe ser antisimétrica.
+Por tanto, $\mathscr{E}_0=E_0+E_0=\hbar\omega$, siendo esta la energía del nivel fundamental del sistema.\\ \\
+La función de onda orbital del estado fundamental $\Psi_0^{orb}(x_1,x_2)=\Phi_0(x_1,x_2)=\braket{\begin{matrix}
+    x_1 & x_2
+\end{matrix}|\Phi_0}=\braket{\begin{matrix}
+    x_1 & x_2
+\end{matrix}|\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}$ la calculamos, como
+\[\begin{array}{rl}
+     \braket{\begin{matrix}
+    x_1 & x_2
+\end{matrix}|\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}& =[\bra{x_1}\otimes\bra{x_2}][\ket{\phi_0}\otimes\ket{\phi_0}]=\braket{x_1|\phi_0}\cdot\braket{x_2|\phi_1}=\phi_0(x_1)\cdot\phi_0(x_2)
+\end{array}\]
+Vamos a simetrizar este estado a ver si es simétrico o no, aplicando el simetrizador de $S_2$, $S=\frac{1}{2}[e+\begin{pmatrix}
+    1 & 2
+\end{pmatrix}]$, tal que
+\[\begin{array}{rl}
+     \braket{\begin{matrix}
+    x_1 & x_2
+\end{matrix}|S|\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}&=\braket{\begin{matrix}
+    x_1 & x_2
+\end{matrix}|\frac{1}{2}[e+\begin{pmatrix}
+    1 & 2
+\end{pmatrix}]|\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}=\frac{1}{2}\bra{\begin{matrix}
+    x_1 & x_2
+\end{matrix}}[e\ket{\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}+\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    \phi_0 & \phi_0
+\end{matrix}}]=  \\ \\
+     & =\frac{1}{2}\bra{\begin{matrix}
+         x_1 & x_2
+     \end{matrix}}\left[\ket{\begin{matrix}
+         \phi_0 & \phi_0
+     \end{matrix}}+\ket{\begin{matrix}
+         \phi_1 & \phi_0
+     \end{matrix}}\right]=\frac{1}{2}\left[\braket{\begin{matrix}
+         x_1 & x_2
+     \end{matrix}|\begin{matrix}
+         \phi_0 & \phi_0
+     \end{matrix}}+\braket{\begin{matrix}
+         x_1 & x_2
+     \end{matrix}|\begin{matrix}
+         \phi_1 & \phi_0
+     \end{matrix}}\right]=\\ \\
+     &=\frac{1}{2}\left[\phi_0(x_1)\cdot\phi_0(x_2)+\phi_0(x_1)\cdot\phi_0(x_2)\right]=\phi_0(x_1)\cdot\phi_0(x_2)=\braket{\begin{matrix}
+         x_1 & x_2|\phi_0 & \phi_0
+     \end{matrix}}
+\end{array}\]
+Por tanto, la parte orbital es simétrica. Como el estado total $\Psi_0^{total}(x_1,x_2)=\Psi_0^{orb}(x_1,x_2)\chi_0^{spin}$ debe ser antisimétrico, al ser el estado fundamental orbital simétrico, el estado fundamental de espín deberá ser antisimétrico, de forma que debemos usar el antisimetrizador $A=\frac{1}{2}[e-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}]$, para calcularlo, tal que
+\[\begin{array}{rl}
+    \chi_0^{spin} & =A|\ket{\begin{matrix}
+        + & -
+    \end{matrix}}=\frac{1}{2}\left[\ket{\begin{matrix}
+        + & -
+    \end{matrix}}-\ket{\begin{matrix}
+        - & +
+    \end{matrix}}\right]
+\end{array}\]
+que normalizando queda,
+\[\chi_0^{spin}=\frac{1}{\sqrt{2}}\left[\ket{\begin{matrix}
+        + & -
+    \end{matrix}}-\ket{\begin{matrix}
+        - & +
+    \end{matrix}}\right]\]
+Por tanto, vemos que estamos en un \textbf{singlete} de espín, y por tanto, el espín es $S=0$ y el estado $\ket{\begin{matrix}
+    0 & 0
+\end{matrix}}$ es posible.
+\subsubsection*{Apartado (b)}
+Tomaremos el primer estado excitado como $\ket{\begin{matrix}
+    1 & 0
+\end{matrix}}$ y el segundo estado excitado como $\ket{\begin{matrix}
+    1 & 1
+\end{matrix}}$ o $\ket{\begin{matrix}
+    0 & 2
+\end{matrix}}$, pues estos estados son los inmediatamente superiores al estado fundamental $\ket{\begin{matrix}
+    0 & 0
+\end{matrix}}$. Así, la energía del primer estado excitado será
+\[\mathscr{E}_1=E_1+E_0=\left(1+\frac{1}{2}+\frac{1}{2}\right)\hbar\omega=2\hbar\omega\]
+y la del segundo estado excitado será,
+\[\mathscr{E}_2=E_1+E_1=\left(1+\frac{1}{2}+1+\frac{1}{2}\right)\hbar\omega=3\hbar\omega=E_0+E_2\]
+De forma análoga al apartado anterior, la función de onda orbital del primer estado excitado será,
+\[\Psi_1^{orb}(x_1,x_2)=\frac{1}{\sqrt{2}}\left[\phi_1(x_1)\cdot\phi_0(x_2)\pm\phi_0(x_1)\cdot\phi_1(x_2)\right]\]
+donde usamos el $\pm$, pues no sabemos si es simétrica o antisimétrica. Así, si la función orbital es simétrica, como la función de onda total debe ser antisimétrica, tenemos que la función de espín es antisimétrica, teniendo un singlete de espín haciendo que el espín sea $S=0$,
+\[\chi^{spin}_{S=0}=\frac{1}{\sqrt{2}}\left[\ket{\begin{matrix}
+    + & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & +
+\end{matrix}}\right]\]
+En cambio, si la función orbital es antisimétrica, entonces la función de espín debe ser simétrica, tal que
+\[\begin{array}{ccc}
+     \chi_{S=1,S_z=1}^{spin}=\ket{\begin{matrix}
+         + & +
+     \end{matrix}};
+    & \chi_{S=1,S_z=0}^{spin}=\frac{1}{\sqrt{2}}\left[\ket{\begin{matrix}
+         + & -
+     \end{matrix}}+\ket{\begin{matrix}
+         - & +
+     \end{matrix}}\right]; 
+     & \chi_{S=1,S_z=-1}^{spin}=\ket{\begin{matrix}
+         - & -
+     \end{matrix}}
+\end{array}\]
+teniendo así un triplete de espín, con $S=1$. Por tanto, tenemos 4 estados posibles del primer estado excitado, que son
+\[\begin{array}{cc}
+     \Psi_1^{(1)}=\Psi_+^{orb}\chi_{S=0}^{spin} 
+   &  \Psi_2^{(1)}=\Psi_-^{orb}\chi_{S=1,S_z=1}^{spin}\\ \\
+     \Psi_3^{(1)}=\Psi_-^{orb}\chi_{S=1,S_z=0}^{spin} &
+     \Psi_4^{(1)}=\Psi_-^{orb}\chi_{S=1,S_z=-1}^{spin}
+\end{array}\]
+De forma análoga con el estado fundamental, para el segundo estado excitado $\ket{\begin{matrix}
+    1 & 1
+\end{matrix}}$ tenemos también 1 estado posible, tal que
+
+\[\Psi_1^{(2)}=\Psi_2^{orb}\cdot\chi_{S=0}^{spin}\]
+con 
+\[\Psi_2^{orb}=\phi_1(x_1)\cdot\phi_1(x_2)\]
+y el mismo estado de espín que el estado fundamental. Y para el segundo estado excitado $\ket{\begin{matrix}
+    0 & 2
+\end{matrix}}$, de forma análoga con el primer estado excitado, tenemos 4 posibles estados,
+\[\begin{array}{cc}
+     \Psi_2^{(2)}=\Psi_+^{orb}\chi_{S=0}^{spin} 
+   &  \Psi_3^{(2)}=\Psi_-^{orb}\chi_{S=1,S_z=1}^{spin} \\ \\
+     \Psi_4^{(2)}=\Psi_-^{orb}\chi_{S=1,S_z=0}^{spin} &
+     \Psi_5^{(2)}=\Psi_-^{orb}\chi_{S=1,S_z=-1}^{spin}
+\end{array}\]
+con
+\[\Psi_{\pm}^{orb}(x_1,x_2)=\frac{1}{\sqrt{2}}\left[\phi_0(x_1)\cdot\phi_2(x_2)\pm\phi_2(x_1)\cdot\phi_0(x_2)\right]\]
+y los mismo estado de espín anteriores. Por tanto, para el segundo estado excitado tenemos 5 estados posibles.
+\subsubsection*{Apartado (c)}
+Al añadir una tercera partícula idéntica, para el estado fundamental podemos probar con $\ket{\begin{matrix}
+    0 & 0 & 0
+\end{matrix}}$, y ver si la función de onda total es antisimétrica, pues estamos con fermiones. Para ello, usamos el operador antisimetrización de $S_3$,
+\[A=\frac{1}{6}\brackets{e-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix}}\]
+La parte de espín viene dada por,
+\[\begin{array}{rl}
+    \mathscr{H}^{spin} &=\mathscr{H}_1^{spin}\otimes\mathscr{H}_2^{spin}\otimes\mathscr{H}_3^{spin}=  \\ \\
+     & =\{\ket{\begin{pmatrix}
+         + & + & +
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         + & + & -
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         + & - & +
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         - & + & +
+     \end{pmatrix}},\\ \\
+     &\ket{\begin{pmatrix}
+         + & - & -
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         - & + & -
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         - & - & +
+     \end{pmatrix}},\ket{\begin{pmatrix}
+         - & - & -
+     \end{pmatrix}}\}
+\end{array}\]
+Como tenemos el estado $\ket{\begin{matrix}
+    0 & 0 & 0
+\end{matrix}}$, su parte orbital será $\Psi^{orb}_0(x_1,x_2,x_3)=\phi_0(x_1)\cdot\phi_0(x_2)\cdot\phi_0(x_3)$, que es totalmente simétrica. Por lo que debemos centrarnos en la simetría de la parte de espín, tal que
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    + & + & +
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & + & +
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    + & + & -
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}+\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    + & - & +
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}+\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    - & + & +
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & + & -
+\end{matrix}}+\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    + & - & -
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}+\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}+\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    - & + & -
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}+\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}+\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    - & - & +
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\ket{\begin{matrix}
+    - & - & +
+\end{matrix}}-\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    - & + & -
+    \end{matrix}}+\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}+\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}]=0
+\end{array}\]
+
+\[\begin{array}{rl}
+     A\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}&=\frac{1}{6}[e\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 2
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\begin{pmatrix}
+    1 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\\ \\
+&-\begin{pmatrix}
+    2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 2 & 3
+\end{pmatrix}\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}+\begin{pmatrix}
+    1 & 3 & 2
+\end{pmatrix} \ket{\begin{matrix}
+    - & - & -
+\end{matrix}}] \\ \\
+    &=\frac{1}{6}[\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}-\\ \\
+&-\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}+\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}+\ket{\begin{matrix}
+    - & - & -
+\end{matrix}}]=0
+\end{array}\]
+Por tanto, todos los estados de espines son simétricos y no podemos tener como estado fundamental es estado $\ket{\begin{matrix}
+    0 & 0 & 0
+\end{matrix}}$, por lo que pasamos al estado inmediatamente superior $\ket{\begin{matrix}
+    0 & 0 & 1
+\end{matrix}}$ y comprobamos si la función de onda total de este estado es antisimétrica.
+\[\begin{array}{rl}
+    A\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}} &=\frac{1}{6}[\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}-\\ \\
+    &-\ket{\begin{matrix}
+        \phi_1 & \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}+\\ \\
+    &+\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}+\ket{\begin{matrix}
+        \phi_1& \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}]=0
+\end{array}\]
+\[\begin{array}{rl}
+    A\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}} &=\frac{1}{6}[\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}-\\ \\
+    &-\ket{\begin{matrix}
+        \phi_1 & \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}+\\ \\
+    &+\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}+\ket{\begin{matrix}
+        \phi_1& \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}]\neq0
+\end{array}\]
+\[\begin{array}{rl}
+    A\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}} &=\frac{1}{6}[\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_0 & \phi_1
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}-\\ \\
+    &-\ket{\begin{matrix}
+        \phi_1 & \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}-\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        - & + & +
+    \end{matrix}}+\\ \\
+    &+\ket{\begin{matrix}
+        \phi_0 & \phi_1 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & + & -
+    \end{matrix}}+\ket{\begin{matrix}
+        \phi_1& \phi_0 & \phi_0
+    \end{matrix}}\ket{\begin{matrix}
+        + & - & +
+    \end{matrix}}]\neq0
+\end{array}\]
+Pero si observamos componente a componente, vemos que 
+\[A\ket{\begin{matrix}
+    \phi_0 & \phi_0 & \phi_1
+\end{matrix}}\ket{\begin{matrix}
+    + & - & +
+\end{matrix}}=-A\ket{\begin{matrix}
+    \phi_0 & \phi_0 & \phi_1
+\end{matrix}}\ket{\begin{matrix}
+    - & + & +
+\end{matrix}}\]
+Por tanto, son el mismo estado con una fase de $-1$.\\ \\
+De forma análoga, tenemos que 
+\[A\ket{\begin{matrix}
+    \phi_0 & \phi_0 & \phi_1
+\end{matrix}}\ket{\begin{matrix}
+    - & + & -
+\end{matrix}}=-A\ket{\begin{matrix}
+    \phi_0 & \phi_0 & \phi_1
+\end{matrix}}\ket{\begin{matrix}
+    + & - & -
+\end{matrix}}\neq0\]
+siendo así también el mismo estado con una fase de $-1$.
+Se puede comprobar que con el resto de espines da cero. Por tanto, tenemos dos estados posibles para el nivel fundamental, teniendo así una degeneración de 2. La energía de este estado será,
+\[\mathscr{E}_0=E_0+E_0+E_1=\left(\frac{1}{2}+\frac{1}{2}+1+\frac{1}{2}\right)\hbar\omega=\frac{5}{2}\hbar\omega\]
+
+
+
+\end{document}

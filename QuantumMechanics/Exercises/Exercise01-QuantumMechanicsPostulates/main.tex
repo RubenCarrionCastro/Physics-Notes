@@ -1,0 +1,576 @@
+\documentclass[11pt]{article}
+%\usepackage[spanish]{babel}
+\RequirePackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+%\usepackage[sc]{mathpazo}
+% \linespread{1.5}
+%\usepackage[T1]{fontenc}
+%\usepackage{heuristica}
+%\usepackage[erewhon,vvarbb,bigdelims]{newtxmath}
+%\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{amsmath, amsthm}
+\usepackage{slashed}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pstricks-add}
+\usepackage{color}
+\usepackage{caption}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{marvosym}
+\usepackage{mathtools}
+\usepackage{framed}
+\usepackage{calrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{tensor}
+\usepackage{autonum}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{proposition}[thm]{Proposición} 
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{corollary}[thm]{Corolario} 
+\newtheorem{conv}[thm]{Convención}
+\newtheorem{defi}[thm]{Definición}
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{notation}[thm]{Notación} 
+\newtheorem{exe}[thm]{Ejemplo}
+\newtheorem{conjecture}[thm]{Conjetura} 
+\newtheorem{prob}[thm]{Problema}
+\newtheorem{remark}[thm]{Observación}
+\newtheorem{example}[thm]{Ejemplo}
+\newtheorem{note}[thm]{Nota}
+
+\newcommand{\brackets}[1]{\left[#1\right]}
+\newcommand{\curlybraces}[1]{\left\{#1\right\}}
+\newcommand{\qedh}{\hfill\hspace{5mm}\fbox{\phantom{\rule{.5ex}{.5ex}}}}
+\newcommand{\scalar}[2]{\langle #1, #2 \rangle}
+\newcommand{\ptensor}[2]{#1 \otimes #2}
+\newcommand{\pcart}[2]{#1 \times #2}
+\newcommand{\vvector}[3]{\begin{pmatrix}#1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\covector}[3]{\begin{pmatrix}#1 & #2 & #3\end{pmatrix}}
+\newcommand{\abss}[1]{\begin{vmatrix}#1\end{vmatrix}^2}
+
+\newtcolorbox[auto counter, number within=section]{mytheorem}[2][]{
+  enhanced,
+  breakable,
+  title=Teorema~\thetcbcounter: #2,
+  #1,
+}
+\newtcolorbox[auto counter, number within=section]{propositionbox}[2][]{
+  enhanced,
+  breakable,
+  title=Proposition~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{corollarybox}[2][]{
+  enhanced,
+  breakable,
+  title=Corollary~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{remarkbox}[2][]{
+  enhanced,
+  breakable,
+  title=Remark~\thetcbcounter: #2,
+  #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{notebox}[2][]{
+  enhanced,
+  breakable,
+  title=Note~\thetcbcounter: #2,
+  #1,
+}
+
+
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+%\usepackage[spanish]{babel}
+\title{\huge{\textbf{Evaluación I. Mecánica Cuántica}}}
+\author{\textbf{}\\ \\Rubén Carrión Castro\\}
+% \textit{Los Chavales}
+\date{Octubre 2024}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item \textbf{Considera un sistema cuántico en el estado} $\mathbf{\ket{\Psi}=c(\ket{u_1}+\ket{u_2})\in\mathcal{H}}$ \textbf{y los observables}
+    \[\begin{matrix}
+        \mathbf{A=a(-i\ket{u_1}\bra{u_3}+i\ket{u_3}\bra{u_1}+\ket{u_2}\bra{u_2}),} & & \mathbf{B=\hbar\omega(\ket{u_2}\bra{u_2}+\ket{u_3}\bra{u_3}),}
+    \end{matrix}\]
+    \textbf{donde }$\mathbf{c}$ \textbf{es la constante de normalización y }$\mathbf{\curlybraces{\ket{u_1},\ket{u_2},\ket{u_3}}}$ \textbf{una base ortonormal de }$\mathbf{\mathcal{H}}$\textbf{. Supón que dispones de 1000 copias idénticas del sistema y que a cada una le mides secuencialmente uno de los observables elegidos al azar y luego el otro, seleccionando el estado final independientemente de los resultados y sin saber lo que se ha obtenido. Encuentra la matriz densidad que describe al sistema resultante.}
+\end{enumerate}
+
+Lo primero que debemos hacer es pasar tanto el estado $\ket{\Psi}$ como los observables $A$ y $B$ a notación matricial,
+
+\begin{equation}
+\begin{array}{ccc}
+    \ket{\Psi}\doteq c\begin{pmatrix}1\\ 1\\ 0\end{pmatrix}; & A\doteq a\begin{pmatrix}
+        0 & 0 & -i\\
+        0 & 1 & 0\\
+        i & 0 & 0 
+    \end{pmatrix}; & B\doteq\hbar\omega\begin{pmatrix}
+        0 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+    \end{pmatrix}
+\end{array}
+\end{equation}
+
+Ahora debemos normalizar nuestro estado $\ket{\Psi}$, usando que la norma debe ser la unidad:
+
+\begin{equation}
+    \braket{\Psi|\Psi}=c^2\begin{pmatrix} 1 & 1 & 0 \end{pmatrix}\cdot\begin{pmatrix} 1\\ 1\\ 0\\\end{pmatrix}=2\cdot c^2=1 \Longrightarrow c=\frac{1}{\sqrt{2}}\Longrightarrow \ket{\Psi}\doteq\frac{1}{\sqrt{2}}\begin{pmatrix} 1\\ 1 \\ 0\end{pmatrix}
+\end{equation}
+
+Ahora procedemos a buscar los autovalores de los observables, comenzamos por $A$;
+
+\begin{equation}
+    \begin{array}{rll}
+    \begin{vmatrix}
+        A-\lambda_A\mathbb{I}
+    \end{vmatrix}=\begin{vmatrix}
+        -\lambda_A & 0 & -i\cdot a\\
+        0 & a-\lambda_A & 0\\
+        i\cdot a & 0 & -\lambda_A
+    \end{vmatrix}= & \lambda_A^2(a-\lambda_A)-a^2(a-\lambda_A)=(a-\lambda_A)(\lambda_A^2-a^2)=0 \\
+        \Longrightarrow & \left\lbrace\begin{array}{lll}
+       a-\lambda_A=0  & \Rightarrow & \lambda_A=a \\
+           \lambda_A^2-a^2=0  & \Rightarrow & \lambda_A=\pm a
+        \end{array}\right.
+    \end{array}
+\end{equation}
+
+Por tanto, tenemos un autovalor no degenerado ($-a$) y otro 2-degenerado ($a$). Calculamos ahora los autovectores para los autovalores,
+
+\begin{equation}
+    \begin{array}{rll}
+        \lambda_A=a & & \\
+         & \begin{pmatrix}
+             -a & 0 -i\cdot a\\
+             0 & 0 & 0\\
+             i\cdot a & 0 & a
+         \end{pmatrix}\cdot\begin{pmatrix}
+             x\\
+             y\\
+             z\\
+         \end{pmatrix}=\begin{pmatrix}
+             0\\
+             0\\
+             0\\
+         \end{pmatrix}\Rightarrow & \left\lbrace\begin{array}{rll}
+             -ax-iaz = 0 & \Rightarrow x=-iz &\\
+             iax-az  = 0 &  &\\ \\
+         \end{array}\right.\\
+         \text{Tomando } y=\gamma; z=\tau & & \\ \\
+          \Longrightarrow & \begin{pmatrix}
+             x\\
+             y\\
+             z
+         \end{pmatrix}=\begin{pmatrix}
+             -i\tau\\
+             \gamma\\
+             \tau
+         \end{pmatrix}=\gamma\begin{pmatrix}
+             0\\
+             1\\
+             0
+         \end{pmatrix}+\tau\begin{pmatrix}
+             -i\\
+             0\\
+             1
+         \end{pmatrix} & \\
+        \Longrightarrow & \ket{a_1}\doteq\begin{pmatrix}
+            0\\ 1\\ 0
+        \end{pmatrix};~ \ket{a_2}\doteq\frac{1}{\sqrt{2}}\begin{pmatrix}
+            -i \\ 0 \\ 1
+        \end{pmatrix} &
+    \end{array}
+\end{equation}
+donde hemos normalizado $\ket{a_2}$.
+\begin{equation}
+    \begin{array}{rrl}
+        \lambda_A=-a & & \\
+         & \begin{pmatrix}
+             a & 0 -i\cdot a\\
+             0 & 2a & 0\\
+             i\cdot a & 0 & a
+         \end{pmatrix}\begin{pmatrix}
+             x\\ y\\ z
+         \end{pmatrix}=\begin{pmatrix}
+             0\\ 0\\ 0
+         \end{pmatrix}\Longrightarrow & \left\lbrace\begin{array}{rll}
+             ax-iaz = 0 & \Rightarrow x=iz &\\
+             2ay  = 0 & \Rightarrow y=0 &\\
+             iax +az=0 & &\\ \\
+         \end{array}\right.\\
+         \text{Tomando } z=\tau & & \\ \\
+           & \Longrightarrow\begin{pmatrix}
+             x\\
+             y\\
+             z
+         \end{pmatrix}=\begin{pmatrix}
+             i\tau\\
+             0\\
+             \tau
+         \end{pmatrix}=\tau\begin{pmatrix}
+             i\\
+             0\\
+             1
+         \end{pmatrix} & 
+        \Longrightarrow\ket{a_3}\doteq\frac{1}{\sqrt{2}}\begin{pmatrix}
+            i \\ 0 \\ 1
+        \end{pmatrix} 
+    \end{array}
+\end{equation}
+donde hemos normalizado $\ket{a_3}$.\\ \\
+Vamos ahora con el observable $B$, pero como por suerte es una matriz diagonal, los autovalores serán directamente los valores de la diagonal, $\lambda_B=\curlybraces{0,\hbar\omega,\hbar\omega}$ y los autovectores asociados a cada autovalor serán los vectores de la base canónica, así
+
+\begin{equation}
+    \ket{b_i}\doteq\curlybraces{\begin{pmatrix}
+        1 \\ 0\\0
+    \end{pmatrix},\begin{pmatrix}
+        0\\ 1\\0
+    \end{pmatrix},\begin{pmatrix}
+        0\\ 0\\1
+    \end{pmatrix}}
+\end{equation}
+Vamos ahora a calcular los productos escalares de los autovectores con nuestro estado, pues los vamos a necesitar:
+
+\begin{equation}
+    \begin{array}{ccc}
+       \braket{a_1|\Psi}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+           0 & 1 & 0
+       \end{pmatrix}\begin{pmatrix}
+           0\\
+           1\\
+           1
+       \end{pmatrix}=\frac{1}{\sqrt{2}};  & \braket{b_1|\Psi}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+             1 & 0 & 0
+         \end{pmatrix}\begin{pmatrix}
+             1\\
+             1\\
+             0
+         \end{pmatrix}=\frac{1}{\sqrt{2}} \\
+       \braket{a_2|\Psi}=\frac{1}{2}\begin{pmatrix}
+            i & 0 & 1
+        \end{pmatrix}\begin{pmatrix}
+            1\\ 1\\ 0
+        \end{pmatrix}=\frac{i}{2};  & \braket{b_2|\Psi}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+             0 & 1 & 0
+         \end{pmatrix}\begin{pmatrix}
+             1\\
+             1\\
+             0
+         \end{pmatrix}=\frac{1}{\sqrt{2}}\\
+        \braket{a_3|\Psi}=\frac{1}{2}\begin{pmatrix}
+            -i & 0 & 1
+        \end{pmatrix}\begin{pmatrix}
+            1\\ 1\\ 0
+        \end{pmatrix}=\frac{-i}{2}; & \braket{b_3|\Psi}=\frac{1}{\sqrt{2}}\covector{0}{0}{1}\begin{pmatrix}
+             1\\
+             1\\
+             0
+         \end{pmatrix}=0
+    \end{array}
+\end{equation}
+\newpage
+Ahora procedemos a calcular las probabilidades de cada autovalor al medir su observable, pues nos serán útiles para cálculos posteriores:\\ \\
+
+\begin{equation}
+    \begin{array}{rl}
+       \mathcal{P}(\lambda_A=a)=\begin{vmatrix}
+           \braket{a_1|\Psi}
+       \end{vmatrix}^2+\begin{vmatrix}
+           \braket{a_2|\Psi}
+       \end{vmatrix}^2=\frac{3}{4};  & \mathcal{P}(\lambda_B=0)=\begin{vmatrix}
+           \braket{b_1|\Psi}
+       \end{vmatrix}^2=\frac{1}{2} \\
+        \mathcal{P}(\lambda_A=-a)=\begin{vmatrix}
+           \braket{a_3|\Psi}
+       \end{vmatrix}^2=\frac{1}{4}; & \mathcal{P}(\lambda_B=\hbar\omega)=\begin{vmatrix}
+           \braket{b_2|\Psi}
+       \end{vmatrix}^2+\begin{vmatrix}
+           \braket{b_3|\Psi}
+       \end{vmatrix}^2=\frac{1}{2}
+    \end{array}
+\end{equation}
+Vamos a calcular ahora los estados tras las medidas:\\
+1) $\mathbf{\lambda_A=a;~\lambda_B=0}$\\
+El estado tras la medida de $A$ es,
+\begin{equation}
+\begin{array}{rll}
+
+    \ket{\Phi_1}=&\frac{P_{(a)}\ket{\Psi}}{\sqrt{\bra{\Psi}P_{(a)}\ket{\Psi}}}=\frac{2}{\sqrt{3}}\curlybraces{\braket{a_1|\Psi}\ket{a_1}+\braket{a_2|\Psi}\ket{a_2}}=&\frac{2}{\sqrt{3}}\left[\frac{1}{\sqrt{2}}\vvector{0}{1}{0}+\frac{i}{2}\vvector{-i}{0}{1}\right]=\\
+   = &\frac{2}{\sqrt{6}}\vvector{0}{1}{0}+\frac{1}{\sqrt{6}}\vvector{1}{0}{i}=\frac{1}{\sqrt{6}}\vvector{1}{2}{i}
+    \end{array}
+\end{equation}
+2) $\mathbf{\lambda_A=a;~\lambda_B=\hbar\omega}$\\
+El estado tras la medida de $A$ es el mismo que el anterior,
+\begin{equation}
+    \ket{\Phi_2}=\frac{1}{\sqrt{6}}\vvector{1}{2}{i}
+\end{equation}
+3) $\mathbf{\lambda_A=-a;~\lambda_B=0}$\\
+El estado tras la medida de $A$ es,
+\begin{equation}
+ \ket{\Phi_3}=\ket{a_3}=\frac{1}{\sqrt{2}}\vvector{i}{0}{1}
+\end{equation}
+pues el autovalor es no degenerado.\\
+4) $\mathbf{\lambda_A=-a;~\lambda_B=\hbar\omega}$\\
+El estado tras la medida de $A$ es el mismo que el anterior,
+\begin{equation}
+    \ket{\Phi_4}=\ket{a_3}=\frac{1}{\sqrt{2}}\vvector{i}{0}{1}
+\end{equation}
+Para los estados tras la medida de $B$ vamos a hacer solo uno de cada pareja, pues también coinciden, así para $\lambda_B=0$, como es no degenerado, tendremos
+\begin{equation}
+    \ket{\Phi_5}=\ket{\Phi_6}=\ket{b_1}=\vvector{1}{0}{0}
+\end{equation}
+Para $\lambda_B=\hbar\omega$ tenemos,
+\begin{equation}
+    \begin{array}{rll}
+
+    \ket{\Phi_7}=\ket{\Phi_8}=&\frac{P_{(\hbar\omega)}\ket{\Psi}}{\sqrt{\bra{\Psi}P_{(\hbar\omega)}\ket{\Psi}}}=\sqrt{2}\curlybraces{\braket{b_2|\Psi}\ket{b_2}+\braket{b_3|\Psi}\ket{b_3}}=&\sqrt{2}\left[\frac{1}{\sqrt{2}}\vvector{0}{1}{0}+0\vvector{0}{0}{1}\right]=\vvector{0}{1}{0}
+    \end{array}
+\end{equation}
+Ahora vamos a calcular las probabilidades conjugadas:\\
+1) $\mathbf{\lambda_A=a;~\lambda_B=0}$\\
+La probabilidad de B tras medir A será
+\begin{equation}
+    \mathcal{P}(\lambda_B=0|\lambda_A=a)=\abss{\braket{b_1|\Phi_1}}=\abss{\frac{1}{\sqrt{6}}}=\frac{1}{6}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_1\equiv\mathcal{P}(\lambda_A=a;\lambda_B=0)=\mathcal{P}(\lambda_A=a)\cdot\mathcal{P}(\lambda_B=0|\lambda_A=a)=\frac{3}{4}\cdot\frac{1}{6}=\frac{1}{8}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_1}=\ket{b_1}\doteq\vvector{1}{0}{0}
+\end{equation}
+2) $\mathbf{\lambda_A=a;~\lambda_B=\hbar\omega}$\\
+La probabilidad de B tras medir A será
+\begin{equation}
+    \mathcal{P}(\lambda_B=\hbar\omega|\lambda_A=a)=\abss{\braket{b_2|\Phi_2}}+\abss{\braket{b_3|\Phi_2}}=\abss{\frac{2}{\sqrt{6}}}+\abss{\frac{i}{\sqrt{6}}}=\frac{5}{6}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_2\equiv\mathcal{P}(\lambda_A=a;\lambda_B=\hbar\omega)=\frac{3}{4}\cdot\frac{5}{6}=\frac{5}{8}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_2}=\frac{P_{(\hbar\omega)}\ket{\Phi_2}}{\sqrt{\bra{\Psi}P_{(\hbar\omega)}\ket{\Psi}}}=\sqrt{\frac{6}{5}}\left[\braket{b_2|\Phi_2}\ket{b_2}+\braket{b_3|\Phi_2}\ket{b_3}\right]=\sqrt{\frac{6}{5}}\left[\frac{2}{\sqrt{6}}\ket{b_2}+\frac{i}{\sqrt{6}}\ket{b_3}\right]=\frac{1}{\sqrt{5}}\vvector{0}{2}{i}
+\end{equation}
+3) $\mathbf{\lambda_A=-a;~\lambda_B=0}$\\
+La probabilidad de B tras medir A será
+\begin{equation}
+    \mathcal{P}(\lambda_B=0|\lambda_A=-a)=\abss{\braket{b_1|\Phi_3}}=\abss{\frac{1}{\sqrt{2}}}=\frac{1}{2}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_3\equiv\mathcal{P}(\lambda_A=-a;\lambda_B=0)=\frac{1}{4}\cdot\frac{1}{2}=\frac{1}{8}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_3}=\ket{b_1}\doteq\vvector{1}{0}{0}
+\end{equation}
+4) $\mathbf{\lambda_A=-a;~\lambda_B=\hbar\omega}$\\
+La probabilidad de B tras medir A será
+\begin{equation}
+    \mathcal{P}(\lambda_B=\hbar\omega|\lambda_A=-a)=\abss{\braket{b_2|\Phi_4}}+\abss{\braket{b_3|\Phi_4}}=\abss{0}+\abss{\frac{-i}{\sqrt{2}}}=\frac{1}{2}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_4\equiv\mathcal{P}(\lambda_A=a;\lambda_B=\hbar\omega)=\frac{1}{4}\cdot\frac{1}{2}=\frac{1}{8}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_4}=\frac{P_{(\hbar\omega)}\ket{\Phi_4}}{\sqrt{\bra{\Psi}P_{(\hbar\omega)}\ket{\Psi}}}=\sqrt{2}\left[\braket{b_2|\Phi_4}\ket{b_2}+\braket{b_3|\Phi_4}\ket{b_3}\right]=\sqrt{2}\left[0+\frac{-i}{\sqrt{2}}\ket{b_3}\right]=\vvector{0}{0}{-i}
+\end{equation}
+5) $\mathbf{\lambda_B=0;~\lambda_A=a}$\\
+La probabilidad de $A$ tras medir $B$ será
+\begin{equation}
+    \mathcal{P}(\lambda_A=a|\lambda_B=0)=\abss{\braket{a_1|\Phi_5}}+\abss{\braket{a_2|\Phi_5}}=\abss{0}+\abss{\frac{i}{\sqrt{2}}}=\frac{1}{2}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_5\equiv\mathcal{P}(\lambda_B=0;\lambda_A=a)=\frac{1}{2}\cdot\frac{1}{2}=\frac{1}{4}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_5}=\frac{P_{(a)}\ket{\Phi_5}}{\sqrt{\bra{\Psi}P_{(a)}\ket{\Psi}}}=\sqrt{2}\left[\braket{a_1|\Phi_5}\ket{a_1}+\braket{a_2|\Phi_5}\ket{a_2}\right]=\sqrt{2}\left[0+\frac{i}{\sqrt{2}}\ket{a_2}\right]=\frac{i}{\sqrt{2}}\vvector{-i}{0}{1}=\frac{1}{\sqrt{2}}\vvector{1}{0}{i}
+\end{equation}
+6) $\mathbf{\lambda_B=0;~\lambda_A=-a}$\\
+La probabilidad de $A$ tras medir $B$ será
+\begin{equation}
+    \mathcal{P}(\lambda_A=-a|\lambda_B=0)=\abss{\braket{a_3|\Phi_6}}=\abss{\frac{-i}{\sqrt{2}}}=\frac{1}{2}
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_6\equiv\mathcal{P}(\lambda_B=0;\lambda_A=-a)=\frac{1}{2}\cdot\frac{1}{2}=\frac{1}{4}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_6}=\ket{a_3}\doteq\frac{1}{\sqrt{2}}\vvector{i}{0}{1}
+\end{equation}
+7) $\mathbf{\lambda_B=\hbar\omega;~\lambda_A=a}$\\
+La probabilidad de $A$ tras medir $B$ será
+\begin{equation}
+    \mathcal{P}(\lambda_A=a|\lambda_B=\hbar\omega)=\abss{\braket{a_1|\Phi_7}}+\abss{\braket{a_2|\Phi_7}}=\abss{1}+\abss{0}=1
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_7\equiv\mathcal{P}(\lambda_B=\hbar\omega;\lambda_A=a)=\frac{1}{2}\cdot1=\frac{1}{2}
+\end{equation}
+con estado final
+\begin{equation}
+    \ket{\phi_7}=\frac{P_{(a)}\ket{\Phi_7}}{\sqrt{\bra{\Psi}P_{(a)}\ket{\Psi}}}=1\left[\braket{a_1|\Phi_7}\ket{a_1}+\braket{a_2|\Phi_7}\ket{a_2}\right]=1\ket{a_2}+0=\vvector{0}{1}{0}
+\end{equation}
+8) $\mathbf{\lambda_B=\hbar\omega;~\lambda_A=-a}$\\
+La probabilidad de $A$ tras medir $B$ será
+\begin{equation}
+    \mathcal{P}(\lambda_A=-a|\lambda_B=\hbar\omega)=\abss{\braket{a_3|\Phi_8}}=0
+\end{equation}
+Por tanto, la probabilidad total será,
+\begin{equation}
+    P_8\equiv\mathcal{P}(\lambda_B=\hbar\omega;\lambda_A=-a)=0
+\end{equation}
+
+Construimos la matriz densidad usando que
+\begin{equation}
+    \rho=\sum_i\omega_i\ket{\phi_i}\bra{\phi_i}
+\end{equation}
+donde las frecuencias son
+\begin{equation}
+    \omega_i=\frac{P_i}{\sum_iP_i\equiv P_{Total}}
+\end{equation}
+Calculamos las frecuencias, pero primero vemos la probabilidad total,
+\begin{equation}
+    P_{Total}=\sum_iP_i=\frac{1}{8}+\frac{5}{8}+\frac{1}{8}+\frac{1}{8}+\frac{1}{4}+\frac{1}{4}+\frac{1}{2}+0=2
+\end{equation}
+Vemos las frecuencias,
+\begin{equation}
+    \begin{array}{rl}
+        \omega_1=\frac{P_1}{P_T}=\frac{1/8}{2}=1/16; & \omega_5=\frac{P_5}{P_T}=\frac{1/4}{2}=1/8=2/16 \\
+         \omega_2=\frac{P_2}{P_T}=\frac{5/8}{2}=5/16; & \omega_6=\frac{P_6}{P_T}=\frac{1/4}{2}=1/8=2/16 \\
+         \omega_3=\frac{P_3}{P_T}=\frac{1/8}{2}=1/16; & \omega_7=\frac{P_7}{P_T}=\frac{1/2}{2}=1/4=4/16 \\
+         \omega_4=\frac{P_4}{P_T}=\frac{1/8}{2}=1/16; & \omega_8=\frac{P_8}{P_T}=\frac{0}{2}=0 \\
+    \end{array}
+\end{equation}
+Así tenemos,
+\begin{equation}
+    \rho=\frac{1}{16}\curlybraces{\ket{\phi_1}\bra{\phi_1}+5\ket{\phi_2}\bra{\phi_2}+\ket{\phi_3}\bra{\phi_3}+\ket{\phi_4}\bra{\phi_4}+2\ket{\phi_5}\bra{\phi_5}+2\ket{\phi_6}\bra{\phi_6}+\ket4{\phi_7}\bra{\phi_7}+0\ket{\phi_8}\bra{\phi_8}}
+\end{equation}
+Calculamos los proyectores,
+\begin{equation}
+    \begin{array}{rl}
+        \ket{\phi_1}\bra{\phi_1}=\vvector{1}{0}{0}\covector{1}{0}{0}=\begin{pmatrix}
+             1 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}; &  \ket{\phi_5}\bra{\phi_5}=\frac{1}{2}\vvector{1}{0}{i}\covector{1}{0}{-i}=\frac{1}{2}\begin{pmatrix}
+             1 & 0 & -i\\
+             0 & 0 & 0\\
+             i & 0 & 1
+         \end{pmatrix}\\ \\
+         \ket{\phi_2}\bra{\phi_2}=\frac{1}{5}\vvector{0}{2}{i}\covector{0}{2}{-i}=\frac{1}{5}\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 4 & -2i\\
+             0 & 2i & 1
+         \end{pmatrix}; & \ket{\phi_6}\bra{\phi_6}=\frac{1}{2}\vvector{i}{0}{1}\covector{-i}{0}{1}=\frac{1}{2}\begin{pmatrix}
+             1 & 0 & i\\
+             0 & 0 & 0\\
+             -i & 0 & 1
+         \end{pmatrix}\\ \\
+         \ket{\phi_3}\bra{\phi_3}=\vvector{1}{0}{0}\covector{1}{0}{0}=\begin{pmatrix}
+             1 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}; & \ket{\phi_7}\bra{\phi_7}=\vvector{0}{1}{1}\covector{0}{1}{0}=\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 1 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}\\ \\
+         \ket{\phi_4}\bra{\phi_4}=\vvector{0}{0}{i}\covector{0}{0}{-i}=\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & -2i & 1
+         \end{pmatrix}; & \ket{\phi_8}\bra{\phi_8}=\nexists\\ \\
+    \end{array}
+\end{equation}
+
+
+
+\begin{equation}
+    \begin{array}{rl}
+         \rho\doteq & \frac{1}{16}\left\lbrace\begin{pmatrix}
+             1 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}+\frac{5}{5}\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 4 & -2i\\
+             0 & 2i & 1
+         \end{pmatrix}+\begin{pmatrix}
+             1 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}+\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 0 & 0\\
+             0 & -2i & 1
+         \end{pmatrix}+\right. \\
+        & \left.+\frac{2}{2}\begin{pmatrix}
+             1 & 0 & -i\\
+             0 & 0 & 0\\
+             i & 0 & 1
+         \end{pmatrix}+\frac{2}{2}\begin{pmatrix}
+             1 & 0 & i\\
+             0 & 0 & 0\\
+             -i & 0 & 1
+         \end{pmatrix}+4\begin{pmatrix}
+             0 & 0 & 0\\
+             0 & 1 & 0\\
+             0 & 0 & 0
+         \end{pmatrix}\right\rbrace=\frac{1}{8}\begin{pmatrix}
+             2 & 0 & 0\\
+             0 & 4 & -i\\
+             0 & i & 2
+         \end{pmatrix}
+    \end{array}
+\end{equation}
+\newpage
+Comprobamos si satisface algunas de las propiedades de la matriz densidad,
+\begin{enumerate}
+    \item $\rm{Tr}(\rho)=1$?
+    \begin{equation}
+        \rm{Tr}(\rho)=\frac{1}{8}(2+4+2)=1~~\checkmark
+    \end{equation}
+    \item $\rho=\rho^{\dagger}$?
+    \begin{equation}
+        \rho^{\dagger}=(\rho^T)^*=\frac{1}{8}\begin{pmatrix}
+            2 & 0 & 0\\
+            0 & 4 & -i\\
+            0 & i & 2
+        \end{pmatrix}=\rho~~\checkmark
+    \end{equation}
+\end{enumerate}
+
+Concluimos que la matriz densidad obtenida debería estar bien, pues satisface estas propiedades.
+
+
+\end{document}
