@@ -1,8 +1,8 @@
 # Statistical Mechanics – Study Notes and Solved Problems
 
 This folder contains my personal study notes and solved exercises for the 
-course *Statistical Mechanics*, completed during my SICUE exchange year at the 
-University of Granada (2024–2025).
+course *Statistical Mechanics*, completed at the 
+University of Córdoba (2023–2024) and the exercises are from my SICUE at the University of Granada (2024-2025).
 
 The material is fully written by me, following standard references 
 (Brey, Pathria, Landau) and class lectures. All problem statements have been 
