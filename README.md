@@ -9,7 +9,6 @@ The material here reflects my academic interests in:
 - Theoretical Physics  
 - General Relativity  
 - Quantum Field Theory  
-- Atomic and Molecular Physics  
 - Computational Physics  
 - Mathematical Methods for Physics  
 
