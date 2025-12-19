@@ -17,30 +17,9 @@ paraphrased to avoid copyrighted material.
 
 ---
 
-## 📚 Repository Structure
-
-Physics-Notes/
-│
-├── GeneralRelativity/ # Complete lecture notes + solved problems
-│
-├── QuantumFieldTheory/ # (To be added) Notes by topics + exercises
-│
-├── QuantumMechanics/ # (If applicable)
-│
-├── StatisticalPhysics/ # (If applicable)
-│
-├── AtomicPhysics/ # Exercises and Mathematica work
-│ └── exercises/
-│ ├── exercise01_.../
-│ ├── exercise02_.../
-│ └── ...
-│
-└── SolidStatePhysics/ # (If applicable)
-
-
 Each subject folder contains:
 - `main.tex` or modular `.tex` files  
-- PDF notes (optional)  
+- PDF notes  
 - Solved exercises in subfolders  
 - A dedicated `README.md`  
 
