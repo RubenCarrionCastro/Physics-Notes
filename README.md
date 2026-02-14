@@ -17,6 +17,16 @@ paraphrased to avoid copyrighted material.
 
 ---
 
+## Note on language
+
+Most of these notes were originally written in Spanish as part of my undergraduate coursework and personal study.  
+I am currently working on gradually translating and adapting selected materials into English.
+
+Mathematical notation and structure follow standard international conventions, so the content should remain accessible.
+
+
+---
+
 Each subject folder contains:
 - `main.tex` or modular `.tex` files  
 - PDF notes  
