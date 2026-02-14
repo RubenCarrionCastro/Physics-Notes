@@ -15,6 +15,8 @@ The material here reflects my academic interests in:
 All notes and solutions are written entirely by me. Problem statements are 
 paraphrased to avoid copyrighted material.
 
+These notes focus on developing conceptual understanding and mathematical derivations in theoretical physics, with emphasis on problem-solving and analytical reasoning.
+
 ---
 
 ## Note on language
