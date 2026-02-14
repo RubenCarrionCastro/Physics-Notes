@@ -56,7 +56,7 @@ This repository serves as:
 - A structured archive of my academic work  
 - A demonstration of my ability to document advanced physics topics clearly  
 - A portfolio of analytical and computational skills  
-- Supporting material for applications to research programs (e.g. CERN Summer Student)  
+- Supporting material illustrating my preparation for research-oriented work in theoretical and computational physics.
 
 ---
 
